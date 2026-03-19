@@ -34,53 +34,16 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ────────────────────────────────────
-   NAVBAR
-──────────────────────────────────── */
-.nav {
-  position: sticky;
-  top: 0; z-index: 100;
-  background: rgba(248,245,240,.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(212,137,106,.15);
-  padding: 14px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.nav-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  color: var(--rose);
-  font-weight: 700;
-  letter-spacing: .5px;
-}
-
-.nav-cta {
-  background: var(--rose);
-  color: white;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 9px 18px;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  font-family: 'Nunito', sans-serif;
-  letter-spacing: .3px;
-  text-decoration: none;
-  display: inline-block;
-}
 
 /* ────────────────────────────────────
    HERO
 ──────────────────────────────────── */
 .hero {
   background: var(--white);
-  padding: 32px 20px 28px;
+  padding: 28px 20px 28px;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* дозволяємо масці виходити за межі */
 }
 
 /* soft blob top right */
@@ -94,29 +57,14 @@ body {
   pointer-events: none;
 }
 
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #FFF3EE;
-  border: 1px solid rgba(212,137,106,.3);
-  color: var(--rose);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: 30px;
-  margin-bottom: 16px;
-}
-
 .hero-h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 36px;
-  line-height: 1.1;
+  font-size: 34px;
+  line-height: 1.12;
   color: var(--text);
   font-weight: 900;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .hero-h1 .hl {
@@ -125,63 +73,73 @@ body {
 }
 
 .hero-sub {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--muted);
-  line-height: 1.55;
+  line-height: 1.5;
   margin-bottom: 22px;
-  font-weight: 400;
+  font-weight: 500;
+  text-align: center;
 }
 
-/* BA CARDS */
+/* ── BA ROW з маскою зверху ── */
 .ba-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-bottom: 20px;
   position: relative;
+  /* місце зверху для PNG маски */
+  padding-top: 60px;
+}
+
+/* PNG маски — абсолютно по центру, виходить вгору з фото */
+.ba-mask-wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  z-index: 10;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 20px rgba(212,137,106,.35));
+  animation: floaty 4s ease-in-out infinite;
+}
+
+.mask-png {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@keyframes floaty {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(-6px); }
 }
 
 .ba-card {
   border-radius: 16px;
   overflow: hidden;
   position: relative;
+  background: #EDE8E3;
 }
 
+.ba-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+}
+
+/* fallback якщо фото не завантажилось */
 .ba-visual {
   aspect-ratio: 3/4;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 16px 12px;
 }
-
-.ba-before .ba-visual {
-  background: linear-gradient(160deg, #E8DDD6 0%, #D4C4B8 100%);
-}
-.ba-after .ba-visual {
-  background: linear-gradient(160deg, #F5EAE4 0%, #EDCFC2 100%);
-}
-
+.ba-before .ba-visual { background: linear-gradient(160deg, #E8DDD6 0%, #D4C4B8 100%); }
+.ba-after  .ba-visual { background: linear-gradient(160deg, #F5EAE4 0%, #EDCFC2 100%); }
 .ba-emoji { font-size: 44px; }
-
-.ba-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  justify-content: center;
-}
-
-.ba-tag {
-  font-size: 10px;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 20px;
-}
-
-.ba-before .ba-tag { background: rgba(100,80,70,.12); color: #7A5548; }
-.ba-after  .ba-tag { background: rgba(212,137,106,.18); color: var(--deep-r); }
 
 .ba-label {
   position: absolute;
@@ -194,28 +152,27 @@ body {
   border-radius: 20px;
 }
 
-.ba-before .ba-label { background: rgba(0,0,0,.1); color: #5A4035; }
+.ba-before .ba-label { background: rgba(255,255,255,.75); color: #5A4035; }
 .ba-after  .ba-label { background: var(--rose); color: white; }
 
-/* VS badge in middle */
-.vs-badge {
+/* Плашка "Хит продаж" — внизу фото ДО, накладається */
+.ba-hit-badge {
   position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  background: white;
-  box-shadow: 0 2px 12px rgba(0,0,0,.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: white;
   font-size: 10px;
   font-weight: 800;
-  color: var(--rose);
-  z-index: 5;
+  letter-spacing: .5px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(0,0,0,.25);
 }
 
-/* STATS ROW */
+
 .stats-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -820,58 +777,40 @@ footer {
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="nav">
-  <div class="nav-logo">NeckGlow</div>
-  <button class="nav-cta" onclick="openPopup()">Заказать −50%</button>
-</nav>
-
 <!-- ══════════════════════════
      HERO
 ══════════════════════════ -->
 <section class="hero">
 
-  <div class="hero-tag fi">
-    <span>🔥</span> Хит продаж · Узбекистан
-  </div>
-
+  <!-- ЗАГОЛОВОК — центрований, компактний -->
   <h1 class="hero-h1 fi">
-    Шея снова<br>
-    <span class="hl">молодая</span><br>
-    за 14 дней
+    Шея снова <span class="hl">молодая</span> за 14 дней
   </h1>
 
   <p class="hero-sub fi">
-    Лифтинг-маска специально для нежной кожи шеи. Видимый эффект уже после первого применения.
+    Лифтинг-маска для шеи. Видимый эффект<br>уже после первого применения.
   </p>
 
-  <!-- BEFORE / AFTER -->
+  <!-- BEFORE / AFTER + PNG маски по центру зверху -->
   <div class="ba-row fi">
+
     <div class="ba-card ba-before">
-      <div class="ba-visual">
-        <div class="ba-emoji">😞</div>
-        <div class="ba-tags">
-          <span class="ba-tag">Дряблость</span>
-          <span class="ba-tag">Морщины</span>
-          <span class="ba-tag">Сухость</span>
-        </div>
-      </div>
+      <img src="img/before.jpg" alt="До" class="ba-img">
       <div class="ba-label">ДО</div>
+      <!-- плашка "Хит продаж" поверх нижньої частини фото -->
+      <div class="ba-hit-badge">🔥 Хит продаж</div>
     </div>
 
-    <div class="vs-badge">→</div>
+    <!-- PNG упаковки маски — зверху по центру, виходить за межі карток -->
+    <div class="ba-mask-wrap">
+      <img src="img/mask.png" alt="NeckGlow маска" class="mask-png">
+    </div>
 
     <div class="ba-card ba-after">
-      <div class="ba-visual">
-        <div class="ba-emoji">😊</div>
-        <div class="ba-tags">
-          <span class="ba-tag">Упругость</span>
-          <span class="ba-tag">Гладкость</span>
-          <span class="ba-tag">Лифтинг</span>
-        </div>
-      </div>
-      <div class="ba-label">ПОСЛЕ</div>
+      <img src="img/after.jpg" alt="После" class="ba-img">
+      <div class="ba-label">ПІСЛЯ</div>
     </div>
+
   </div>
 
   <!-- STATS -->
@@ -890,22 +829,6 @@ footer {
     </div>
   </div>
 
-  <!-- OFFER CHIPS -->
-  <div class="offer-chips fi">
-    <div class="offer-chip">
-      <span class="chip-ico">🏷</span>
-      <span>Скидка <span class="chip-accent">−50%</span></span>
-    </div>
-    <div class="offer-chip">
-      <span class="chip-ico">🎁</span>
-      <span>Купи 2 — <span class="chip-accent">3-я в подарок</span></span>
-    </div>
-    <div class="offer-chip">
-      <span class="chip-ico">💳</span>
-      <span>Оплата <span class="chip-accent">при получении</span></span>
-    </div>
-  </div>
-
   <!-- PRICE -->
   <div class="price-row fi">
     <div>
@@ -917,17 +840,12 @@ footer {
 
   <!-- CTA -->
   <button class="btn-hero fi" onclick="openPopup()">
-    Хочу такой же результат → Заказать
+    Хочу такой же результат — Заказать
   </button>
 
   <div class="hero-guarantee fi">
     <div class="hg-item">📦 Доставка 1–2 дня</div>
     <div class="hg-item">↩️ Возврат 30 дней</div>
-  </div>
-
-  <div class="stock-bar fi">
-    <div class="dot"></div>
-    <span>Осталось по акции: <strong>27 масок</strong> — успейте!</span>
   </div>
 
 </section>
