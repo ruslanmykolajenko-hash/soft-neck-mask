@@ -4,1191 +4,1333 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Лифтинг-маска для шеи</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
-  --blue:       #1A4C8B;
-  --blue-mid:   #2860A8;
-  --blue-light: #EBF2FC;
-  --teal:       #0E7B6C;
-  --teal-light: #E6F5F3;
-  --white:      #FFFFFF;
-  --off:        #F5F7FA;
-  --line:       #E2E8F0;
-  --text:       #0F1C2E;
-  --muted:      #627385;
-  --red:        #C0392B;
-  --red-bg:     #FEF0EE;
-  --serif: 'DM Serif Display', Georgia, serif;
-  --sans:  'DM Sans', sans-serif;
-  --screen: 100dvh;
-}
+  :root {
+    --cream: #FAF6F1;
+    --blush: #E8C5B0;
+    --rose: #C4806A;
+    --deep: #3D2B1F;
+    --gold: #C9A96E;
+    --white: #FFFFFF;
+    --soft: #F5EDE6;
+    --text: #4A3728;
+    --r: 22px;
+  }
 
-html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
-body {
-  font-family: var(--sans);
-  background: var(--off);
-  color: var(--text);
-  max-width: 430px;
-  margin: 0 auto;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
+  html, body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
 
-/* ── SCREEN BLOCK ── */
-/* Each .screen = exactly one viewport height */
-.screen {
-  min-height: var(--screen);
-  height: var(--screen);
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-}
+  /* ─── SNAP SCROLL ─── */
+  .scroll-container {
+    height: 100dvh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
 
-/* ══════════════════════════════════════════
-   SCREEN 0 — HERO / OFFER
-══════════════════════════════════════════ */
-.s0 {
-  background: linear-gradient(170deg, #0D2F5C 0%, #1A4C8B 55%, #1D5FA0 100%);
-}
+  .screen {
+    height: 100dvh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
 
-.s0-top {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 20px;
-  border-bottom: 1px solid rgba(255,255,255,.1);
-}
-.s0-logo {
-  font-family: var(--serif);
-  font-size: 16px;
-  color: rgba(255,255,255,.9);
-  letter-spacing: .02em;
-}
-.s0-badge {
-  background: rgba(255,255,255,.15);
-  border: 1px solid rgba(255,255,255,.25);
-  border-radius: 100px;
-  padding: 5px 12px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: .04em;
-}
+  /* ─── NAV DOTS ─── */
+  .dots {
+    position: fixed;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 999;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(196,128,106,.35);
+    transition: all .3s;
+    cursor: pointer;
+  }
+  .dot.active { background: var(--rose); height: 18px; border-radius: 3px; }
 
-.s0-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px 20px 16px;
-}
+  /* ═══════════════════════════════
+     SCREEN 1 — HERO
+  ═══════════════════════════════ */
+  #s1 {
+    background: linear-gradient(160deg, #2E1A12 0%, #5C3324 55%, #8B5040 100%);
+    justify-content: flex-end;
+    padding-bottom: 0;
+  }
 
-.s0-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255,255,255,.12);
-  border: 1px solid rgba(255,255,255,.2);
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255,255,255,.85);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-  align-self: flex-start;
-}
-.s0-tag span { width: 6px; height: 6px; border-radius: 50%; background: #4ADEAA; flex-shrink: 0; animation: glow 2s infinite; }
-@keyframes glow { 0%,100%{opacity:1}50%{opacity:.3} }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,169,110,.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 80% 10%, rgba(232,197,176,.12) 0%, transparent 60%);
+  }
 
-.s0-title {
-  font-family: var(--serif);
-  font-size: 36px;
-  color: #fff;
-  line-height: 1.1;
-  margin-bottom: 10px;
-}
-.s0-title em { font-style: italic; color: #A8D4FF; }
+  .hero-badge {
+    position: absolute;
+    top: 18px; right: 18px;
+    background: var(--gold);
+    color: var(--deep);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 30px;
+  }
 
-.s0-sub {
-  font-size: 14px;
-  color: rgba(255,255,255,.65);
-  line-height: 1.6;
-  margin-bottom: 18px;
-}
-.s0-sub b { color: #fff; }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 24px 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-/* Price row */
-.s0-price {
-  background: rgba(255,255,255,.1);
-  border: 1px solid rgba(255,255,255,.2);
-  border-radius: 14px;
-  padding: 14px 16px;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.s0-old {
-  font-size: 14px;
-  color: rgba(255,255,255,.45);
-  text-decoration: line-through;
-  font-weight: 500;
-}
-.s0-new {
-  font-family: var(--serif);
-  font-size: 36px;
-  color: #fff;
-  line-height: 1;
-}
-.s0-cur { font-size: 14px; color: rgba(255,255,255,.6); font-weight: 500; }
-.s0-save {
-  background: #E74C3C;
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 8px;
-}
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
 
-.s0-gift {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(74,222,170,.12);
-  border: 1px solid rgba(74,222,170,.3);
-  border-radius: 10px;
-  padding: 10px 14px;
-  margin-bottom: 14px;
-}
-.s0-gift-icon { font-size: 22px; }
-.s0-gift-text { font-size: 13px; font-weight: 600; color: #A8F0D8; line-height: 1.4; }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px;
+    line-height: 1.1;
+    color: var(--white);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
 
-/* Form inline */
-.s0-form { display: flex; flex-direction: column; gap: 8px; }
-.s0-input {
-  width: 100%;
-  padding: 14px 16px;
-  font-family: var(--sans);
-  font-size: 14px;
-  color: var(--text);
-  background: rgba(255,255,255,.95);
-  border: none;
-  border-radius: 10px;
-  outline: none;
-}
-.s0-input::placeholder { color: #9BAFC5; }
-.s0-btn {
-  width: 100%;
-  padding: 16px;
-  background: #E74C3C;
-  color: #fff;
-  font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  position: relative; overflow: hidden;
-}
-.s0-btn::after { content:''; position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);animation:sh 3s infinite; }
-@keyframes sh { 100%{left:160%} }
-.s0-note { text-align: center; font-size: 11px; color: rgba(255,255,255,.4); padding-top: 2px; }
+  .hero-title span { color: var(--blush); }
 
-/* Scroll hint */
-.scroll-hint {
-  position: absolute;
-  bottom: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  opacity: .5;
-}
-.scroll-hint span { font-size: 10px; color: rgba(255,255,255,.6); letter-spacing: .08em; }
-.arrow-down { width: 18px; height: 18px; border-right: 2px solid rgba(255,255,255,.5); border-bottom: 2px solid rgba(255,255,255,.5); transform: rotate(45deg); animation: bounce 1.6s infinite; }
-@keyframes bounce { 0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(3px,3px)} }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,.72);
+    line-height: 1.55;
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
 
-/* ══════════════════════════════════════════
-   SCREEN 1 — COUNTDOWN + ОПИСАНИЕ
-══════════════════════════════════════════ */
-.s1 { background: var(--white); }
+  .hero-price-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
 
-.cd-bar {
-  flex: 0 0 auto;
-  background: var(--text);
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.cd-label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.5); line-height: 1.4; }
-.cd-label b { color: #fff; }
-.cd-nums { display: flex; align-items: center; gap: 4px; }
-.cd-box {
-  background: #E74C3C;
-  color: #fff;
-  font-size: 22px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  width: 46px; height: 44px;
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-}
-.cd-sep { color: rgba(255,255,255,.3); font-size: 18px; font-weight: 700; }
+  .price-old {
+    font-size: 16px;
+    color: rgba(255,255,255,.4);
+    text-decoration: line-through;
+    font-weight: 300;
+  }
 
-.s1-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 24px 20px;
-  gap: 20px;
-}
+  .price-new {
+    font-size: 32px;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    font-weight: 700;
+  }
 
-.sec-tag {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--blue);
-  margin-bottom: 8px;
-  display: block;
-}
+  .price-badge {
+    background: #E05555;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: .5px;
+  }
 
-.sec-title {
-  font-family: var(--serif);
-  font-size: 30px;
-  color: var(--text);
-  line-height: 1.12;
-}
-.sec-title em { font-style: italic; color: var(--blue); }
+  .hero-gift {
+    background: rgba(201,169,110,.18);
+    border: 1px solid rgba(201,169,110,.4);
+    border-radius: 14px;
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-.desc-text {
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--muted);
-}
-.desc-text b { color: var(--text); font-weight: 600; }
+  .hero-gift strong { color: #fff; }
 
-.info-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.info-pill {
-  background: var(--blue-light);
-  color: var(--blue);
-  font-size: 12px;
-  font-weight: 600;
-  padding: 7px 14px;
-  border-radius: 100px;
-  border: 1px solid #C5D9F5;
-}
+  .btn-primary {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold) 0%, #B8854A 100%);
+    color: var(--deep);
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    border: none;
+    border-radius: var(--r);
+    padding: 18px;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(201,169,110,.45);
+    transition: transform .15s, box-shadow .15s;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+  }
+  .btn-primary:active { transform: scale(.97); }
 
-/* ══════════════════════════════════════════
-   SCREEN 2 — ДО / ПОСЛЕ
-══════════════════════════════════════════ */
-.s2 { background: var(--off); }
+  .hero-stock {
+    margin-top: 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,.5);
+    text-align: center;
+    letter-spacing: .5px;
+  }
 
-.s2-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 24px 20px;
-  gap: 16px;
-}
+  .hero-stock span { color: #E05555; font-weight: 700; }
 
-.ba-card {
-  background: var(--white);
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-}
-.ba-head {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.ba-col {
-  padding: 18px 16px;
-  text-align: center;
-}
-.ba-col:first-child { border-right: 1px solid var(--line); }
-.ba-lbl {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-.ba-col.after .ba-lbl { color: var(--teal); }
-.ba-emoji { font-size: 28px; margin-bottom: 8px; }
-.ba-points { font-size: 13px; color: var(--muted); line-height: 2; }
-.ba-points b { color: var(--text); font-weight: 700; }
-.ba-foot {
-  border-top: 1px solid var(--line);
-  padding: 12px 16px;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--teal);
-  background: var(--teal-light);
-}
+  .hero-bottom {
+    background: rgba(0,0,0,.25);
+    backdrop-filter: blur(10px);
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
 
-.stat-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-.stat-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 16px 8px;
-  text-align: center;
-}
-.stat-num {
-  font-family: var(--serif);
-  font-size: 28px;
-  color: var(--blue);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-.stat-lbl { font-size: 11px; font-weight: 600; color: var(--muted); line-height: 1.4; text-transform: uppercase; letter-spacing: .05em; }
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: rgba(255,255,255,.6);
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    text-align: center;
+  }
 
-/* ══════════════════════════════════════════
-   SCREEN 3 — ПРЕИМУЩЕСТВА
-══════════════════════════════════════════ */
-.s3 { background: var(--white); }
+  .trust-item .ico { font-size: 20px; }
 
-.s3-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 24px 20px;
-  gap: 12px;
-}
+  /* ═══════════════════════════════
+     SCREEN 2 — PAIN / PROBLEM
+  ═══════════════════════════════ */
+  #s2 {
+    background: var(--cream);
+    padding: 40px 24px;
+    justify-content: center;
+  }
 
-.benefit-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
-  background: var(--off);
-  border-radius: 14px;
-  border: 1px solid var(--line);
-}
-.benefit-icon {
-  width: 44px; height: 44px;
-  background: var(--blue-light);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-}
-.benefit-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 2px; line-height: 1.3; }
-.benefit-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .section-tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
 
-/* ══════════════════════════════════════════
-   SCREEN 4 — ОТЗЫВЫ
-══════════════════════════════════════════ */
-.s4 { background: var(--off); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    line-height: 1.15;
+    color: var(--deep);
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
 
-.s4-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px 20px;
-  gap: 10px;
-}
+  .pain-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
 
-.review-card {
-  background: var(--white);
-  border-radius: 16px;
-  padding: 16px;
-  border: 1px solid var(--line);
-}
-.rv-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.rv-av {
-  width: 38px; height: 38px; border-radius: 50%;
-  background: var(--blue-light);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 17px; flex-shrink: 0;
-}
-.rv-name { font-size: 13px; font-weight: 700; color: var(--text); }
-.rv-loc { font-size: 11px; color: var(--muted); }
-.rv-stars { color: #F59E0B; font-size: 12px; }
-.rv-text {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-.rv-text b { color: var(--text); }
+  .pain-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 2px 16px rgba(61,43,31,.07);
+  }
 
-.rv-total {
-  text-align: center;
-  font-size: 12px;
-  color: var(--muted);
-  padding-top: 4px;
-}
-.rv-total b { color: var(--text); }
+  .pain-icon {
+    font-size: 26px;
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    background: var(--soft);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+  }
 
-/* ══════════════════════════════════════════
-   SCREEN 5 — КАК ЗАКАЗАТЬ
-══════════════════════════════════════════ */
-.s5 {
-  background: linear-gradient(170deg, #0D2F5C 0%, #1A4C8B 100%);
-}
+  .pain-text { font-size: 15px; line-height: 1.5; color: var(--text); }
+  .pain-text strong { color: var(--deep); display: block; margin-bottom: 2px; font-size: 16px; }
 
-.s5-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 24px 20px;
-  gap: 6px;
-}
+  .solution-bar {
+    background: linear-gradient(135deg, var(--rose) 0%, #A0614D 100%);
+    border-radius: var(--r);
+    padding: 18px 20px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 500;
+  }
 
-.order-step {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 14px;
-}
-.os-num {
-  width: 40px; height: 40px;
-  background: #E74C3C;
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; font-weight: 700; color: #fff;
-  flex-shrink: 0;
-}
-.os-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px; }
-.os-desc { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.5; }
-.os-accent { color: #4ADEAA; font-weight: 600; }
+  .solution-bar strong { font-size: 20px; display: block; margin-bottom: 4px; font-family: 'Cormorant Garamond', serif; font-weight: 700; }
 
-/* ══════════════════════════════════════════
-   SCREEN 6 — ГАРАНТИИ
-══════════════════════════════════════════ */
-.s6 { background: var(--white); }
+  /* ═══════════════════════════════
+     SCREEN 3 — BEFORE / AFTER
+  ═══════════════════════════════ */
+  #s3 {
+    background: var(--deep);
+    padding: 36px 24px;
+    justify-content: center;
+  }
 
-.s6-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 24px 20px;
-  gap: 12px;
-}
+  .ba-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    color: var(--white);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
 
-.g-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 18px 16px;
-  border-radius: 16px;
-  border: 1.5px solid var(--line);
-}
-.g-ico {
-  width: 50px; height: 50px;
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 24px;
-  flex-shrink: 0;
-}
-.g-ico.blue { background: var(--blue-light); }
-.g-ico.teal { background: var(--teal-light); }
-.g-ico.red  { background: var(--red-bg); }
-.g-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-.g-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+  .ba-sub { font-size: 13px; color: rgba(255,255,255,.5); margin-bottom: 24px; letter-spacing: .5px; }
 
-.g-cta { margin-top: 4px; }
+  .ba-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
 
-/* ══════════════════════════════════════════
-   SCREEN 7 — ФИНАЛЬНЫЙ ОФФЕР
-══════════════════════════════════════════ */
-.s7 { background: var(--off); }
+  .ba-card {
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+  }
 
-.s7-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px 20px 12px;
-  gap: 12px;
-}
+  .ba-card-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+  }
 
-.final-price-card {
-  background: var(--white);
-  border: 2px solid var(--blue);
-  border-radius: 18px;
-  padding: 20px;
-}
-.fp-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 6px;
-}
-.fp-old { font-size: 16px; color: var(--red); text-decoration: line-through; font-weight: 600; }
-.fp-badge {
-  background: #E74C3C;
-  color: #fff; font-size: 12px; font-weight: 700;
-  padding: 5px 12px; border-radius: 8px;
-}
-.fp-new {
-  font-family: var(--serif);
-  font-size: 50px;
-  color: var(--text);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-.fp-cur { font-size: 16px; font-weight: 500; color: var(--muted); }
-.fp-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .ba-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
 
-.final-gift {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--teal-light);
-  border: 1.5px solid #A3D9D2;
-  border-radius: 14px;
-  padding: 14px 16px;
-}
-.fg-icon { font-size: 28px; }
-.fg-title { font-size: 15px; font-weight: 700; color: var(--teal); line-height: 1.3; }
-.fg-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .ba-before .ba-placeholder { background: linear-gradient(160deg, #4A3728 0%, #2E1A12 100%); }
+  .ba-after .ba-placeholder { background: linear-gradient(160deg, #8B5040 0%, #C4806A 100%); }
 
-.stock-row {
-  display: flex; align-items: center; gap: 8px;
-}
-.stock-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex-shrink:0; animation: blink 1.6s infinite; }
-@keyframes blink { 0%,100%{opacity:1}50%{opacity:.2} }
-.stock-text { font-size: 13px; font-weight: 700; color: var(--red); }
+  .ba-placeholder .face { font-size: 52px; }
+  .ba-placeholder .label-sm { font-size: 11px; color: rgba(255,255,255,.7); letter-spacing: 1px; }
 
-.final-form { display: flex; flex-direction: column; gap: 8px; }
-.final-input {
-  width: 100%;
-  padding: 15px 16px;
-  font-family: var(--sans);
-  font-size: 15px;
-  color: var(--text);
-  background: var(--white);
-  border: 1.5px solid var(--line);
-  border-radius: 12px;
-  outline: none;
-  transition: border-color .2s;
-}
-.final-input:focus { border-color: var(--blue); }
-.final-input::placeholder { color: #A8B8CC; }
-.final-btn {
-  width: 100%; padding: 18px;
-  background: #E74C3C;
-  color: #fff;
-  font-family: var(--sans);
-  font-size: 14px; font-weight: 700;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  border: none; border-radius: 12px; cursor: pointer;
-  position: relative; overflow: hidden;
-}
-.final-btn::after { content:''; position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);animation:sh 3s infinite; }
-.final-note { text-align: center; font-size: 11px; color: var(--muted); }
+  .ba-label {
+    position: absolute;
+    bottom: 10px; left: 10px;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(6px);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 20px;
+  }
 
-/* ══════════════════════════════════════════
-   SCREEN 8 — FOOTER
-══════════════════════════════════════════ */
-.s8 {
-  background: var(--text);
-  min-height: auto;
-  height: auto;
-  scroll-snap-align: start;
-  padding: 36px 24px 40px;
-  text-align: center;
-}
-.foot-logo { font-family: var(--serif); font-size: 20px; font-style: italic; color: rgba(255,255,255,.3); margin-bottom: 16px; }
-.foot-badges {
-  display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-.foot-badge {
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-size: 12px; font-weight: 600; color: rgba(255,255,255,.5);
-}
-.foot-text { font-size: 11px; color: rgba(255,255,255,.2); line-height: 2; }
-.foot-link { color: rgba(255,255,255,.35); }
+  .ba-after .ba-label { background: rgba(201,169,110,.8); color: var(--deep); }
 
-/* ══════════════════════════════════════════
-   SCREEN NAV DOTS
-══════════════════════════════════════════ */
-.nav-dots {
-  position: fixed;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  z-index: 99;
-}
-.dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: rgba(0,0,0,.2);
-  cursor: pointer;
-  transition: all .25s;
-}
-.dot.active { background: var(--blue); transform: scale(1.4); }
+  .ba-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
 
-/* ══════════════════════════════════════════
-   STICKY BOTTOM
-══════════════════════════════════════════ */
-.sticky {
-  position: fixed; bottom: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 100%; max-width: 430px;
-  background: rgba(255,255,255,.97);
-  backdrop-filter: blur(14px);
-  border-top: 1px solid var(--line);
-  padding: 10px 18px 14px;
-  z-index: 88;
-  display: none;
-}
-.sticky.show { display: block; }
-.sticky-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-.sticky-p { font-family: var(--serif); font-size: 22px; color: var(--text); }
-.sticky-old { font-size: 12px; color: var(--red); text-decoration: line-through; }
-.sticky-left { font-size: 11px; font-weight: 700; color: var(--red); }
-.sticky-btn {
-  width: 100%; padding: 14px;
-  background: #E74C3C; color: #fff;
-  font-family: var(--sans); font-size: 13px; font-weight: 700;
-  letter-spacing: .05em; text-transform: uppercase;
-  border: none; border-radius: 10px; cursor: pointer;
-}
+  .ba-stat {
+    background: rgba(255,255,255,.07);
+    border-radius: 14px;
+    padding: 14px 8px;
+    text-align: center;
+  }
 
-/* ══════════════════════════════════════════
-   MODAL
-══════════════════════════════════════════ */
-.modal {
-  display: none; position: fixed; inset: 0;
-  background: rgba(0,0,0,.65); z-index: 200;
-  align-items: flex-end; justify-content: center;
-}
-.modal.open { display: flex; }
-.modal-box {
-  background: var(--white);
-  border-radius: 24px 24px 0 0;
-  padding: 40px 24px 48px;
-  width: 100%; max-width: 430px;
-  text-align: center;
-  animation: up .3s ease;
-}
-@keyframes up { from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1} }
-.modal-ico { font-size: 54px; margin-bottom: 14px; }
-.modal-title { font-family: var(--serif); font-size: 28px; color: var(--text); margin-bottom: 10px; line-height: 1.2; }
-.modal-text { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
-.modal-tag { background: var(--teal-light); color: var(--teal); font-size: 13px; font-weight: 700; padding: 12px 16px; border-radius: 12px; margin-bottom: 20px; }
-.modal-btn { width: 100%; padding: 16px; background: var(--blue); color: #fff; border: none; border-radius: 12px; font-family: var(--sans); font-size: 15px; font-weight: 700; cursor: pointer; }
+  .ba-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .ba-stat-text { font-size: 10px; color: rgba(255,255,255,.55); letter-spacing: .5px; line-height: 1.4; }
+
+  /* ═══════════════════════════════
+     SCREEN 4 — BENEFITS
+  ═══════════════════════════════ */
+  #s4 {
+    background: var(--soft);
+    padding: 36px 24px;
+    justify-content: center;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .benefit-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 2px 20px rgba(61,43,31,.07);
+    transition: transform .2s;
+  }
+
+  .benefit-card:first-child {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: center;
+    background: linear-gradient(135deg, var(--rose) 0%, #A0614D 100%);
+    color: white;
+  }
+
+  .benefit-icon { font-size: 32px; }
+  .benefit-title { font-size: 15px; font-weight: 600; color: var(--deep); line-height: 1.3; }
+  .benefit-desc { font-size: 12px; color: #8A7060; line-height: 1.5; }
+
+  .benefit-card:first-child .benefit-title { color: white; font-size: 17px; }
+  .benefit-card:first-child .benefit-desc { color: rgba(255,255,255,.8); }
+
+  .benefit-card:first-child .benefit-text { flex: 1; }
+
+  .cta-strip {
+    background: var(--deep);
+    border-radius: var(--r);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .cta-strip-text { font-size: 15px; color: white; line-height: 1.4; font-weight: 500; flex: 1; }
+  .cta-strip-btn {
+    background: var(--gold);
+    color: var(--deep);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+
+  /* ═══════════════════════════════
+     SCREEN 5 — REVIEWS
+  ═══════════════════════════════ */
+  #s5 {
+    background: var(--cream);
+    padding: 36px 24px;
+    justify-content: center;
+  }
+
+  .reviews-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .review-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 20px rgba(61,43,31,.06);
+    position: relative;
+  }
+
+  .review-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+
+  .review-avatar {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blush), var(--rose));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .review-name { font-weight: 600; font-size: 16px; color: var(--deep); }
+  .review-stars { color: var(--gold); font-size: 13px; letter-spacing: 1px; }
+  .review-city { font-size: 11px; color: #A89080; }
+
+  .review-text { font-size: 14px; line-height: 1.6; color: var(--text); }
+
+  .review-badge {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: #E8F5E9;
+    color: #2E7D32;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 20px;
+    letter-spacing: .5px;
+  }
+
+  .reviews-count {
+    text-align: center;
+    font-size: 13px;
+    color: #A89080;
+    margin-bottom: 16px;
+  }
+
+  /* ═══════════════════════════════
+     SCREEN 6 — HOW TO ORDER
+  ═══════════════════════════════ */
+  #s6 {
+    background: var(--deep);
+    padding: 36px 24px;
+    justify-content: center;
+  }
+
+  .steps { display: flex; flex-direction: column; gap: 0; margin-bottom: 24px; }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  .step:last-child { padding-bottom: 0; }
+
+  .step-line-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .step-num {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold) 0%, #B8854A 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    color: var(--deep);
+    flex-shrink: 0;
+  }
+
+  .step-connector {
+    width: 2px;
+    flex: 1;
+    background: rgba(201,169,110,.25);
+    min-height: 20px;
+    margin-top: 4px;
+  }
+
+  .step:last-child .step-connector { display: none; }
+
+  .step-body { padding-top: 8px; }
+  .step-title { font-size: 17px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+  .step-desc { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.5; }
+
+  /* ═══════════════════════════════
+     SCREEN 7 — GUARANTEES
+  ═══════════════════════════════ */
+  #s7 {
+    background: var(--soft);
+    padding: 36px 24px;
+    justify-content: center;
+  }
+
+  .guarantees { display: flex; flex-direction: column; gap: 14px; margin-bottom: 22px; }
+
+  .guarantee-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 16px rgba(61,43,31,.06);
+  }
+
+  .g-icon {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    background: var(--soft);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .g-title { font-size: 16px; font-weight: 600; color: var(--deep); margin-bottom: 3px; }
+  .g-desc { font-size: 13px; color: #8A7060; line-height: 1.5; }
+
+  /* ═══════════════════════════════
+     SCREEN 8 — FORM
+  ═══════════════════════════════ */
+  #s8 {
+    background: linear-gradient(160deg, #2E1A12 0%, #5C3324 60%, #8B5040 100%);
+    padding: 36px 24px;
+    justify-content: center;
+  }
+
+  .form-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    color: var(--white);
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  .form-sub { font-size: 14px; color: rgba(255,255,255,.6); margin-bottom: 24px; line-height: 1.5; }
+
+  .offer-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .chip {
+    background: rgba(201,169,110,.18);
+    border: 1px solid rgba(201,169,110,.4);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 30px;
+    letter-spacing: .5px;
+  }
+
+  .form-group { margin-bottom: 14px; }
+
+  .form-input {
+    width: 100%;
+    background: rgba(255,255,255,.1);
+    border: 1.5px solid rgba(255,255,255,.15);
+    border-radius: 14px;
+    padding: 16px 18px;
+    font-size: 16px;
+    color: var(--white);
+    font-family: 'Jost', sans-serif;
+    outline: none;
+    transition: border-color .2s;
+    -webkit-appearance: none;
+  }
+
+  .form-input::placeholder { color: rgba(255,255,255,.4); }
+  .form-input:focus { border-color: var(--gold); }
+
+  .form-note {
+    font-size: 11px;
+    color: rgba(255,255,255,.35);
+    text-align: center;
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+
+  .urgency-bar {
+    background: rgba(224,85,85,.15);
+    border: 1px solid rgba(224,85,85,.35);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .urgency-bar .u-ico { font-size: 22px; }
+  .urgency-bar .u-text { font-size: 13px; color: rgba(255,255,255,.85); line-height: 1.4; }
+  .urgency-bar strong { color: #FF7070; }
+
+  /* ═══════════════════════════════
+     SCREEN 9 — FOOTER
+  ═══════════════════════════════ */
+  #s9 {
+    background: var(--deep);
+    padding: 36px 24px;
+    justify-content: center;
+    min-height: auto;
+    height: auto;
+    scroll-snap-align: start;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+  .footer-tagline {
+    font-size: 12px;
+    color: rgba(255,255,255,.4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .footer-divider {
+    height: 1px;
+    background: rgba(255,255,255,.08);
+    margin-bottom: 20px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .footer-link {
+    color: rgba(255,255,255,.5);
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(255,255,255,.25);
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+
+  /* ═══════════════════════════════
+     TIMER
+  ═══════════════════════════════ */
+  .timer-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .timer-block {
+    background: rgba(255,255,255,.1);
+    border-radius: 10px;
+    padding: 8px 10px;
+    text-align: center;
+    min-width: 48px;
+  }
+
+  .timer-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1;
+    display: block;
+  }
+
+  .timer-label { font-size: 9px; color: rgba(255,255,255,.4); letter-spacing: 1px; text-transform: uppercase; }
+  .timer-sep { font-size: 22px; color: var(--gold); font-weight: 700; margin-top: -6px; }
+
+  /* ─── SCROLL INDICATOR ─── */
+  .scroll-hint {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    opacity: .5;
+    animation: bounce 2s infinite;
+  }
+
+  .scroll-hint span { font-size: 9px; color: rgba(255,255,255,.7); letter-spacing: 2px; text-transform: uppercase; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(5px); }
+  }
+
+  .chevron { width: 16px; height: 16px; border-right: 2px solid rgba(255,255,255,.6); border-bottom: 2px solid rgba(255,255,255,.6); transform: rotate(45deg); }
+
+  /* FADE IN */
+  .fade-in { opacity: 0; transform: translateY(18px); transition: opacity .5s, transform .5s; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
 <!-- NAV DOTS -->
-<div class="nav-dots" id="navDots"></div>
+<nav class="dots" id="dots">
+  <div class="dot active" onclick="goTo(0)"></div>
+  <div class="dot" onclick="goTo(1)"></div>
+  <div class="dot" onclick="goTo(2)"></div>
+  <div class="dot" onclick="goTo(3)"></div>
+  <div class="dot" onclick="goTo(4)"></div>
+  <div class="dot" onclick="goTo(5)"></div>
+  <div class="dot" onclick="goTo(6)"></div>
+  <div class="dot" onclick="goTo(7)"></div>
+  <div class="dot" onclick="goTo(8)"></div>
+</nav>
 
-<!-- ══════════════════════════════════════════
-     SCREEN 0 — HERO
-══════════════════════════════════════════ -->
-<div class="screen s0" id="screen0">
+<div class="scroll-container" id="sc">
 
-  <div class="s0-top">
-    <span class="s0-logo">NeckLift Pro</span>
-    <span class="s0-badge">✅ ОПЛАТА ПРИ ПОЛУЧЕНИИ</span>
-  </div>
+  <!-- ══ SCREEN 1 — HERO ══ -->
+  <section class="screen" id="s1">
+    <div class="hero-bg"></div>
+    <div class="hero-badge">⭐ ХИТ ПРОДАЖ</div>
 
-  <div class="s0-body">
+    <div class="hero-content">
+      <p class="hero-eyebrow fade-in">Косметика премиум-класса</p>
 
-    <div>
-      <div class="s0-tag"><span></span> АКЦИЯ · ОГРАНИЧЕННО</div>
-      <h1 class="s0-title">Шея станет<br><em>моложе</em> уже<br>через 3 процедуры</h1>
-      <p class="s0-sub">Лифтинг-маска для шеи и декольте.<br><b>Без уколов · Без салона · Дома</b></p>
+      <h1 class="hero-title fade-in">
+        Шея<br>молодеет<br>за <span>14 дней</span>
+      </h1>
+
+      <p class="hero-sub fade-in">
+        Лифтинг-маска для шеи с подтягивающим эффектом. Видимый результат уже после первого применения.
+      </p>
+
+      <div class="hero-price-row fade-in">
+        <span class="price-old">299 000 сум</span>
+        <span class="price-new">149 000 сум</span>
+        <span class="price-badge">−50%</span>
+      </div>
+
+      <div class="hero-gift fade-in">
+        🎁 <span>Купи 2 маски — <strong>3-я в подарок!</strong></span>
+      </div>
+
+      <a href="#s8" class="btn-primary fade-in" onclick="goTo(7)">
+        Получить со скидкой 50%
+      </a>
+
+      <p class="hero-stock fade-in">🔴 Осталось по акции: <span>27 масок</span></p>
     </div>
 
-    <div>
-      <div class="s0-price">
-        <div>
-          <div class="s0-old">299 000 сум</div>
-          <div class="s0-new">149 000 <span class="s0-cur">сум</span></div>
+    <div class="hero-bottom">
+      <div class="trust-item">
+        <span class="ico">📦</span>
+        <span>Доставка<br>1–2 дня</span>
+      </div>
+      <div class="trust-item">
+        <span class="ico">💳</span>
+        <span>Оплата при<br>получении</span>
+      </div>
+      <div class="trust-item">
+        <span class="ico">↩️</span>
+        <span>Возврат<br>30 дней</span>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="chevron"></div>
+      <span>листайте</span>
+    </div>
+  </section>
+
+  <!-- ══ SCREEN 2 — PAIN ══ -->
+  <section class="screen" id="s2">
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 36px 24px;">
+      <p class="section-tag fade-in">Вы узнаёте себя?</p>
+      <h2 class="section-title fade-in">Шея выдаёт<br>ваш возраст</h2>
+
+      <ul class="pain-list fade-in">
+        <li class="pain-item">
+          <div class="pain-icon">😔</div>
+          <div class="pain-text">
+            <strong>Кожа шеи стала дряблой</strong>
+            Потеряла упругость, появились складки и заломы
+          </div>
+        </li>
+        <li class="pain-item">
+          <div class="pain-icon">😟</div>
+          <div class="pain-text">
+            <strong>Крем для лица не помогает</strong>
+            Нежная кожа шеи требует особого ухода
+          </div>
+        </li>
+        <li class="pain-item">
+          <div class="pain-icon">😣</div>
+          <div class="pain-text">
+            <strong>Стесняетесь открытых нарядов</strong>
+            Хочется выглядеть моложе и увереннее
+          </div>
+        </li>
+      </ul>
+
+      <div class="solution-bar fade-in">
+        <strong>Решение найдено!</strong>
+        Лифтинг-маска создана специально для кожи шеи
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SCREEN 3 — BEFORE/AFTER ══ -->
+  <section class="screen" id="s3">
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 36px 24px;">
+      <p class="section-tag" style="color: var(--blush); font-size:10px; letter-spacing:3px; text-transform:uppercase; margin-bottom:6px;" >До и после</p>
+      <h2 class="ba-title fade-in">Результат<br>говорит сам</h2>
+      <p class="ba-sub fade-in">После курса из 10 масок — 2–3 раза в неделю</p>
+
+      <div class="ba-grid fade-in">
+        <div class="ba-card ba-before">
+          <div class="ba-placeholder">
+            <div class="face">😞</div>
+            <div class="label-sm">ДО</div>
+            <div style="font-size:11px; color:rgba(255,255,255,.5); text-align:center; padding:0 12px; line-height:1.4">Дряблость,<br>складки, сухость</div>
+          </div>
+          <div class="ba-label">ДО</div>
         </div>
-        <div class="s0-save">−50%</div>
-      </div>
-
-      <div class="s0-gift">
-        <div class="s0-gift-icon">🎁</div>
-        <div class="s0-gift-text">Купи 2 набора — получи 3-й бесплатно!</div>
-      </div>
-
-      <div class="s0-form">
-        <input class="s0-input" type="text" placeholder="Ваше имя" id="n0">
-        <input class="s0-input" type="tel" placeholder="+998 — номер телефона" id="p0">
-        <button class="s0-btn" onclick="go('n0','p0')">ПОЛУЧИТЬ СО СКИДКОЙ 50%</button>
-        <p class="s0-note">🔒 Без предоплаты · оплата при получении</p>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="scroll-hint">
-    <span>ЛИСТАЙ</span>
-    <div class="arrow-down"></div>
-  </div>
-
-</div>
-
-<!-- ══════════════════════════════════════════
-     SCREEN 1 — ОПИСАНИЕ
-══════════════════════════════════════════ -->
-<div class="screen s1" id="screen1">
-
-  <div class="cd-bar">
-    <div class="cd-label"><b>Акция заканчивается:</b><br>успей по старой цене</div>
-    <div class="cd-nums">
-      <div class="cd-box" id="cdh">04</div>
-      <div class="cd-sep">:</div>
-      <div class="cd-box" id="cdm">27</div>
-      <div class="cd-sep">:</div>
-      <div class="cd-box" id="cds">44</div>
-    </div>
-  </div>
-
-  <div class="s1-body">
-
-    <div>
-      <span class="sec-tag">О продукте</span>
-      <h2 class="sec-title">Почему шея<br><em>выдаёт возраст?</em></h2>
-    </div>
-
-    <p class="desc-text">
-      Кожа шеи в <b>3–4 раза тоньше</b>, чем на лице. Она первой теряет тонус и упругость — а обычные кремы только увлажняют поверхность.
-    </p>
-
-    <p class="desc-text">
-      Маска плотно прилегает к коже, создавая эффект <b>«уходового компресса»</b> — активные компоненты проникают глубоко и работают в полную силу.
-    </p>
-
-    <div class="info-pills">
-      <span class="info-pill">10 масок в наборе</span>
-      <span class="info-pill">2–3 раза в неделю</span>
-      <span class="info-pill">Курс 4 недели</span>
-      <span class="info-pill">Возраст 35+</span>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- ══════════════════════════════════════════
-     SCREEN 2 — ДО / ПОСЛЕ
-══════════════════════════════════════════ -->
-<div class="screen s2" id="screen2">
-
-  <div class="s2-body">
-
-    <div>
-      <span class="sec-tag">Результат</span>
-      <h2 class="sec-title">До и после<br>курса масок</h2>
-    </div>
-
-    <div class="stat-row">
-      <div class="stat-card">
-        <div class="stat-num">97%</div>
-        <div class="stat-lbl">Видят эффект</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">10</div>
-        <div class="stat-lbl">Масок в наборе</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">20<span style="font-size:14px">мин</span></div>
-        <div class="stat-lbl">Процедура</div>
-      </div>
-    </div>
-
-    <div class="ba-card">
-      <div class="ba-head">
-        <div class="ba-col">
-          <div class="ba-lbl">До</div>
-          <div class="ba-emoji">😔</div>
-          <div class="ba-points">дряблость<br>складки<br>сухость<br><b>тусклый тон</b></div>
-        </div>
-        <div class="ba-col after">
-          <div class="ba-lbl">После</div>
-          <div class="ba-emoji">✨</div>
-          <div class="ba-points"><b>упругость</b><br>подтяжка<br>увлажнение<br><b>сияние</b></div>
+        <div class="ba-card ba-after">
+          <div class="ba-placeholder">
+            <div class="face">😊</div>
+            <div class="label-sm">ПОСЛЕ</div>
+            <div style="font-size:11px; color:rgba(255,255,255,.8); text-align:center; padding:0 12px; line-height:1.4">Упругость,<br>гладкость, лифтинг</div>
+          </div>
+          <div class="ba-label">ПОСЛЕ</div>
         </div>
       </div>
-      <div class="ba-foot">Эффект заметен после 3–5 применений</div>
-    </div>
 
-  </div>
-
-</div>
-
-<!-- ══════════════════════════════════════════
-     SCREEN 3 — ПРЕИМУЩЕСТВА
-══════════════════════════════════════════ -->
-<div class="screen s3" id="screen3">
-
-  <div class="s3-body">
-
-    <div>
-      <span class="sec-tag">Преимущества</span>
-      <h2 class="sec-title">Почему выбирают<br>эту маску</h2>
-    </div>
-
-    <div class="benefit-item">
-      <div class="benefit-icon">⚡</div>
-      <div>
-        <div class="benefit-title">Быстрый видимый эффект</div>
-        <div class="benefit-desc">Лифтинг и подтяжка уже после первых применений</div>
-      </div>
-    </div>
-
-    <div class="benefit-item">
-      <div class="benefit-icon">🎯</div>
-      <div>
-        <div class="benefit-title">Специально для шеи</div>
-        <div class="benefit-desc">Формула создана именно для тонкой кожи шейной зоны</div>
-      </div>
-    </div>
-
-    <div class="benefit-item">
-      <div class="benefit-icon">💦</div>
-      <div>
-        <div class="benefit-title">Глубокое увлажнение</div>
-        <div class="benefit-desc">Кожа мягкая и напитанная в течение всего дня</div>
-      </div>
-    </div>
-
-    <div class="benefit-item">
-      <div class="benefit-icon">🏠</div>
-      <div>
-        <div class="benefit-title">Полный курс дома</div>
-        <div class="benefit-desc">10 масок в наборе — никаких салонов и записей</div>
-      </div>
-    </div>
-
-    <button class="s0-btn" style="margin-top:4px" onclick="goTo('screen7')">ЗАКАЗАТЬ СО СКИДКОЙ 50%</button>
-
-  </div>
-
-</div>
-
-<!-- ══════════════════════════════════════════
-     SCREEN 4 — ОТЗЫВЫ
-══════════════════════════════════════════ -->
-<div class="screen s4" id="screen4">
-
-  <div class="s4-body">
-
-    <div>
-      <span class="sec-tag">Отзывы клиенток</span>
-      <h2 class="sec-title">3 200+ женщин<br>в Узбекистане</h2>
-    </div>
-
-    <div class="review-card">
-      <div class="rv-top">
-        <div class="rv-av">👩</div>
-        <div>
-          <div class="rv-name">Мадина, 47 лет · Ташкент</div>
-          <div class="rv-loc"><span class="rv-stars">★★★★★</span></div>
+      <div class="ba-stats fade-in">
+        <div class="ba-stat">
+          <div class="ba-stat-num">92%</div>
+          <div class="ba-stat-text">замечают лифтинг</div>
+        </div>
+        <div class="ba-stat">
+          <div class="ba-stat-num">14</div>
+          <div class="ba-stat-text">дней до результата</div>
+        </div>
+        <div class="ba-stat">
+          <div class="ba-stat-num">10</div>
+          <div class="ba-stat-text">масок в наборе</div>
         </div>
       </div>
-      <p class="rv-text">После 4-й маски кожа стала <b>заметно упругее</b>. Муж тоже заметил! Взяла второй набор — на подарок дочери.</p>
     </div>
+  </section>
 
-    <div class="review-card">
-      <div class="rv-top">
-        <div class="rv-av">👩‍🦱</div>
-        <div>
-          <div class="rv-name">Гульнора, 52 года · Самарканд</div>
-          <div class="rv-loc"><span class="rv-stars">★★★★★</span></div>
+  <!-- ══ SCREEN 4 — BENEFITS ══ -->
+  <section class="screen" id="s4">
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 36px 24px;">
+      <p class="section-tag fade-in">Почему выбирают нас</p>
+      <h2 class="section-title fade-in">Преимущества<br>маски</h2>
+
+      <div class="benefits-grid fade-in">
+        <div class="benefit-card">
+          <div class="benefit-icon">✨</div>
+          <div class="benefit-text">
+            <div class="benefit-title">Лифтинг уже после<br>1–2 применений</div>
+            <div class="benefit-desc">Активная формула действует сразу</div>
+          </div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💧</div>
+          <div class="benefit-title">Глубокое увлажнение</div>
+          <div class="benefit-desc">Питает нежную кожу шеи изнутри</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🎯</div>
+          <div class="benefit-title">Плотное прилегание</div>
+          <div class="benefit-desc">Компоненты проникают глубже</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📦</div>
+          <div class="benefit-title">10 масок в наборе</div>
+          <div class="benefit-desc">Полный готовый курс ухода</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">⏱</div>
+          <div class="benefit-title">20 минут — и готово</div>
+          <div class="benefit-desc">Удобно в любое время дня</div>
         </div>
       </div>
-      <p class="rv-text">Ощущение как после <b>салонного ухода</b> — но дома. Шея реально стала выглядеть моложе!</p>
-    </div>
 
-    <div class="review-card">
-      <div class="rv-top">
-        <div class="rv-av">🧕</div>
-        <div>
-          <div class="rv-name">Феруза, 45 лет · Бухара</div>
-          <div class="rv-loc"><span class="rv-stars">★★★★★</span></div>
+      <div class="cta-strip fade-in">
+        <div class="cta-strip-text">Хочу попробовать<br>со скидкой 50%</div>
+        <a class="cta-strip-btn" onclick="goTo(7)">Заказать →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SCREEN 5 — REVIEWS ══ -->
+  <section class="screen" id="s5">
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 36px 24px;">
+      <p class="section-tag fade-in">Отзывы покупателей</p>
+      <h2 class="section-title fade-in">Женщины<br>в восторге</h2>
+
+      <div class="reviews-scroll fade-in">
+        <div class="review-card">
+          <div class="review-badge">✓ Купила</div>
+          <div class="review-header">
+            <div class="review-avatar">👩</div>
+            <div>
+              <div class="review-name">Нилуфар Р.</div>
+              <div class="review-stars">★★★★★</div>
+              <div class="review-city">Ташкент</div>
+            </div>
+          </div>
+          <p class="review-text">После 5 масок заметила разницу — шея подтянулась, кожа стала мягче. Дочь спросила, что я делаю по-другому 😊</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-badge">✓ Купила</div>
+          <div class="review-header">
+            <div class="review-avatar">👩‍🦳</div>
+            <div>
+              <div class="review-name">Дилноза М.</div>
+              <div class="review-stars">★★★★★</div>
+              <div class="review-city">Самарканд</div>
+            </div>
+          </div>
+          <p class="review-text">Заказала сразу 2 набора — сестре тоже взяла. Доставили быстро, оплатила при получении. Маска очень нежная, запах приятный.</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-badge">✓ Купила</div>
+          <div class="review-header">
+            <div class="review-avatar">🧕</div>
+            <div>
+              <div class="review-name">Мухаббат А.</div>
+              <div class="review-stars">★★★★★</div>
+              <div class="review-city">Бухара</div>
+            </div>
+          </div>
+          <p class="review-text">Мне 47 лет, всегда переживала из-за шеи. После курса коллеги стали спрашивать, помолодела ли я! Очень довольна.</p>
         </div>
       </div>
-      <p class="rv-text">Взяла 2+1. Себе и двум подругам. <b>Все в восторге!</b> Именно лифтинг, не просто увлажнение.</p>
+
+      <p class="reviews-count fade-in">⭐ Средняя оценка: 4.9 / 5 на основе 1 240 отзывов</p>
     </div>
+  </section>
 
-    <p class="rv-total">Средняя оценка <b>4.9 / 5</b> · 320+ отзывов</p>
+  <!-- ══ SCREEN 6 — HOW TO ORDER ══ -->
+  <section class="screen" id="s6">
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 36px 24px;">
+      <p style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px;" class="fade-in">Всё просто</p>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:38px; color:var(--white); font-weight:600; margin-bottom:28px; line-height:1.15;" class="fade-in">Как сделать<br>заказ</h2>
 
-  </div>
+      <div class="steps fade-in">
+        <div class="step">
+          <div class="step-line-wrap">
+            <div class="step-num">1</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-body">
+            <div class="step-title">Оставьте заявку</div>
+            <div class="step-desc">Заполните форму ниже — имя и номер телефона</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-line-wrap">
+            <div class="step-num">2</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-body">
+            <div class="step-title">Звонок оператора</div>
+            <div class="step-desc">Мы свяжемся и уточним детали доставки</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-line-wrap">
+            <div class="step-num">3</div>
+            <div class="step-connector"></div>
+          </div>
+          <div class="step-body">
+            <div class="step-title">Доставка 1–2 дня</div>
+            <div class="step-desc">Доставляем по всему Узбекистану до двери</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-line-wrap">
+            <div class="step-num">4</div>
+          </div>
+          <div class="step-body">
+            <div class="step-title">Оплата при получении</div>
+            <div class="step-desc">Платите только когда держите товар в руках</div>
+          </div>
+        </div>
+      </div>
 
-</div>
-
-<!-- ══════════════════════════════════════════
-     SCREEN 5 — КАК ЗАКАЗАТЬ
-══════════════════════════════════════════ -->
-<div class="screen s5" id="screen5">
-
-  <div class="s5-body">
-
-    <div>
-      <span class="sec-tag" style="color:rgba(255,255,255,.4)">Как заказать</span>
-      <h2 class="sec-title" style="color:#fff; margin-bottom:6px;">4 шага — и<br><em style="color:#A8D4FF">маска у вас</em></h2>
+      <a class="btn-primary fade-in" style="background: linear-gradient(135deg, var(--gold) 0%, #B8854A 100%);" onclick="goTo(7)">
+        Заказать сейчас
+      </a>
     </div>
+  </section>
 
-    <div class="order-step">
-      <div class="os-num">1</div>
-      <div>
-        <div class="os-title">Оставляете заявку</div>
-        <div class="os-desc">Имя и номер телефона — займёт 30 секунд</div>
+  <!-- ══ SCREEN 7 — GUARANTEES ══ -->
+  <section class="screen" id="s7">
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 36px 24px;">
+      <p class="section-tag fade-in">Мы заботимся о вас</p>
+      <h2 class="section-title fade-in">Покупайте<br>без риска</h2>
+
+      <div class="guarantees fade-in">
+        <div class="guarantee-card">
+          <div class="g-icon">💳</div>
+          <div>
+            <div class="g-title">Оплата при получении</div>
+            <div class="g-desc">Платите только после того, как получили товар</div>
+          </div>
+        </div>
+        <div class="guarantee-card">
+          <div class="g-icon">🏆</div>
+          <div>
+            <div class="g-title">Оригинальный товар</div>
+            <div class="g-desc">Официальный дистрибьютор в Узбекистане</div>
+          </div>
+        </div>
+        <div class="guarantee-card">
+          <div class="g-icon">🔄</div>
+          <div>
+            <div class="g-title">Обмен и возврат 30 дней</div>
+            <div class="g-desc">Если что-то не так — вернём деньги без вопросов</div>
+          </div>
+        </div>
+        <div class="guarantee-card">
+          <div class="g-icon">🚚</div>
+          <div>
+            <div class="g-title">Быстрая доставка</div>
+            <div class="g-desc">1–2 рабочих дня по всему Узбекистану</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-strip fade-in" style="background: var(--rose);">
+        <div class="cta-strip-text" style="color:white;">Ничем не рискуете.<br>Попробуйте сегодня!</div>
+        <a class="cta-strip-btn" onclick="goTo(7)" style="background:white; color:var(--rose);">Заказать</a>
       </div>
     </div>
+  </section>
 
-    <div class="order-step">
-      <div class="os-num">2</div>
-      <div>
-        <div class="os-title">Звонок оператора</div>
-        <div class="os-desc">Перезвоним за <span class="os-accent">5 минут</span>, уточним адрес</div>
+  <!-- ══ SCREEN 8 — FORM ══ -->
+  <section class="screen" id="s8">
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 36px 24px;">
+      <p class="form-eyebrow fade-in">Специальное предложение</p>
+      <h2 class="form-title fade-in">Оформите<br>заказ сейчас</h2>
+      <p class="form-sub fade-in">Акция действует ограниченное время</p>
+
+      <div class="timer-row fade-in" id="timer">
+        <div class="timer-block">
+          <span class="timer-num" id="th">00</span>
+          <span class="timer-label">часов</span>
+        </div>
+        <span class="timer-sep">:</span>
+        <div class="timer-block">
+          <span class="timer-num" id="tm">00</span>
+          <span class="timer-label">минут</span>
+        </div>
+        <span class="timer-sep">:</span>
+        <div class="timer-block">
+          <span class="timer-num" id="ts">00</span>
+          <span class="timer-label">секунд</span>
+        </div>
       </div>
-    </div>
 
-    <div class="order-step">
-      <div class="os-num">3</div>
-      <div>
-        <div class="os-title">Доставка до двери</div>
-        <div class="os-desc"><span class="os-accent">1–2 дня</span> по всему Узбекистану</div>
+      <div class="offer-chips fade-in">
+        <span class="chip">🎁 Скидка 50%</span>
+        <span class="chip">🎁 3-я маска в подарок</span>
+        <span class="chip">📦 Бесплатная доставка</span>
       </div>
-    </div>
 
-    <div class="order-step">
-      <div class="os-num">4</div>
-      <div>
-        <div class="os-title">Получаете — платите</div>
-        <div class="os-desc">Проверили — <span class="os-accent">только потом</span> оплачиваете</div>
+      <div class="urgency-bar fade-in">
+        <span class="u-ico">🔴</span>
+        <div class="u-text">Осталось по акции: <strong>27 масок.</strong> Успейте оформить!</div>
       </div>
-    </div>
 
-  </div>
-
-</div>
-
-<!-- ══════════════════════════════════════════
-     SCREEN 6 — ГАРАНТИИ
-══════════════════════════════════════════ -->
-<div class="screen s6" id="screen6">
-
-  <div class="s6-body">
-
-    <div>
-      <span class="sec-tag">Гарантии</span>
-      <h2 class="sec-title">Покупай<br>без риска</h2>
-    </div>
-
-    <div class="g-card">
-      <div class="g-ico blue">💳</div>
-      <div>
-        <div class="g-title">Оплата при получении</div>
-        <div class="g-desc">Ни копейки вперёд. Получила — проверила — только потом оплатила</div>
+      <div id="order-form">
+        <div class="form-group fade-in">
+          <input class="form-input" type="text" placeholder="Ваше имя" id="fname" autocomplete="name">
+        </div>
+        <div class="form-group fade-in">
+          <input class="form-input" type="tel" placeholder="Номер телефона" id="fphone" autocomplete="tel">
+        </div>
+        <button class="btn-primary fade-in" onclick="submitForm()">
+          Получить маску со скидкой 50% →
+        </button>
       </div>
-    </div>
 
-    <div class="g-card">
-      <div class="g-ico teal">🏅</div>
-      <div>
-        <div class="g-title">Оригинальный товар</div>
-        <div class="g-desc">Официальный дистрибьютор в Республике Узбекистан</div>
+      <div id="success-msg" style="display:none; text-align:center; padding:20px 0;">
+        <div style="font-size:52px; margin-bottom:12px;">✅</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--gold); margin-bottom:8px;">Заявка принята!</div>
+        <div style="color:rgba(255,255,255,.7); font-size:15px; line-height:1.6;">Наш менеджер позвонит<br>вам в ближайшее время</div>
       </div>
-    </div>
 
-    <div class="g-card">
-      <div class="g-ico red">🔄</div>
-      <div>
-        <div class="g-title">Обмен и возврат 30 дней</div>
-        <div class="g-desc">Не устроило — вернём деньги или заменим без вопросов</div>
+      <p class="form-note fade-in">Нажимая кнопку, вы соглашаетесь на обработку<br>персональных данных</p>
+    </div>
+  </section>
+
+  <!-- ══ SCREEN 9 — FOOTER ══ -->
+  <section class="screen" id="s9" style="height:auto; min-height:100dvh;">
+    <div style="padding: 48px 24px 36px; display:flex; flex-direction:column;">
+      <div class="footer-logo">NeckGlow</div>
+      <div class="footer-tagline">Лифтинг-маска для шеи</div>
+
+      <div style="background: rgba(255,255,255,.04); border-radius: 20px; padding: 20px; margin-bottom: 24px;">
+        <div style="font-size:13px; color:rgba(255,255,255,.5); margin-bottom:14px; letter-spacing:1px; text-transform:uppercase;">Итого ваша выгода:</div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+          <span style="color:rgba(255,255,255,.6); font-size:15px;">Обычная цена</span>
+          <span style="color:rgba(255,255,255,.35); text-decoration:line-through; font-size:15px;">299 000 сум</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+          <span style="color:rgba(255,255,255,.6); font-size:15px;">Скидка 50%</span>
+          <span style="color:#5ECC7B; font-size:15px; font-weight:600;">−150 000 сум</span>
+        </div>
+        <div style="height:1px; background:rgba(255,255,255,.08); margin: 12px 0;"></div>
+        <div style="display:flex; justify-content:space-between;">
+          <span style="color:var(--white); font-size:17px; font-weight:600;">Итого</span>
+          <span style="color:var(--gold); font-size:22px; font-family:'Cormorant Garamond',serif; font-weight:700;">149 000 сум</span>
+        </div>
       </div>
-    </div>
 
-    <button class="s0-btn g-cta" onclick="goTo('screen7')">ЗАКАЗАТЬ СО СКИДКОЙ 50%</button>
+      <a class="btn-primary" onclick="goTo(7)" style="margin-bottom:28px;">
+        Заказать со скидкой 50%
+      </a>
 
-  </div>
+      <div class="footer-divider"></div>
 
-</div>
-
-<!-- ══════════════════════════════════════════
-     SCREEN 7 — ФИНАЛ
-══════════════════════════════════════════ -->
-<div class="screen s7" id="screen7">
-
-  <div class="s7-body">
-
-    <div>
-      <span class="sec-tag" style="color:var(--red)">Последний шанс</span>
-      <h2 class="sec-title">Оформить заказ</h2>
-    </div>
-
-    <div class="stock-row">
-      <div class="stock-dot"></div>
-      <span class="stock-text">Осталось 23 набора по акционной цене</span>
-    </div>
-
-    <div class="final-price-card">
-      <div class="fp-top">
-        <span class="fp-old">299 000 сум</span>
-        <span class="fp-badge">−50%</span>
+      <div class="footer-links">
+        <a href="#" class="footer-link">🔒 Политика конфиденциальности</a>
+        <a href="#" class="footer-link">📋 Условия доставки</a>
+        <a href="#" class="footer-link">🔄 Возврат и обмен</a>
       </div>
-      <div class="fp-new">149 000 <span class="fp-cur">сум</span></div>
-      <p class="fp-sub">набор 10 масок · полный курс ухода</p>
+
+      <p class="footer-copy">
+        © 2025 NeckGlow. Официальный дистрибьютор<br>
+        на территории Республики Узбекистан.<br>
+        Все права защищены.
+      </p>
     </div>
+  </section>
 
-    <div class="final-gift">
-      <div class="fg-icon">🎁</div>
-      <div>
-        <div class="fg-title">Купи 2 — получи 3-й бесплатно</div>
-        <div class="fg-sub">Акция действует до конца остатка</div>
-      </div>
-    </div>
-
-    <div class="final-form">
-      <input class="final-input" type="text" placeholder="Ваше имя" id="n7">
-      <input class="final-input" type="tel" placeholder="+998 — номер телефона" id="p7">
-      <button class="final-btn" onclick="go('n7','p7')">ОФОРМИТЬ ЗАКАЗ СО СКИДКОЙ 50%</button>
-      <p class="final-note">🔒 Без предоплаты · оплата при получении</p>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- FOOTER -->
-<div class="s8" id="screen8">
-  <div class="foot-logo">NeckLift Pro</div>
-  <div class="foot-badges">
-    <span class="foot-badge">✅ Оплата при получении</span>
-    <span class="foot-badge">🚚 Доставка 1–2 дня</span>
-    <span class="foot-badge">🔄 Возврат 30 дней</span>
-  </div>
-  <p class="foot-text">
-    Официальный дистрибьютор бренда<br>
-    на территории Республики Узбекистан.<br>
-    Все права защищены.<br>
-    <a href="#" class="foot-link">Политика конфиденциальности</a>
-  </p>
-</div>
-
-<!-- STICKY -->
-<div class="sticky" id="sticky">
-  <div class="sticky-row">
-    <div>
-      <div class="sticky-old">299 000 сум</div>
-      <div class="sticky-p">149 000 сум</div>
-    </div>
-    <div class="sticky-left">⚡ Осталось 23 шт.</div>
-  </div>
-  <button class="sticky-btn" onclick="goTo('screen7')">ЗАКАЗАТЬ СО СКИДКОЙ 50% →</button>
-</div>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <div class="modal-ico">🎉</div>
-    <h3 class="modal-title">Заявка принята!</h3>
-    <p class="modal-text">Менеджер перезвонит вам в течение <strong>5 минут</strong> для подтверждения заказа.</p>
-    <div class="modal-tag">✅ Заказ: 1 набор масок · 149 000 сум</div>
-    <button class="modal-btn" onclick="closeModal()">Отлично, жду звонка!</button>
-  </div>
-</div>
+</div><!-- /scroll-container -->
 
 <script>
-// ── COUNTDOWN ──
-(function(){
-  let t = 4*3600+27*60+44;
-  const p = n => String(n).padStart(2,'0');
-  function tick(){
-    const h=document.getElementById('cdh'), m=document.getElementById('cdm'), s=document.getElementById('cds');
-    if(!h) return;
-    h.textContent=p(Math.floor(t/3600));
-    m.textContent=p(Math.floor((t%3600)/60));
-    s.textContent=p(t%60);
-    if(t>0){ t--; setTimeout(tick,1000); }
+// ── TIMER ──────────────────────────────
+(function() {
+  const end = new Date();
+  end.setHours(end.getHours() + 5, end.getMinutes() + 37, end.getSeconds() + 22);
+
+  function pad(n) { return n < 10 ? '0' + n : n; }
+
+  function tick() {
+    const now = new Date();
+    const diff = Math.max(0, end - now);
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('th').textContent = pad(h);
+    document.getElementById('tm').textContent = pad(m);
+    document.getElementById('ts').textContent = pad(s);
   }
   tick();
+  setInterval(tick, 1000);
 })();
 
-// ── NAV DOTS ──
-const screens = Array.from(document.querySelectorAll('.screen'));
-const dotsWrap = document.getElementById('navDots');
-screens.forEach((_,i)=>{
-  const d = document.createElement('div');
-  d.className = 'dot' + (i===0?' active':'');
-  d.onclick = () => screens[i].scrollIntoView({behavior:'smooth'});
-  dotsWrap.appendChild(d);
-});
+// ── SCROLL / DOTS ──────────────────────
+const sc = document.getElementById('sc');
+const screens = document.querySelectorAll('.screen');
+const dotEls = document.querySelectorAll('.dot');
+const dotsNav = document.getElementById('dots');
 
-// Update active dot on scroll
-const dotEls = dotsWrap.querySelectorAll('.dot');
-const io = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const i = screens.indexOf(e.target);
-      if(i>=0) dotEls.forEach((d,j)=>d.classList.toggle('active',i===j));
-    }
-  });
-},{threshold:.5});
-screens.forEach(s=>io.observe(s));
-
-// ── STICKY ──
-const s0el = document.getElementById('screen0');
-window.addEventListener('scroll',()=>{
-  document.getElementById('sticky').classList.toggle('show', s0el.getBoundingClientRect().bottom < 0);
-},{passive:true});
-
-// ── HELPERS ──
-function goTo(id){ document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'}); }
-
-function go(nId,pId){
-  const n=document.getElementById(nId), p=document.getElementById(pId);
-  if(!n.value.trim()){ n.focus(); n.style.borderColor='#E74C3C'; return; }
-  if(!p.value.trim()){ p.focus(); p.style.borderColor='#E74C3C'; return; }
-  document.getElementById('modal').classList.add('open');
-  document.body.style.overflow='hidden';
+function updateDots() {
+  const scrollTop = sc.scrollTop;
+  const winH = window.innerHeight;
+  let idx = Math.round(scrollTop / winH);
+  idx = Math.min(idx, screens.length - 1);
+  dotEls.forEach((d, i) => d.classList.toggle('active', i === idx));
+  // Hide dots on footer (last screen)
+  dotsNav.style.opacity = idx === screens.length - 1 ? '0' : '1';
 }
-function closeModal(){
-  document.getElementById('modal').classList.remove('open');
-  document.body.style.overflow='';
+
+sc.addEventListener('scroll', updateDots, { passive: true });
+
+function goTo(idx) {
+  const target = screens[idx];
+  if (target) sc.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+}
+
+// ── FADE IN ON SCROLL ─────────────────
+const faders = document.querySelectorAll('.fade-in');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.15 });
+faders.forEach(f => obs.observe(f));
+
+// ── FORM SUBMIT ───────────────────────
+function submitForm() {
+  const name = document.getElementById('fname').value.trim();
+  const phone = document.getElementById('fphone').value.trim();
+  if (!name || !phone) {
+    alert('Пожалуйста, заполните имя и телефон');
+    return;
+  }
+  document.getElementById('order-form').style.display = 'none';
+  document.getElementById('success-msg').style.display = 'block';
 }
 </script>
 </body>
