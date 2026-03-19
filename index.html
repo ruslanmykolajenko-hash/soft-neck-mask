@@ -5,883 +5,1272 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Лифтинг-маска для шеи | NeckGlow</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --cream: #FAF6F1;
-  --blush: #E8C5B0;
-  --rose:  #C4806A;
-  --deep:  #3D2B1F;
-  --gold:  #C9A96E;
-  --white: #FFFFFF;
-  --soft:  #F5EDE6;
-  --text:  #4A3728;
-  --r: 20px;
+  --bg:     #F8F5F0;
+  --white:  #FFFFFF;
+  --pink:   #F2D5C8;
+  --rose:   #D4896A;
+  --deep-r: #A85C42;
+  --sage:   #C8D4C0;
+  --text:   #2A2118;
+  --muted:  #8A7E74;
+  --gold:   #C4974A;
+  --red:    #E05050;
+  --green:  #4CAF7D;
+  --r:      18px;
+  --shadow: 0 4px 24px rgba(42,33,24,.09);
 }
 
 html { scroll-behavior: smooth; }
-
 body {
-  font-family: 'Jost', sans-serif;
-  background: var(--cream);
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ══ HERO ══ */
-.hero {
-  min-height: 100svh;
-  background: linear-gradient(170deg, #1E0F08 0%, #4A2216 45%, #7A3F2E 100%);
+/* ────────────────────────────────────
+   NAVBAR
+──────────────────────────────────── */
+.nav {
+  position: sticky;
+  top: 0; z-index: 100;
+  background: rgba(248,245,240,.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(212,137,106,.15);
+  padding: 14px 20px;
   display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-  padding-bottom: 28px;
+  align-items: center;
+  justify-content: space-between;
 }
 
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--rose);
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+.nav-cta {
+  background: var(--rose);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 9px 18px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: .3px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* ────────────────────────────────────
+   HERO
+──────────────────────────────────── */
+.hero {
+  background: var(--white);
+  padding: 32px 20px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* soft blob top right */
 .hero::before {
   content: '';
   position: absolute;
-  width: 320px; height: 320px;
+  width: 220px; height: 220px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,169,110,.22) 0%, transparent 70%);
-  top: -60px; right: -80px;
-  pointer-events: none;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  width: 260px; height: 260px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(196,128,106,.18) 0%, transparent 70%);
-  bottom: 80px; left: -60px;
+  background: radial-gradient(circle, rgba(242,213,200,.8) 0%, transparent 70%);
+  top: -50px; right: -50px;
   pointer-events: none;
 }
 
-.hero-topbar {
-  display: flex;
-  justify-content: space-between;
+.hero-tag {
+  display: inline-flex;
   align-items: center;
-  padding: 18px 22px 0;
-  position: relative;
-  z-index: 2;
-}
-
-.hero-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  color: var(--gold);
-  letter-spacing: 1px;
-  font-weight: 600;
-}
-
-.hero-badge-top {
-  background: rgba(201,169,110,.18);
-  border: 1px solid rgba(201,169,110,.4);
-  color: var(--gold);
-  font-size: 10px;
+  gap: 6px;
+  background: #FFF3EE;
+  border: 1px solid rgba(212,137,106,.3);
+  color: var(--rose);
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 30px;
-}
-
-.hero-head {
-  padding: 20px 22px 0;
-  position: relative;
-  z-index: 2;
-}
-
-.hero-eyebrow {
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--blush);
-  font-weight: 500;
-  margin-bottom: 10px;
-  opacity: .8;
+  margin-bottom: 16px;
 }
 
 .hero-h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 42px;
-  line-height: 1.07;
-  color: var(--white);
-  font-weight: 700;
-  margin-bottom: 14px;
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  line-height: 1.1;
+  color: var(--text);
+  font-weight: 900;
+  margin-bottom: 8px;
 }
 
-.hero-h1 em  { font-style: italic; color: var(--blush); }
-.hero-h1 .ac { color: var(--gold); font-style: normal; }
+.hero-h1 .hl {
+  color: var(--rose);
+  font-style: italic;
+}
 
-.hero-tagline {
+.hero-sub {
   font-size: 14px;
-  color: rgba(255,255,255,.62);
+  color: var(--muted);
   line-height: 1.55;
-  font-weight: 300;
-  margin-bottom: 18px;
-  max-width: 280px;
+  margin-bottom: 22px;
+  font-weight: 400;
 }
 
-.hero-price {
+/* BA CARDS */
+.ba-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.ba-card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ba-visual {
+  aspect-ratio: 3/4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 12px;
+}
+
+.ba-before .ba-visual {
+  background: linear-gradient(160deg, #E8DDD6 0%, #D4C4B8 100%);
+}
+.ba-after .ba-visual {
+  background: linear-gradient(160deg, #F5EAE4 0%, #EDCFC2 100%);
+}
+
+.ba-emoji { font-size: 44px; }
+
+.ba-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+}
+
+.ba-tag {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.ba-before .ba-tag { background: rgba(100,80,70,.12); color: #7A5548; }
+.ba-after  .ba-tag { background: rgba(212,137,106,.18); color: var(--deep-r); }
+
+.ba-label {
+  position: absolute;
+  top: 10px; left: 10px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.ba-before .ba-label { background: rgba(0,0,0,.1); color: #5A4035; }
+.ba-after  .ba-label { background: var(--rose); color: white; }
+
+/* VS badge in middle */
+.vs-badge {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 12px rgba(0,0,0,.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--rose);
+  z-index: 5;
+}
+
+/* STATS ROW */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--rose);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.stat-lbl { font-size: 10px; color: var(--muted); line-height: 1.4; font-weight: 500; }
+
+/* OFFER CHIPS */
+.offer-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 20px;
+}
+
+.offer-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--white);
+  border: 1.5px solid rgba(212,137,106,.2);
+  border-radius: 30px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.offer-chip .chip-ico { font-size: 16px; }
+.offer-chip .chip-accent { color: var(--rose); }
+
+/* PRICE ROW */
+.price-row {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 16px;
+  padding: 14px 16px;
+  background: #FFF3EE;
+  border-radius: 14px;
+  border: 1.5px solid rgba(212,137,106,.2);
 }
 
-.hero-price .old { font-size: 14px; color: rgba(255,255,255,.38); text-decoration: line-through; }
-.hero-price .new { font-family: 'Cormorant Garamond', serif; font-size: 34px; color: var(--gold); font-weight: 700; line-height: 1; }
-.hero-price .pill { background: #D94F4F; color: #fff; font-size: 11px; font-weight: 700; padding: 4px 9px; border-radius: 20px; }
+.price-old  { font-size: 14px; color: var(--muted); text-decoration: line-through; }
+.price-new  { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--rose); font-weight: 700; line-height: 1; }
+.price-pill { background: var(--red); color: white; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 20px; margin-left: auto; }
 
-.hero-gift {
-  display: inline-flex;
+/* HERO CTA */
+.btn-hero {
+  width: 100%;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r) 100%);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--r);
+  padding: 18px;
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(212,137,106,.4);
+  transition: transform .15s;
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: .3px;
+}
+.btn-hero:active { transform: scale(.97); }
+
+.hero-guarantee {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 12px;
+}
+
+.hg-item {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(201,169,110,.12);
-  border: 1px solid rgba(201,169,110,.35);
-  border-radius: 30px;
-  padding: 7px 14px;
-  font-size: 13px;
-  color: var(--gold);
-  margin-bottom: 22px;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--muted);
   font-weight: 500;
 }
-.hero-gift strong { color: #fff; }
 
-/* FORM CARD */
-.form-card {
-  margin: 0 18px;
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.13);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-radius: 24px;
-  padding: 22px 20px 20px;
-  position: relative;
-  z-index: 3;
+/* STOCK */
+.stock-bar {
+  margin-top: 14px;
+  background: #FFF8F5;
+  border: 1px solid rgba(224,80,80,.2);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
 }
 
-.mask-float {
-  position: absolute;
-  right: -8px;
-  top: -72px;
-  width: 108px;
-  height: 108px;
-  z-index: 10;
-  filter: drop-shadow(0 10px 28px rgba(201,169,110,.5));
-  animation: floaty 4s ease-in-out infinite;
+.stock-bar .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  flex-shrink: 0;
+  animation: blink 1.4s infinite;
 }
 
-@keyframes floaty {
-  0%,100% { transform: translateY(0) rotate(-5deg); }
-  50%      { transform: translateY(-9px) rotate(-2deg); }
+.stock-bar strong { color: var(--red); }
+
+@keyframes blink {
+  0%,100% { opacity:1; }
+  50%      { opacity:.4; }
 }
 
-.form-card-label {
+/* ────────────────────────────────────
+   DIVIDER
+──────────────────────────────────── */
+.div { height: 1px; background: linear-gradient(90deg,transparent,rgba(212,137,106,.25),transparent); margin: 0 20px; }
+
+/* ────────────────────────────────────
+   SECTIONS
+──────────────────────────────────── */
+section { padding: 44px 20px; }
+
+.sec-tag {
   font-size: 10px;
-  letter-spacing: 2.5px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  color: rgba(255,255,255,.45);
-  margin-bottom: 14px;
+  color: var(--rose);
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
-.finput {
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  line-height: 1.15;
+  color: var(--text);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.sec-sub {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* ────────────────────────────────────
+   PAIN SECTION
+──────────────────────────────────── */
+#pain { background: var(--bg); }
+
+.pain-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
+
+.pain-card {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  box-shadow: var(--shadow);
+}
+
+.pain-ico {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: #FFF3EE;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.p-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.p-desc  { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+.solution-pill {
+  background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r) 100%);
+  border-radius: var(--r);
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.sp-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+.sp-text  { font-size: 14px; opacity: .88; line-height: 1.55; }
+
+/* ────────────────────────────────────
+   BENEFITS
+──────────────────────────────────── */
+#benefits { background: var(--white); }
+
+.ben-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.ben-card {
+  background: var(--bg);
+  border-radius: var(--r);
+  padding: 18px 14px;
+}
+
+.ben-card.wide {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #FFF3EE 0%, #FAE8DF 100%);
+  border: 1.5px solid rgba(212,137,106,.2);
+  display: flex; align-items: center; gap: 14px;
+}
+
+.b-ico   { font-size: 28px; margin-bottom: 8px; }
+.b-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; line-height: 1.3; }
+.b-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+.ben-card.wide .b-ico   { font-size: 34px; margin: 0; flex-shrink: 0; }
+.ben-card.wide .b-title { font-size: 16px; }
+
+/* ────────────────────────────────────
+   REVIEWS
+──────────────────────────────────── */
+#reviews { background: var(--bg); }
+
+.rating-bar {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+}
+
+.rb-num { font-family: 'Playfair Display', serif; font-size: 52px; color: var(--rose); font-weight: 700; line-height: 1; flex-shrink: 0; }
+.rb-stars { font-size: 18px; color: #F5A623; margin-bottom: 4px; }
+.rb-count { font-size: 12px; color: var(--muted); }
+
+.rev-card {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 18px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.rev-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+
+.rev-ava {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink), var(--rose));
+  display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+}
+
+.rev-name  { font-size: 15px; font-weight: 700; color: var(--text); }
+.rev-stars { font-size: 12px; color: #F5A623; }
+.rev-city  { font-size: 11px; color: var(--muted); }
+.rev-text  { font-size: 14px; line-height: 1.6; color: #4A3F36; }
+
+.rev-badge {
+  position: absolute; top: 14px; right: 14px;
+  background: #EAF7EF; color: #2E7D52;
+  font-size: 9px; font-weight: 700;
+  padding: 4px 8px; border-radius: 20px;
+  text-transform: uppercase; letter-spacing: .5px;
+}
+
+/* ────────────────────────────────────
+   HOW TO ORDER
+──────────────────────────────────── */
+#how { background: var(--white); }
+
+.steps { display: flex; flex-direction: column; gap: 0; margin-bottom: 26px; }
+.step  { display: flex; gap: 16px; padding-bottom: 20px; }
+.step:last-child { padding-bottom: 0; }
+
+.step-lw { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.step-num {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose), var(--deep-r));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: white;
+}
+
+.step-line { width: 2px; flex: 1; min-height: 14px; background: rgba(212,137,106,.2); margin-top: 4px; }
+.step:last-child .step-line { display: none; }
+
+.step-body { padding-top: 8px; }
+.s-title   { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.s-desc    { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+/* ────────────────────────────────────
+   GUARANTEES
+──────────────────────────────────── */
+#guarantees { background: var(--bg); }
+
+.g-cards { display: flex; flex-direction: column; gap: 10px; }
+
+.g-card {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 16px 18px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: var(--shadow);
+}
+
+.g-ico {
+  width: 50px; height: 50px; border-radius: 14px;
+  background: #FFF3EE;
+  display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;
+}
+
+.g-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.g-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* ────────────────────────────────────
+   FINAL FORM SECTION
+──────────────────────────────────── */
+#last-cta {
+  background: linear-gradient(160deg, #FFF8F5 0%, #F5EAE3 100%);
+  padding: 44px 20px;
+  text-align: center;
+}
+
+.last-price-block {
+  background: white;
+  border-radius: var(--r);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.lp-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 14px; }
+.lp-row .ll { color: var(--muted); }
+.lp-row .lr { color: var(--text); font-weight: 600; }
+.lp-row .strike { text-decoration: line-through; color: var(--muted); font-weight: 400; }
+.lp-row .green  { color: var(--green); }
+.lp-div { height: 1px; background: rgba(0,0,0,.06); margin: 12px 0; }
+.lp-total { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--rose); font-weight: 700; }
+
+/* ────────────────────────────────────
+   FOOTER
+──────────────────────────────────── */
+footer {
+  background: var(--text);
+  padding: 36px 20px;
+}
+
+.f-logo { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--pink); margin-bottom: 4px; }
+.f-tag  { font-size: 10px; color: rgba(255,255,255,.35); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; }
+.f-hr   { height: 1px; background: rgba(255,255,255,.08); margin-bottom: 20px; }
+.f-links { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.f-link  { color: rgba(255,255,255,.4); font-size: 13px; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.f-copy  { font-size: 10px; color: rgba(255,255,255,.2); line-height: 1.7; }
+
+/* ────────────────────────────────────
+   CTA STRIP (between sections)
+──────────────────────────────────── */
+.cta-strip {
+  background: var(--rose);
+  border-radius: var(--r);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.cs-text { font-size: 14px; color: white; font-weight: 600; line-height: 1.4; flex: 1; }
+.cs-btn  {
+  background: white; color: var(--rose);
+  font-size: 13px; font-weight: 700;
+  padding: 11px 16px; border-radius: 12px; border: none;
+  cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  font-family: 'Nunito', sans-serif; text-decoration: none; display: block;
+}
+
+/* ────────────────────────────────────
+   POPUP OVERLAY
+──────────────────────────────────── */
+.overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(42,33,24,.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  animation: fadein .25s ease;
+}
+
+.overlay.open { display: flex; }
+
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+
+.popup {
+  background: var(--white);
+  border-radius: 28px 28px 0 0;
   width: 100%;
-  background: rgba(255,255,255,.09);
-  border: 1.5px solid rgba(255,255,255,.15);
+  max-height: 92svh;
+  overflow-y: auto;
+  padding: 0 0 32px;
+  animation: slideup .3s cubic-bezier(.25,.8,.25,1);
+  -webkit-overflow-scrolling: touch;
+}
+
+@keyframes slideup {
+  from { transform: translateY(60px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.popup-handle {
+  width: 40px; height: 4px;
+  background: rgba(0,0,0,.1);
+  border-radius: 2px;
+  margin: 14px auto 20px;
+}
+
+.popup-header {
+  padding: 0 20px 0;
+  margin-bottom: 16px;
+}
+
+.popup-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: var(--text);
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.popup-sub { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+/* price calculator in popup */
+.popup-price-card {
+  margin: 0 20px 18px;
+  background: linear-gradient(135deg, #FFF8F5 0%, #FBF0EA 100%);
+  border: 1.5px solid rgba(212,137,106,.2);
+  border-radius: var(--r);
+  padding: 18px;
+}
+
+.pp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.pp-row .pl { color: var(--muted); }
+.pp-row .pr { color: var(--text); font-weight: 600; }
+.pp-row .pr.strike { text-decoration: line-through; color: rgba(42,33,24,.3); font-weight: 400; font-size: 13px; }
+.pp-row .pr.green  { color: var(--green); font-size: 15px; }
+.pp-row .pr.gift   { color: var(--rose); }
+
+.pp-div { height: 1px; background: rgba(212,137,106,.2); margin: 12px 0; }
+
+.pp-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pp-total-lbl { font-size: 15px; font-weight: 700; color: var(--text); }
+.pp-total-val { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--rose); font-weight: 700; line-height: 1; }
+
+.pp-save {
+  background: rgba(76,175,125,.1);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--green);
+  font-weight: 700;
+  text-align: center;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+
+/* popup inputs */
+.popup-fields { padding: 0 20px; }
+
+.p-label {
+  font-size: 11px; font-weight: 700;
+  color: var(--muted); letter-spacing: .5px;
+  text-transform: uppercase; margin-bottom: 6px;
+  display: block;
+}
+
+.p-input {
+  width: 100%;
+  background: var(--bg);
+  border: 1.5px solid rgba(0,0,0,.08);
   border-radius: 14px;
   padding: 15px 16px;
   font-size: 16px;
-  color: var(--white);
-  font-family: 'Jost', sans-serif;
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
   outline: none;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   transition: border-color .2s;
   -webkit-appearance: none;
   display: block;
 }
-.finput::placeholder { color: rgba(255,255,255,.38); }
-.finput:focus { border-color: var(--gold); }
 
-.btn-cta {
+.p-input:focus { border-color: var(--rose); background: white; }
+
+.btn-popup {
   width: 100%;
-  background: linear-gradient(135deg, #D4A657 0%, #A8703A 100%);
-  color: var(--deep);
-  font-size: 15px;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r) 100%);
+  color: white;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: .3px;
   border: none;
-  border-radius: 14px;
-  padding: 17px;
+  border-radius: var(--r);
+  padding: 18px;
   cursor: pointer;
-  box-shadow: 0 8px 28px rgba(201,169,110,.4);
+  box-shadow: 0 8px 24px rgba(212,137,106,.35);
+  font-family: 'Nunito', sans-serif;
+  display: block; width: 100%;
   transition: transform .15s;
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: 'Jost', sans-serif;
 }
-.btn-cta:active { transform: scale(.97); }
+.btn-popup:active { transform: scale(.97); }
 
-.form-micro {
-  margin-top: 10px;
+.popup-note { font-size: 11px; color: rgba(42,33,24,.3); text-align: center; margin-top: 10px; line-height: 1.6; }
+
+.popup-trust {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 14px;
+  margin-top: 14px;
 }
-.form-micro span {
-  font-size: 10px;
-  color: rgba(255,255,255,.35);
-  display: flex; align-items: center; gap: 4px;
-}
+.pt-item { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--muted); font-weight: 600; }
 
-.hero-stock {
-  margin: 14px 18px 0;
-  background: rgba(217,79,79,.12);
-  border: 1px solid rgba(217,79,79,.28);
-  border-radius: 12px;
-  padding: 10px 14px;
-  font-size: 12px;
-  color: rgba(255,255,255,.65);
-  display: flex; align-items: center; gap: 8px;
-}
-.hero-stock .pulse {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #E05555; flex-shrink: 0;
-  animation: pulse 1.5s infinite;
-}
-.hero-stock strong { color: #FF7070; }
-
-@keyframes pulse {
-  0%,100% { opacity:1; transform:scale(1); }
-  50%      { opacity:.5; transform:scale(.7); }
+/* success state */
+.popup-success {
+  display: none;
+  padding: 20px 20px 10px;
+  text-align: center;
 }
 
-.trust-row {
-  display: flex; gap: 6px;
-  padding: 12px 18px 0;
-  overflow-x: auto; scrollbar-width: none;
-}
-.trust-row::-webkit-scrollbar { display: none; }
-.trust-pill {
-  display: flex; align-items: center; gap: 5px;
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 30px; padding: 7px 12px;
-  white-space: nowrap; font-size: 11px;
-  color: rgba(255,255,255,.6); flex-shrink: 0;
+.ps-ico   { font-size: 56px; margin-bottom: 14px; }
+.ps-title { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--text); margin-bottom: 8px; }
+.ps-sub   { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+
+.ps-steps {
+  background: var(--bg);
+  border-radius: var(--r);
+  padding: 16px;
+  text-align: left;
 }
 
-/* ══ DIVIDER ══ */
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--blush), transparent);
-  margin: 0 22px;
+.ps-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--text);
+  border-bottom: 1px solid rgba(0,0,0,.05);
 }
+.ps-step:last-child { border-bottom: none; }
+.ps-step-ico { width: 32px; height: 32px; border-radius: 50%; background: #FFF3EE; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
 
-/* ══ SECTIONS ══ */
-section { padding: 48px 22px; }
+/* FADE IN */
+.fi { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+.fi.show { opacity: 1; transform: none; }
 
-.sec-tag {
-  font-size: 10px; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--rose);
-  font-weight: 600; margin-bottom: 10px;
+/* ────────────────────────────────────
+   SHARED BUTTONS
+──────────────────────────────────── */
+.btn-outline {
+  width: 100%;
+  background: transparent;
+  border: 2px solid var(--rose);
+  color: var(--rose);
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: var(--r);
+  padding: 16px;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  display: block; text-align: center; text-decoration: none;
 }
-
-.sec-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px; line-height: 1.12;
-  color: var(--deep); font-weight: 700; margin-bottom: 8px;
-}
-
-.sec-sub {
-  font-size: 14px; color: #8A7060;
-  line-height: 1.55; margin-bottom: 26px;
-}
-
-.cta-strip {
-  background: var(--deep); border-radius: var(--r);
-  padding: 18px 20px; display: flex;
-  align-items: center; justify-content: space-between;
-  gap: 12px; margin-top: 22px;
-}
-.cta-strip-text { font-size: 14px; color: white; line-height: 1.4; font-weight: 500; flex: 1; }
-.cta-strip-btn {
-  background: var(--gold); color: var(--deep);
-  font-size: 13px; font-weight: 700;
-  padding: 12px 16px; border-radius: 12px; border: none;
-  cursor: pointer; white-space: nowrap; flex-shrink: 0;
-  text-decoration: none; display: block;
-  font-family: 'Jost', sans-serif;
-}
-
-/* ══ PAIN ══ */
-#pain { background: var(--cream); }
-
-.pain-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
-.pain-item {
-  display: flex; align-items: flex-start; gap: 14px;
-  background: var(--white); border-radius: 16px; padding: 16px;
-  box-shadow: 0 2px 16px rgba(61,43,31,.06);
-}
-.pain-icon {
-  font-size: 24px; width: 46px; height: 46px;
-  background: var(--soft); border-radius: 12px;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.pain-title { font-size: 15px; font-weight: 600; color: var(--deep); margin-bottom: 2px; }
-.pain-text  { font-size: 13px; color: #8A7060; line-height: 1.5; }
-
-.solution-bar {
-  background: linear-gradient(135deg, var(--rose) 0%, #9E5E4A 100%);
-  border-radius: var(--r); padding: 20px; color: white; text-align: center;
-}
-.solution-bar .sb-title { font-family: 'Cormorant Garamond',serif; font-size: 22px; font-weight: 700; margin-bottom: 6px; }
-.solution-bar .sb-text  { font-size: 14px; opacity: .85; line-height: 1.5; }
-
-/* ══ BEFORE/AFTER ══ */
-#ba { background: var(--deep); padding: 48px 22px; }
-#ba .sec-tag   { color: var(--blush); }
-#ba .sec-title { color: var(--white); }
-#ba .sec-sub   { color: rgba(255,255,255,.5); margin-bottom: 22px; }
-
-.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-.ba-card { border-radius: 18px; overflow: hidden; position: relative; }
-.ba-visual {
-  aspect-ratio: 3/4; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 10px; padding: 16px;
-}
-.ba-before .ba-visual { background: linear-gradient(160deg, #4A3728 0%, #2E1A12 100%); }
-.ba-after  .ba-visual { background: linear-gradient(160deg, #8B5040 0%, #C4806A 100%); }
-.ba-face { font-size: 46px; }
-.ba-desc { font-size: 11px; color: rgba(255,255,255,.65); text-align: center; line-height: 1.5; }
-.ba-lbl {
-  position: absolute; bottom: 10px; left: 10px;
-  background: rgba(0,0,0,.5); backdrop-filter: blur(4px);
-  color: white; font-size: 10px; font-weight: 700;
-  letter-spacing: 2px; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;
-}
-.ba-after .ba-lbl { background: rgba(201,169,110,.85); color: var(--deep); }
-
-.ba-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.ba-stat { background: rgba(255,255,255,.07); border-radius: 14px; padding: 14px 8px; text-align: center; }
-.ba-stat-num { font-family: 'Cormorant Garamond',serif; font-size: 30px; color: var(--gold); font-weight: 700; line-height: 1; margin-bottom: 4px; }
-.ba-stat-lbl { font-size: 10px; color: rgba(255,255,255,.5); line-height: 1.4; }
-
-/* ══ BENEFITS ══ */
-#benefits { background: var(--soft); }
-.benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.benefit-card { background: var(--white); border-radius: 20px; padding: 18px 14px; box-shadow: 0 2px 16px rgba(61,43,31,.06); }
-.benefit-card.wide {
-  grid-column: span 2;
-  background: linear-gradient(135deg, var(--rose) 0%, #9E5E4A 100%);
-  display: flex; align-items: center; gap: 14px;
-}
-.b-icon { font-size: 30px; margin-bottom: 8px; }
-.b-title { font-size: 14px; font-weight: 600; color: var(--deep); margin-bottom: 4px; line-height: 1.3; }
-.b-desc  { font-size: 12px; color: #8A7060; line-height: 1.5; }
-.benefit-card.wide .b-icon  { font-size: 36px; margin: 0; flex-shrink: 0; }
-.benefit-card.wide .b-title { color: white; font-size: 16px; }
-.benefit-card.wide .b-desc  { color: rgba(255,255,255,.78); }
-
-/* ══ REVIEWS ══ */
-#reviews { background: var(--cream); }
-.rating-summary {
-  background: var(--deep); border-radius: var(--r);
-  padding: 18px 20px; display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
-}
-.rating-big { font-family:'Cormorant Garamond',serif; font-size:52px; color:var(--gold); font-weight:700; line-height:1; flex-shrink:0; }
-.rating-stars-big { font-size:18px; color:var(--gold); margin-bottom:4px; }
-.rating-count { font-size:12px; color:rgba(255,255,255,.45); }
-
-.review-card {
-  background: var(--white); border-radius: 20px; padding: 20px;
-  box-shadow: 0 2px 20px rgba(61,43,31,.06); margin-bottom: 14px; position: relative;
-}
-.review-header { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
-.review-ava {
-  width:46px; height:46px; border-radius:50%;
-  background:linear-gradient(135deg,var(--blush),var(--rose));
-  display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;
-}
-.review-name  { font-weight:600; font-size:15px; color:var(--deep); }
-.review-stars { color:var(--gold); font-size:12px; letter-spacing:1px; }
-.review-city  { font-size:11px; color:#A89080; }
-.review-text  { font-size:14px; line-height:1.6; color:var(--text); }
-.verified-badge {
-  position:absolute; top:16px; right:16px;
-  background:#E8F5E9; color:#2E7D32;
-  font-size:9px; font-weight:700;
-  padding:4px 8px; border-radius:20px;
-  letter-spacing:.5px; text-transform:uppercase;
-}
-
-/* ══ HOW TO ORDER ══ */
-#how { background: var(--deep); padding: 48px 22px; }
-#how .sec-tag   { color: var(--gold); }
-#how .sec-title { color: var(--white); }
-
-.steps { display:flex; flex-direction:column; gap:0; margin-bottom:26px; }
-.step  { display:flex; gap:16px; padding-bottom:22px; }
-.step:last-child { padding-bottom:0; }
-.step-lw { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
-.step-num {
-  width:44px; height:44px; border-radius:50%;
-  background:linear-gradient(135deg,var(--gold),#A87A36);
-  display:flex; align-items:center; justify-content:center;
-  font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:var(--deep);
-}
-.step-line { width:2px; flex:1; min-height:16px; background:rgba(201,169,110,.2); margin-top:4px; }
-.step:last-child .step-line { display:none; }
-.step-body { padding-top:8px; }
-.step-title { font-size:17px; font-weight:600; color:white; margin-bottom:4px; }
-.step-desc  { font-size:13px; color:rgba(255,255,255,.5); line-height:1.5; }
-
-/* ══ GUARANTEES ══ */
-#guarantees { background: var(--soft); }
-.guarantee-card {
-  background:var(--white); border-radius:18px; padding:18px;
-  display:flex; align-items:center; gap:14px; margin-bottom:12px;
-  box-shadow:0 2px 14px rgba(61,43,31,.06);
-}
-.g-icon { width:52px; height:52px; border-radius:14px; background:var(--soft); display:flex; align-items:center; justify-content:center; font-size:26px; flex-shrink:0; }
-.g-title { font-size:15px; font-weight:600; color:var(--deep); margin-bottom:2px; }
-.g-desc  { font-size:12px; color:#8A7060; line-height:1.5; }
-
-/* ══ FINAL FORM ══ */
-#final-form {
-  background: linear-gradient(170deg, #1E0F08 0%, #4A2216 50%, #7A3F2E 100%);
-  padding: 48px 22px 40px;
-  position: relative; overflow: hidden;
-}
-#final-form::before {
-  content:''; position:absolute; width:280px; height:280px;
-  background:radial-gradient(circle,rgba(201,169,110,.15) 0%,transparent 70%);
-  top:-60px; right:-60px; pointer-events:none;
-}
-#final-form .sec-tag   { color: var(--gold); }
-#final-form .sec-title { color: var(--white); }
-#final-form .sec-sub   { color: rgba(255,255,255,.55); margin-bottom: 20px; }
-
-.timer-row { display:flex; gap:8px; align-items:center; margin-bottom:20px; }
-.timer-block {
-  background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.12);
-  border-radius:12px; padding:10px 12px; text-align:center; min-width:54px;
-}
-.t-num { font-family:'Cormorant Garamond',serif; font-size:30px; color:var(--gold); font-weight:700; line-height:1; display:block; }
-.t-lbl { font-size:9px; color:rgba(255,255,255,.38); letter-spacing:1px; text-transform:uppercase; }
-.t-sep { font-size:24px; color:var(--gold); font-weight:700; }
-
-.offer-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
-.chip { background:rgba(201,169,110,.12); border:1px solid rgba(201,169,110,.35); color:var(--gold); font-size:12px; font-weight:600; padding:7px 13px; border-radius:30px; }
-
-.urgency {
-  background:rgba(217,79,79,.12); border:1px solid rgba(217,79,79,.3);
-  border-radius:14px; padding:13px 16px;
-  display:flex; align-items:center; gap:10px;
-  margin-bottom:18px; font-size:13px; color:rgba(255,255,255,.8); line-height:1.4;
-}
-.urgency strong { color:#FF7070; }
-
-.ff-input {
-  width:100%; background:rgba(255,255,255,.09); border:1.5px solid rgba(255,255,255,.14);
-  border-radius:14px; padding:16px 18px; font-size:16px; color:white;
-  font-family:'Jost',sans-serif; outline:none; margin-bottom:12px;
-  transition:border-color .2s; -webkit-appearance:none; display:block;
-}
-.ff-input::placeholder { color:rgba(255,255,255,.35); }
-.ff-input:focus { border-color:var(--gold); }
-
-.form-note { font-size:10px; color:rgba(255,255,255,.28); text-align:center; margin-top:10px; line-height:1.6; }
-
-.success-box { display:none; text-align:center; padding:24px 0; }
-.success-box .s-ico   { font-size:52px; margin-bottom:12px; }
-.success-box .s-title { font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--gold); margin-bottom:8px; }
-.success-box .s-sub   { font-size:15px; color:rgba(255,255,255,.65); line-height:1.6; }
-
-/* ══ FOOTER ══ */
-footer { background:#160A04; padding:40px 22px 36px; }
-.footer-logo { font-family:'Cormorant Garamond',serif; font-size:26px; color:var(--gold); letter-spacing:1px; margin-bottom:4px; }
-.footer-tag  { font-size:10px; color:rgba(255,255,255,.3); letter-spacing:2px; text-transform:uppercase; margin-bottom:24px; }
-.footer-hr   { height:1px; background:rgba(255,255,255,.07); margin-bottom:20px; }
-.footer-summary { background:rgba(255,255,255,.04); border-radius:16px; padding:18px; margin-bottom:20px; }
-.fs-row { display:flex; justify-content:space-between; margin-bottom:8px; font-size:14px; }
-.fs-row .fl       { color:rgba(255,255,255,.5); }
-.fs-row .fr       { color:rgba(255,255,255,.8); }
-.fs-row .fr.strike{ text-decoration:line-through; color:rgba(255,255,255,.3); }
-.fs-row .fr.green { color:#5ECC7B; font-weight:600; }
-.fs-row .fr.gold  { color:var(--gold); font-size:18px; font-family:'Cormorant Garamond',serif; font-weight:700; }
-.fs-divider { height:1px; background:rgba(255,255,255,.07); margin:12px 0; }
-.footer-links { display:flex; flex-direction:column; gap:12px; margin:20px 0; }
-.footer-link  { color:rgba(255,255,255,.38); font-size:13px; text-decoration:none; display:flex; align-items:center; gap:8px; }
-.footer-copy  { font-size:10px; color:rgba(255,255,255,.2); line-height:1.7; }
-
-/* ══ FADE IN ══ */
-.fi { opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease; }
-.fi.show { opacity:1; transform:none; }
 </style>
 </head>
 <body>
 
-<!-- ══ HERO ══ -->
+<!-- NAVBAR -->
+<nav class="nav">
+  <div class="nav-logo">NeckGlow</div>
+  <button class="nav-cta" onclick="openPopup()">Заказать −50%</button>
+</nav>
+
+<!-- ══════════════════════════
+     HERO
+══════════════════════════ -->
 <section class="hero">
-  <div class="hero-topbar">
-    <div class="hero-logo">NeckGlow</div>
-    <div class="hero-badge-top">⭐ ХИТ ПРОДАЖ</div>
+
+  <div class="hero-tag fi">
+    <span>🔥</span> Хит продаж · Узбекистан
   </div>
 
-  <div class="hero-head">
-    <p class="hero-eyebrow fi">Омолаживающий уход · 35+</p>
-    <h1 class="hero-h1 fi">
-      Шея <em>выдаёт</em><br>
-      ваш возраст?<br>
-      <span class="ac">Исправим<br>за 14 дней</span>
-    </h1>
-    <p class="hero-tagline fi">Лифтинг-маска специально для нежной кожи шеи. Подтяжка и упругость — уже после первых применений.</p>
-    <div class="hero-price fi">
-      <span class="old">299 000 сум</span>
-      <span class="new">149 000 сум</span>
-      <span class="pill">−50%</span>
-    </div>
-    <div class="hero-gift fi">🎁 Купи 2 — <strong>3-я маска в подарок</strong></div>
-  </div>
+  <h1 class="hero-h1 fi">
+    Шея снова<br>
+    <span class="hl">молодая</span><br>
+    за 14 дней
+  </h1>
 
-  <div class="form-card fi">
-    <!-- Floating mask SVG -->
-    <div class="mask-float" aria-hidden="true">
-      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="mg" cx="40%" cy="30%" r="70%">
-            <stop offset="0%" stop-color="#E8C5B0"/>
-            <stop offset="100%" stop-color="#8B5040"/>
-          </radialGradient>
-          <radialGradient id="sh" cx="30%" cy="25%" r="50%">
-            <stop offset="0%" stop-color="rgba(255,255,255,.5)"/>
-            <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-          </radialGradient>
-          <filter id="bl" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3"/>
-          </filter>
-        </defs>
-        <ellipse cx="60" cy="108" rx="30" ry="6" fill="rgba(0,0,0,.3)" filter="url(#bl)"/>
-        <path d="M60 10 C38 10 20 26 16 48 C12 68 18 86 28 96 C36 104 48 110 60 110 C72 110 84 104 92 96 C102 86 108 68 104 48 C100 26 82 10 60 10Z" fill="url(#mg)"/>
-        <path d="M60 10 C38 10 20 26 16 48 C12 68 18 86 28 96 C36 104 48 110 60 110 C72 110 84 104 92 96 C102 86 108 68 104 48 C100 26 82 10 60 10Z" fill="url(#sh)" opacity=".55"/>
-        <ellipse cx="44" cy="55" rx="7" ry="9" fill="rgba(61,43,31,.5)"/>
-        <ellipse cx="76" cy="55" rx="7" ry="9" fill="rgba(61,43,31,.5)"/>
-        <ellipse cx="46" cy="52" rx="2.5" ry="2" fill="rgba(255,255,255,.55)"/>
-        <ellipse cx="78" cy="52" rx="2.5" ry="2" fill="rgba(255,255,255,.55)"/>
-        <path d="M55 73 Q60 77 65 73" fill="none" stroke="rgba(61,43,31,.3)" stroke-width="1.2"/>
-        <path d="M60 10 C38 10 20 26 16 48 C12 68 18 86 28 96 C36 104 48 110 60 110 C72 110 84 104 92 96 C102 86 108 68 104 48 C100 26 82 10 60 10Z" fill="none" stroke="rgba(201,169,110,.55)" stroke-width="1.5"/>
-        <text x="60" y="91" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.45)" font-family="Jost,sans-serif" letter-spacing="2">NECK MASK</text>
-      </svg>
+  <p class="hero-sub fi">
+    Лифтинг-маска специально для нежной кожи шеи. Видимый эффект уже после первого применения.
+  </p>
+
+  <!-- BEFORE / AFTER -->
+  <div class="ba-row fi">
+    <div class="ba-card ba-before">
+      <div class="ba-visual">
+        <div class="ba-emoji">😞</div>
+        <div class="ba-tags">
+          <span class="ba-tag">Дряблость</span>
+          <span class="ba-tag">Морщины</span>
+          <span class="ba-tag">Сухость</span>
+        </div>
+      </div>
+      <div class="ba-label">ДО</div>
     </div>
 
-    <p class="form-card-label">Оформить заказ</p>
+    <div class="vs-badge">→</div>
 
-    <div id="hero-form">
-      <input class="finput" type="text" id="h-name"  placeholder="Ваше имя"      autocomplete="name">
-      <input class="finput" type="tel"  id="h-phone" placeholder="Номер телефона" autocomplete="tel">
-      <button class="btn-cta" onclick="submitHero()">Получить со скидкой 50% →</button>
-    </div>
-
-    <div id="hero-success" style="display:none; text-align:center; padding:8px 0 4px;">
-      <div style="font-size:36px; margin-bottom:8px;">✅</div>
-      <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--gold); margin-bottom:6px;">Заявка принята!</div>
-      <div style="font-size:13px; color:rgba(255,255,255,.6); line-height:1.5;">Менеджер свяжется с вами<br>в ближайшее время</div>
-    </div>
-
-    <div class="form-micro">
-      <span>💳 Оплата при получении</span>
-      <span>📦 Доставка 1–2 дня</span>
+    <div class="ba-card ba-after">
+      <div class="ba-visual">
+        <div class="ba-emoji">😊</div>
+        <div class="ba-tags">
+          <span class="ba-tag">Упругость</span>
+          <span class="ba-tag">Гладкость</span>
+          <span class="ba-tag">Лифтинг</span>
+        </div>
+      </div>
+      <div class="ba-label">ПОСЛЕ</div>
     </div>
   </div>
 
-  <div class="hero-stock fi">
-    <div class="pulse"></div>
+  <!-- STATS -->
+  <div class="stats-row fi">
+    <div class="stat-card">
+      <div class="stat-num">92%</div>
+      <div class="stat-lbl">замечают лифтинг</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">14</div>
+      <div class="stat-lbl">дней до результата</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">10</div>
+      <div class="stat-lbl">масок в наборе</div>
+    </div>
+  </div>
+
+  <!-- OFFER CHIPS -->
+  <div class="offer-chips fi">
+    <div class="offer-chip">
+      <span class="chip-ico">🏷</span>
+      <span>Скидка <span class="chip-accent">−50%</span></span>
+    </div>
+    <div class="offer-chip">
+      <span class="chip-ico">🎁</span>
+      <span>Купи 2 — <span class="chip-accent">3-я в подарок</span></span>
+    </div>
+    <div class="offer-chip">
+      <span class="chip-ico">💳</span>
+      <span>Оплата <span class="chip-accent">при получении</span></span>
+    </div>
+  </div>
+
+  <!-- PRICE -->
+  <div class="price-row fi">
+    <div>
+      <div class="price-old">299 000 сум</div>
+      <div class="price-new">149 000 сум</div>
+    </div>
+    <div class="price-pill">−50%</div>
+  </div>
+
+  <!-- CTA -->
+  <button class="btn-hero fi" onclick="openPopup()">
+    Хочу такой же результат → Заказать
+  </button>
+
+  <div class="hero-guarantee fi">
+    <div class="hg-item">📦 Доставка 1–2 дня</div>
+    <div class="hg-item">↩️ Возврат 30 дней</div>
+  </div>
+
+  <div class="stock-bar fi">
+    <div class="dot"></div>
     <span>Осталось по акции: <strong>27 масок</strong> — успейте!</span>
   </div>
 
-  <div class="trust-row">
-    <div class="trust-pill">✅ Оригинал</div>
-    <div class="trust-pill">↩️ Возврат 30 дней</div>
-    <div class="trust-pill">🏆 1240+ отзывов</div>
-    <div class="trust-pill">🇺🇿 Узбекистан</div>
-  </div>
 </section>
 
-<div class="divider"></div>
+<div class="div"></div>
 
-<!-- ══ БОЛИ ══ -->
+<!-- ══════════════════════════
+     БОЛИ
+══════════════════════════ -->
 <section id="pain">
   <p class="sec-tag fi">Вы узнаёте себя?</p>
   <h2 class="sec-title fi">Шея выдаёт<br>ваш возраст</h2>
   <p class="sec-sub fi">С возрастом кожа шеи теряет упругость быстрее, чем лицо. Обычный крем не справляется.</p>
-  <ul class="pain-list fi">
-    <li class="pain-item">
-      <div class="pain-icon">😔</div>
-      <div><div class="pain-title">Кожа стала дряблой</div><div class="pain-text">Появились складки, провисания, потеря тонуса</div></div>
-    </li>
-    <li class="pain-item">
-      <div class="pain-icon">😟</div>
-      <div><div class="pain-title">Обычный уход не помогает</div><div class="pain-text">Нежная зона шеи требует особой формулы</div></div>
-    </li>
-    <li class="pain-item">
-      <div class="pain-icon">😣</div>
-      <div><div class="pain-title">Стесняетесь открытых нарядов</div><div class="pain-text">Хочется выглядеть моложе и увереннее каждый день</div></div>
-    </li>
-  </ul>
-  <div class="solution-bar fi">
-    <div class="sb-title">Решение найдено!</div>
-    <div class="sb-text">Лифтинг-маска создана именно для кожи шеи — интенсивный уход там, где он нужен больше всего</div>
+
+  <div class="pain-cards fi">
+    <div class="pain-card">
+      <div class="pain-ico">😔</div>
+      <div><div class="p-title">Кожа стала дряблой</div><div class="p-desc">Складки, провисания, потеря тонуса</div></div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-ico">😟</div>
+      <div><div class="p-title">Обычный уход не помогает</div><div class="p-desc">Нежная зона шеи требует особого ухода</div></div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-ico">😣</div>
+      <div><div class="p-title">Стесняетесь открытых нарядов</div><div class="p-desc">Хочется чувствовать себя молодой и уверенной</div></div>
+    </div>
+  </div>
+
+  <div class="solution-pill fi">
+    <div class="sp-title">Решение найдено!</div>
+    <div class="sp-text">Лифтинг-маска создана именно для кожи шеи — интенсивный уход там, где он нужен больше всего</div>
+  </div>
+
+  <div class="cta-strip fi">
+    <div class="cs-text">Попробовать<br>со скидкой 50%</div>
+    <button class="cs-btn" onclick="openPopup()">Заказать →</button>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="div"></div>
 
-<!-- ══ ДО/ПОСЛЕ ══ -->
-<section id="ba">
-  <p class="sec-tag fi">До и после</p>
-  <h2 class="sec-title fi">Результат<br>говорит сам</h2>
-  <p class="sec-sub fi">После курса из 10 масок — применять 2–3 раза в неделю</p>
-  <div class="ba-grid fi">
-    <div class="ba-card ba-before">
-      <div class="ba-visual"><div class="ba-face">😞</div><div class="ba-desc">Дряблость, складки, потеря тонуса</div></div>
-      <div class="ba-lbl">ДО</div>
-    </div>
-    <div class="ba-card ba-after">
-      <div class="ba-visual"><div class="ba-face">😊</div><div class="ba-desc">Упругость, гладкость, лифтинг-эффект</div></div>
-      <div class="ba-lbl">ПОСЛЕ</div>
-    </div>
-  </div>
-  <div class="ba-stats fi">
-    <div class="ba-stat"><div class="ba-stat-num">92%</div><div class="ba-stat-lbl">замечают лифтинг</div></div>
-    <div class="ba-stat"><div class="ba-stat-num">14</div><div class="ba-stat-lbl">дней до результата</div></div>
-    <div class="ba-stat"><div class="ba-stat-num">10</div><div class="ba-stat-lbl">масок в наборе</div></div>
-  </div>
-  <div class="cta-strip fi" style="background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1);">
-    <div class="cta-strip-text">Хочу такой же результат</div>
-    <a class="cta-strip-btn" href="#final-form">Заказать →</a>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══ ПРЕИМУЩЕСТВА ══ -->
+<!-- ══════════════════════════
+     ПРЕИМУЩЕСТВА
+══════════════════════════ -->
 <section id="benefits">
   <p class="sec-tag fi">Почему выбирают нас</p>
   <h2 class="sec-title fi">5 причин<br>попробовать</h2>
-  <div class="benefits-grid fi">
-    <div class="benefit-card wide">
-      <div class="b-icon">✨</div>
-      <div><div class="b-title">Лифтинг уже после 1–2 применений</div><div class="b-desc">Видимый результат с первых дней</div></div>
+
+  <div class="ben-grid fi">
+    <div class="ben-card wide">
+      <div class="b-ico">✨</div>
+      <div>
+        <div class="b-title">Лифтинг уже после 1–2 применений</div>
+        <div class="b-desc">Видимый результат с первых дней</div>
+      </div>
     </div>
-    <div class="benefit-card">
-      <div class="b-icon">💧</div><div class="b-title">Глубокое увлажнение</div><div class="b-desc">Питает нежную кожу шеи</div>
+    <div class="ben-card">
+      <div class="b-ico">💧</div>
+      <div class="b-title">Глубокое увлажнение</div>
+      <div class="b-desc">Питает нежную кожу шеи</div>
     </div>
-    <div class="benefit-card">
-      <div class="b-icon">🎯</div><div class="b-title">Плотное прилегание</div><div class="b-desc">Активные компоненты проникают глубже</div>
+    <div class="ben-card">
+      <div class="b-ico">🎯</div>
+      <div class="b-title">Плотное прилегание</div>
+      <div class="b-desc">Компоненты проникают глубже</div>
     </div>
-    <div class="benefit-card">
-      <div class="b-icon">📦</div><div class="b-title">10 масок в наборе</div><div class="b-desc">Полный курс в одной упаковке</div>
+    <div class="ben-card">
+      <div class="b-ico">📦</div>
+      <div class="b-title">10 масок в наборе</div>
+      <div class="b-desc">Полный курс ухода</div>
     </div>
-    <div class="benefit-card">
-      <div class="b-icon">⏱</div><div class="b-title">Всего 20 минут</div><div class="b-desc">Удобно в любое время дня</div>
+    <div class="ben-card">
+      <div class="b-ico">⏱</div>
+      <div class="b-title">Всего 20 минут</div>
+      <div class="b-desc">Удобно в любое время</div>
     </div>
   </div>
+
   <div class="cta-strip fi">
-    <div class="cta-strip-text">Попробовать<br>со скидкой 50%</div>
-    <a class="cta-strip-btn" href="#final-form">Заказать</a>
+    <div class="cs-text">Попробовать<br>без риска</div>
+    <button class="cs-btn" onclick="openPopup()">Заказать →</button>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="div"></div>
 
-<!-- ══ ОТЗЫВЫ ══ -->
+<!-- ══════════════════════════
+     ОТЗЫВЫ
+══════════════════════════ -->
 <section id="reviews">
   <p class="sec-tag fi">Отзывы покупателей</p>
   <h2 class="sec-title fi">Женщины<br>в восторге</h2>
-  <div class="rating-summary fi">
-    <div class="rating-big">4.9</div>
-    <div><div class="rating-stars-big">★★★★★</div><div class="rating-count">на основе 1 240 отзывов</div></div>
+
+  <div class="rating-bar fi">
+    <div class="rb-num">4.9</div>
+    <div>
+      <div class="rb-stars">★★★★★</div>
+      <div class="rb-count">на основе 1 240 отзывов</div>
+    </div>
   </div>
+
   <div class="fi">
-    <div class="review-card">
-      <div class="verified-badge">✓ КУПИЛА</div>
-      <div class="review-header">
-        <div class="review-ava">👩</div>
-        <div><div class="review-name">Нилуфар Р.</div><div class="review-stars">★★★★★</div><div class="review-city">Ташкент</div></div>
+    <div class="rev-card">
+      <div class="rev-badge">✓ КУПИЛА</div>
+      <div class="rev-head">
+        <div class="rev-ava">👩</div>
+        <div><div class="rev-name">Нилуфар Р.</div><div class="rev-stars">★★★★★</div><div class="rev-city">Ташкент</div></div>
       </div>
-      <p class="review-text">После 5 масок заметила разницу — шея подтянулась, кожа стала мягче. Дочь спросила, что я делаю по-другому 😊</p>
+      <p class="rev-text">После 5 масок заметила разницу — шея подтянулась, кожа стала мягче. Дочь спросила, что я делаю по-другому 😊</p>
     </div>
-    <div class="review-card">
-      <div class="verified-badge">✓ КУПИЛА</div>
-      <div class="review-header">
-        <div class="review-ava">👩‍🦳</div>
-        <div><div class="review-name">Дилноза М.</div><div class="review-stars">★★★★★</div><div class="review-city">Самарканд</div></div>
+    <div class="rev-card">
+      <div class="rev-badge">✓ КУПИЛА</div>
+      <div class="rev-head">
+        <div class="rev-ava">👩‍🦳</div>
+        <div><div class="rev-name">Дилноза М.</div><div class="rev-stars">★★★★★</div><div class="rev-city">Самарканд</div></div>
       </div>
-      <p class="review-text">Заказала сразу 2 набора — сестре тоже взяла. Доставили быстро, оплатила при получении. Маска очень нежная, запах приятный.</p>
+      <p class="rev-text">Заказала сразу 2 набора — сестре тоже взяла. Доставили быстро, оплатила при получении. Маска очень нежная, запах приятный.</p>
     </div>
-    <div class="review-card">
-      <div class="verified-badge">✓ КУПИЛА</div>
-      <div class="review-header">
-        <div class="review-ava">🧕</div>
-        <div><div class="review-name">Мухаббат А.</div><div class="review-stars">★★★★★</div><div class="review-city">Бухара</div></div>
+    <div class="rev-card">
+      <div class="rev-badge">✓ КУПИЛА</div>
+      <div class="rev-head">
+        <div class="rev-ava">🧕</div>
+        <div><div class="rev-name">Мухаббат А.</div><div class="rev-stars">★★★★★</div><div class="rev-city">Бухара</div></div>
       </div>
-      <p class="review-text">Мне 47 лет, всегда переживала из-за шеи. После курса коллеги стали спрашивать, помолодела ли я! Очень довольна.</p>
+      <p class="rev-text">Мне 47 лет, всегда переживала из-за шеи. После курса коллеги стали спрашивать, помолодела ли я! Очень довольна.</p>
     </div>
+  </div>
+
+  <div class="cta-strip fi">
+    <div class="cs-text">Хочу такой же результат</div>
+    <button class="cs-btn" onclick="openPopup()">Заказать →</button>
   </div>
 </section>
 
-<div class="divider"></div>
+<div class="div"></div>
 
-<!-- ══ КАК ЗАКАЗАТЬ ══ -->
+<!-- ══════════════════════════
+     КАК ЗАКАЗАТЬ
+══════════════════════════ -->
 <section id="how">
   <p class="sec-tag fi">Всё просто</p>
   <h2 class="sec-title fi">Как сделать<br>заказ</h2>
+
   <div class="steps fi">
     <div class="step">
       <div class="step-lw"><div class="step-num">1</div><div class="step-line"></div></div>
-      <div class="step-body"><div class="step-title">Оставьте заявку</div><div class="step-desc">Заполните форму — имя и номер телефона</div></div>
+      <div class="step-body"><div class="s-title">Оставьте заявку</div><div class="s-desc">Нажмите кнопку и заполните форму — имя и телефон</div></div>
     </div>
     <div class="step">
       <div class="step-lw"><div class="step-num">2</div><div class="step-line"></div></div>
-      <div class="step-body"><div class="step-title">Звонок оператора</div><div class="step-desc">Свяжемся и уточним детали доставки</div></div>
+      <div class="step-body"><div class="s-title">Звонок оператора</div><div class="s-desc">Свяжемся и уточним детали доставки</div></div>
     </div>
     <div class="step">
       <div class="step-lw"><div class="step-num">3</div><div class="step-line"></div></div>
-      <div class="step-body"><div class="step-title">Доставка 1–2 дня</div><div class="step-desc">По всему Узбекистану прямо до двери</div></div>
+      <div class="step-body"><div class="s-title">Доставка 1–2 дня</div><div class="s-desc">По всему Узбекистану прямо до двери</div></div>
     </div>
     <div class="step">
       <div class="step-lw"><div class="step-num">4</div></div>
-      <div class="step-body"><div class="step-title">Оплата при получении</div><div class="step-desc">Платите только когда держите товар в руках</div></div>
+      <div class="step-body"><div class="s-title">Оплата при получении</div><div class="s-desc">Платите только когда держите товар в руках</div></div>
     </div>
   </div>
-  <a class="btn-cta fi" href="#final-form">Заказать сейчас</a>
+
+  <button class="btn-hero fi" onclick="openPopup()">Заказать со скидкой 50% →</button>
 </section>
 
-<div class="divider"></div>
+<div class="div"></div>
 
-<!-- ══ ГАРАНТИИ ══ -->
+<!-- ══════════════════════════
+     ГАРАНТИИ
+══════════════════════════ -->
 <section id="guarantees">
-  <p class="sec-tag fi">Мы заботимся о вас</p>
-  <h2 class="sec-title fi">Покупайте<br>без риска</h2>
-  <div class="fi">
-    <div class="guarantee-card"><div class="g-icon">💳</div><div><div class="g-title">Оплата при получении</div><div class="g-desc">Платите только после того, как получили товар</div></div></div>
-    <div class="guarantee-card"><div class="g-icon">🏆</div><div><div class="g-title">Оригинальный товар</div><div class="g-desc">Официальный дистрибьютор в Узбекистане</div></div></div>
-    <div class="guarantee-card"><div class="g-icon">🔄</div><div><div class="g-title">Обмен и возврат 30 дней</div><div class="g-desc">Вернём деньги без вопросов, если не подойдёт</div></div></div>
-    <div class="guarantee-card"><div class="g-icon">🚚</div><div><div class="g-title">Быстрая доставка</div><div class="g-desc">1–2 рабочих дня по всему Узбекистану</div></div></div>
-  </div>
-  <div class="cta-strip fi" style="background:var(--rose);">
-    <div class="cta-strip-text" style="color:white;">Ничем не рискуете.<br>Попробуйте сегодня!</div>
-    <a class="cta-strip-btn" href="#final-form" style="background:white;color:var(--rose);">Заказать</a>
-  </div>
-</section>
+  <p class="sec-tag fi">Покупайте без риска</p>
+  <h2 class="sec-title fi">Мы заботимся<br>о вас</h2>
 
-<div class="divider"></div>
-
-<!-- ══ ФІНАЛЬНА ФОРМА ══ -->
-<section id="final-form">
-  <p class="sec-tag fi">Специальное предложение</p>
-  <h2 class="sec-title fi">Оформите<br>заказ сейчас</h2>
-  <p class="sec-sub fi">Акция действует ограниченное время — успейте по сниженной цене</p>
-
-  <div class="timer-row fi">
-    <div class="timer-block"><span class="t-num" id="th">05</span><span class="t-lbl">часов</span></div>
-    <span class="t-sep">:</span>
-    <div class="timer-block"><span class="t-num" id="tm">37</span><span class="t-lbl">минут</span></div>
-    <span class="t-sep">:</span>
-    <div class="timer-block"><span class="t-num" id="ts">22</span><span class="t-lbl">секунд</span></div>
+  <div class="g-cards fi">
+    <div class="g-card">
+      <div class="g-ico">💳</div>
+      <div><div class="g-title">Оплата при получении</div><div class="g-desc">Платите только после получения товара</div></div>
+    </div>
+    <div class="g-card">
+      <div class="g-ico">🏆</div>
+      <div><div class="g-title">Оригинальный товар</div><div class="g-desc">Официальный дистрибьютор в Узбекистане</div></div>
+    </div>
+    <div class="g-card">
+      <div class="g-ico">🔄</div>
+      <div><div class="g-title">Обмен и возврат 30 дней</div><div class="g-desc">Вернём деньги без вопросов</div></div>
+    </div>
+    <div class="g-card">
+      <div class="g-ico">🚚</div>
+      <div><div class="g-title">Быстрая доставка</div><div class="g-desc">1–2 рабочих дня по всему Узбекистану</div></div>
+    </div>
   </div>
 
-  <div class="offer-chips fi">
-    <span class="chip">🎁 Скидка 50%</span>
-    <span class="chip">🎁 3-я маска в подарок</span>
-    <span class="chip">📦 Доставка до двери</span>
-  </div>
-
-  <div class="urgency fi">
-    <span style="font-size:20px;">🔴</span>
-    <div>Осталось по акции: <strong>27 масок.</strong> Успейте оформить!</div>
-  </div>
-
-  <div id="final-form-fields">
-    <input class="ff-input fi" type="text" id="f-name"  placeholder="Ваше имя"      autocomplete="name">
-    <input class="ff-input fi" type="tel"  id="f-phone" placeholder="Номер телефона" autocomplete="tel">
-    <button class="btn-cta fi" onclick="submitFinal()">Получить маску со скидкой 50% →</button>
-    <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
-  </div>
-
-  <div class="success-box" id="final-success">
-    <div class="s-ico">✅</div>
-    <div class="s-title">Заявка принята!</div>
-    <div class="s-sub">Наш менеджер позвонит<br>вам в ближайшее время</div>
+  <div class="cta-strip fi" style="background:var(--deep-r);">
+    <div class="cs-text">Ничем не рискуете.<br>Попробуйте сегодня!</div>
+    <button class="cs-btn" onclick="openPopup()" style="color:var(--deep-r);">Заказать</button>
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<div class="div"></div>
+
+<!-- ══════════════════════════
+     ПОСЛЕДНИЙ ОФФЕР
+══════════════════════════ -->
+<section id="last-cta">
+  <p class="sec-tag fi" style="text-align:center;">Специальное предложение</p>
+  <h2 class="sec-title fi" style="text-align:center; margin-bottom:20px;">Ваша выгода<br>сегодня</h2>
+
+  <div class="last-price-block fi">
+    <div class="lp-row"><span class="ll">Обычная цена</span><span class="lr strike">299 000 сум</span></div>
+    <div class="lp-row"><span class="ll">Скидка 50%</span><span class="lr green">−150 000 сум</span></div>
+    <div class="lp-row" style="font-size:13px;"><span class="ll" style="color:rgba(42,33,24,.4)">3-я маска в подарок</span><span class="lr green" style="font-size:13px;">бесплатно</span></div>
+    <div class="lp-div"></div>
+    <div class="lp-row" style="margin:0;"><span class="ll" style="font-size:16px; font-weight:700; color:var(--text)">Итого</span><span class="lp-total">149 000 сум</span></div>
+  </div>
+
+  <button class="btn-hero fi" onclick="openPopup()">
+    Хочу такой же результат → Заказать
+  </button>
+
+  <div style="margin-top:12px; text-align:center; font-size:12px; color:var(--muted);" class="fi">
+    📦 Доставка 1–2 дня &nbsp;·&nbsp; 💳 Оплата при получении &nbsp;·&nbsp; ↩️ Возврат 30 дней
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">NeckGlow</div>
-  <div class="footer-tag">Лифтинг-маска для шеи</div>
-  <div class="footer-summary">
-    <div class="fs-row"><span class="fl">Обычная цена</span><span class="fr strike">299 000 сум</span></div>
-    <div class="fs-row"><span class="fl">Скидка 50%</span><span class="fr green">−150 000 сум</span></div>
-    <div class="fs-row" style="font-size:12px;"><span class="fl" style="color:rgba(255,255,255,.35)">+ 3-я маска в подарок</span><span class="fr green" style="font-size:12px;">бесплатно</span></div>
-    <div class="fs-divider"></div>
-    <div class="fs-row"><span class="fl" style="color:white;font-weight:600;font-size:15px;">Итого</span><span class="fr gold">149 000 сум</span></div>
+  <div class="f-logo">NeckGlow</div>
+  <div class="f-tag">Лифтинг-маска для шеи</div>
+  <div class="f-hr"></div>
+  <div class="f-links">
+    <a href="#" class="f-link">🔒 Политика конфиденциальности</a>
+    <a href="#" class="f-link">📋 Условия доставки</a>
+    <a href="#" class="f-link">🔄 Возврат и обмен</a>
   </div>
-  <a class="btn-cta" href="#final-form" style="display:block; margin-bottom:28px;">Заказать со скидкой 50%</a>
-  <div class="footer-hr"></div>
-  <div class="footer-links">
-    <a href="#" class="footer-link">🔒 Политика конфиденциальности</a>
-    <a href="#" class="footer-link">📋 Условия доставки</a>
-    <a href="#" class="footer-link">🔄 Возврат и обмен</a>
-  </div>
-  <p class="footer-copy">© 2025 NeckGlow. Официальный дистрибьютор<br>на территории Республики Узбекистан.<br>Все права защищены.</p>
+  <p class="f-copy">© 2025 NeckGlow. Официальный дистрибьютор<br>на территории Республики Узбекистан.<br>Все права защищены.</p>
 </footer>
 
+<!-- ══════════════════════════
+     POPUP
+══════════════════════════ -->
+<div class="overlay" id="overlay" onclick="overlayClick(event)">
+  <div class="popup" id="popup">
+    <div class="popup-handle"></div>
+
+    <!-- FORM STATE -->
+    <div id="popup-form-wrap">
+      <div class="popup-header">
+        <div class="popup-title">Оформить заказ</div>
+        <div class="popup-sub">Заполните форму — менеджер перезвонит через 10 минут</div>
+      </div>
+
+      <!-- PRICE CALC -->
+      <div class="popup-price-card">
+        <div class="pp-row">
+          <span class="pl">Обычная цена</span>
+          <span class="pr strike">299 000 сум</span>
+        </div>
+        <div class="pp-row">
+          <span class="pl">Скидка −50%</span>
+          <span class="pr green">−150 000 сум</span>
+        </div>
+        <div class="pp-row">
+          <span class="pl">3-я маска в подарок</span>
+          <span class="pr gift">🎁 бесплатно</span>
+        </div>
+        <div class="pp-div"></div>
+        <div class="pp-total-row">
+          <span class="pp-total-lbl">Итого</span>
+          <span class="pp-total-val">149 000 сум</span>
+        </div>
+        <div class="pp-save">
+          ✅ Вы экономите 150 000 сум + получаете подарок
+        </div>
+      </div>
+
+      <!-- FIELDS -->
+      <div class="popup-fields">
+        <label class="p-label">Ваше имя</label>
+        <input class="p-input" type="text" id="p-name" placeholder="Например: Нилуфар" autocomplete="name">
+        <label class="p-label">Номер телефона</label>
+        <input class="p-input" type="tel"  id="p-phone" placeholder="+998 __ ___ __ __" autocomplete="tel">
+        <button class="btn-popup" onclick="submitPopup()">Получить маску со скидкой 50% →</button>
+        <div class="popup-trust">
+          <div class="pt-item">💳 Оплата при получении</div>
+          <div class="pt-item">📦 Доставка 1–2 дня</div>
+        </div>
+        <p class="popup-note">Нажимая кнопку, вы соглашаетесь на обработку<br>персональных данных</p>
+      </div>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="popup-success" id="popup-success">
+      <div class="ps-ico">🎉</div>
+      <div class="ps-title">Заявка принята!</div>
+      <div class="ps-sub">Наш менеджер свяжется<br>с вами в течение 10 минут</div>
+      <div class="ps-steps">
+        <div class="ps-step"><div class="ps-step-ico">📞</div><span>Менеджер уточнит детали заказа</span></div>
+        <div class="ps-step"><div class="ps-step-ico">🚚</div><span>Доставка 1–2 дня по Узбекистану</span></div>
+        <div class="ps-step"><div class="ps-step-ico">💳</div><span>Оплата при получении товара</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-// TIMER
-(function(){
-  const end = new Date(Date.now() + (5*3600+37*60+22)*1000);
-  function pad(n){ return n<10?'0'+n:n; }
-  function tick(){
-    const d = Math.max(0, end-Date.now());
-    document.getElementById('th').textContent = pad(Math.floor(d/3600000));
-    document.getElementById('tm').textContent = pad(Math.floor((d%3600000)/60000));
-    document.getElementById('ts').textContent = pad(Math.floor((d%60000)/1000));
-  }
-  tick(); setInterval(tick,1000);
-})();
-
-// FADE IN
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
-},{threshold:0.1});
-document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
-
-// HERO FORM
-function submitHero(){
-  if(!document.getElementById('h-name').value.trim()||!document.getElementById('h-phone').value.trim()){
-    alert('Пожалуйста, заполните имя и телефон'); return;
-  }
-  document.getElementById('hero-form').style.display='none';
-  document.getElementById('hero-success').style.display='block';
+// ── POPUP ──────────────────────────
+function openPopup() {
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 
-// FINAL FORM
-function submitFinal(){
-  if(!document.getElementById('f-name').value.trim()||!document.getElementById('f-phone').value.trim()){
-    alert('Пожалуйста, заполните имя и телефон'); return;
-  }
-  document.getElementById('final-form-fields').style.display='none';
-  document.getElementById('final-success').style.display='block';
+function closePopup() {
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
 }
+
+function overlayClick(e) {
+  if (e.target === document.getElementById('overlay')) closePopup();
+}
+
+// swipe down to close
+let startY = 0;
+document.getElementById('popup').addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: true });
+document.getElementById('popup').addEventListener('touchend', e => {
+  if (e.changedTouches[0].clientY - startY > 80) closePopup();
+}, { passive: true });
+
+// ── SUBMIT ─────────────────────────
+function submitPopup() {
+  const name  = document.getElementById('p-name').value.trim();
+  const phone = document.getElementById('p-phone').value.trim();
+  if (!name || !phone) { alert('Пожалуйста, заполните имя и телефон'); return; }
+  document.getElementById('popup-form-wrap').style.display = 'none';
+  document.getElementById('popup-success').style.display = 'block';
+}
+
+// ── FADE IN ─────────────────────────
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
