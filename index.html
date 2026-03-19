@@ -3,1334 +3,884 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Лифтинг-маска для шеи</title>
+<title>Лифтинг-маска для шеи | NeckGlow</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --cream: #FAF6F1;
-    --blush: #E8C5B0;
-    --rose: #C4806A;
-    --deep: #3D2B1F;
-    --gold: #C9A96E;
-    --white: #FFFFFF;
-    --soft: #F5EDE6;
-    --text: #4A3728;
-    --r: 22px;
-  }
-
-  html, body {
-    font-family: 'Jost', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ─── SNAP SCROLL ─── */
-  .scroll-container {
-    height: 100dvh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .screen {
-    height: 100dvh;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* ─── NAV DOTS ─── */
-  .dots {
-    position: fixed;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    z-index: 999;
-  }
-  .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: rgba(196,128,106,.35);
-    transition: all .3s;
-    cursor: pointer;
-  }
-  .dot.active { background: var(--rose); height: 18px; border-radius: 3px; }
-
-  /* ═══════════════════════════════
-     SCREEN 1 — HERO
-  ═══════════════════════════════ */
-  #s1 {
-    background: linear-gradient(160deg, #2E1A12 0%, #5C3324 55%, #8B5040 100%);
-    justify-content: flex-end;
-    padding-bottom: 0;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,169,110,.18) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 80% at 80% 10%, rgba(232,197,176,.12) 0%, transparent 60%);
-  }
-
-  .hero-badge {
-    position: absolute;
-    top: 18px; right: 18px;
-    background: var(--gold);
-    color: var(--deep);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 6px 14px;
-    border-radius: 30px;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 0 24px 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .hero-eyebrow {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 14px;
-    font-weight: 500;
-  }
-
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 46px;
-    line-height: 1.1;
-    color: var(--white);
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-
-  .hero-title span { color: var(--blush); }
-
-  .hero-sub {
-    font-size: 15px;
-    color: rgba(255,255,255,.72);
-    line-height: 1.55;
-    margin-bottom: 28px;
-    font-weight: 300;
-  }
-
-  .hero-price-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 22px;
-  }
-
-  .price-old {
-    font-size: 16px;
-    color: rgba(255,255,255,.4);
-    text-decoration: line-through;
-    font-weight: 300;
-  }
-
-  .price-new {
-    font-size: 32px;
-    font-family: 'Cormorant Garamond', serif;
-    color: var(--gold);
-    font-weight: 700;
-  }
-
-  .price-badge {
-    background: #E05555;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 20px;
-    letter-spacing: .5px;
-  }
-
-  .hero-gift {
-    background: rgba(201,169,110,.18);
-    border: 1px solid rgba(201,169,110,.4);
-    border-radius: 14px;
-    padding: 12px 16px;
-    margin-bottom: 24px;
-    font-size: 14px;
-    color: var(--gold);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .hero-gift strong { color: #fff; }
-
-  .btn-primary {
-    width: 100%;
-    background: linear-gradient(135deg, var(--gold) 0%, #B8854A 100%);
-    color: var(--deep);
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: .5px;
-    border: none;
-    border-radius: var(--r);
-    padding: 18px;
-    cursor: pointer;
-    box-shadow: 0 8px 30px rgba(201,169,110,.45);
-    transition: transform .15s, box-shadow .15s;
-    text-transform: uppercase;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-  }
-  .btn-primary:active { transform: scale(.97); }
-
-  .hero-stock {
-    margin-top: 12px;
-    font-size: 12px;
-    color: rgba(255,255,255,.5);
-    text-align: center;
-    letter-spacing: .5px;
-  }
-
-  .hero-stock span { color: #E05555; font-weight: 700; }
-
-  .hero-bottom {
-    background: rgba(0,0,0,.25);
-    backdrop-filter: blur(10px);
-    padding: 14px 24px;
-    display: flex;
-    justify-content: space-around;
-    border-top: 1px solid rgba(255,255,255,.08);
-  }
-
-  .trust-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    font-size: 10px;
-    color: rgba(255,255,255,.6);
-    letter-spacing: .5px;
-    text-transform: uppercase;
-    text-align: center;
-  }
-
-  .trust-item .ico { font-size: 20px; }
-
-  /* ═══════════════════════════════
-     SCREEN 2 — PAIN / PROBLEM
-  ═══════════════════════════════ */
-  #s2 {
-    background: var(--cream);
-    padding: 40px 24px;
-    justify-content: center;
-  }
-
-  .section-tag {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--rose);
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 38px;
-    line-height: 1.15;
-    color: var(--deep);
-    font-weight: 600;
-    margin-bottom: 22px;
-  }
-
-  .pain-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 28px;
-  }
-
-  .pain-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    background: var(--white);
-    border-radius: 16px;
-    padding: 16px;
-    box-shadow: 0 2px 16px rgba(61,43,31,.07);
-  }
-
-  .pain-icon {
-    font-size: 26px;
-    flex-shrink: 0;
-    width: 44px; height: 44px;
-    background: var(--soft);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  .pain-text { font-size: 15px; line-height: 1.5; color: var(--text); }
-  .pain-text strong { color: var(--deep); display: block; margin-bottom: 2px; font-size: 16px; }
-
-  .solution-bar {
-    background: linear-gradient(135deg, var(--rose) 0%, #A0614D 100%);
-    border-radius: var(--r);
-    padding: 18px 20px;
-    color: white;
-    text-align: center;
-    font-size: 16px;
-    line-height: 1.5;
-    font-weight: 500;
-  }
-
-  .solution-bar strong { font-size: 20px; display: block; margin-bottom: 4px; font-family: 'Cormorant Garamond', serif; font-weight: 700; }
-
-  /* ═══════════════════════════════
-     SCREEN 3 — BEFORE / AFTER
-  ═══════════════════════════════ */
-  #s3 {
-    background: var(--deep);
-    padding: 36px 24px;
-    justify-content: center;
-  }
-
-  .ba-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 38px;
-    color: var(--white);
-    margin-bottom: 6px;
-    font-weight: 600;
-  }
-
-  .ba-sub { font-size: 13px; color: rgba(255,255,255,.5); margin-bottom: 24px; letter-spacing: .5px; }
-
-  .ba-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 22px;
-  }
-
-  .ba-card {
-    border-radius: 18px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .ba-card-img {
-    width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-    display: block;
-  }
-
-  .ba-placeholder {
-    width: 100%;
-    aspect-ratio: 3/4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .ba-before .ba-placeholder { background: linear-gradient(160deg, #4A3728 0%, #2E1A12 100%); }
-  .ba-after .ba-placeholder { background: linear-gradient(160deg, #8B5040 0%, #C4806A 100%); }
-
-  .ba-placeholder .face { font-size: 52px; }
-  .ba-placeholder .label-sm { font-size: 11px; color: rgba(255,255,255,.7); letter-spacing: 1px; }
-
-  .ba-label {
-    position: absolute;
-    bottom: 10px; left: 10px;
-    background: rgba(0,0,0,.55);
-    backdrop-filter: blur(6px);
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 5px 10px;
-    border-radius: 20px;
-  }
-
-  .ba-after .ba-label { background: rgba(201,169,110,.8); color: var(--deep); }
-
-  .ba-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-
-  .ba-stat {
-    background: rgba(255,255,255,.07);
-    border-radius: 14px;
-    padding: 14px 8px;
-    text-align: center;
-  }
-
-  .ba-stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 30px;
-    color: var(--gold);
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .ba-stat-text { font-size: 10px; color: rgba(255,255,255,.55); letter-spacing: .5px; line-height: 1.4; }
-
-  /* ═══════════════════════════════
-     SCREEN 4 — BENEFITS
-  ═══════════════════════════════ */
-  #s4 {
-    background: var(--soft);
-    padding: 36px 24px;
-    justify-content: center;
-  }
-
-  .benefits-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-
-  .benefit-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 20px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    box-shadow: 0 2px 20px rgba(61,43,31,.07);
-    transition: transform .2s;
-  }
-
-  .benefit-card:first-child {
-    grid-column: span 2;
-    flex-direction: row;
-    align-items: center;
-    background: linear-gradient(135deg, var(--rose) 0%, #A0614D 100%);
-    color: white;
-  }
-
-  .benefit-icon { font-size: 32px; }
-  .benefit-title { font-size: 15px; font-weight: 600; color: var(--deep); line-height: 1.3; }
-  .benefit-desc { font-size: 12px; color: #8A7060; line-height: 1.5; }
-
-  .benefit-card:first-child .benefit-title { color: white; font-size: 17px; }
-  .benefit-card:first-child .benefit-desc { color: rgba(255,255,255,.8); }
-
-  .benefit-card:first-child .benefit-text { flex: 1; }
-
-  .cta-strip {
-    background: var(--deep);
-    border-radius: var(--r);
-    padding: 18px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-
-  .cta-strip-text { font-size: 15px; color: white; line-height: 1.4; font-weight: 500; flex: 1; }
-  .cta-strip-btn {
-    background: var(--gold);
-    color: var(--deep);
-    font-size: 13px;
-    font-weight: 700;
-    padding: 12px 16px;
-    border-radius: 14px;
-    border: none;
-    cursor: pointer;
-    white-space: nowrap;
-    flex-shrink: 0;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-  }
-
-  /* ═══════════════════════════════
-     SCREEN 5 — REVIEWS
-  ═══════════════════════════════ */
-  #s5 {
-    background: var(--cream);
-    padding: 36px 24px;
-    justify-content: center;
-  }
-
-  .reviews-scroll {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-
-  .review-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 2px 20px rgba(61,43,31,.06);
-    position: relative;
-  }
-
-  .review-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-
-  .review-avatar {
-    width: 46px; height: 46px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--blush), var(--rose));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-
-  .review-name { font-weight: 600; font-size: 16px; color: var(--deep); }
-  .review-stars { color: var(--gold); font-size: 13px; letter-spacing: 1px; }
-  .review-city { font-size: 11px; color: #A89080; }
-
-  .review-text { font-size: 14px; line-height: 1.6; color: var(--text); }
-
-  .review-badge {
-    position: absolute;
-    top: 16px; right: 16px;
-    background: #E8F5E9;
-    color: #2E7D32;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 4px 8px;
-    border-radius: 20px;
-    letter-spacing: .5px;
-  }
-
-  .reviews-count {
-    text-align: center;
-    font-size: 13px;
-    color: #A89080;
-    margin-bottom: 16px;
-  }
-
-  /* ═══════════════════════════════
-     SCREEN 6 — HOW TO ORDER
-  ═══════════════════════════════ */
-  #s6 {
-    background: var(--deep);
-    padding: 36px 24px;
-    justify-content: center;
-  }
-
-  .steps { display: flex; flex-direction: column; gap: 0; margin-bottom: 24px; }
-
-  .step {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    position: relative;
-    padding-bottom: 20px;
-  }
-
-  .step:last-child { padding-bottom: 0; }
-
-  .step-line-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-shrink: 0;
-  }
-
-  .step-num {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--gold) 0%, #B8854A 100%);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 700;
-    color: var(--deep);
-    flex-shrink: 0;
-  }
-
-  .step-connector {
-    width: 2px;
-    flex: 1;
-    background: rgba(201,169,110,.25);
-    min-height: 20px;
-    margin-top: 4px;
-  }
-
-  .step:last-child .step-connector { display: none; }
-
-  .step-body { padding-top: 8px; }
-  .step-title { font-size: 17px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
-  .step-desc { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.5; }
-
-  /* ═══════════════════════════════
-     SCREEN 7 — GUARANTEES
-  ═══════════════════════════════ */
-  #s7 {
-    background: var(--soft);
-    padding: 36px 24px;
-    justify-content: center;
-  }
-
-  .guarantees { display: flex; flex-direction: column; gap: 14px; margin-bottom: 22px; }
-
-  .guarantee-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    box-shadow: 0 2px 16px rgba(61,43,31,.06);
-  }
-
-  .g-icon {
-    width: 56px; height: 56px;
-    border-radius: 16px;
-    background: var(--soft);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px;
-    flex-shrink: 0;
-  }
-
-  .g-title { font-size: 16px; font-weight: 600; color: var(--deep); margin-bottom: 3px; }
-  .g-desc { font-size: 13px; color: #8A7060; line-height: 1.5; }
-
-  /* ═══════════════════════════════
-     SCREEN 8 — FORM
-  ═══════════════════════════════ */
-  #s8 {
-    background: linear-gradient(160deg, #2E1A12 0%, #5C3324 60%, #8B5040 100%);
-    padding: 36px 24px;
-    justify-content: center;
-  }
-
-  .form-eyebrow {
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    font-weight: 500;
-  }
-
-  .form-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 38px;
-    color: var(--white);
-    font-weight: 600;
-    line-height: 1.15;
-    margin-bottom: 8px;
-  }
-
-  .form-sub { font-size: 14px; color: rgba(255,255,255,.6); margin-bottom: 24px; line-height: 1.5; }
-
-  .offer-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 24px;
-  }
-
-  .chip {
-    background: rgba(201,169,110,.18);
-    border: 1px solid rgba(201,169,110,.4);
-    color: var(--gold);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 7px 14px;
-    border-radius: 30px;
-    letter-spacing: .5px;
-  }
-
-  .form-group { margin-bottom: 14px; }
-
-  .form-input {
-    width: 100%;
-    background: rgba(255,255,255,.1);
-    border: 1.5px solid rgba(255,255,255,.15);
-    border-radius: 14px;
-    padding: 16px 18px;
-    font-size: 16px;
-    color: var(--white);
-    font-family: 'Jost', sans-serif;
-    outline: none;
-    transition: border-color .2s;
-    -webkit-appearance: none;
-  }
-
-  .form-input::placeholder { color: rgba(255,255,255,.4); }
-  .form-input:focus { border-color: var(--gold); }
-
-  .form-note {
-    font-size: 11px;
-    color: rgba(255,255,255,.35);
-    text-align: center;
-    margin-top: 10px;
-    line-height: 1.5;
-  }
-
-  .urgency-bar {
-    background: rgba(224,85,85,.15);
-    border: 1px solid rgba(224,85,85,.35);
-    border-radius: 14px;
-    padding: 14px 16px;
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .urgency-bar .u-ico { font-size: 22px; }
-  .urgency-bar .u-text { font-size: 13px; color: rgba(255,255,255,.85); line-height: 1.4; }
-  .urgency-bar strong { color: #FF7070; }
-
-  /* ═══════════════════════════════
-     SCREEN 9 — FOOTER
-  ═══════════════════════════════ */
-  #s9 {
-    background: var(--deep);
-    padding: 36px 24px;
-    justify-content: center;
-    min-height: auto;
-    height: auto;
-    scroll-snap-align: start;
-  }
-
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 6px;
-    letter-spacing: 1px;
-  }
-
-  .footer-tagline {
-    font-size: 12px;
-    color: rgba(255,255,255,.4);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-  }
-
-  .footer-divider {
-    height: 1px;
-    background: rgba(255,255,255,.08);
-    margin-bottom: 20px;
-  }
-
-  .footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-
-  .footer-link {
-    color: rgba(255,255,255,.5);
-    font-size: 14px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .footer-copy {
-    font-size: 11px;
-    color: rgba(255,255,255,.25);
-    line-height: 1.6;
-    margin-top: 8px;
-  }
-
-  /* ═══════════════════════════════
-     TIMER
-  ═══════════════════════════════ */
-  .timer-row {
-    display: flex;
-    gap: 6px;
-    align-items: center;
-    margin-bottom: 14px;
-  }
-
-  .timer-block {
-    background: rgba(255,255,255,.1);
-    border-radius: 10px;
-    padding: 8px 10px;
-    text-align: center;
-    min-width: 48px;
-  }
-
-  .timer-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    color: var(--gold);
-    font-weight: 700;
-    line-height: 1;
-    display: block;
-  }
-
-  .timer-label { font-size: 9px; color: rgba(255,255,255,.4); letter-spacing: 1px; text-transform: uppercase; }
-  .timer-sep { font-size: 22px; color: var(--gold); font-weight: 700; margin-top: -6px; }
-
-  /* ─── SCROLL INDICATOR ─── */
-  .scroll-hint {
-    position: absolute;
-    bottom: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    opacity: .5;
-    animation: bounce 2s infinite;
-  }
-
-  .scroll-hint span { font-size: 9px; color: rgba(255,255,255,.7); letter-spacing: 2px; text-transform: uppercase; }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(5px); }
-  }
-
-  .chevron { width: 16px; height: 16px; border-right: 2px solid rgba(255,255,255,.6); border-bottom: 2px solid rgba(255,255,255,.6); transform: rotate(45deg); }
-
-  /* FADE IN */
-  .fade-in { opacity: 0; transform: translateY(18px); transition: opacity .5s, transform .5s; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #FAF6F1;
+  --blush: #E8C5B0;
+  --rose:  #C4806A;
+  --deep:  #3D2B1F;
+  --gold:  #C9A96E;
+  --white: #FFFFFF;
+  --soft:  #F5EDE6;
+  --text:  #4A3728;
+  --r: 20px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ══ HERO ══ */
+.hero {
+  min-height: 100svh;
+  background: linear-gradient(170deg, #1E0F08 0%, #4A2216 45%, #7A3F2E 100%);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 28px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,110,.22) 0%, transparent 70%);
+  top: -60px; right: -80px;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,128,106,.18) 0%, transparent 70%);
+  bottom: 80px; left: -60px;
+  pointer-events: none;
+}
+
+.hero-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 22px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.hero-badge-top {
+  background: rgba(201,169,110,.18);
+  border: 1px solid rgba(201,169,110,.4);
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 30px;
+}
+
+.hero-head {
+  padding: 20px 22px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--blush);
+  font-weight: 500;
+  margin-bottom: 10px;
+  opacity: .8;
+}
+
+.hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  line-height: 1.07;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.hero-h1 em  { font-style: italic; color: var(--blush); }
+.hero-h1 .ac { color: var(--gold); font-style: normal; }
+
+.hero-tagline {
+  font-size: 14px;
+  color: rgba(255,255,255,.62);
+  line-height: 1.55;
+  font-weight: 300;
+  margin-bottom: 18px;
+  max-width: 280px;
+}
+
+.hero-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.hero-price .old { font-size: 14px; color: rgba(255,255,255,.38); text-decoration: line-through; }
+.hero-price .new { font-family: 'Cormorant Garamond', serif; font-size: 34px; color: var(--gold); font-weight: 700; line-height: 1; }
+.hero-price .pill { background: #D94F4F; color: #fff; font-size: 11px; font-weight: 700; padding: 4px 9px; border-radius: 20px; }
+
+.hero-gift {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,169,110,.12);
+  border: 1px solid rgba(201,169,110,.35);
+  border-radius: 30px;
+  padding: 7px 14px;
+  font-size: 13px;
+  color: var(--gold);
+  margin-bottom: 22px;
+  font-weight: 500;
+}
+.hero-gift strong { color: #fff; }
+
+/* FORM CARD */
+.form-card {
+  margin: 0 18px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.13);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 24px;
+  padding: 22px 20px 20px;
+  position: relative;
+  z-index: 3;
+}
+
+.mask-float {
+  position: absolute;
+  right: -8px;
+  top: -72px;
+  width: 108px;
+  height: 108px;
+  z-index: 10;
+  filter: drop-shadow(0 10px 28px rgba(201,169,110,.5));
+  animation: floaty 4s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%,100% { transform: translateY(0) rotate(-5deg); }
+  50%      { transform: translateY(-9px) rotate(-2deg); }
+}
+
+.form-card-label {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.45);
+  margin-bottom: 14px;
+}
+
+.finput {
+  width: 100%;
+  background: rgba(255,255,255,.09);
+  border: 1.5px solid rgba(255,255,255,.15);
+  border-radius: 14px;
+  padding: 15px 16px;
+  font-size: 16px;
+  color: var(--white);
+  font-family: 'Jost', sans-serif;
+  outline: none;
+  margin-bottom: 10px;
+  transition: border-color .2s;
+  -webkit-appearance: none;
+  display: block;
+}
+.finput::placeholder { color: rgba(255,255,255,.38); }
+.finput:focus { border-color: var(--gold); }
+
+.btn-cta {
+  width: 100%;
+  background: linear-gradient(135deg, #D4A657 0%, #A8703A 100%);
+  color: var(--deep);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  border: none;
+  border-radius: 14px;
+  padding: 17px;
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(201,169,110,.4);
+  transition: transform .15s;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Jost', sans-serif;
+}
+.btn-cta:active { transform: scale(.97); }
+
+.form-micro {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+.form-micro span {
+  font-size: 10px;
+  color: rgba(255,255,255,.35);
+  display: flex; align-items: center; gap: 4px;
+}
+
+.hero-stock {
+  margin: 14px 18px 0;
+  background: rgba(217,79,79,.12);
+  border: 1px solid rgba(217,79,79,.28);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,.65);
+  display: flex; align-items: center; gap: 8px;
+}
+.hero-stock .pulse {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #E05555; flex-shrink: 0;
+  animation: pulse 1.5s infinite;
+}
+.hero-stock strong { color: #FF7070; }
+
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:.5; transform:scale(.7); }
+}
+
+.trust-row {
+  display: flex; gap: 6px;
+  padding: 12px 18px 0;
+  overflow-x: auto; scrollbar-width: none;
+}
+.trust-row::-webkit-scrollbar { display: none; }
+.trust-pill {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 30px; padding: 7px 12px;
+  white-space: nowrap; font-size: 11px;
+  color: rgba(255,255,255,.6); flex-shrink: 0;
+}
+
+/* ══ DIVIDER ══ */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blush), transparent);
+  margin: 0 22px;
+}
+
+/* ══ SECTIONS ══ */
+section { padding: 48px 22px; }
+
+.sec-tag {
+  font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--rose);
+  font-weight: 600; margin-bottom: 10px;
+}
+
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; line-height: 1.12;
+  color: var(--deep); font-weight: 700; margin-bottom: 8px;
+}
+
+.sec-sub {
+  font-size: 14px; color: #8A7060;
+  line-height: 1.55; margin-bottom: 26px;
+}
+
+.cta-strip {
+  background: var(--deep); border-radius: var(--r);
+  padding: 18px 20px; display: flex;
+  align-items: center; justify-content: space-between;
+  gap: 12px; margin-top: 22px;
+}
+.cta-strip-text { font-size: 14px; color: white; line-height: 1.4; font-weight: 500; flex: 1; }
+.cta-strip-btn {
+  background: var(--gold); color: var(--deep);
+  font-size: 13px; font-weight: 700;
+  padding: 12px 16px; border-radius: 12px; border: none;
+  cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  text-decoration: none; display: block;
+  font-family: 'Jost', sans-serif;
+}
+
+/* ══ PAIN ══ */
+#pain { background: var(--cream); }
+
+.pain-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
+.pain-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: var(--white); border-radius: 16px; padding: 16px;
+  box-shadow: 0 2px 16px rgba(61,43,31,.06);
+}
+.pain-icon {
+  font-size: 24px; width: 46px; height: 46px;
+  background: var(--soft); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.pain-title { font-size: 15px; font-weight: 600; color: var(--deep); margin-bottom: 2px; }
+.pain-text  { font-size: 13px; color: #8A7060; line-height: 1.5; }
+
+.solution-bar {
+  background: linear-gradient(135deg, var(--rose) 0%, #9E5E4A 100%);
+  border-radius: var(--r); padding: 20px; color: white; text-align: center;
+}
+.solution-bar .sb-title { font-family: 'Cormorant Garamond',serif; font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+.solution-bar .sb-text  { font-size: 14px; opacity: .85; line-height: 1.5; }
+
+/* ══ BEFORE/AFTER ══ */
+#ba { background: var(--deep); padding: 48px 22px; }
+#ba .sec-tag   { color: var(--blush); }
+#ba .sec-title { color: var(--white); }
+#ba .sec-sub   { color: rgba(255,255,255,.5); margin-bottom: 22px; }
+
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.ba-card { border-radius: 18px; overflow: hidden; position: relative; }
+.ba-visual {
+  aspect-ratio: 3/4; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px; padding: 16px;
+}
+.ba-before .ba-visual { background: linear-gradient(160deg, #4A3728 0%, #2E1A12 100%); }
+.ba-after  .ba-visual { background: linear-gradient(160deg, #8B5040 0%, #C4806A 100%); }
+.ba-face { font-size: 46px; }
+.ba-desc { font-size: 11px; color: rgba(255,255,255,.65); text-align: center; line-height: 1.5; }
+.ba-lbl {
+  position: absolute; bottom: 10px; left: 10px;
+  background: rgba(0,0,0,.5); backdrop-filter: blur(4px);
+  color: white; font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;
+}
+.ba-after .ba-lbl { background: rgba(201,169,110,.85); color: var(--deep); }
+
+.ba-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.ba-stat { background: rgba(255,255,255,.07); border-radius: 14px; padding: 14px 8px; text-align: center; }
+.ba-stat-num { font-family: 'Cormorant Garamond',serif; font-size: 30px; color: var(--gold); font-weight: 700; line-height: 1; margin-bottom: 4px; }
+.ba-stat-lbl { font-size: 10px; color: rgba(255,255,255,.5); line-height: 1.4; }
+
+/* ══ BENEFITS ══ */
+#benefits { background: var(--soft); }
+.benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.benefit-card { background: var(--white); border-radius: 20px; padding: 18px 14px; box-shadow: 0 2px 16px rgba(61,43,31,.06); }
+.benefit-card.wide {
+  grid-column: span 2;
+  background: linear-gradient(135deg, var(--rose) 0%, #9E5E4A 100%);
+  display: flex; align-items: center; gap: 14px;
+}
+.b-icon { font-size: 30px; margin-bottom: 8px; }
+.b-title { font-size: 14px; font-weight: 600; color: var(--deep); margin-bottom: 4px; line-height: 1.3; }
+.b-desc  { font-size: 12px; color: #8A7060; line-height: 1.5; }
+.benefit-card.wide .b-icon  { font-size: 36px; margin: 0; flex-shrink: 0; }
+.benefit-card.wide .b-title { color: white; font-size: 16px; }
+.benefit-card.wide .b-desc  { color: rgba(255,255,255,.78); }
+
+/* ══ REVIEWS ══ */
+#reviews { background: var(--cream); }
+.rating-summary {
+  background: var(--deep); border-radius: var(--r);
+  padding: 18px 20px; display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+}
+.rating-big { font-family:'Cormorant Garamond',serif; font-size:52px; color:var(--gold); font-weight:700; line-height:1; flex-shrink:0; }
+.rating-stars-big { font-size:18px; color:var(--gold); margin-bottom:4px; }
+.rating-count { font-size:12px; color:rgba(255,255,255,.45); }
+
+.review-card {
+  background: var(--white); border-radius: 20px; padding: 20px;
+  box-shadow: 0 2px 20px rgba(61,43,31,.06); margin-bottom: 14px; position: relative;
+}
+.review-header { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.review-ava {
+  width:46px; height:46px; border-radius:50%;
+  background:linear-gradient(135deg,var(--blush),var(--rose));
+  display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;
+}
+.review-name  { font-weight:600; font-size:15px; color:var(--deep); }
+.review-stars { color:var(--gold); font-size:12px; letter-spacing:1px; }
+.review-city  { font-size:11px; color:#A89080; }
+.review-text  { font-size:14px; line-height:1.6; color:var(--text); }
+.verified-badge {
+  position:absolute; top:16px; right:16px;
+  background:#E8F5E9; color:#2E7D32;
+  font-size:9px; font-weight:700;
+  padding:4px 8px; border-radius:20px;
+  letter-spacing:.5px; text-transform:uppercase;
+}
+
+/* ══ HOW TO ORDER ══ */
+#how { background: var(--deep); padding: 48px 22px; }
+#how .sec-tag   { color: var(--gold); }
+#how .sec-title { color: var(--white); }
+
+.steps { display:flex; flex-direction:column; gap:0; margin-bottom:26px; }
+.step  { display:flex; gap:16px; padding-bottom:22px; }
+.step:last-child { padding-bottom:0; }
+.step-lw { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+.step-num {
+  width:44px; height:44px; border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),#A87A36);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:var(--deep);
+}
+.step-line { width:2px; flex:1; min-height:16px; background:rgba(201,169,110,.2); margin-top:4px; }
+.step:last-child .step-line { display:none; }
+.step-body { padding-top:8px; }
+.step-title { font-size:17px; font-weight:600; color:white; margin-bottom:4px; }
+.step-desc  { font-size:13px; color:rgba(255,255,255,.5); line-height:1.5; }
+
+/* ══ GUARANTEES ══ */
+#guarantees { background: var(--soft); }
+.guarantee-card {
+  background:var(--white); border-radius:18px; padding:18px;
+  display:flex; align-items:center; gap:14px; margin-bottom:12px;
+  box-shadow:0 2px 14px rgba(61,43,31,.06);
+}
+.g-icon { width:52px; height:52px; border-radius:14px; background:var(--soft); display:flex; align-items:center; justify-content:center; font-size:26px; flex-shrink:0; }
+.g-title { font-size:15px; font-weight:600; color:var(--deep); margin-bottom:2px; }
+.g-desc  { font-size:12px; color:#8A7060; line-height:1.5; }
+
+/* ══ FINAL FORM ══ */
+#final-form {
+  background: linear-gradient(170deg, #1E0F08 0%, #4A2216 50%, #7A3F2E 100%);
+  padding: 48px 22px 40px;
+  position: relative; overflow: hidden;
+}
+#final-form::before {
+  content:''; position:absolute; width:280px; height:280px;
+  background:radial-gradient(circle,rgba(201,169,110,.15) 0%,transparent 70%);
+  top:-60px; right:-60px; pointer-events:none;
+}
+#final-form .sec-tag   { color: var(--gold); }
+#final-form .sec-title { color: var(--white); }
+#final-form .sec-sub   { color: rgba(255,255,255,.55); margin-bottom: 20px; }
+
+.timer-row { display:flex; gap:8px; align-items:center; margin-bottom:20px; }
+.timer-block {
+  background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.12);
+  border-radius:12px; padding:10px 12px; text-align:center; min-width:54px;
+}
+.t-num { font-family:'Cormorant Garamond',serif; font-size:30px; color:var(--gold); font-weight:700; line-height:1; display:block; }
+.t-lbl { font-size:9px; color:rgba(255,255,255,.38); letter-spacing:1px; text-transform:uppercase; }
+.t-sep { font-size:24px; color:var(--gold); font-weight:700; }
+
+.offer-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+.chip { background:rgba(201,169,110,.12); border:1px solid rgba(201,169,110,.35); color:var(--gold); font-size:12px; font-weight:600; padding:7px 13px; border-radius:30px; }
+
+.urgency {
+  background:rgba(217,79,79,.12); border:1px solid rgba(217,79,79,.3);
+  border-radius:14px; padding:13px 16px;
+  display:flex; align-items:center; gap:10px;
+  margin-bottom:18px; font-size:13px; color:rgba(255,255,255,.8); line-height:1.4;
+}
+.urgency strong { color:#FF7070; }
+
+.ff-input {
+  width:100%; background:rgba(255,255,255,.09); border:1.5px solid rgba(255,255,255,.14);
+  border-radius:14px; padding:16px 18px; font-size:16px; color:white;
+  font-family:'Jost',sans-serif; outline:none; margin-bottom:12px;
+  transition:border-color .2s; -webkit-appearance:none; display:block;
+}
+.ff-input::placeholder { color:rgba(255,255,255,.35); }
+.ff-input:focus { border-color:var(--gold); }
+
+.form-note { font-size:10px; color:rgba(255,255,255,.28); text-align:center; margin-top:10px; line-height:1.6; }
+
+.success-box { display:none; text-align:center; padding:24px 0; }
+.success-box .s-ico   { font-size:52px; margin-bottom:12px; }
+.success-box .s-title { font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--gold); margin-bottom:8px; }
+.success-box .s-sub   { font-size:15px; color:rgba(255,255,255,.65); line-height:1.6; }
+
+/* ══ FOOTER ══ */
+footer { background:#160A04; padding:40px 22px 36px; }
+.footer-logo { font-family:'Cormorant Garamond',serif; font-size:26px; color:var(--gold); letter-spacing:1px; margin-bottom:4px; }
+.footer-tag  { font-size:10px; color:rgba(255,255,255,.3); letter-spacing:2px; text-transform:uppercase; margin-bottom:24px; }
+.footer-hr   { height:1px; background:rgba(255,255,255,.07); margin-bottom:20px; }
+.footer-summary { background:rgba(255,255,255,.04); border-radius:16px; padding:18px; margin-bottom:20px; }
+.fs-row { display:flex; justify-content:space-between; margin-bottom:8px; font-size:14px; }
+.fs-row .fl       { color:rgba(255,255,255,.5); }
+.fs-row .fr       { color:rgba(255,255,255,.8); }
+.fs-row .fr.strike{ text-decoration:line-through; color:rgba(255,255,255,.3); }
+.fs-row .fr.green { color:#5ECC7B; font-weight:600; }
+.fs-row .fr.gold  { color:var(--gold); font-size:18px; font-family:'Cormorant Garamond',serif; font-weight:700; }
+.fs-divider { height:1px; background:rgba(255,255,255,.07); margin:12px 0; }
+.footer-links { display:flex; flex-direction:column; gap:12px; margin:20px 0; }
+.footer-link  { color:rgba(255,255,255,.38); font-size:13px; text-decoration:none; display:flex; align-items:center; gap:8px; }
+.footer-copy  { font-size:10px; color:rgba(255,255,255,.2); line-height:1.7; }
+
+/* ══ FADE IN ══ */
+.fi { opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s ease; }
+.fi.show { opacity:1; transform:none; }
 </style>
 </head>
 <body>
 
-<!-- NAV DOTS -->
-<nav class="dots" id="dots">
-  <div class="dot active" onclick="goTo(0)"></div>
-  <div class="dot" onclick="goTo(1)"></div>
-  <div class="dot" onclick="goTo(2)"></div>
-  <div class="dot" onclick="goTo(3)"></div>
-  <div class="dot" onclick="goTo(4)"></div>
-  <div class="dot" onclick="goTo(5)"></div>
-  <div class="dot" onclick="goTo(6)"></div>
-  <div class="dot" onclick="goTo(7)"></div>
-  <div class="dot" onclick="goTo(8)"></div>
-</nav>
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-topbar">
+    <div class="hero-logo">NeckGlow</div>
+    <div class="hero-badge-top">⭐ ХИТ ПРОДАЖ</div>
+  </div>
 
-<div class="scroll-container" id="sc">
+  <div class="hero-head">
+    <p class="hero-eyebrow fi">Омолаживающий уход · 35+</p>
+    <h1 class="hero-h1 fi">
+      Шея <em>выдаёт</em><br>
+      ваш возраст?<br>
+      <span class="ac">Исправим<br>за 14 дней</span>
+    </h1>
+    <p class="hero-tagline fi">Лифтинг-маска специально для нежной кожи шеи. Подтяжка и упругость — уже после первых применений.</p>
+    <div class="hero-price fi">
+      <span class="old">299 000 сум</span>
+      <span class="new">149 000 сум</span>
+      <span class="pill">−50%</span>
+    </div>
+    <div class="hero-gift fi">🎁 Купи 2 — <strong>3-я маска в подарок</strong></div>
+  </div>
 
-  <!-- ══ SCREEN 1 — HERO ══ -->
-  <section class="screen" id="s1">
-    <div class="hero-bg"></div>
-    <div class="hero-badge">⭐ ХИТ ПРОДАЖ</div>
-
-    <div class="hero-content">
-      <p class="hero-eyebrow fade-in">Косметика премиум-класса</p>
-
-      <h1 class="hero-title fade-in">
-        Шея<br>молодеет<br>за <span>14 дней</span>
-      </h1>
-
-      <p class="hero-sub fade-in">
-        Лифтинг-маска для шеи с подтягивающим эффектом. Видимый результат уже после первого применения.
-      </p>
-
-      <div class="hero-price-row fade-in">
-        <span class="price-old">299 000 сум</span>
-        <span class="price-new">149 000 сум</span>
-        <span class="price-badge">−50%</span>
-      </div>
-
-      <div class="hero-gift fade-in">
-        🎁 <span>Купи 2 маски — <strong>3-я в подарок!</strong></span>
-      </div>
-
-      <a href="#s8" class="btn-primary fade-in" onclick="goTo(7)">
-        Получить со скидкой 50%
-      </a>
-
-      <p class="hero-stock fade-in">🔴 Осталось по акции: <span>27 масок</span></p>
+  <div class="form-card fi">
+    <!-- Floating mask SVG -->
+    <div class="mask-float" aria-hidden="true">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="mg" cx="40%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#E8C5B0"/>
+            <stop offset="100%" stop-color="#8B5040"/>
+          </radialGradient>
+          <radialGradient id="sh" cx="30%" cy="25%" r="50%">
+            <stop offset="0%" stop-color="rgba(255,255,255,.5)"/>
+            <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+          </radialGradient>
+          <filter id="bl" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3"/>
+          </filter>
+        </defs>
+        <ellipse cx="60" cy="108" rx="30" ry="6" fill="rgba(0,0,0,.3)" filter="url(#bl)"/>
+        <path d="M60 10 C38 10 20 26 16 48 C12 68 18 86 28 96 C36 104 48 110 60 110 C72 110 84 104 92 96 C102 86 108 68 104 48 C100 26 82 10 60 10Z" fill="url(#mg)"/>
+        <path d="M60 10 C38 10 20 26 16 48 C12 68 18 86 28 96 C36 104 48 110 60 110 C72 110 84 104 92 96 C102 86 108 68 104 48 C100 26 82 10 60 10Z" fill="url(#sh)" opacity=".55"/>
+        <ellipse cx="44" cy="55" rx="7" ry="9" fill="rgba(61,43,31,.5)"/>
+        <ellipse cx="76" cy="55" rx="7" ry="9" fill="rgba(61,43,31,.5)"/>
+        <ellipse cx="46" cy="52" rx="2.5" ry="2" fill="rgba(255,255,255,.55)"/>
+        <ellipse cx="78" cy="52" rx="2.5" ry="2" fill="rgba(255,255,255,.55)"/>
+        <path d="M55 73 Q60 77 65 73" fill="none" stroke="rgba(61,43,31,.3)" stroke-width="1.2"/>
+        <path d="M60 10 C38 10 20 26 16 48 C12 68 18 86 28 96 C36 104 48 110 60 110 C72 110 84 104 92 96 C102 86 108 68 104 48 C100 26 82 10 60 10Z" fill="none" stroke="rgba(201,169,110,.55)" stroke-width="1.5"/>
+        <text x="60" y="91" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.45)" font-family="Jost,sans-serif" letter-spacing="2">NECK MASK</text>
+      </svg>
     </div>
 
-    <div class="hero-bottom">
-      <div class="trust-item">
-        <span class="ico">📦</span>
-        <span>Доставка<br>1–2 дня</span>
-      </div>
-      <div class="trust-item">
-        <span class="ico">💳</span>
-        <span>Оплата при<br>получении</span>
-      </div>
-      <div class="trust-item">
-        <span class="ico">↩️</span>
-        <span>Возврат<br>30 дней</span>
-      </div>
+    <p class="form-card-label">Оформить заказ</p>
+
+    <div id="hero-form">
+      <input class="finput" type="text" id="h-name"  placeholder="Ваше имя"      autocomplete="name">
+      <input class="finput" type="tel"  id="h-phone" placeholder="Номер телефона" autocomplete="tel">
+      <button class="btn-cta" onclick="submitHero()">Получить со скидкой 50% →</button>
     </div>
 
-    <div class="scroll-hint">
-      <div class="chevron"></div>
-      <span>листайте</span>
+    <div id="hero-success" style="display:none; text-align:center; padding:8px 0 4px;">
+      <div style="font-size:36px; margin-bottom:8px;">✅</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--gold); margin-bottom:6px;">Заявка принята!</div>
+      <div style="font-size:13px; color:rgba(255,255,255,.6); line-height:1.5;">Менеджер свяжется с вами<br>в ближайшее время</div>
     </div>
-  </section>
 
-  <!-- ══ SCREEN 2 — PAIN ══ -->
-  <section class="screen" id="s2">
-    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 36px 24px;">
-      <p class="section-tag fade-in">Вы узнаёте себя?</p>
-      <h2 class="section-title fade-in">Шея выдаёт<br>ваш возраст</h2>
-
-      <ul class="pain-list fade-in">
-        <li class="pain-item">
-          <div class="pain-icon">😔</div>
-          <div class="pain-text">
-            <strong>Кожа шеи стала дряблой</strong>
-            Потеряла упругость, появились складки и заломы
-          </div>
-        </li>
-        <li class="pain-item">
-          <div class="pain-icon">😟</div>
-          <div class="pain-text">
-            <strong>Крем для лица не помогает</strong>
-            Нежная кожа шеи требует особого ухода
-          </div>
-        </li>
-        <li class="pain-item">
-          <div class="pain-icon">😣</div>
-          <div class="pain-text">
-            <strong>Стесняетесь открытых нарядов</strong>
-            Хочется выглядеть моложе и увереннее
-          </div>
-        </li>
-      </ul>
-
-      <div class="solution-bar fade-in">
-        <strong>Решение найдено!</strong>
-        Лифтинг-маска создана специально для кожи шеи
-      </div>
+    <div class="form-micro">
+      <span>💳 Оплата при получении</span>
+      <span>📦 Доставка 1–2 дня</span>
     </div>
-  </section>
+  </div>
 
-  <!-- ══ SCREEN 3 — BEFORE/AFTER ══ -->
-  <section class="screen" id="s3">
-    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 36px 24px;">
-      <p class="section-tag" style="color: var(--blush); font-size:10px; letter-spacing:3px; text-transform:uppercase; margin-bottom:6px;" >До и после</p>
-      <h2 class="ba-title fade-in">Результат<br>говорит сам</h2>
-      <p class="ba-sub fade-in">После курса из 10 масок — 2–3 раза в неделю</p>
+  <div class="hero-stock fi">
+    <div class="pulse"></div>
+    <span>Осталось по акции: <strong>27 масок</strong> — успейте!</span>
+  </div>
 
-      <div class="ba-grid fade-in">
-        <div class="ba-card ba-before">
-          <div class="ba-placeholder">
-            <div class="face">😞</div>
-            <div class="label-sm">ДО</div>
-            <div style="font-size:11px; color:rgba(255,255,255,.5); text-align:center; padding:0 12px; line-height:1.4">Дряблость,<br>складки, сухость</div>
-          </div>
-          <div class="ba-label">ДО</div>
-        </div>
-        <div class="ba-card ba-after">
-          <div class="ba-placeholder">
-            <div class="face">😊</div>
-            <div class="label-sm">ПОСЛЕ</div>
-            <div style="font-size:11px; color:rgba(255,255,255,.8); text-align:center; padding:0 12px; line-height:1.4">Упругость,<br>гладкость, лифтинг</div>
-          </div>
-          <div class="ba-label">ПОСЛЕ</div>
-        </div>
-      </div>
+  <div class="trust-row">
+    <div class="trust-pill">✅ Оригинал</div>
+    <div class="trust-pill">↩️ Возврат 30 дней</div>
+    <div class="trust-pill">🏆 1240+ отзывов</div>
+    <div class="trust-pill">🇺🇿 Узбекистан</div>
+  </div>
+</section>
 
-      <div class="ba-stats fade-in">
-        <div class="ba-stat">
-          <div class="ba-stat-num">92%</div>
-          <div class="ba-stat-text">замечают лифтинг</div>
-        </div>
-        <div class="ba-stat">
-          <div class="ba-stat-num">14</div>
-          <div class="ba-stat-text">дней до результата</div>
-        </div>
-        <div class="ba-stat">
-          <div class="ba-stat-num">10</div>
-          <div class="ba-stat-text">масок в наборе</div>
-        </div>
-      </div>
+<div class="divider"></div>
+
+<!-- ══ БОЛИ ══ -->
+<section id="pain">
+  <p class="sec-tag fi">Вы узнаёте себя?</p>
+  <h2 class="sec-title fi">Шея выдаёт<br>ваш возраст</h2>
+  <p class="sec-sub fi">С возрастом кожа шеи теряет упругость быстрее, чем лицо. Обычный крем не справляется.</p>
+  <ul class="pain-list fi">
+    <li class="pain-item">
+      <div class="pain-icon">😔</div>
+      <div><div class="pain-title">Кожа стала дряблой</div><div class="pain-text">Появились складки, провисания, потеря тонуса</div></div>
+    </li>
+    <li class="pain-item">
+      <div class="pain-icon">😟</div>
+      <div><div class="pain-title">Обычный уход не помогает</div><div class="pain-text">Нежная зона шеи требует особой формулы</div></div>
+    </li>
+    <li class="pain-item">
+      <div class="pain-icon">😣</div>
+      <div><div class="pain-title">Стесняетесь открытых нарядов</div><div class="pain-text">Хочется выглядеть моложе и увереннее каждый день</div></div>
+    </li>
+  </ul>
+  <div class="solution-bar fi">
+    <div class="sb-title">Решение найдено!</div>
+    <div class="sb-text">Лифтинг-маска создана именно для кожи шеи — интенсивный уход там, где он нужен больше всего</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ ДО/ПОСЛЕ ══ -->
+<section id="ba">
+  <p class="sec-tag fi">До и после</p>
+  <h2 class="sec-title fi">Результат<br>говорит сам</h2>
+  <p class="sec-sub fi">После курса из 10 масок — применять 2–3 раза в неделю</p>
+  <div class="ba-grid fi">
+    <div class="ba-card ba-before">
+      <div class="ba-visual"><div class="ba-face">😞</div><div class="ba-desc">Дряблость, складки, потеря тонуса</div></div>
+      <div class="ba-lbl">ДО</div>
     </div>
-  </section>
-
-  <!-- ══ SCREEN 4 — BENEFITS ══ -->
-  <section class="screen" id="s4">
-    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 36px 24px;">
-      <p class="section-tag fade-in">Почему выбирают нас</p>
-      <h2 class="section-title fade-in">Преимущества<br>маски</h2>
-
-      <div class="benefits-grid fade-in">
-        <div class="benefit-card">
-          <div class="benefit-icon">✨</div>
-          <div class="benefit-text">
-            <div class="benefit-title">Лифтинг уже после<br>1–2 применений</div>
-            <div class="benefit-desc">Активная формула действует сразу</div>
-          </div>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">💧</div>
-          <div class="benefit-title">Глубокое увлажнение</div>
-          <div class="benefit-desc">Питает нежную кожу шеи изнутри</div>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">🎯</div>
-          <div class="benefit-title">Плотное прилегание</div>
-          <div class="benefit-desc">Компоненты проникают глубже</div>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">📦</div>
-          <div class="benefit-title">10 масок в наборе</div>
-          <div class="benefit-desc">Полный готовый курс ухода</div>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">⏱</div>
-          <div class="benefit-title">20 минут — и готово</div>
-          <div class="benefit-desc">Удобно в любое время дня</div>
-        </div>
-      </div>
-
-      <div class="cta-strip fade-in">
-        <div class="cta-strip-text">Хочу попробовать<br>со скидкой 50%</div>
-        <a class="cta-strip-btn" onclick="goTo(7)">Заказать →</a>
-      </div>
+    <div class="ba-card ba-after">
+      <div class="ba-visual"><div class="ba-face">😊</div><div class="ba-desc">Упругость, гладкость, лифтинг-эффект</div></div>
+      <div class="ba-lbl">ПОСЛЕ</div>
     </div>
-  </section>
+  </div>
+  <div class="ba-stats fi">
+    <div class="ba-stat"><div class="ba-stat-num">92%</div><div class="ba-stat-lbl">замечают лифтинг</div></div>
+    <div class="ba-stat"><div class="ba-stat-num">14</div><div class="ba-stat-lbl">дней до результата</div></div>
+    <div class="ba-stat"><div class="ba-stat-num">10</div><div class="ba-stat-lbl">масок в наборе</div></div>
+  </div>
+  <div class="cta-strip fi" style="background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1);">
+    <div class="cta-strip-text">Хочу такой же результат</div>
+    <a class="cta-strip-btn" href="#final-form">Заказать →</a>
+  </div>
+</section>
 
-  <!-- ══ SCREEN 5 — REVIEWS ══ -->
-  <section class="screen" id="s5">
-    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 36px 24px;">
-      <p class="section-tag fade-in">Отзывы покупателей</p>
-      <h2 class="section-title fade-in">Женщины<br>в восторге</h2>
+<div class="divider"></div>
 
-      <div class="reviews-scroll fade-in">
-        <div class="review-card">
-          <div class="review-badge">✓ Купила</div>
-          <div class="review-header">
-            <div class="review-avatar">👩</div>
-            <div>
-              <div class="review-name">Нилуфар Р.</div>
-              <div class="review-stars">★★★★★</div>
-              <div class="review-city">Ташкент</div>
-            </div>
-          </div>
-          <p class="review-text">После 5 масок заметила разницу — шея подтянулась, кожа стала мягче. Дочь спросила, что я делаю по-другому 😊</p>
-        </div>
-
-        <div class="review-card">
-          <div class="review-badge">✓ Купила</div>
-          <div class="review-header">
-            <div class="review-avatar">👩‍🦳</div>
-            <div>
-              <div class="review-name">Дилноза М.</div>
-              <div class="review-stars">★★★★★</div>
-              <div class="review-city">Самарканд</div>
-            </div>
-          </div>
-          <p class="review-text">Заказала сразу 2 набора — сестре тоже взяла. Доставили быстро, оплатила при получении. Маска очень нежная, запах приятный.</p>
-        </div>
-
-        <div class="review-card">
-          <div class="review-badge">✓ Купила</div>
-          <div class="review-header">
-            <div class="review-avatar">🧕</div>
-            <div>
-              <div class="review-name">Мухаббат А.</div>
-              <div class="review-stars">★★★★★</div>
-              <div class="review-city">Бухара</div>
-            </div>
-          </div>
-          <p class="review-text">Мне 47 лет, всегда переживала из-за шеи. После курса коллеги стали спрашивать, помолодела ли я! Очень довольна.</p>
-        </div>
-      </div>
-
-      <p class="reviews-count fade-in">⭐ Средняя оценка: 4.9 / 5 на основе 1 240 отзывов</p>
+<!-- ══ ПРЕИМУЩЕСТВА ══ -->
+<section id="benefits">
+  <p class="sec-tag fi">Почему выбирают нас</p>
+  <h2 class="sec-title fi">5 причин<br>попробовать</h2>
+  <div class="benefits-grid fi">
+    <div class="benefit-card wide">
+      <div class="b-icon">✨</div>
+      <div><div class="b-title">Лифтинг уже после 1–2 применений</div><div class="b-desc">Видимый результат с первых дней</div></div>
     </div>
-  </section>
-
-  <!-- ══ SCREEN 6 — HOW TO ORDER ══ -->
-  <section class="screen" id="s6">
-    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 36px 24px;">
-      <p style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px;" class="fade-in">Всё просто</p>
-      <h2 style="font-family:'Cormorant Garamond',serif; font-size:38px; color:var(--white); font-weight:600; margin-bottom:28px; line-height:1.15;" class="fade-in">Как сделать<br>заказ</h2>
-
-      <div class="steps fade-in">
-        <div class="step">
-          <div class="step-line-wrap">
-            <div class="step-num">1</div>
-            <div class="step-connector"></div>
-          </div>
-          <div class="step-body">
-            <div class="step-title">Оставьте заявку</div>
-            <div class="step-desc">Заполните форму ниже — имя и номер телефона</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-line-wrap">
-            <div class="step-num">2</div>
-            <div class="step-connector"></div>
-          </div>
-          <div class="step-body">
-            <div class="step-title">Звонок оператора</div>
-            <div class="step-desc">Мы свяжемся и уточним детали доставки</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-line-wrap">
-            <div class="step-num">3</div>
-            <div class="step-connector"></div>
-          </div>
-          <div class="step-body">
-            <div class="step-title">Доставка 1–2 дня</div>
-            <div class="step-desc">Доставляем по всему Узбекистану до двери</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-line-wrap">
-            <div class="step-num">4</div>
-          </div>
-          <div class="step-body">
-            <div class="step-title">Оплата при получении</div>
-            <div class="step-desc">Платите только когда держите товар в руках</div>
-          </div>
-        </div>
-      </div>
-
-      <a class="btn-primary fade-in" style="background: linear-gradient(135deg, var(--gold) 0%, #B8854A 100%);" onclick="goTo(7)">
-        Заказать сейчас
-      </a>
+    <div class="benefit-card">
+      <div class="b-icon">💧</div><div class="b-title">Глубокое увлажнение</div><div class="b-desc">Питает нежную кожу шеи</div>
     </div>
-  </section>
-
-  <!-- ══ SCREEN 7 — GUARANTEES ══ -->
-  <section class="screen" id="s7">
-    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 36px 24px;">
-      <p class="section-tag fade-in">Мы заботимся о вас</p>
-      <h2 class="section-title fade-in">Покупайте<br>без риска</h2>
-
-      <div class="guarantees fade-in">
-        <div class="guarantee-card">
-          <div class="g-icon">💳</div>
-          <div>
-            <div class="g-title">Оплата при получении</div>
-            <div class="g-desc">Платите только после того, как получили товар</div>
-          </div>
-        </div>
-        <div class="guarantee-card">
-          <div class="g-icon">🏆</div>
-          <div>
-            <div class="g-title">Оригинальный товар</div>
-            <div class="g-desc">Официальный дистрибьютор в Узбекистане</div>
-          </div>
-        </div>
-        <div class="guarantee-card">
-          <div class="g-icon">🔄</div>
-          <div>
-            <div class="g-title">Обмен и возврат 30 дней</div>
-            <div class="g-desc">Если что-то не так — вернём деньги без вопросов</div>
-          </div>
-        </div>
-        <div class="guarantee-card">
-          <div class="g-icon">🚚</div>
-          <div>
-            <div class="g-title">Быстрая доставка</div>
-            <div class="g-desc">1–2 рабочих дня по всему Узбекистану</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="cta-strip fade-in" style="background: var(--rose);">
-        <div class="cta-strip-text" style="color:white;">Ничем не рискуете.<br>Попробуйте сегодня!</div>
-        <a class="cta-strip-btn" onclick="goTo(7)" style="background:white; color:var(--rose);">Заказать</a>
-      </div>
+    <div class="benefit-card">
+      <div class="b-icon">🎯</div><div class="b-title">Плотное прилегание</div><div class="b-desc">Активные компоненты проникают глубже</div>
     </div>
-  </section>
-
-  <!-- ══ SCREEN 8 — FORM ══ -->
-  <section class="screen" id="s8">
-    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding: 36px 24px;">
-      <p class="form-eyebrow fade-in">Специальное предложение</p>
-      <h2 class="form-title fade-in">Оформите<br>заказ сейчас</h2>
-      <p class="form-sub fade-in">Акция действует ограниченное время</p>
-
-      <div class="timer-row fade-in" id="timer">
-        <div class="timer-block">
-          <span class="timer-num" id="th">00</span>
-          <span class="timer-label">часов</span>
-        </div>
-        <span class="timer-sep">:</span>
-        <div class="timer-block">
-          <span class="timer-num" id="tm">00</span>
-          <span class="timer-label">минут</span>
-        </div>
-        <span class="timer-sep">:</span>
-        <div class="timer-block">
-          <span class="timer-num" id="ts">00</span>
-          <span class="timer-label">секунд</span>
-        </div>
-      </div>
-
-      <div class="offer-chips fade-in">
-        <span class="chip">🎁 Скидка 50%</span>
-        <span class="chip">🎁 3-я маска в подарок</span>
-        <span class="chip">📦 Бесплатная доставка</span>
-      </div>
-
-      <div class="urgency-bar fade-in">
-        <span class="u-ico">🔴</span>
-        <div class="u-text">Осталось по акции: <strong>27 масок.</strong> Успейте оформить!</div>
-      </div>
-
-      <div id="order-form">
-        <div class="form-group fade-in">
-          <input class="form-input" type="text" placeholder="Ваше имя" id="fname" autocomplete="name">
-        </div>
-        <div class="form-group fade-in">
-          <input class="form-input" type="tel" placeholder="Номер телефона" id="fphone" autocomplete="tel">
-        </div>
-        <button class="btn-primary fade-in" onclick="submitForm()">
-          Получить маску со скидкой 50% →
-        </button>
-      </div>
-
-      <div id="success-msg" style="display:none; text-align:center; padding:20px 0;">
-        <div style="font-size:52px; margin-bottom:12px;">✅</div>
-        <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--gold); margin-bottom:8px;">Заявка принята!</div>
-        <div style="color:rgba(255,255,255,.7); font-size:15px; line-height:1.6;">Наш менеджер позвонит<br>вам в ближайшее время</div>
-      </div>
-
-      <p class="form-note fade-in">Нажимая кнопку, вы соглашаетесь на обработку<br>персональных данных</p>
+    <div class="benefit-card">
+      <div class="b-icon">📦</div><div class="b-title">10 масок в наборе</div><div class="b-desc">Полный курс в одной упаковке</div>
     </div>
-  </section>
-
-  <!-- ══ SCREEN 9 — FOOTER ══ -->
-  <section class="screen" id="s9" style="height:auto; min-height:100dvh;">
-    <div style="padding: 48px 24px 36px; display:flex; flex-direction:column;">
-      <div class="footer-logo">NeckGlow</div>
-      <div class="footer-tagline">Лифтинг-маска для шеи</div>
-
-      <div style="background: rgba(255,255,255,.04); border-radius: 20px; padding: 20px; margin-bottom: 24px;">
-        <div style="font-size:13px; color:rgba(255,255,255,.5); margin-bottom:14px; letter-spacing:1px; text-transform:uppercase;">Итого ваша выгода:</div>
-        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-          <span style="color:rgba(255,255,255,.6); font-size:15px;">Обычная цена</span>
-          <span style="color:rgba(255,255,255,.35); text-decoration:line-through; font-size:15px;">299 000 сум</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-          <span style="color:rgba(255,255,255,.6); font-size:15px;">Скидка 50%</span>
-          <span style="color:#5ECC7B; font-size:15px; font-weight:600;">−150 000 сум</span>
-        </div>
-        <div style="height:1px; background:rgba(255,255,255,.08); margin: 12px 0;"></div>
-        <div style="display:flex; justify-content:space-between;">
-          <span style="color:var(--white); font-size:17px; font-weight:600;">Итого</span>
-          <span style="color:var(--gold); font-size:22px; font-family:'Cormorant Garamond',serif; font-weight:700;">149 000 сум</span>
-        </div>
-      </div>
-
-      <a class="btn-primary" onclick="goTo(7)" style="margin-bottom:28px;">
-        Заказать со скидкой 50%
-      </a>
-
-      <div class="footer-divider"></div>
-
-      <div class="footer-links">
-        <a href="#" class="footer-link">🔒 Политика конфиденциальности</a>
-        <a href="#" class="footer-link">📋 Условия доставки</a>
-        <a href="#" class="footer-link">🔄 Возврат и обмен</a>
-      </div>
-
-      <p class="footer-copy">
-        © 2025 NeckGlow. Официальный дистрибьютор<br>
-        на территории Республики Узбекистан.<br>
-        Все права защищены.
-      </p>
+    <div class="benefit-card">
+      <div class="b-icon">⏱</div><div class="b-title">Всего 20 минут</div><div class="b-desc">Удобно в любое время дня</div>
     </div>
-  </section>
+  </div>
+  <div class="cta-strip fi">
+    <div class="cta-strip-text">Попробовать<br>со скидкой 50%</div>
+    <a class="cta-strip-btn" href="#final-form">Заказать</a>
+  </div>
+</section>
 
-</div><!-- /scroll-container -->
+<div class="divider"></div>
+
+<!-- ══ ОТЗЫВЫ ══ -->
+<section id="reviews">
+  <p class="sec-tag fi">Отзывы покупателей</p>
+  <h2 class="sec-title fi">Женщины<br>в восторге</h2>
+  <div class="rating-summary fi">
+    <div class="rating-big">4.9</div>
+    <div><div class="rating-stars-big">★★★★★</div><div class="rating-count">на основе 1 240 отзывов</div></div>
+  </div>
+  <div class="fi">
+    <div class="review-card">
+      <div class="verified-badge">✓ КУПИЛА</div>
+      <div class="review-header">
+        <div class="review-ava">👩</div>
+        <div><div class="review-name">Нилуфар Р.</div><div class="review-stars">★★★★★</div><div class="review-city">Ташкент</div></div>
+      </div>
+      <p class="review-text">После 5 масок заметила разницу — шея подтянулась, кожа стала мягче. Дочь спросила, что я делаю по-другому 😊</p>
+    </div>
+    <div class="review-card">
+      <div class="verified-badge">✓ КУПИЛА</div>
+      <div class="review-header">
+        <div class="review-ava">👩‍🦳</div>
+        <div><div class="review-name">Дилноза М.</div><div class="review-stars">★★★★★</div><div class="review-city">Самарканд</div></div>
+      </div>
+      <p class="review-text">Заказала сразу 2 набора — сестре тоже взяла. Доставили быстро, оплатила при получении. Маска очень нежная, запах приятный.</p>
+    </div>
+    <div class="review-card">
+      <div class="verified-badge">✓ КУПИЛА</div>
+      <div class="review-header">
+        <div class="review-ava">🧕</div>
+        <div><div class="review-name">Мухаббат А.</div><div class="review-stars">★★★★★</div><div class="review-city">Бухара</div></div>
+      </div>
+      <p class="review-text">Мне 47 лет, всегда переживала из-за шеи. После курса коллеги стали спрашивать, помолодела ли я! Очень довольна.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ КАК ЗАКАЗАТЬ ══ -->
+<section id="how">
+  <p class="sec-tag fi">Всё просто</p>
+  <h2 class="sec-title fi">Как сделать<br>заказ</h2>
+  <div class="steps fi">
+    <div class="step">
+      <div class="step-lw"><div class="step-num">1</div><div class="step-line"></div></div>
+      <div class="step-body"><div class="step-title">Оставьте заявку</div><div class="step-desc">Заполните форму — имя и номер телефона</div></div>
+    </div>
+    <div class="step">
+      <div class="step-lw"><div class="step-num">2</div><div class="step-line"></div></div>
+      <div class="step-body"><div class="step-title">Звонок оператора</div><div class="step-desc">Свяжемся и уточним детали доставки</div></div>
+    </div>
+    <div class="step">
+      <div class="step-lw"><div class="step-num">3</div><div class="step-line"></div></div>
+      <div class="step-body"><div class="step-title">Доставка 1–2 дня</div><div class="step-desc">По всему Узбекистану прямо до двери</div></div>
+    </div>
+    <div class="step">
+      <div class="step-lw"><div class="step-num">4</div></div>
+      <div class="step-body"><div class="step-title">Оплата при получении</div><div class="step-desc">Платите только когда держите товар в руках</div></div>
+    </div>
+  </div>
+  <a class="btn-cta fi" href="#final-form">Заказать сейчас</a>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ ГАРАНТИИ ══ -->
+<section id="guarantees">
+  <p class="sec-tag fi">Мы заботимся о вас</p>
+  <h2 class="sec-title fi">Покупайте<br>без риска</h2>
+  <div class="fi">
+    <div class="guarantee-card"><div class="g-icon">💳</div><div><div class="g-title">Оплата при получении</div><div class="g-desc">Платите только после того, как получили товар</div></div></div>
+    <div class="guarantee-card"><div class="g-icon">🏆</div><div><div class="g-title">Оригинальный товар</div><div class="g-desc">Официальный дистрибьютор в Узбекистане</div></div></div>
+    <div class="guarantee-card"><div class="g-icon">🔄</div><div><div class="g-title">Обмен и возврат 30 дней</div><div class="g-desc">Вернём деньги без вопросов, если не подойдёт</div></div></div>
+    <div class="guarantee-card"><div class="g-icon">🚚</div><div><div class="g-title">Быстрая доставка</div><div class="g-desc">1–2 рабочих дня по всему Узбекистану</div></div></div>
+  </div>
+  <div class="cta-strip fi" style="background:var(--rose);">
+    <div class="cta-strip-text" style="color:white;">Ничем не рискуете.<br>Попробуйте сегодня!</div>
+    <a class="cta-strip-btn" href="#final-form" style="background:white;color:var(--rose);">Заказать</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ ФІНАЛЬНА ФОРМА ══ -->
+<section id="final-form">
+  <p class="sec-tag fi">Специальное предложение</p>
+  <h2 class="sec-title fi">Оформите<br>заказ сейчас</h2>
+  <p class="sec-sub fi">Акция действует ограниченное время — успейте по сниженной цене</p>
+
+  <div class="timer-row fi">
+    <div class="timer-block"><span class="t-num" id="th">05</span><span class="t-lbl">часов</span></div>
+    <span class="t-sep">:</span>
+    <div class="timer-block"><span class="t-num" id="tm">37</span><span class="t-lbl">минут</span></div>
+    <span class="t-sep">:</span>
+    <div class="timer-block"><span class="t-num" id="ts">22</span><span class="t-lbl">секунд</span></div>
+  </div>
+
+  <div class="offer-chips fi">
+    <span class="chip">🎁 Скидка 50%</span>
+    <span class="chip">🎁 3-я маска в подарок</span>
+    <span class="chip">📦 Доставка до двери</span>
+  </div>
+
+  <div class="urgency fi">
+    <span style="font-size:20px;">🔴</span>
+    <div>Осталось по акции: <strong>27 масок.</strong> Успейте оформить!</div>
+  </div>
+
+  <div id="final-form-fields">
+    <input class="ff-input fi" type="text" id="f-name"  placeholder="Ваше имя"      autocomplete="name">
+    <input class="ff-input fi" type="tel"  id="f-phone" placeholder="Номер телефона" autocomplete="tel">
+    <button class="btn-cta fi" onclick="submitFinal()">Получить маску со скидкой 50% →</button>
+    <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+  </div>
+
+  <div class="success-box" id="final-success">
+    <div class="s-ico">✅</div>
+    <div class="s-title">Заявка принята!</div>
+    <div class="s-sub">Наш менеджер позвонит<br>вам в ближайшее время</div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-logo">NeckGlow</div>
+  <div class="footer-tag">Лифтинг-маска для шеи</div>
+  <div class="footer-summary">
+    <div class="fs-row"><span class="fl">Обычная цена</span><span class="fr strike">299 000 сум</span></div>
+    <div class="fs-row"><span class="fl">Скидка 50%</span><span class="fr green">−150 000 сум</span></div>
+    <div class="fs-row" style="font-size:12px;"><span class="fl" style="color:rgba(255,255,255,.35)">+ 3-я маска в подарок</span><span class="fr green" style="font-size:12px;">бесплатно</span></div>
+    <div class="fs-divider"></div>
+    <div class="fs-row"><span class="fl" style="color:white;font-weight:600;font-size:15px;">Итого</span><span class="fr gold">149 000 сум</span></div>
+  </div>
+  <a class="btn-cta" href="#final-form" style="display:block; margin-bottom:28px;">Заказать со скидкой 50%</a>
+  <div class="footer-hr"></div>
+  <div class="footer-links">
+    <a href="#" class="footer-link">🔒 Политика конфиденциальности</a>
+    <a href="#" class="footer-link">📋 Условия доставки</a>
+    <a href="#" class="footer-link">🔄 Возврат и обмен</a>
+  </div>
+  <p class="footer-copy">© 2025 NeckGlow. Официальный дистрибьютор<br>на территории Республики Узбекистан.<br>Все права защищены.</p>
+</footer>
 
 <script>
-// ── TIMER ──────────────────────────────
-(function() {
-  const end = new Date();
-  end.setHours(end.getHours() + 5, end.getMinutes() + 37, end.getSeconds() + 22);
-
-  function pad(n) { return n < 10 ? '0' + n : n; }
-
-  function tick() {
-    const now = new Date();
-    const diff = Math.max(0, end - now);
-    const h = Math.floor(diff / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById('th').textContent = pad(h);
-    document.getElementById('tm').textContent = pad(m);
-    document.getElementById('ts').textContent = pad(s);
+// TIMER
+(function(){
+  const end = new Date(Date.now() + (5*3600+37*60+22)*1000);
+  function pad(n){ return n<10?'0'+n:n; }
+  function tick(){
+    const d = Math.max(0, end-Date.now());
+    document.getElementById('th').textContent = pad(Math.floor(d/3600000));
+    document.getElementById('tm').textContent = pad(Math.floor((d%3600000)/60000));
+    document.getElementById('ts').textContent = pad(Math.floor((d%60000)/1000));
   }
-  tick();
-  setInterval(tick, 1000);
+  tick(); setInterval(tick,1000);
 })();
 
-// ── SCROLL / DOTS ──────────────────────
-const sc = document.getElementById('sc');
-const screens = document.querySelectorAll('.screen');
-const dotEls = document.querySelectorAll('.dot');
-const dotsNav = document.getElementById('dots');
+// FADE IN
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+},{threshold:0.1});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 
-function updateDots() {
-  const scrollTop = sc.scrollTop;
-  const winH = window.innerHeight;
-  let idx = Math.round(scrollTop / winH);
-  idx = Math.min(idx, screens.length - 1);
-  dotEls.forEach((d, i) => d.classList.toggle('active', i === idx));
-  // Hide dots on footer (last screen)
-  dotsNav.style.opacity = idx === screens.length - 1 ? '0' : '1';
-}
-
-sc.addEventListener('scroll', updateDots, { passive: true });
-
-function goTo(idx) {
-  const target = screens[idx];
-  if (target) sc.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
-}
-
-// ── FADE IN ON SCROLL ─────────────────
-const faders = document.querySelectorAll('.fade-in');
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); }
-  });
-}, { threshold: 0.15 });
-faders.forEach(f => obs.observe(f));
-
-// ── FORM SUBMIT ───────────────────────
-function submitForm() {
-  const name = document.getElementById('fname').value.trim();
-  const phone = document.getElementById('fphone').value.trim();
-  if (!name || !phone) {
-    alert('Пожалуйста, заполните имя и телефон');
-    return;
+// HERO FORM
+function submitHero(){
+  if(!document.getElementById('h-name').value.trim()||!document.getElementById('h-phone').value.trim()){
+    alert('Пожалуйста, заполните имя и телефон'); return;
   }
-  document.getElementById('order-form').style.display = 'none';
-  document.getElementById('success-msg').style.display = 'block';
+  document.getElementById('hero-form').style.display='none';
+  document.getElementById('hero-success').style.display='block';
+}
+
+// FINAL FORM
+function submitFinal(){
+  if(!document.getElementById('f-name').value.trim()||!document.getElementById('f-phone').value.trim()){
+    alert('Пожалуйста, заполните имя и телефон'); return;
+  }
+  document.getElementById('final-form-fields').style.display='none';
+  document.getElementById('final-success').style.display='block';
 }
 </script>
 </body>
