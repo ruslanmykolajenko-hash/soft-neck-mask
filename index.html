@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -15,14 +16,12 @@
   --pink:   #F2D5C8;
   --rose:   #D4896A;
   --deep-r: #A85C42;
-  --sage:   #C8D4C0;
   --text:   #2A2118;
   --muted:  #8A7E74;
-  --gold:   #C4974A;
-  --red:    #E05050;
+  --red:    #E03030;
   --green:  #4CAF7D;
-  --r:      18px;
-  --shadow: 0 4px 24px rgba(42,33,24,.09);
+  --r: 18px;
+  --sh: 0 4px 24px rgba(42,33,24,.09);
 }
 
 html { scroll-behavior: smooth; }
@@ -34,86 +33,207 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-
-
-/* ────────────────────────────────────
-   HERO
-──────────────────────────────────── */
-.hero {
+/* ══════════════════════════════════════════
+   BLOCK 1 — IMPULSE HERO
+══════════════════════════════════════════ */
+.b1 {
   background: var(--white);
-  padding: 28px 20px 28px;
+  padding: 32px 20px 28px;
   position: relative;
-  overflow: visible; /* дозволяємо масці виходити за межі */
+  overflow: hidden;
 }
 
-/* soft blob top right */
-.hero::before {
-  content: '';
-  position: absolute;
-  width: 220px; height: 220px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(242,213,200,.8) 0%, transparent 70%);
-  top: -50px; right: -50px;
-  pointer-events: none;
+/* фоновий градієнт-блоб */
+.b1::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 0%, rgba(242,213,200,.6) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 10% 100%, rgba(212,137,106,.12) 0%, transparent 60%);
+  pointer-events:none;
 }
 
-.hero-h1 {
+.b1-eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.b1-h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 34px;
-  line-height: 1.12;
+  font-size: 36px;
+  line-height: 1.1;
   color: var(--text);
   font-weight: 900;
-  margin-bottom: 10px;
   text-align: center;
+  margin-bottom: 10px;
+  position: relative;
 }
 
-.hero-h1 .hl {
-  color: var(--rose);
-  font-style: italic;
-}
+.b1-h1 .accent { color: var(--rose); font-style: italic; }
 
-.hero-sub {
+.b1-sub {
   font-size: 16px;
   color: var(--muted);
-  line-height: 1.5;
-  margin-bottom: 22px;
-  font-weight: 500;
   text-align: center;
-}
-
-/* ── BA ROW з маскою зверху ── */
-.ba-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 20px;
+  line-height: 1.5;
+  font-weight: 500;
+  margin-bottom: 22px;
   position: relative;
-  /* місце зверху для PNG маски */
-  padding-top: 60px;
 }
 
-/* PNG маски — абсолютно по центру, виходить вгору з фото */
-.ba-mask-wrap {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 110px;
-  z-index: 10;
-  pointer-events: none;
-  filter: drop-shadow(0 6px 20px rgba(212,137,106,.35));
-  animation: floaty 4s ease-in-out infinite;
-}
-
-.mask-png {
+/* фото продукту */
+.b1-photo {
   width: 100%;
-  height: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(42,33,24,.12);
+}
+
+.b1-photo img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
   display: block;
 }
 
-@keyframes floaty {
-  0%,100% { transform: translateX(-50%) translateY(0); }
-  50%      { transform: translateX(-50%) translateY(-6px); }
+/* fallback якщо фото нема */
+.b1-photo-fallback {
+  width: 100%;
+  height: 240px;
+  background: linear-gradient(135deg, #F5EAE4 0%, #EDD5C5 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.b1-photo-fallback .pf-ico   { font-size: 52px; }
+.b1-photo-fallback .pf-label { font-size: 14px; color: var(--rose); font-weight: 600; letter-spacing: 1px; }
+
+/* мала плашка знижки поверх фото */
+.b1-photo-badge {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: var(--red);
+  color: white;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 7px 14px;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(224,48,48,.4);
+}
+
+/* ── ФОРМА B1 ── */
+.b1-form {
+  position: relative;
+}
+
+.b1-form-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.b1-input {
+  width: 100%;
+  background: var(--bg);
+  border: 2px solid rgba(212,137,106,.2);
+  border-radius: 14px;
+  padding: 16px 18px;
+  font-size: 16px;
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  outline: none;
+  margin-bottom: 10px;
+  transition: border-color .2s, background .2s;
+  -webkit-appearance: none;
+  display: block;
+}
+.b1-input::placeholder { color: rgba(42,33,24,.3); }
+.b1-input:focus { border-color: var(--rose); background: var(--white); }
+
+.btn-main {
+  width: 100%;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r) 100%);
+  color: white;
+  font-size: 17px;
+  font-weight: 800;
+  border: none;
+  border-radius: var(--r);
+  padding: 18px;
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(212,137,106,.4);
+  font-family: 'Nunito', sans-serif;
+  display: block;
+  text-align: center;
+  transition: transform .15s, box-shadow .15s;
+  letter-spacing: .3px;
+}
+.btn-main:active { transform: scale(.97); box-shadow: 0 4px 14px rgba(212,137,106,.3); }
+
+.b1-trust {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.b1-trust span {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════
+   DIVIDER
+══════════════════════════════════════════ */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,137,106,.25), transparent);
+  margin: 0 20px;
+}
+
+/* ══════════════════════════════════════════
+   BLOCK 2 — РЕЗУЛЬТАТ (ДО/ПІСЛЯ)
+══════════════════════════════════════════ */
+.b2 {
+  background: var(--bg);
+  padding: 36px 20px 32px;
+}
+
+.b2-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  line-height: 1.15;
+  color: var(--text);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+/* ── ДО/ПІСЛЯ КАРТКИ ── */
+.ba-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .ba-card {
@@ -130,18 +250,18 @@ body {
   display: block;
 }
 
-/* fallback якщо фото не завантажилось */
-.ba-visual {
+/* fallback */
+.ba-fallback {
   aspect-ratio: 3/4;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 52px;
 }
-.ba-before .ba-visual { background: linear-gradient(160deg, #E8DDD6 0%, #D4C4B8 100%); }
-.ba-after  .ba-visual { background: linear-gradient(160deg, #F5EAE4 0%, #EDCFC2 100%); }
-.ba-emoji { font-size: 44px; }
+.ba-before .ba-fallback { background: linear-gradient(160deg, #E8DDD6, #D4C4B8); }
+.ba-after  .ba-fallback { background: linear-gradient(160deg, #F5EAE4, #EDCFC2); }
 
-.ba-label {
+.ba-lbl {
   position: absolute;
   top: 10px; left: 10px;
   font-size: 10px;
@@ -151,706 +271,554 @@ body {
   padding: 4px 10px;
   border-radius: 20px;
 }
+.ba-before .ba-lbl { background: rgba(255,255,255,.8); color: #5A4035; }
+.ba-after  .ba-lbl { background: var(--rose); color: white; }
 
-.ba-before .ba-label { background: rgba(255,255,255,.75); color: #5A4035; }
-.ba-after  .ba-label { background: var(--rose); color: white; }
-
-/* Плашка "Хит продаж" — внизу фото ДО, накладається */
-.ba-hit-badge {
+/* плашка по центру між двома фото знизу */
+.ba-center-badge {
   position: absolute;
-  bottom: 10px;
+  bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--text);
   color: white;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .5px;
-  padding: 5px 12px;
-  border-radius: 20px;
+  border-radius: 30px;
+  padding: 8px 16px;
   white-space: nowrap;
-  box-shadow: 0 2px 10px rgba(0,0,0,.25);
-}
-
-
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.stat-card {
-  background: var(--bg);
-  border-radius: 14px;
-  padding: 12px 8px;
   text-align: center;
-}
-
-.stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  color: var(--rose);
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  font-size: 12px;
   font-weight: 700;
-  line-height: 1;
-  margin-bottom: 3px;
-}
-
-.stat-lbl { font-size: 10px; color: var(--muted); line-height: 1.4; font-weight: 500; }
-
-/* OFFER CHIPS */
-.offer-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-bottom: 20px;
-}
-
-.offer-chip {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: var(--white);
-  border: 1.5px solid rgba(212,137,106,.2);
-  border-radius: 30px;
-  padding: 8px 14px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
 }
 
-.offer-chip .chip-ico { font-size: 16px; }
-.offer-chip .chip-accent { color: var(--rose); }
+.ba-center-badge .badge-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--pink);
+  line-height: 1;
+}
 
-/* PRICE ROW */
-.price-row {
+/* ── OFFER STATS ── */
+.offer-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.os-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 14px 10px;
+  text-align: center;
+  box-shadow: var(--sh);
+}
+
+.os-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: var(--rose);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.os-lbl {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+/* ── ЦІНА ── */
+.price-block {
+  background: var(--white);
+  border-radius: var(--r);
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 16px;
+  box-shadow: var(--sh);
+  border: 1px solid rgba(212,137,106,.15);
+}
+
+.price-main {
+  flex: 1;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.price-old {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--red);
+  text-decoration: line-through;
+  line-height: 1;
+}
+
+.price-new {
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* права частина — 22% ширини, червона, -50% */
+.price-discount {
+  width: 22%;
+  background: var(--red);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 6px;
+  flex-shrink: 0;
+}
+
+.price-discount .disc-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+}
+
+.price-discount .disc-lbl {
+  font-size: 11px;
+  color: rgba(255,255,255,.8);
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+/* gift chip */
+.gift-chip {
+  background: #FFF3EE;
+  border: 1.5px solid rgba(212,137,106,.25);
+  border-radius: 14px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
   margin-bottom: 16px;
-  padding: 14px 16px;
-  background: #FFF3EE;
-  border-radius: 14px;
-  border: 1.5px solid rgba(212,137,106,.2);
 }
+.gift-chip .g-accent { color: var(--rose); font-weight: 800; }
 
-.price-old  { font-size: 14px; color: var(--muted); text-decoration: line-through; }
-.price-new  { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--rose); font-weight: 700; line-height: 1; }
-.price-pill { background: var(--red); color: white; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 20px; margin-left: auto; }
-
-/* HERO CTA */
-.btn-hero {
+/* CTA кнопка в b2 */
+.btn-b2 {
   width: 100%;
   background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r) 100%);
   color: white;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 800;
   border: none;
   border-radius: var(--r);
   padding: 18px;
   cursor: pointer;
   box-shadow: 0 8px 28px rgba(212,137,106,.4);
-  transition: transform .15s;
-  display: block;
-  width: 100%;
-  text-align: center;
-  text-decoration: none;
   font-family: 'Nunito', sans-serif;
-  letter-spacing: .3px;
+  display: block; width: 100%;
+  text-align: center;
+  transition: transform .15s;
+  letter-spacing: .2px;
 }
-.btn-hero:active { transform: scale(.97); }
+.btn-b2:active { transform: scale(.97); }
 
-.hero-guarantee {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  margin-top: 12px;
-}
-
-.hg-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  color: var(--muted);
-  font-weight: 500;
-}
-
-/* STOCK */
-.stock-bar {
-  margin-top: 14px;
-  background: #FFF8F5;
-  border: 1px solid rgba(224,80,80,.2);
-  border-radius: 12px;
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.stock-bar .dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--red);
-  flex-shrink: 0;
-  animation: blink 1.4s infinite;
-}
-
-.stock-bar strong { color: var(--red); }
-
-@keyframes blink {
-  0%,100% { opacity:1; }
-  50%      { opacity:.4; }
-}
-
-/* ────────────────────────────────────
-   DIVIDER
-──────────────────────────────────── */
-.div { height: 1px; background: linear-gradient(90deg,transparent,rgba(212,137,106,.25),transparent); margin: 0 20px; }
-
-/* ────────────────────────────────────
-   SECTIONS
-──────────────────────────────────── */
-section { padding: 44px 20px; }
+/* ══════════════════════════════════════════
+   СЕКЦІЇ НИЖЧЕ
+══════════════════════════════════════════ */
+section { padding: 40px 20px; }
 
 .sec-tag {
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--rose);
-  font-weight: 700;
-  margin-bottom: 8px;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--rose); font-weight: 700; margin-bottom: 8px;
 }
 
 .sec-title {
   font-family: 'Playfair Display', serif;
-  font-size: 32px;
-  line-height: 1.15;
-  color: var(--text);
-  font-weight: 700;
-  margin-bottom: 8px;
+  font-size: 30px; line-height: 1.15;
+  color: var(--text); font-weight: 700; margin-bottom: 8px;
 }
 
 .sec-sub {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 24px;
+  font-size: 14px; color: var(--muted);
+  line-height: 1.6; margin-bottom: 22px;
 }
 
-/* ────────────────────────────────────
-   PAIN SECTION
-──────────────────────────────────── */
-#pain { background: var(--bg); }
-
-.pain-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 22px; }
-
-.pain-card {
-  background: var(--white);
+/* ── CTA STRIP (між блоками) ── */
+.cta-strip {
+  background: var(--rose);
   border-radius: var(--r);
   padding: 16px 18px;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  box-shadow: var(--shadow);
+  display: flex; align-items: center; gap: 12px; margin-top: 22px;
+}
+.cs-text { font-size: 14px; color: white; font-weight: 600; line-height: 1.4; flex: 1; }
+.cs-btn  {
+  background: white; color: var(--rose);
+  font-size: 13px; font-weight: 800;
+  padding: 11px 16px; border-radius: 12px; border: none;
+  cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  font-family: 'Nunito', sans-serif;
 }
 
+/* ── БОЛИ ── */
+#pain { background: var(--white); }
+
+.pain-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.pain-card {
+  background: var(--bg);
+  border-radius: 16px; padding: 16px;
+  display: flex; align-items: flex-start; gap: 14px;
+}
 .pain-ico {
-  width: 44px; height: 44px;
-  border-radius: 12px;
-  background: #FFF3EE;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px;
-  flex-shrink: 0;
+  width: 44px; height: 44px; border-radius: 12px; background: #FFF3EE;
+  display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;
 }
-
 .p-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
 .p-desc  { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
 .solution-pill {
   background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r) 100%);
-  border-radius: var(--r);
-  padding: 20px;
-  color: white;
-  text-align: center;
+  border-radius: var(--r); padding: 20px; color: white; text-align: center;
 }
+.sp-title { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; margin-bottom:6px; }
+.sp-text  { font-size:14px; opacity:.88; line-height:1.55; }
 
-.sp-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-.sp-text  { font-size: 14px; opacity: .88; line-height: 1.55; }
-
-/* ────────────────────────────────────
-   BENEFITS
-──────────────────────────────────── */
-#benefits { background: var(--white); }
+/* ── ПЕРЕВАГИ ── */
+#benefits { background: var(--bg); }
 
 .ben-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-.ben-card {
-  background: var(--bg);
-  border-radius: var(--r);
-  padding: 18px 14px;
-}
-
+.ben-card { background: var(--white); border-radius: var(--r); padding: 18px 14px; box-shadow: var(--sh); }
 .ben-card.wide {
   grid-column: span 2;
   background: linear-gradient(135deg, #FFF3EE 0%, #FAE8DF 100%);
   border: 1.5px solid rgba(212,137,106,.2);
   display: flex; align-items: center; gap: 14px;
 }
-
 .b-ico   { font-size: 28px; margin-bottom: 8px; }
 .b-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; line-height: 1.3; }
 .b-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; }
-
 .ben-card.wide .b-ico   { font-size: 34px; margin: 0; flex-shrink: 0; }
 .ben-card.wide .b-title { font-size: 16px; }
 
-/* ────────────────────────────────────
-   REVIEWS
-──────────────────────────────────── */
-#reviews { background: var(--bg); }
+/* ── ВІДГУКИ ── */
+#reviews { background: var(--white); }
 
 .rating-bar {
-  background: var(--white);
-  border-radius: var(--r);
-  padding: 18px 20px;
-  display: flex; align-items: center; gap: 16px;
-  margin-bottom: 18px;
-  box-shadow: var(--shadow);
+  background: var(--bg); border-radius: var(--r);
+  padding: 18px 20px; display: flex; align-items: center; gap: 16px; margin-bottom: 18px;
 }
-
-.rb-num { font-family: 'Playfair Display', serif; font-size: 52px; color: var(--rose); font-weight: 700; line-height: 1; flex-shrink: 0; }
-.rb-stars { font-size: 18px; color: #F5A623; margin-bottom: 4px; }
-.rb-count { font-size: 12px; color: var(--muted); }
+.rb-num { font-family:'Playfair Display',serif; font-size:52px; color:var(--rose); font-weight:700; line-height:1; flex-shrink:0; }
+.rb-stars { font-size:18px; color:#F5A623; margin-bottom:4px; }
+.rb-count { font-size:12px; color:var(--muted); }
 
 .rev-card {
-  background: var(--white);
-  border-radius: var(--r);
-  padding: 18px;
-  margin-bottom: 12px;
-  box-shadow: var(--shadow);
-  position: relative;
+  background: var(--bg); border-radius: var(--r);
+  padding: 18px; margin-bottom: 12px; position: relative;
 }
-
-.rev-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-
+.rev-head { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
 .rev-ava {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--pink), var(--rose));
-  display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+  width:44px; height:44px; border-radius:50%;
+  background:linear-gradient(135deg,var(--pink),var(--rose));
+  display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;
 }
-
-.rev-name  { font-size: 15px; font-weight: 700; color: var(--text); }
-.rev-stars { font-size: 12px; color: #F5A623; }
-.rev-city  { font-size: 11px; color: var(--muted); }
-.rev-text  { font-size: 14px; line-height: 1.6; color: #4A3F36; }
-
+.rev-name  { font-size:15px; font-weight:700; color:var(--text); }
+.rev-stars { font-size:12px; color:#F5A623; }
+.rev-city  { font-size:11px; color:var(--muted); }
+.rev-text  { font-size:14px; line-height:1.6; color:var(--text); }
 .rev-badge {
-  position: absolute; top: 14px; right: 14px;
-  background: #EAF7EF; color: #2E7D52;
-  font-size: 9px; font-weight: 700;
-  padding: 4px 8px; border-radius: 20px;
-  text-transform: uppercase; letter-spacing: .5px;
+  position:absolute; top:14px; right:14px;
+  background:#EAF7EF; color:#2E7D52;
+  font-size:9px; font-weight:700;
+  padding:4px 8px; border-radius:20px;
+  text-transform:uppercase; letter-spacing:.5px;
 }
 
-/* ────────────────────────────────────
-   HOW TO ORDER
-──────────────────────────────────── */
-#how { background: var(--white); }
+/* ── ЯК ЗАМОВИТИ ── */
+#how { background: var(--bg); }
 
-.steps { display: flex; flex-direction: column; gap: 0; margin-bottom: 26px; }
-.step  { display: flex; gap: 16px; padding-bottom: 20px; }
-.step:last-child { padding-bottom: 0; }
-
-.step-lw { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.steps { display:flex; flex-direction:column; gap:0; margin-bottom:24px; }
+.step  { display:flex; gap:16px; padding-bottom:20px; }
+.step:last-child { padding-bottom:0; }
+.step-lw { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
 .step-num {
-  width: 42px; height: 42px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--rose), var(--deep-r));
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: white;
+  width:42px; height:42px; border-radius:50%;
+  background:linear-gradient(135deg,var(--rose),var(--deep-r));
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:white;
 }
+.step-line { width:2px; flex:1; min-height:14px; background:rgba(212,137,106,.2); margin-top:4px; }
+.step:last-child .step-line { display:none; }
+.s-title { font-size:16px; font-weight:700; color:var(--text); margin-bottom:3px; padding-top:8px; }
+.s-desc  { font-size:13px; color:var(--muted); line-height:1.5; }
 
-.step-line { width: 2px; flex: 1; min-height: 14px; background: rgba(212,137,106,.2); margin-top: 4px; }
-.step:last-child .step-line { display: none; }
+/* ── ГАРАНТІЇ ── */
+#guarantees { background: var(--white); }
 
-.step-body { padding-top: 8px; }
-.s-title   { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-.s-desc    { font-size: 13px; color: var(--muted); line-height: 1.5; }
-
-/* ────────────────────────────────────
-   GUARANTEES
-──────────────────────────────────── */
-#guarantees { background: var(--bg); }
-
-.g-cards { display: flex; flex-direction: column; gap: 10px; }
-
+.g-cards { display:flex; flex-direction:column; gap:10px; }
 .g-card {
-  background: var(--white);
-  border-radius: var(--r);
-  padding: 16px 18px;
-  display: flex; align-items: center; gap: 14px;
-  box-shadow: var(--shadow);
+  background: var(--bg); border-radius:var(--r);
+  padding:16px 18px; display:flex; align-items:center; gap:14px;
 }
-
 .g-ico {
-  width: 50px; height: 50px; border-radius: 14px;
-  background: #FFF3EE;
-  display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;
+  width:50px; height:50px; border-radius:14px; background:#FFF3EE;
+  display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;
 }
+.g-title { font-size:15px; font-weight:700; color:var(--text); margin-bottom:2px; }
+.g-desc  { font-size:12px; color:var(--muted); line-height:1.5; }
 
-.g-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-.g-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; }
-
-/* ────────────────────────────────────
-   FINAL FORM SECTION
-──────────────────────────────────── */
-#last-cta {
+/* ── ФІНАЛЬНИЙ CTA ── */
+#final-cta {
   background: linear-gradient(160deg, #FFF8F5 0%, #F5EAE3 100%);
-  padding: 44px 20px;
-  text-align: center;
+  padding: 44px 20px 40px; text-align: center;
 }
 
-.last-price-block {
-  background: white;
-  border-radius: var(--r);
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: var(--shadow);
+.final-price-block {
+  background: white; border-radius: var(--r);
+  padding: 20px; margin-bottom: 20px; box-shadow: var(--sh);
 }
+.fp-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:14px; }
+.fp-row .fl { color:var(--muted); }
+.fp-row .fr { color:var(--text); font-weight:600; }
+.fp-row .strike { text-decoration:line-through; color:var(--muted); font-weight:400; }
+.fp-row .green  { color:var(--green); }
+.fp-div { height:1px; background:rgba(0,0,0,.06); margin:12px 0; }
+.fp-total { font-family:'Playfair Display',serif; font-size:28px; color:var(--rose); font-weight:700; }
 
-.lp-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 14px; }
-.lp-row .ll { color: var(--muted); }
-.lp-row .lr { color: var(--text); font-weight: 600; }
-.lp-row .strike { text-decoration: line-through; color: var(--muted); font-weight: 400; }
-.lp-row .green  { color: var(--green); }
-.lp-div { height: 1px; background: rgba(0,0,0,.06); margin: 12px 0; }
-.lp-total { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--rose); font-weight: 700; }
+/* ── FOOTER ── */
+footer { background:var(--text); padding:36px 20px; }
+.f-logo { font-family:'Playfair Display',serif; font-size:24px; color:var(--pink); margin-bottom:4px; }
+.f-tag  { font-size:10px; color:rgba(255,255,255,.3); letter-spacing:2px; text-transform:uppercase; margin-bottom:22px; }
+.f-hr   { height:1px; background:rgba(255,255,255,.08); margin-bottom:18px; }
+.f-links { display:flex; flex-direction:column; gap:12px; margin-bottom:20px; }
+.f-link  { color:rgba(255,255,255,.4); font-size:13px; text-decoration:none; display:flex; align-items:center; gap:8px; }
+.f-copy  { font-size:10px; color:rgba(255,255,255,.2); line-height:1.7; }
 
-/* ────────────────────────────────────
-   FOOTER
-──────────────────────────────────── */
-footer {
-  background: var(--text);
-  padding: 36px 20px;
-}
-
-.f-logo { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--pink); margin-bottom: 4px; }
-.f-tag  { font-size: 10px; color: rgba(255,255,255,.35); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; }
-.f-hr   { height: 1px; background: rgba(255,255,255,.08); margin-bottom: 20px; }
-.f-links { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
-.f-link  { color: rgba(255,255,255,.4); font-size: 13px; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-.f-copy  { font-size: 10px; color: rgba(255,255,255,.2); line-height: 1.7; }
-
-/* ────────────────────────────────────
-   CTA STRIP (between sections)
-──────────────────────────────────── */
-.cta-strip {
-  background: var(--rose);
-  border-radius: var(--r);
-  padding: 16px 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 22px;
-}
-
-.cs-text { font-size: 14px; color: white; font-weight: 600; line-height: 1.4; flex: 1; }
-.cs-btn  {
-  background: white; color: var(--rose);
-  font-size: 13px; font-weight: 700;
-  padding: 11px 16px; border-radius: 12px; border: none;
-  cursor: pointer; white-space: nowrap; flex-shrink: 0;
-  font-family: 'Nunito', sans-serif; text-decoration: none; display: block;
-}
-
-/* ────────────────────────────────────
-   POPUP OVERLAY
-──────────────────────────────────── */
+/* ── POPUP ── */
 .overlay {
-  position: fixed; inset: 0; z-index: 500;
-  background: rgba(42,33,24,.55);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  display: none;
-  align-items: flex-end;
-  justify-content: center;
-  animation: fadein .25s ease;
+  position:fixed; inset:0; z-index:500;
+  background:rgba(42,33,24,.55);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  display:none; align-items:flex-end; justify-content:center;
 }
-
-.overlay.open { display: flex; }
-
-@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+.overlay.open { display:flex; }
 
 .popup {
-  background: var(--white);
-  border-radius: 28px 28px 0 0;
-  width: 100%;
-  max-height: 92svh;
-  overflow-y: auto;
-  padding: 0 0 32px;
-  animation: slideup .3s cubic-bezier(.25,.8,.25,1);
-  -webkit-overflow-scrolling: touch;
+  background:var(--white);
+  border-radius:28px 28px 0 0;
+  width:100%; max-height:92svh;
+  overflow-y:auto; padding:0 0 32px;
+  animation:slideup .3s cubic-bezier(.25,.8,.25,1);
+  -webkit-overflow-scrolling:touch;
 }
 
 @keyframes slideup {
-  from { transform: translateY(60px); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
+  from { transform:translateY(60px); opacity:0; }
+  to   { transform:translateY(0); opacity:1; }
 }
 
 .popup-handle {
-  width: 40px; height: 4px;
-  background: rgba(0,0,0,.1);
-  border-radius: 2px;
-  margin: 14px auto 20px;
+  width:40px; height:4px; background:rgba(0,0,0,.1);
+  border-radius:2px; margin:14px auto 20px;
 }
 
-.popup-header {
-  padding: 0 20px 0;
-  margin-bottom: 16px;
-}
+.popup-header { padding:0 20px 0; margin-bottom:16px; }
+.popup-title  { font-family:'Playfair Display',serif; font-size:26px; color:var(--text); font-weight:700; margin-bottom:4px; line-height:1.2; }
+.popup-sub    { font-size:13px; color:var(--muted); line-height:1.5; }
 
-.popup-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  color: var(--text);
-  font-weight: 700;
-  margin-bottom: 4px;
-  line-height: 1.2;
-}
-
-.popup-sub { font-size: 13px; color: var(--muted); line-height: 1.5; }
-
-/* price calculator in popup */
 .popup-price-card {
-  margin: 0 20px 18px;
-  background: linear-gradient(135deg, #FFF8F5 0%, #FBF0EA 100%);
-  border: 1.5px solid rgba(212,137,106,.2);
-  border-radius: var(--r);
-  padding: 18px;
+  margin:0 20px 18px;
+  background:linear-gradient(135deg,#FFF8F5 0%,#FBF0EA 100%);
+  border:1.5px solid rgba(212,137,106,.2);
+  border-radius:var(--r); padding:18px;
 }
 
-.pp-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  font-size: 14px;
-}
-
-.pp-row .pl { color: var(--muted); }
-.pp-row .pr { color: var(--text); font-weight: 600; }
-.pp-row .pr.strike { text-decoration: line-through; color: rgba(42,33,24,.3); font-weight: 400; font-size: 13px; }
-.pp-row .pr.green  { color: var(--green); font-size: 15px; }
-.pp-row .pr.gift   { color: var(--rose); }
-
-.pp-div { height: 1px; background: rgba(212,137,106,.2); margin: 12px 0; }
-
-.pp-total-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.pp-total-lbl { font-size: 15px; font-weight: 700; color: var(--text); }
-.pp-total-val { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--rose); font-weight: 700; line-height: 1; }
+.pp-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:14px; }
+.pp-row .pl { color:var(--muted); }
+.pp-row .pr { color:var(--text); font-weight:600; }
+.pp-row .strike { text-decoration:line-through; color:rgba(42,33,24,.3); font-weight:400; font-size:13px; }
+.pp-row .green  { color:var(--green); font-size:15px; }
+.pp-row .gift   { color:var(--rose); }
+.pp-div  { height:1px; background:rgba(212,137,106,.2); margin:12px 0; }
+.pp-total-row { display:flex; justify-content:space-between; align-items:center; }
+.pp-total-lbl { font-size:15px; font-weight:700; color:var(--text); }
+.pp-total-val { font-family:'Playfair Display',serif; font-size:30px; color:var(--rose); font-weight:700; line-height:1; }
 
 .pp-save {
-  background: rgba(76,175,125,.1);
-  border-radius: 10px;
-  padding: 10px 14px;
-  margin-top: 12px;
-  font-size: 13px;
-  color: var(--green);
-  font-weight: 700;
-  text-align: center;
-  display: flex; align-items: center; justify-content: center; gap: 6px;
+  background:rgba(76,175,125,.1); border-radius:10px;
+  padding:10px 14px; margin-top:12px; font-size:13px;
+  color:var(--green); font-weight:700; text-align:center;
+  display:flex; align-items:center; justify-content:center; gap:6px;
 }
 
-/* popup inputs */
-.popup-fields { padding: 0 20px; }
-
-.p-label {
-  font-size: 11px; font-weight: 700;
-  color: var(--muted); letter-spacing: .5px;
-  text-transform: uppercase; margin-bottom: 6px;
-  display: block;
-}
-
+.popup-fields { padding:0 20px; }
+.p-label { font-size:11px; font-weight:700; color:var(--muted); letter-spacing:.5px; text-transform:uppercase; margin-bottom:6px; display:block; }
 .p-input {
-  width: 100%;
-  background: var(--bg);
-  border: 1.5px solid rgba(0,0,0,.08);
-  border-radius: 14px;
-  padding: 15px 16px;
-  font-size: 16px;
-  color: var(--text);
-  font-family: 'Nunito', sans-serif;
-  outline: none;
-  margin-bottom: 12px;
-  transition: border-color .2s;
-  -webkit-appearance: none;
-  display: block;
+  width:100%; background:var(--bg); border:1.5px solid rgba(0,0,0,.08);
+  border-radius:14px; padding:15px 16px; font-size:16px; color:var(--text);
+  font-family:'Nunito',sans-serif; outline:none; margin-bottom:12px;
+  transition:border-color .2s; -webkit-appearance:none; display:block;
 }
-
-.p-input:focus { border-color: var(--rose); background: white; }
+.p-input:focus { border-color:var(--rose); background:white; }
 
 .btn-popup {
-  width: 100%;
-  background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r) 100%);
-  color: white;
-  font-size: 16px;
-  font-weight: 700;
-  border: none;
-  border-radius: var(--r);
-  padding: 18px;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(212,137,106,.35);
-  font-family: 'Nunito', sans-serif;
-  display: block; width: 100%;
-  transition: transform .15s;
+  width:100%; background:linear-gradient(135deg,var(--rose) 0%,var(--deep-r) 100%);
+  color:white; font-size:16px; font-weight:700; border:none;
+  border-radius:var(--r); padding:18px; cursor:pointer;
+  box-shadow:0 8px 24px rgba(212,137,106,.35);
+  font-family:'Nunito',sans-serif; display:block; transition:transform .15s;
 }
-.btn-popup:active { transform: scale(.97); }
+.btn-popup:active { transform:scale(.97); }
 
-.popup-note { font-size: 11px; color: rgba(42,33,24,.3); text-align: center; margin-top: 10px; line-height: 1.6; }
+.popup-note { font-size:11px; color:rgba(42,33,24,.3); text-align:center; margin-top:10px; line-height:1.6; }
+.popup-trust { display:flex; justify-content:center; gap:14px; margin-top:14px; }
+.pt-item { display:flex; align-items:center; gap:4px; font-size:11px; color:var(--muted); font-weight:600; }
 
-.popup-trust {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  margin-top: 14px;
-}
-.pt-item { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--muted); font-weight: 600; }
+.popup-success { display:none; padding:20px 20px 10px; text-align:center; }
+.ps-ico   { font-size:56px; margin-bottom:14px; }
+.ps-title { font-family:'Playfair Display',serif; font-size:26px; color:var(--text); margin-bottom:8px; }
+.ps-sub   { font-size:15px; color:var(--muted); line-height:1.6; margin-bottom:20px; }
+.ps-steps { background:var(--bg); border-radius:var(--r); padding:16px; text-align:left; }
+.ps-step  { display:flex; align-items:center; gap:12px; padding:8px 0; font-size:14px; color:var(--text); border-bottom:1px solid rgba(0,0,0,.05); }
+.ps-step:last-child { border-bottom:none; }
+.ps-step-ico { width:32px; height:32px; border-radius:50%; background:#FFF3EE; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
 
-/* success state */
-.popup-success {
-  display: none;
-  padding: 20px 20px 10px;
-  text-align: center;
-}
-
-.ps-ico   { font-size: 56px; margin-bottom: 14px; }
-.ps-title { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--text); margin-bottom: 8px; }
-.ps-sub   { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
-
-.ps-steps {
-  background: var(--bg);
-  border-radius: var(--r);
-  padding: 16px;
-  text-align: left;
-}
-
-.ps-step {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 0;
-  font-size: 14px;
-  color: var(--text);
-  border-bottom: 1px solid rgba(0,0,0,.05);
-}
-.ps-step:last-child { border-bottom: none; }
-.ps-step-ico { width: 32px; height: 32px; border-radius: 50%; background: #FFF3EE; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
-
-/* FADE IN */
-.fi { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
-.fi.show { opacity: 1; transform: none; }
-
-/* ────────────────────────────────────
-   SHARED BUTTONS
-──────────────────────────────────── */
-.btn-outline {
-  width: 100%;
-  background: transparent;
-  border: 2px solid var(--rose);
-  color: var(--rose);
-  font-size: 15px;
-  font-weight: 700;
-  border-radius: var(--r);
-  padding: 16px;
-  cursor: pointer;
-  font-family: 'Nunito', sans-serif;
-  display: block; text-align: center; text-decoration: none;
-}
+/* ── FADE IN ── */
+.fi { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
+.fi.show { opacity:1; transform:none; }
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════
-     HERO
-══════════════════════════ -->
-<section class="hero">
+<!-- ══════════════════════════════════════════
+     BLOCK 1 — ІМПУЛЬСНИЙ ОФФЕР + ФОРМА
+══════════════════════════════════════════ -->
+<div class="b1">
 
-  <!-- ЗАГОЛОВОК — центрований, компактний -->
-  <h1 class="hero-h1 fi">
-    Шея снова <span class="hl">молодая</span> за 14 дней
+  <p class="b1-eyebrow fi">Омолаживающий уход · 35+</p>
+
+  <h1 class="b1-h1 fi">
+    Верни шее<br>
+    <span class="accent">молодость</span><br>
+    прямо сейчас
   </h1>
 
-  <p class="hero-sub fi">
-    Лифтинг-маска для шеи. Видимый эффект<br>уже после первого применения.
+  <p class="b1-sub fi">
+    Пока другие думают — ты уже выглядишь на 10 лет моложе. Каждый день без маски — это упущенный результат.
   </p>
 
-  <!-- BEFORE / AFTER + PNG маски по центру зверху -->
-  <div class="ba-row fi">
+  <!-- ФОТО ПРОДУКТУ -->
+  <div class="b1-photo fi">
+    <img src="img/product.jpg" alt="Лифтинг-маска NeckGlow"
+         onerror="this.style.display='none'; document.getElementById('b1-fallback').style.display='flex'">
+    <div class="b1-photo-fallback" id="b1-fallback" style="display:none">
+      <div class="pf-ico">🎭</div>
+      <div class="pf-label">Фото маски</div>
+    </div>
+    <div class="b1-photo-badge">−50% сегодня</div>
+  </div>
+
+  <!-- ФОРМА -->
+  <div class="b1-form fi">
+    <span class="b1-form-label">Оставьте заявку — перезвоним за 5 минут</span>
+    <input class="b1-input" type="text"  id="b1-name"  placeholder="Ваше имя"      autocomplete="name">
+    <input class="b1-input" type="tel"   id="b1-phone" placeholder="Номер телефона" autocomplete="tel">
+    <button class="btn-main" onclick="submitB1()">
+      Получить маску со скидкой 50% →
+    </button>
+    <div class="b1-trust">
+      <span>💳 Оплата при получении</span>
+      <span>📦 Доставка 1–2 дня</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════
+     BLOCK 2 — РЕЗУЛЬТАТ ДО / ПІСЛЯ
+══════════════════════════════════════════ -->
+<div class="b2">
+
+  <h2 class="b2-title fi">Посмотри,<br>что будет с твоей шеей</h2>
+
+  <!-- ДО / ПІСЛЯ -->
+  <div class="ba-wrap fi">
 
     <div class="ba-card ba-before">
-      <img src="img/before.jpg" alt="До" class="ba-img">
-      <div class="ba-label">ДО</div>
-      <!-- плашка "Хит продаж" поверх нижньої частини фото -->
-      <div class="ba-hit-badge">🔥 Хит продаж</div>
-    </div>
-
-    <!-- PNG упаковки маски — зверху по центру, виходить за межі карток -->
-    <div class="ba-mask-wrap">
-      <img src="img/mask.png" alt="NeckGlow маска" class="mask-png">
+      <img src="img/before.jpg" alt="До" class="ba-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="ba-fallback" style="display:none">😞</div>
+      <div class="ba-lbl">ДО</div>
     </div>
 
     <div class="ba-card ba-after">
-      <img src="img/after.png" alt="После" class="ba-img">
-      <div class="ba-label">ПІСЛЯ</div>
+      <img src="img/after.jpg" alt="После" class="ba-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="ba-fallback" style="display:none">😊</div>
+      <div class="ba-lbl">ПІСЛЯ</div>
+    </div>
+
+    <!-- Плашка по центру знизу між двома фото -->
+    <div class="ba-center-badge">
+      Результат клиентки за
+      <span class="badge-num">7</span>
+      дней
     </div>
 
   </div>
 
-  <!-- STATS -->
-  <div class="stats-row fi">
-    <div class="stat-card">
-      <div class="stat-num">92%</div>
-      <div class="stat-lbl">замечают лифтинг</div>
+  <!-- OFFER STATS — 3 потужних оффери -->
+  <div class="offer-stats fi">
+    <div class="os-card">
+      <div class="os-num">−10</div>
+      <div class="os-lbl">лет визуально с первых применений</div>
     </div>
-    <div class="stat-card">
-      <div class="stat-num">14</div>
-      <div class="stat-lbl">дней до результата</div>
+    <div class="os-card">
+      <div class="os-num">92%</div>
+      <div class="os-lbl">довольны результатом</div>
     </div>
-    <div class="stat-card">
-      <div class="stat-num">10</div>
-      <div class="stat-lbl">масок в наборе</div>
+    <div class="os-card">
+      <div class="os-num">×3</div>
+      <div class="os-lbl">эффективнее обычного крема</div>
     </div>
   </div>
 
-  <!-- PRICE -->
-  <div class="price-row fi">
-    <div>
+  <!-- GIFT -->
+  <div class="gift-chip fi">
+    <span style="font-size:20px;">🎁</span>
+    <span>Купи 2 маски — <span class="g-accent">3-я в подарок!</span></span>
+  </div>
+
+  <!-- ЦІНА — стара жирна червона закреслена, права частина червона -50% -->
+  <div class="price-block fi">
+    <div class="price-main">
       <div class="price-old">299 000 сум</div>
       <div class="price-new">149 000 сум</div>
     </div>
-    <div class="price-pill">−50%</div>
+    <div class="price-discount">
+      <div class="disc-num">−50%</div>
+    </div>
   </div>
 
-  <!-- CTA -->
-  <button class="btn-hero fi" onclick="openPopup()">
+  <button class="btn-b2 fi" onclick="openPopup()">
     Хочу такой же результат — Заказать
   </button>
 
-  <div class="hero-guarantee fi">
-    <div class="hg-item">📦 Доставка 1–2 дня</div>
-    <div class="hg-item">↩️ Возврат 30 дней</div>
-  </div>
+</div>
 
-</section>
-
-<div class="div"></div>
+<div class="divider"></div>
 
 <!-- ══════════════════════════
      БОЛИ
@@ -886,10 +854,10 @@ footer {
   </div>
 </section>
 
-<div class="div"></div>
+<div class="divider"></div>
 
 <!-- ══════════════════════════
-     ПРЕИМУЩЕСТВА
+     ПЕРЕВАГИ
 ══════════════════════════ -->
 <section id="benefits">
   <p class="sec-tag fi">Почему выбирают нас</p>
@@ -903,38 +871,22 @@ footer {
         <div class="b-desc">Видимый результат с первых дней</div>
       </div>
     </div>
-    <div class="ben-card">
-      <div class="b-ico">💧</div>
-      <div class="b-title">Глубокое увлажнение</div>
-      <div class="b-desc">Питает нежную кожу шеи</div>
-    </div>
-    <div class="ben-card">
-      <div class="b-ico">🎯</div>
-      <div class="b-title">Плотное прилегание</div>
-      <div class="b-desc">Компоненты проникают глубже</div>
-    </div>
-    <div class="ben-card">
-      <div class="b-ico">📦</div>
-      <div class="b-title">10 масок в наборе</div>
-      <div class="b-desc">Полный курс ухода</div>
-    </div>
-    <div class="ben-card">
-      <div class="b-ico">⏱</div>
-      <div class="b-title">Всего 20 минут</div>
-      <div class="b-desc">Удобно в любое время</div>
-    </div>
+    <div class="ben-card"><div class="b-ico">💧</div><div class="b-title">Глубокое увлажнение</div><div class="b-desc">Питает нежную кожу шеи</div></div>
+    <div class="ben-card"><div class="b-ico">🎯</div><div class="b-title">Плотное прилегание</div><div class="b-desc">Компоненты проникают глубже</div></div>
+    <div class="ben-card"><div class="b-ico">📦</div><div class="b-title">10 масок в наборе</div><div class="b-desc">Полный курс ухода</div></div>
+    <div class="ben-card"><div class="b-ico">⏱</div><div class="b-title">Всего 20 минут</div><div class="b-desc">Удобно в любое время</div></div>
   </div>
 
-  <div class="cta-strip fi">
-    <div class="cs-text">Попробовать<br>без риска</div>
-    <button class="cs-btn" onclick="openPopup()">Заказать →</button>
+  <div class="cta-strip fi" style="background:var(--deep-r);">
+    <div class="cs-text">Попробовать без риска</div>
+    <button class="cs-btn" onclick="openPopup()" style="color:var(--deep-r);">Заказать →</button>
   </div>
 </section>
 
-<div class="div"></div>
+<div class="divider"></div>
 
 <!-- ══════════════════════════
-     ОТЗЫВЫ
+     ВІДГУКИ
 ══════════════════════════ -->
 <section id="reviews">
   <p class="sec-tag fi">Отзывы покупателей</p>
@@ -942,35 +894,23 @@ footer {
 
   <div class="rating-bar fi">
     <div class="rb-num">4.9</div>
-    <div>
-      <div class="rb-stars">★★★★★</div>
-      <div class="rb-count">на основе 1 240 отзывов</div>
-    </div>
+    <div><div class="rb-stars">★★★★★</div><div class="rb-count">на основе 1 240 отзывов</div></div>
   </div>
 
   <div class="fi">
     <div class="rev-card">
       <div class="rev-badge">✓ КУПИЛА</div>
-      <div class="rev-head">
-        <div class="rev-ava">👩</div>
-        <div><div class="rev-name">Нилуфар Р.</div><div class="rev-stars">★★★★★</div><div class="rev-city">Ташкент</div></div>
-      </div>
+      <div class="rev-head"><div class="rev-ava">👩</div><div><div class="rev-name">Нилуфар Р.</div><div class="rev-stars">★★★★★</div><div class="rev-city">Ташкент</div></div></div>
       <p class="rev-text">После 5 масок заметила разницу — шея подтянулась, кожа стала мягче. Дочь спросила, что я делаю по-другому 😊</p>
     </div>
     <div class="rev-card">
       <div class="rev-badge">✓ КУПИЛА</div>
-      <div class="rev-head">
-        <div class="rev-ava">👩‍🦳</div>
-        <div><div class="rev-name">Дилноза М.</div><div class="rev-stars">★★★★★</div><div class="rev-city">Самарканд</div></div>
-      </div>
+      <div class="rev-head"><div class="rev-ava">👩‍🦳</div><div><div class="rev-name">Дилноза М.</div><div class="rev-stars">★★★★★</div><div class="rev-city">Самарканд</div></div></div>
       <p class="rev-text">Заказала сразу 2 набора — сестре тоже взяла. Доставили быстро, оплатила при получении. Маска очень нежная, запах приятный.</p>
     </div>
     <div class="rev-card">
       <div class="rev-badge">✓ КУПИЛА</div>
-      <div class="rev-head">
-        <div class="rev-ava">🧕</div>
-        <div><div class="rev-name">Мухаббат А.</div><div class="rev-stars">★★★★★</div><div class="rev-city">Бухара</div></div>
-      </div>
+      <div class="rev-head"><div class="rev-ava">🧕</div><div><div class="rev-name">Мухаббат А.</div><div class="rev-stars">★★★★★</div><div class="rev-city">Бухара</div></div></div>
       <p class="rev-text">Мне 47 лет, всегда переживала из-за шеи. После курса коллеги стали спрашивать, помолодела ли я! Очень довольна.</p>
     </div>
   </div>
@@ -981,10 +921,10 @@ footer {
   </div>
 </section>
 
-<div class="div"></div>
+<div class="divider"></div>
 
 <!-- ══════════════════════════
-     КАК ЗАКАЗАТЬ
+     ЯК ЗАМОВИТИ
 ══════════════════════════ -->
 <section id="how">
   <p class="sec-tag fi">Всё просто</p>
@@ -993,78 +933,66 @@ footer {
   <div class="steps fi">
     <div class="step">
       <div class="step-lw"><div class="step-num">1</div><div class="step-line"></div></div>
-      <div class="step-body"><div class="s-title">Оставьте заявку</div><div class="s-desc">Нажмите кнопку и заполните форму — имя и телефон</div></div>
+      <div><div class="s-title">Оставьте заявку</div><div class="s-desc">Нажмите кнопку и заполните форму</div></div>
     </div>
     <div class="step">
       <div class="step-lw"><div class="step-num">2</div><div class="step-line"></div></div>
-      <div class="step-body"><div class="s-title">Звонок оператора</div><div class="s-desc">Свяжемся и уточним детали доставки</div></div>
+      <div><div class="s-title">Звонок оператора</div><div class="s-desc">Свяжемся и уточним детали доставки</div></div>
     </div>
     <div class="step">
       <div class="step-lw"><div class="step-num">3</div><div class="step-line"></div></div>
-      <div class="step-body"><div class="s-title">Доставка 1–2 дня</div><div class="s-desc">По всему Узбекистану прямо до двери</div></div>
+      <div><div class="s-title">Доставка 1–2 дня</div><div class="s-desc">По всему Узбекистану до двери</div></div>
     </div>
     <div class="step">
       <div class="step-lw"><div class="step-num">4</div></div>
-      <div class="step-body"><div class="s-title">Оплата при получении</div><div class="s-desc">Платите только когда держите товар в руках</div></div>
+      <div><div class="s-title">Оплата при получении</div><div class="s-desc">Платите только когда держите товар в руках</div></div>
     </div>
   </div>
 
-  <button class="btn-hero fi" onclick="openPopup()">Заказать со скидкой 50% →</button>
+  <button class="btn-main fi" onclick="openPopup()">Заказать со скидкой 50% →</button>
 </section>
 
-<div class="div"></div>
+<div class="divider"></div>
 
 <!-- ══════════════════════════
-     ГАРАНТИИ
+     ГАРАНТІЇ
 ══════════════════════════ -->
 <section id="guarantees">
   <p class="sec-tag fi">Покупайте без риска</p>
   <h2 class="sec-title fi">Мы заботимся<br>о вас</h2>
 
   <div class="g-cards fi">
-    <div class="g-card">
-      <div class="g-ico">💳</div>
-      <div><div class="g-title">Оплата при получении</div><div class="g-desc">Платите только после получения товара</div></div>
-    </div>
-    <div class="g-card">
-      <div class="g-ico">🏆</div>
-      <div><div class="g-title">Оригинальный товар</div><div class="g-desc">Официальный дистрибьютор в Узбекистане</div></div>
-    </div>
-    <div class="g-card">
-      <div class="g-ico">🔄</div>
-      <div><div class="g-title">Обмен и возврат 30 дней</div><div class="g-desc">Вернём деньги без вопросов</div></div>
-    </div>
-    <div class="g-card">
-      <div class="g-ico">🚚</div>
-      <div><div class="g-title">Быстрая доставка</div><div class="g-desc">1–2 рабочих дня по всему Узбекистану</div></div>
-    </div>
+    <div class="g-card"><div class="g-ico">💳</div><div><div class="g-title">Оплата при получении</div><div class="g-desc">Платите только после получения товара</div></div></div>
+    <div class="g-card"><div class="g-ico">🏆</div><div><div class="g-title">Оригинальный товар</div><div class="g-desc">Официальный дистрибьютор в Узбекистане</div></div></div>
+    <div class="g-card"><div class="g-ico">🔄</div><div><div class="g-title">Обмен и возврат 30 дней</div><div class="g-desc">Вернём деньги без вопросов</div></div></div>
+    <div class="g-card"><div class="g-ico">🚚</div><div><div class="g-title">Быстрая доставка</div><div class="g-desc">1–2 рабочих дня по всему Узбекистану</div></div></div>
   </div>
 
-  <div class="cta-strip fi" style="background:var(--deep-r);">
-    <div class="cs-text">Ничем не рискуете.<br>Попробуйте сегодня!</div>
+  <div class="cta-strip fi" style="background:var(--deep-r); margin-top:22px;">
+    <div class="cs-text" style="color:white;">Ничем не рискуете.<br>Попробуйте сегодня!</div>
     <button class="cs-btn" onclick="openPopup()" style="color:var(--deep-r);">Заказать</button>
   </div>
 </section>
 
-<div class="div"></div>
+<div class="divider"></div>
 
 <!-- ══════════════════════════
-     ПОСЛЕДНИЙ ОФФЕР
+     ФІНАЛЬНИЙ CTA
 ══════════════════════════ -->
-<section id="last-cta">
+<section id="final-cta">
   <p class="sec-tag fi" style="text-align:center;">Специальное предложение</p>
   <h2 class="sec-title fi" style="text-align:center; margin-bottom:20px;">Ваша выгода<br>сегодня</h2>
 
-  <div class="last-price-block fi">
-    <div class="lp-row"><span class="ll">Обычная цена</span><span class="lr strike">299 000 сум</span></div>
-    <div class="lp-row"><span class="ll">Скидка 50%</span><span class="lr green">−150 000 сум</span></div>
-    <div class="lp-row" style="font-size:13px;"><span class="ll" style="color:rgba(42,33,24,.4)">3-я маска в подарок</span><span class="lr green" style="font-size:13px;">бесплатно</span></div>
-    <div class="lp-div"></div>
-    <div class="lp-row" style="margin:0;"><span class="ll" style="font-size:16px; font-weight:700; color:var(--text)">Итого</span><span class="lp-total">149 000 сум</span></div>
+  <div class="final-price-block fi">
+    <div class="fp-row"><span class="fl">Обычная цена</span><span class="fr strike">299 000 сум</span></div>
+    <div class="fp-row"><span class="fl">Скидка 50%</span><span class="fr green">−150 000 сум</span></div>
+    <div class="fp-row" style="font-size:13px;"><span class="fl" style="color:rgba(42,33,24,.4)">3-я маска в подарок</span><span class="fr green" style="font-size:13px;">бесплатно</span></div>
+    <div class="fp-div"></div>
+    <div class="fp-row" style="margin:0;"><span class="fl" style="font-size:16px;font-weight:700;color:var(--text);">Итого</span><span class="fp-total">149 000 сум</span></div>
   </div>
 
-  <button class="btn-hero fi" onclick="openPopup()">
-    Хочу такой же результат → Заказать
+  <button class="btn-main fi" onclick="openPopup()">
+    Хочу такой же результат — Заказать
   </button>
 
   <div style="margin-top:12px; text-align:center; font-size:12px; color:var(--muted);" class="fi">
@@ -1092,41 +1020,27 @@ footer {
   <div class="popup" id="popup">
     <div class="popup-handle"></div>
 
-    <!-- FORM STATE -->
     <div id="popup-form-wrap">
       <div class="popup-header">
         <div class="popup-title">Оформить заказ</div>
-        <div class="popup-sub">Заполните форму — менеджер перезвонит через 10 минут</div>
+        <div class="popup-sub">Менеджер перезвонит в течение 10 минут</div>
       </div>
 
-      <!-- PRICE CALC -->
       <div class="popup-price-card">
-        <div class="pp-row">
-          <span class="pl">Обычная цена</span>
-          <span class="pr strike">299 000 сум</span>
-        </div>
-        <div class="pp-row">
-          <span class="pl">Скидка −50%</span>
-          <span class="pr green">−150 000 сум</span>
-        </div>
-        <div class="pp-row">
-          <span class="pl">3-я маска в подарок</span>
-          <span class="pr gift">🎁 бесплатно</span>
-        </div>
+        <div class="pp-row"><span class="pl">Обычная цена</span><span class="pr strike">299 000 сум</span></div>
+        <div class="pp-row"><span class="pl">Скидка −50%</span><span class="pr green">−150 000 сум</span></div>
+        <div class="pp-row"><span class="pl">3-я маска в подарок</span><span class="pr gift">🎁 бесплатно</span></div>
         <div class="pp-div"></div>
         <div class="pp-total-row">
           <span class="pp-total-lbl">Итого</span>
           <span class="pp-total-val">149 000 сум</span>
         </div>
-        <div class="pp-save">
-          ✅ Вы экономите 150 000 сум + получаете подарок
-        </div>
+        <div class="pp-save">✅ Вы экономите 150 000 сум + подарок</div>
       </div>
 
-      <!-- FIELDS -->
       <div class="popup-fields">
         <label class="p-label">Ваше имя</label>
-        <input class="p-input" type="text" id="p-name" placeholder="Например: Нилуфар" autocomplete="name">
+        <input class="p-input" type="text" id="p-name"  placeholder="Например: Нилуфар" autocomplete="name">
         <label class="p-label">Номер телефона</label>
         <input class="p-input" type="tel"  id="p-phone" placeholder="+998 __ ___ __ __" autocomplete="tel">
         <button class="btn-popup" onclick="submitPopup()">Получить маску со скидкой 50% →</button>
@@ -1134,11 +1048,10 @@ footer {
           <div class="pt-item">💳 Оплата при получении</div>
           <div class="pt-item">📦 Доставка 1–2 дня</div>
         </div>
-        <p class="popup-note">Нажимая кнопку, вы соглашаетесь на обработку<br>персональных данных</p>
+        <p class="popup-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
       </div>
     </div>
 
-    <!-- SUCCESS STATE -->
     <div class="popup-success" id="popup-success">
       <div class="ps-ico">🎉</div>
       <div class="ps-title">Заявка принята!</div>
@@ -1153,41 +1066,48 @@ footer {
 </div>
 
 <script>
-// ── POPUP ──────────────────────────
+// POPUP
 function openPopup() {
   document.getElementById('overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
 function closePopup() {
   document.getElementById('overlay').classList.remove('open');
   document.body.style.overflow = '';
 }
-
 function overlayClick(e) {
   if (e.target === document.getElementById('overlay')) closePopup();
 }
 
 // swipe down to close
 let startY = 0;
-document.getElementById('popup').addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive: true });
+document.getElementById('popup').addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive:true });
 document.getElementById('popup').addEventListener('touchend', e => {
   if (e.changedTouches[0].clientY - startY > 80) closePopup();
-}, { passive: true });
+}, { passive:true });
 
-// ── SUBMIT ─────────────────────────
+// B1 FORM (inline)
+function submitB1() {
+  const n = document.getElementById('b1-name').value.trim();
+  const p = document.getElementById('b1-phone').value.trim();
+  if (!n || !p) { alert('Пожалуйста, заполните имя и телефон'); return; }
+  const f = document.querySelector('.b1-form');
+  f.innerHTML = '<div style="text-align:center;padding:24px 0"><div style="font-size:48px;margin-bottom:12px">✅</div><div style="font-family:Playfair Display,serif;font-size:22px;color:var(--text);margin-bottom:8px;font-weight:700">Заявка принята!</div><div style="font-size:14px;color:var(--muted);line-height:1.6">Менеджер перезвонит<br>в течение 10 минут</div></div>';
+}
+
+// POPUP FORM
 function submitPopup() {
-  const name  = document.getElementById('p-name').value.trim();
-  const phone = document.getElementById('p-phone').value.trim();
-  if (!name || !phone) { alert('Пожалуйста, заполните имя и телефон'); return; }
+  const n = document.getElementById('p-name').value.trim();
+  const p = document.getElementById('p-phone').value.trim();
+  if (!n || !p) { alert('Пожалуйста, заполните имя и телефон'); return; }
   document.getElementById('popup-form-wrap').style.display = 'none';
   document.getElementById('popup-success').style.display = 'block';
 }
 
-// ── FADE IN ─────────────────────────
+// FADE IN
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 </script>
 </body>
