@@ -1,1235 +1,1194 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Лифтинг-маска для шеи — Скидка 50% | Узбекистан</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Лифтинг-маска для шеи</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --cream: #FDF8F2;
-    --warm-white: #FFFCF7;
-    --blush: #F2CBBF;
-    --rose: #D4836A;
-    --deep-rose: #B05A42;
-    --gold: #C9A96E;
-    --gold-light: #E8D5B0;
-    --text-dark: #2C1A10;
-    --text-mid: #5A3E30;
-    --text-light: #9B7B6A;
-    --green: #4A7C59;
-    --green-light: #E8F5EE;
-    --red-urgent: #C0392B;
-    --shadow: 0 4px 24px rgba(44,26,16,0.10);
-    --shadow-lg: 0 8px 40px rgba(44,26,16,0.15);
-    --radius: 16px;
-    --radius-lg: 24px;
-  }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --blue:       #1A4C8B;
+  --blue-mid:   #2860A8;
+  --blue-light: #EBF2FC;
+  --teal:       #0E7B6C;
+  --teal-light: #E6F5F3;
+  --white:      #FFFFFF;
+  --off:        #F5F7FA;
+  --line:       #E2E8F0;
+  --text:       #0F1C2E;
+  --muted:      #627385;
+  --red:        #C0392B;
+  --red-bg:     #FEF0EE;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans:  'DM Sans', sans-serif;
+  --screen: 100dvh;
+}
 
-  body {
-    font-family: 'Nunito', sans-serif;
-    background: var(--cream);
-    color: var(--text-dark);
-    max-width: 480px;
-    margin: 0 auto;
-    overflow-x: hidden;
-  }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--off);
+  color: var(--text);
+  max-width: 430px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
-  /* ─── TOP BAR ─── */
-  .top-bar {
-    background: var(--text-dark);
-    color: var(--gold-light);
-    text-align: center;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 10px 16px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  .top-bar span { display: flex; align-items: center; gap: 5px; }
+/* ── SCREEN BLOCK ── */
+/* Each .screen = exactly one viewport height */
+.screen {
+  min-height: var(--screen);
+  height: var(--screen);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
 
-  /* ─── HERO ─── */
-  .hero {
-    background: linear-gradient(160deg, #F7EDE3 0%, #EDD8CC 50%, #E4C5B5 100%);
-    padding: 32px 20px 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 240px; height: 240px;
-    background: radial-gradient(circle, rgba(201,169,110,0.18) 0%, transparent 70%);
-    border-radius: 50%;
-  }
+/* ══════════════════════════════════════════
+   SCREEN 0 — HERO / OFFER
+══════════════════════════════════════════ */
+.s0 {
+  background: linear-gradient(170deg, #0D2F5C 0%, #1A4C8B 55%, #1D5FA0 100%);
+}
 
-  .badge-row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-  .badge {
-    background: var(--deep-rose);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    padding: 5px 12px;
-    border-radius: 20px;
-    text-transform: uppercase;
-  }
-  .badge.gold {
-    background: linear-gradient(135deg, var(--gold), #A07840);
-    color: #fff;
-  }
+.s0-top {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.s0-logo {
+  font-family: var(--serif);
+  font-size: 16px;
+  color: rgba(255,255,255,.9);
+  letter-spacing: .02em;
+}
+.s0-badge {
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 100px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: .04em;
+}
 
-  .hero-tag {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--rose);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
+.s0-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 20px 16px;
+}
 
-  .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--text-dark);
-    margin-bottom: 12px;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--deep-rose);
-  }
+.s0-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,.85);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  align-self: flex-start;
+}
+.s0-tag span { width: 6px; height: 6px; border-radius: 50%; background: #4ADEAA; flex-shrink: 0; animation: glow 2s infinite; }
+@keyframes glow { 0%,100%{opacity:1}50%{opacity:.3} }
 
-  .hero-sub {
-    font-size: 15px;
-    color: var(--text-mid);
-    line-height: 1.55;
-    margin-bottom: 20px;
-  }
-  .hero-sub strong { color: var(--text-dark); }
+.s0-title {
+  font-family: var(--serif);
+  font-size: 36px;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+.s0-title em { font-style: italic; color: #A8D4FF; }
 
-  .hero-img {
-    width: 100%;
-    border-radius: var(--radius) var(--radius) 0 0;
-    display: block;
-    max-height: 280px;
-    object-fit: cover;
-    margin-top: 4px;
-    background: linear-gradient(180deg, #E8C9B8 0%, #D4A090 100%);
-    min-height: 200px;
-    position: relative;
-    overflow: hidden;
-  }
+.s0-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+.s0-sub b { color: #fff; }
 
-  .hero-img-placeholder {
-    width: 100%;
-    min-height: 220px;
-    background: linear-gradient(160deg, #EDD0C0 0%, #D4A090 100%);
-    border-radius: var(--radius) var(--radius) 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 4px;
-  }
-  .hero-img-placeholder .img-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    color: rgba(255,255,255,0.7);
-    font-style: italic;
-    text-align: center;
-    padding: 20px;
-  }
+/* Price row */
+.s0-price {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.s0-old {
+  font-size: 14px;
+  color: rgba(255,255,255,.45);
+  text-decoration: line-through;
+  font-weight: 500;
+}
+.s0-new {
+  font-family: var(--serif);
+  font-size: 36px;
+  color: #fff;
+  line-height: 1;
+}
+.s0-cur { font-size: 14px; color: rgba(255,255,255,.6); font-weight: 500; }
+.s0-save {
+  background: #E74C3C;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
 
-  /* ─── COUNTDOWN ─── */
-  .countdown-wrap {
-    background: var(--text-dark);
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .countdown-label {
-    font-size: 12px;
-    color: var(--gold-light);
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    flex: 1;
-    padding-right: 12px;
-    line-height: 1.4;
-  }
-  .countdown-label span { color: var(--rose); font-size: 14px; }
-  .countdown {
-    display: flex;
-    gap: 6px;
-    align-items: center;
-  }
-  .cd-unit {
-    text-align: center;
-  }
-  .cd-num {
-    background: var(--deep-rose);
-    color: #fff;
-    font-size: 22px;
-    font-weight: 800;
-    width: 46px;
-    height: 46px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-variant-numeric: tabular-nums;
-  }
-  .cd-lbl {
-    font-size: 9px;
-    color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 3px;
-  }
-  .cd-sep { color: var(--rose); font-size: 20px; font-weight: 800; margin-bottom: 16px; }
+.s0-gift {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(74,222,170,.12);
+  border: 1px solid rgba(74,222,170,.3);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+}
+.s0-gift-icon { font-size: 22px; }
+.s0-gift-text { font-size: 13px; font-weight: 600; color: #A8F0D8; line-height: 1.4; }
 
-  /* ─── PRICE BLOCK ─── */
-  .price-block {
-    background: var(--warm-white);
-    padding: 24px 20px;
-    border-bottom: 1px solid rgba(201,169,110,0.2);
-  }
-  .stock-line {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-  .stock-dot { width: 8px; height: 8px; background: var(--red-urgent); border-radius: 50%; animation: pulse 1.5s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
-  .stock-text { font-size: 13px; color: var(--red-urgent); font-weight: 700; }
+/* Form inline */
+.s0-form { display: flex; flex-direction: column; gap: 8px; }
+.s0-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--text);
+  background: rgba(255,255,255,.95);
+  border: none;
+  border-radius: 10px;
+  outline: none;
+}
+.s0-input::placeholder { color: #9BAFC5; }
+.s0-btn {
+  width: 100%;
+  padding: 16px;
+  background: #E74C3C;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative; overflow: hidden;
+}
+.s0-btn::after { content:''; position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);animation:sh 3s infinite; }
+@keyframes sh { 100%{left:160%} }
+.s0-note { text-align: center; font-size: 11px; color: rgba(255,255,255,.4); padding-top: 2px; }
 
-  .price-row {
-    display: flex;
-    align-items: flex-end;
-    gap: 12px;
-    margin-bottom: 8px;
-  }
-  .price-old {
-    font-size: 18px;
-    color: var(--text-light);
-    text-decoration: line-through;
-    font-weight: 600;
-  }
-  .price-new {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 42px;
-    font-weight: 700;
-    color: var(--deep-rose);
-    line-height: 1;
-  }
-  .price-new sup { font-size: 18px; vertical-align: super; }
-  .price-save {
-    display: inline-block;
-    background: var(--deep-rose);
-    color: #fff;
-    font-size: 12px;
-    font-weight: 800;
-    padding: 4px 10px;
-    border-radius: 20px;
-    margin-bottom: 4px;
-  }
-  .price-note {
-    font-size: 13px;
-    color: var(--text-mid);
-    margin-bottom: 20px;
-  }
+/* Scroll hint */
+.scroll-hint {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  opacity: .5;
+}
+.scroll-hint span { font-size: 10px; color: rgba(255,255,255,.6); letter-spacing: .08em; }
+.arrow-down { width: 18px; height: 18px; border-right: 2px solid rgba(255,255,255,.5); border-bottom: 2px solid rgba(255,255,255,.5); transform: rotate(45deg); animation: bounce 1.6s infinite; }
+@keyframes bounce { 0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(3px,3px)} }
 
-  /* ─── GIFT BANNER ─── */
-  .gift-banner {
-    background: linear-gradient(135deg, #FFF8EE 0%, #F5E8D0 100%);
-    border: 1.5px solid var(--gold-light);
-    border-radius: var(--radius);
-    padding: 14px 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  .gift-icon { font-size: 32px; }
-  .gift-text { font-size: 14px; color: var(--text-dark); line-height: 1.45; }
-  .gift-text strong { color: var(--deep-rose); font-size: 15px; }
+/* ══════════════════════════════════════════
+   SCREEN 1 — COUNTDOWN + ОПИСАНИЕ
+══════════════════════════════════════════ */
+.s1 { background: var(--white); }
 
-  /* ─── FORM ─── */
-  .form-section {
-    padding: 0 20px 28px;
-    background: var(--warm-white);
-  }
-  .form-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text-dark);
-    text-align: center;
-    margin-bottom: 16px;
-    line-height: 1.3;
-  }
-  .form-title em { color: var(--deep-rose); font-style: italic; }
+.cd-bar {
+  flex: 0 0 auto;
+  background: var(--text);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cd-label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.5); line-height: 1.4; }
+.cd-label b { color: #fff; }
+.cd-nums { display: flex; align-items: center; gap: 4px; }
+.cd-box {
+  background: #E74C3C;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  width: 46px; height: 44px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.cd-sep { color: rgba(255,255,255,.3); font-size: 18px; font-weight: 700; }
 
-  .form-field {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1.5px solid #E0D0C8;
-    border-radius: var(--radius);
-    font-family: 'Nunito', sans-serif;
-    font-size: 15px;
-    color: var(--text-dark);
-    background: #fff;
-    outline: none;
-    transition: border-color 0.2s;
-    margin-bottom: 12px;
-    display: block;
-  }
-  .form-field:focus { border-color: var(--rose); }
-  .form-field::placeholder { color: #BBA89A; }
+.s1-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 20px;
+  gap: 20px;
+}
 
-  .cta-btn {
-    width: 100%;
-    padding: 18px;
-    background: linear-gradient(135deg, var(--deep-rose), #8B3A25);
-    color: #fff;
-    font-family: 'Nunito', sans-serif;
-    font-size: 17px;
-    font-weight: 800;
-    border: none;
-    border-radius: var(--radius);
-    cursor: pointer;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    box-shadow: 0 6px 24px rgba(176,90,66,0.35);
-    transition: transform 0.15s, box-shadow 0.15s;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-btn::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-    animation: shimmer 2.5s infinite;
-  }
-  @keyframes shimmer { 100% { left: 160%; } }
-  .cta-btn:active { transform: scale(0.98); box-shadow: 0 3px 12px rgba(176,90,66,0.3); }
+.sec-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+  display: block;
+}
 
-  .form-trust {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 14px;
-    flex-wrap: wrap;
-  }
-  .form-trust span {
-    font-size: 11px;
-    color: var(--text-light);
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
+.sec-title {
+  font-family: var(--serif);
+  font-size: 30px;
+  color: var(--text);
+  line-height: 1.12;
+}
+.sec-title em { font-style: italic; color: var(--blue); }
 
-  /* ─── SECTION DIVIDER ─── */
-  .section { padding: 32px 20px; }
-  .section-dark { background: var(--text-dark); color: var(--cream); }
-  .section-cream { background: var(--cream); }
-  .section-white { background: var(--warm-white); }
-  .section-rose { background: linear-gradient(135deg, #F7EDE3, #EDD8CC); }
+.desc-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.desc-text b { color: var(--text); font-weight: 600; }
 
-  .section-tag {
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--rose);
-    margin-bottom: 8px;
-  }
-  .section-dark .section-tag { color: var(--gold); }
+.info-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.info-pill {
+  background: var(--blue-light);
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 100px;
+  border: 1px solid #C5D9F5;
+}
 
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 16px;
-    color: var(--text-dark);
-  }
-  .section-dark .section-title { color: var(--cream); }
+/* ══════════════════════════════════════════
+   SCREEN 2 — ДО / ПОСЛЕ
+══════════════════════════════════════════ */
+.s2 { background: var(--off); }
 
-  /* ─── DESCRIPTION ─── */
-  .desc-text {
-    font-size: 15px;
-    line-height: 1.65;
-    color: var(--text-mid);
-    margin-bottom: 20px;
-  }
-  .desc-text strong { color: var(--text-dark); }
+.s2-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 20px;
+  gap: 16px;
+}
 
-  .highlight-box {
-    background: linear-gradient(135deg, #FFF8EE, #F5E8D0);
-    border-left: 4px solid var(--gold);
-    border-radius: 0 var(--radius) var(--radius) 0;
-    padding: 16px;
-    font-size: 14px;
-    color: var(--text-mid);
-    line-height: 1.6;
-    margin-bottom: 20px;
-  }
-  .highlight-box strong { color: var(--text-dark); font-size: 15px; }
+.ba-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.ba-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.ba-col {
+  padding: 18px 16px;
+  text-align: center;
+}
+.ba-col:first-child { border-right: 1px solid var(--line); }
+.ba-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.ba-col.after .ba-lbl { color: var(--teal); }
+.ba-emoji { font-size: 28px; margin-bottom: 8px; }
+.ba-points { font-size: 13px; color: var(--muted); line-height: 2; }
+.ba-points b { color: var(--text); font-weight: 700; }
+.ba-foot {
+  border-top: 1px solid var(--line);
+  padding: 12px 16px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--teal);
+  background: var(--teal-light);
+}
 
-  /* ─── BEFORE / AFTER ─── */
-  .ba-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  .ba-card {
-    border-radius: var(--radius);
-    overflow: hidden;
-    position: relative;
-  }
-  .ba-img {
-    width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-    display: block;
-  }
-  .ba-img-placeholder {
-    width: 100%;
-    aspect-ratio: 3/4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.8);
-  }
-  .ba-card.before .ba-img-placeholder { background: linear-gradient(180deg, #C9A090 0%, #A07060 100%); }
-  .ba-card.after .ba-img-placeholder { background: linear-gradient(180deg, #E8C5B0 0%, #D4A090 100%); }
-  .ba-label {
-    position: absolute;
-    top: 10px; left: 10px;
-    background: rgba(0,0,0,0.55);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    padding: 4px 10px;
-    border-radius: 20px;
-    text-transform: uppercase;
-  }
-  .ba-card.after .ba-label { background: var(--deep-rose); }
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 8px;
+  text-align: center;
+}
+.stat-num {
+  font-family: var(--serif);
+  font-size: 28px;
+  color: var(--blue);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-lbl { font-size: 11px; font-weight: 600; color: var(--muted); line-height: 1.4; text-transform: uppercase; letter-spacing: .05em; }
 
-  .ba-result {
-    background: var(--green-light);
-    border-radius: var(--radius);
-    padding: 14px 16px;
-    font-size: 14px;
-    color: var(--green);
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .ba-result span { font-size: 22px; display: block; margin-bottom: 4px; }
+/* ══════════════════════════════════════════
+   SCREEN 3 — ПРЕИМУЩЕСТВА
+══════════════════════════════════════════ */
+.s3 { background: var(--white); }
 
-  /* ─── CTA STRIP ─── */
-  .cta-strip {
-    background: linear-gradient(135deg, var(--deep-rose), #8B3A25);
-    padding: 20px;
-    text-align: center;
-  }
-  .cta-strip p {
-    color: rgba(255,255,255,0.85);
-    font-size: 13px;
-    margin-bottom: 12px;
-  }
-  .cta-strip strong { color: #fff; }
-  .cta-strip-btn {
-    display: block;
-    width: 100%;
-    padding: 16px;
-    background: #fff;
-    color: var(--deep-rose);
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-weight: 800;
-    border: none;
-    border-radius: var(--radius);
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    transition: transform 0.15s;
-  }
-  .cta-strip-btn:active { transform: scale(0.97); }
+.s3-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 20px;
+  gap: 12px;
+}
 
-  /* ─── BENEFITS ─── */
-  .benefits-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .benefit-card {
-    background: #fff;
-    border-radius: var(--radius);
-    padding: 18px 14px;
-    box-shadow: var(--shadow);
-    text-align: center;
-  }
-  .benefit-icon { font-size: 32px; margin-bottom: 8px; }
-  .benefit-title { font-size: 13px; font-weight: 800; color: var(--text-dark); margin-bottom: 4px; line-height: 1.3; }
-  .benefit-desc { font-size: 12px; color: var(--text-light); line-height: 1.5; }
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--off);
+  border-radius: 14px;
+  border: 1px solid var(--line);
+}
+.benefit-icon {
+  width: 44px; height: 44px;
+  background: var(--blue-light);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.benefit-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 2px; line-height: 1.3; }
+.benefit-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
-  /* ─── REVIEWS ─── */
-  .review-card {
-    background: #fff;
-    border-radius: var(--radius);
-    padding: 18px;
-    box-shadow: var(--shadow);
-    margin-bottom: 12px;
-  }
-  .review-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 10px;
-  }
-  .review-avatar {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .av1 { background: linear-gradient(135deg, #F2CBBF, #D4836A); }
-  .av2 { background: linear-gradient(135deg, #D4B8E0, #9B5BBF); }
-  .av3 { background: linear-gradient(135deg, #B8D4E0, #4A8ABF); }
-  .av4 { background: linear-gradient(135deg, #B8E0C4, #4A8A59); }
-  .review-name { font-size: 14px; font-weight: 800; color: var(--text-dark); }
-  .review-meta { font-size: 11px; color: var(--text-light); }
-  .review-stars { color: var(--gold); font-size: 14px; letter-spacing: 1px; }
-  .review-text { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
-  .review-badge {
-    display: inline-block;
-    background: var(--green-light);
-    color: var(--green);
-    font-size: 10px;
-    font-weight: 800;
-    padding: 3px 9px;
-    border-radius: 20px;
-    margin-top: 8px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
+/* ══════════════════════════════════════════
+   SCREEN 4 — ОТЗЫВЫ
+══════════════════════════════════════════ */
+.s4 { background: var(--off); }
 
-  /* ─── HOW TO ORDER ─── */
-  .steps-list { display: flex; flex-direction: column; gap: 0; }
-  .step {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 18px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    position: relative;
-  }
-  .step:last-child { border-bottom: none; }
-  .step-num {
-    width: 40px; height: 40px;
-    background: var(--deep-rose);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; font-weight: 800;
-    color: #fff;
-    flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(176,90,66,0.4);
-  }
-  .step-content {}
-  .step-title { font-size: 15px; font-weight: 800; color: var(--cream); margin-bottom: 3px; }
-  .step-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+.s4-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 20px;
+  gap: 10px;
+}
 
-  /* ─── GUARANTEES ─── */
-  .guarantee-grid { display: flex; flex-direction: column; gap: 12px; }
-  .guarantee-item {
-    background: #fff;
-    border-radius: var(--radius);
-    padding: 16px 18px;
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    box-shadow: var(--shadow);
-  }
-  .guarantee-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
-  .guarantee-title { font-size: 14px; font-weight: 800; color: var(--text-dark); margin-bottom: 4px; }
-  .guarantee-desc { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+.review-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid var(--line);
+}
+.rv-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.rv-av {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--blue-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; flex-shrink: 0;
+}
+.rv-name { font-size: 13px; font-weight: 700; color: var(--text); }
+.rv-loc { font-size: 11px; color: var(--muted); }
+.rv-stars { color: #F59E0B; font-size: 12px; }
+.rv-text {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.rv-text b { color: var(--text); }
 
-  /* ─── OBJECTIONS ─── */
-  .faq-list { display: flex; flex-direction: column; gap: 10px; }
-  .faq-item {
-    background: #fff;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-  }
-  .faq-q {
-    padding: 16px 18px;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-dark);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-  }
-  .faq-q::after { content: '+'; font-size: 20px; color: var(--rose); transition: transform 0.2s; }
-  .faq-item.open .faq-q::after { transform: rotate(45deg); }
-  .faq-a {
-    padding: 0 18px;
-    font-size: 13px;
-    color: var(--text-mid);
-    line-height: 1.65;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s;
-  }
-  .faq-item.open .faq-a {
-    max-height: 300px;
-    padding: 0 18px 16px;
-  }
+.rv-total {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  padding-top: 4px;
+}
+.rv-total b { color: var(--text); }
 
-  /* ─── FOOTER ─── */
-  .footer {
-    background: var(--text-dark);
-    padding: 24px 20px;
-    text-align: center;
-  }
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    color: var(--gold-light);
-    font-weight: 700;
-    font-style: italic;
-    margin-bottom: 10px;
-  }
-  .footer-text { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.7; }
-  .footer-link { color: var(--gold); text-decoration: none; }
+/* ══════════════════════════════════════════
+   SCREEN 5 — КАК ЗАКАЗАТЬ
+══════════════════════════════════════════ */
+.s5 {
+  background: linear-gradient(170deg, #0D2F5C 0%, #1A4C8B 100%);
+}
 
-  /* ─── STICKY CTA ─── */
-  .sticky-cta {
-    position: fixed;
-    bottom: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 480px;
-    padding: 12px 20px 16px;
-    background: rgba(253,248,242,0.95);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(201,169,110,0.25);
-    box-shadow: 0 -4px 24px rgba(44,26,16,0.12);
-    z-index: 100;
-    display: none;
-  }
-  .sticky-cta.visible { display: block; }
-  .sticky-price-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
-  .sticky-old { font-size: 13px; color: var(--text-light); text-decoration: line-through; }
-  .sticky-new { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: var(--deep-rose); }
-  .sticky-left { font-size: 12px; color: var(--red-urgent); font-weight: 700; }
-  .sticky-btn {
-    width: 100%;
-    padding: 15px;
-    background: linear-gradient(135deg, var(--deep-rose), #8B3A25);
-    color: #fff;
-    font-family: 'Nunito', sans-serif;
-    font-size: 15px;
-    font-weight: 800;
-    border: none;
-    border-radius: var(--radius);
-    cursor: pointer;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    box-shadow: 0 4px 16px rgba(176,90,66,0.35);
-  }
+.s5-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 20px;
+  gap: 6px;
+}
 
-  /* ─── DIVIDER LINE ─── */
-  .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(201,169,110,0.3), transparent); margin: 0 20px; }
+.order-step {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px;
+}
+.os-num {
+  width: 40px; height: 40px;
+  background: #E74C3C;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.os-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+.os-desc { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.5; }
+.os-accent { color: #4ADEAA; font-weight: 600; }
 
-  /* ─── STATS ─── */
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 24px;
-  }
-  .stat-card {
-    background: linear-gradient(135deg, #FFF8EE, #F5E8D0);
-    border-radius: var(--radius);
-    padding: 14px 8px;
-    text-align: center;
-    border: 1px solid var(--gold-light);
-  }
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--deep-rose);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .stat-label { font-size: 10px; color: var(--text-light); font-weight: 700; line-height: 1.3; text-transform: uppercase; letter-spacing: 0.06em; }
+/* ══════════════════════════════════════════
+   SCREEN 6 — ГАРАНТИИ
+══════════════════════════════════════════ */
+.s6 { background: var(--white); }
 
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .hero h1, .hero-sub, .badge-row { animation: fadeUp 0.6s ease both; }
-  .hero-sub { animation-delay: 0.1s; }
-  .badge-row { animation-delay: 0.0s; }
+.s6-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 20px;
+  gap: 12px;
+}
 
-  /* ─── SCROLL REVEAL ─── */
-  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .reveal.visible { opacity: 1; transform: none; }
+.g-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 16px;
+  border-radius: 16px;
+  border: 1.5px solid var(--line);
+}
+.g-ico {
+  width: 50px; height: 50px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.g-ico.blue { background: var(--blue-light); }
+.g-ico.teal { background: var(--teal-light); }
+.g-ico.red  { background: var(--red-bg); }
+.g-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.g-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+.g-cta { margin-top: 4px; }
+
+/* ══════════════════════════════════════════
+   SCREEN 7 — ФИНАЛЬНЫЙ ОФФЕР
+══════════════════════════════════════════ */
+.s7 { background: var(--off); }
+
+.s7-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 20px 12px;
+  gap: 12px;
+}
+
+.final-price-card {
+  background: var(--white);
+  border: 2px solid var(--blue);
+  border-radius: 18px;
+  padding: 20px;
+}
+.fp-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.fp-old { font-size: 16px; color: var(--red); text-decoration: line-through; font-weight: 600; }
+.fp-badge {
+  background: #E74C3C;
+  color: #fff; font-size: 12px; font-weight: 700;
+  padding: 5px 12px; border-radius: 8px;
+}
+.fp-new {
+  font-family: var(--serif);
+  font-size: 50px;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.fp-cur { font-size: 16px; font-weight: 500; color: var(--muted); }
+.fp-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+.final-gift {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--teal-light);
+  border: 1.5px solid #A3D9D2;
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.fg-icon { font-size: 28px; }
+.fg-title { font-size: 15px; font-weight: 700; color: var(--teal); line-height: 1.3; }
+.fg-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+.stock-row {
+  display: flex; align-items: center; gap: 8px;
+}
+.stock-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex-shrink:0; animation: blink 1.6s infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:.2} }
+.stock-text { font-size: 13px; font-weight: 700; color: var(--red); }
+
+.final-form { display: flex; flex-direction: column; gap: 8px; }
+.final-input {
+  width: 100%;
+  padding: 15px 16px;
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--text);
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color .2s;
+}
+.final-input:focus { border-color: var(--blue); }
+.final-input::placeholder { color: #A8B8CC; }
+.final-btn {
+  width: 100%; padding: 18px;
+  background: #E74C3C;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 14px; font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  border: none; border-radius: 12px; cursor: pointer;
+  position: relative; overflow: hidden;
+}
+.final-btn::after { content:''; position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);animation:sh 3s infinite; }
+.final-note { text-align: center; font-size: 11px; color: var(--muted); }
+
+/* ══════════════════════════════════════════
+   SCREEN 8 — FOOTER
+══════════════════════════════════════════ */
+.s8 {
+  background: var(--text);
+  min-height: auto;
+  height: auto;
+  scroll-snap-align: start;
+  padding: 36px 24px 40px;
+  text-align: center;
+}
+.foot-logo { font-family: var(--serif); font-size: 20px; font-style: italic; color: rgba(255,255,255,.3); margin-bottom: 16px; }
+.foot-badges {
+  display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.foot-badge {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 12px; font-weight: 600; color: rgba(255,255,255,.5);
+}
+.foot-text { font-size: 11px; color: rgba(255,255,255,.2); line-height: 2; }
+.foot-link { color: rgba(255,255,255,.35); }
+
+/* ══════════════════════════════════════════
+   SCREEN NAV DOTS
+══════════════════════════════════════════ */
+.nav-dots {
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 99;
+}
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.2);
+  cursor: pointer;
+  transition: all .25s;
+}
+.dot.active { background: var(--blue); transform: scale(1.4); }
+
+/* ══════════════════════════════════════════
+   STICKY BOTTOM
+══════════════════════════════════════════ */
+.sticky {
+  position: fixed; bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100%; max-width: 430px;
+  background: rgba(255,255,255,.97);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--line);
+  padding: 10px 18px 14px;
+  z-index: 88;
+  display: none;
+}
+.sticky.show { display: block; }
+.sticky-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.sticky-p { font-family: var(--serif); font-size: 22px; color: var(--text); }
+.sticky-old { font-size: 12px; color: var(--red); text-decoration: line-through; }
+.sticky-left { font-size: 11px; font-weight: 700; color: var(--red); }
+.sticky-btn {
+  width: 100%; padding: 14px;
+  background: #E74C3C; color: #fff;
+  font-family: var(--sans); font-size: 13px; font-weight: 700;
+  letter-spacing: .05em; text-transform: uppercase;
+  border: none; border-radius: 10px; cursor: pointer;
+}
+
+/* ══════════════════════════════════════════
+   MODAL
+══════════════════════════════════════════ */
+.modal {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.65); z-index: 200;
+  align-items: flex-end; justify-content: center;
+}
+.modal.open { display: flex; }
+.modal-box {
+  background: var(--white);
+  border-radius: 24px 24px 0 0;
+  padding: 40px 24px 48px;
+  width: 100%; max-width: 430px;
+  text-align: center;
+  animation: up .3s ease;
+}
+@keyframes up { from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1} }
+.modal-ico { font-size: 54px; margin-bottom: 14px; }
+.modal-title { font-family: var(--serif); font-size: 28px; color: var(--text); margin-bottom: 10px; line-height: 1.2; }
+.modal-text { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
+.modal-tag { background: var(--teal-light); color: var(--teal); font-size: 13px; font-weight: 700; padding: 12px 16px; border-radius: 12px; margin-bottom: 20px; }
+.modal-btn { width: 100%; padding: 16px; background: var(--blue); color: #fff; border: none; border-radius: 12px; font-family: var(--sans); font-size: 15px; font-weight: 700; cursor: pointer; }
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="top-bar">
-  <span>🚚 Доставка 1-2 дня</span>
-  <span>✅ Оплата при получении</span>
-  <span>🔄 Возврат 30 дней</span>
-</div>
+<!-- NAV DOTS -->
+<div class="nav-dots" id="navDots"></div>
 
-<!-- ═══════════════════════════════════════ -->
-<!--                  HERO                  -->
-<!-- ═══════════════════════════════════════ -->
-<section class="hero">
-  <div class="badge-row">
-    <span class="badge">−50% скидка</span>
-    <span class="badge gold">🎁 3-я в подарок</span>
-  </div>
-  <p class="hero-tag">Уход за шеей и декольте</p>
-  <h1>Маска с <em>лифтинг-эффектом</em> для упругой кожи шеи</h1>
-  <p class="hero-sub">
-    Заметный результат уже <strong>после 3–5 применений.</strong> Кожа становится более гладкой, упругой и подтянутой — без уколов и дорогих процедур.
-  </p>
-  <div class="hero-img-placeholder">
-    <div class="img-label">✨ Лифтинг-маска<br>для шеи</div>
-  </div>
-</section>
+<!-- ══════════════════════════════════════════
+     SCREEN 0 — HERO
+══════════════════════════════════════════ -->
+<div class="screen s0" id="screen0">
 
-<!-- COUNTDOWN -->
-<div class="countdown-wrap">
-  <div class="countdown-label">
-    <span>⏰ Акция заканчивается:</span><br>
-    Успей купить по старой цене!
+  <div class="s0-top">
+    <span class="s0-logo">NeckLift Pro</span>
+    <span class="s0-badge">✅ ОПЛАТА ПРИ ПОЛУЧЕНИИ</span>
   </div>
-  <div class="countdown">
-    <div class="cd-unit">
-      <div class="cd-num" id="cd-h">04</div>
-      <div class="cd-lbl">часов</div>
+
+  <div class="s0-body">
+
+    <div>
+      <div class="s0-tag"><span></span> АКЦИЯ · ОГРАНИЧЕННО</div>
+      <h1 class="s0-title">Шея станет<br><em>моложе</em> уже<br>через 3 процедуры</h1>
+      <p class="s0-sub">Лифтинг-маска для шеи и декольте.<br><b>Без уколов · Без салона · Дома</b></p>
     </div>
-    <div class="cd-sep">:</div>
-    <div class="cd-unit">
-      <div class="cd-num" id="cd-m">27</div>
-      <div class="cd-lbl">минут</div>
-    </div>
-    <div class="cd-sep">:</div>
-    <div class="cd-unit">
-      <div class="cd-num" id="cd-s">44</div>
-      <div class="cd-lbl">секунд</div>
-    </div>
-  </div>
-</div>
 
-<!-- PRICE -->
-<div class="price-block">
-  <div class="stock-line">
-    <div class="stock-dot"></div>
-    <span class="stock-text">Осталось 23 набора по акционной цене</span>
-  </div>
-
-  <div class="price-row">
-    <span class="price-old">299 000 сум</span>
-    <span class="price-save">−50%</span>
-  </div>
-  <div class="price-new">149 000 <sup>сум</sup></div>
-  <p class="price-note">за набор 10 масок (полный курс ухода)</p>
-
-  <div class="gift-banner">
-    <div class="gift-icon">🎁</div>
-    <div class="gift-text">
-      <strong>Купи 2 набора — 3-й получи в подарок!</strong><br>
-      Лучший вариант для себя и близких
-    </div>
-  </div>
-
-  <div class="form-title">
-    Оформить заказ — <em>бесплатно</em>
-  </div>
-  <input class="form-field" type="text" placeholder="Ваше имя">
-  <input class="form-field" type="tel" placeholder="Номер телефона (+998...)">
-  <button class="cta-btn" onclick="submitForm(this)">🛒 Получить со скидкой 50%</button>
-  <div class="form-trust">
-    <span>🔒 Данные защищены</span>
-    <span>📞 Перезвоним за 5 минут</span>
-    <span>💳 Оплата при получении</span>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════ -->
-<!--              DESCRIPTION               -->
-<!-- ═══════════════════════════════════════ -->
-<section class="section section-cream reveal">
-  <p class="section-tag">О продукте</p>
-  <h2 class="section-title">Почему шея выдаёт возраст — и как это исправить?</h2>
-
-  <p class="desc-text">
-    Кожа шеи в <strong>3–4 раза тоньше</strong>, чем на лице. Она быстрее теряет тонус, появляются складки и дряблость — а обычные кремы практически не работают.
-  </p>
-
-  <div class="highlight-box">
-    <strong>Лифтинг-маска создана специально для этой зоны.</strong><br>
-    Плотно прилегает к коже, как «уходовый компресс» — активные компоненты проникают глубоко и работают в 3 раза эффективнее обычных средств.
-  </div>
-
-  <div class="stats-row reveal">
-    <div class="stat-card">
-      <div class="stat-num">97%</div>
-      <div class="stat-label">Заметный эффект</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">10</div>
-      <div class="stat-label">Масок в наборе</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">5</div>
-      <div class="stat-label">мин. нанесение</div>
-    </div>
-  </div>
-
-  <p class="desc-text">Рекомендуется применять <strong>2–3 раза в неделю</strong> курсом. Один набор = полный курс ухода. Результат виден с первых применений.</p>
-</section>
-
-<!-- ─── BEFORE / AFTER ─── -->
-<section class="section section-white reveal">
-  <p class="section-tag">Результат</p>
-  <h2 class="section-title">До и после курса масок</h2>
-
-  <div class="ba-grid">
-    <div class="ba-card before">
-      <div class="ba-img-placeholder">
-        <span>До</span>
-        <span style="font-size:11px;margin-top:8px;text-align:center;padding:0 8px;opacity:0.75;">дряблость, складки, тусклый тон</span>
+    <div>
+      <div class="s0-price">
+        <div>
+          <div class="s0-old">299 000 сум</div>
+          <div class="s0-new">149 000 <span class="s0-cur">сум</span></div>
+        </div>
+        <div class="s0-save">−50%</div>
       </div>
-      <span class="ba-label">До</span>
-    </div>
-    <div class="ba-card after">
-      <div class="ba-img-placeholder">
-        <span>После</span>
-        <span style="font-size:11px;margin-top:8px;text-align:center;padding:0 8px;opacity:0.85;">подтянутая, увлажнённая, сияющая</span>
+
+      <div class="s0-gift">
+        <div class="s0-gift-icon">🎁</div>
+        <div class="s0-gift-text">Купи 2 набора — получи 3-й бесплатно!</div>
       </div>
-      <span class="ba-label">После</span>
+
+      <div class="s0-form">
+        <input class="s0-input" type="text" placeholder="Ваше имя" id="n0">
+        <input class="s0-input" type="tel" placeholder="+998 — номер телефона" id="p0">
+        <button class="s0-btn" onclick="go('n0','p0')">ПОЛУЧИТЬ СО СКИДКОЙ 50%</button>
+        <p class="s0-note">🔒 Без предоплаты · оплата при получении</p>
+      </div>
     </div>
+
   </div>
 
-  <div class="ba-result">
-    <span>✨</span>
-    Упругость кожи повышается уже после <strong>3–5 процедур</strong>
+  <div class="scroll-hint">
+    <span>ЛИСТАЙ</span>
+    <div class="arrow-down"></div>
   </div>
 
-  <p class="desc-text" style="text-align:center;font-size:13px;">
-    Назначение: увлажнение · подтяжка · повышение упругости<br>
-    Возраст: 18+ · Количество: 10 масок
-  </p>
-</section>
-
-<!-- ─── CTA STRIP ─── -->
-<div class="cta-strip reveal">
-  <p>Хочешь такой же результат? <strong>Осталось 23 набора по цене 149 000 сум</strong></p>
-  <button class="cta-strip-btn" onclick="scrollToForm()">Хочу попробовать →</button>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
-<!--              BENEFITS                  -->
-<!-- ═══════════════════════════════════════ -->
-<section class="section section-cream reveal">
-  <p class="section-tag">Преимущества</p>
-  <h2 class="section-title">Почему выбирают эту маску?</h2>
+<!-- ══════════════════════════════════════════
+     SCREEN 1 — ОПИСАНИЕ
+══════════════════════════════════════════ -->
+<div class="screen s1" id="screen1">
 
-  <div class="benefits-grid">
-    <div class="benefit-card">
-      <div class="benefit-icon">🌿</div>
-      <div class="benefit-title">Натуральный состав</div>
-      <div class="benefit-desc">Без агрессивных химических компонентов</div>
+  <div class="cd-bar">
+    <div class="cd-label"><b>Акция заканчивается:</b><br>успей по старой цене</div>
+    <div class="cd-nums">
+      <div class="cd-box" id="cdh">04</div>
+      <div class="cd-sep">:</div>
+      <div class="cd-box" id="cdm">27</div>
+      <div class="cd-sep">:</div>
+      <div class="cd-box" id="cds">44</div>
     </div>
-    <div class="benefit-card">
+  </div>
+
+  <div class="s1-body">
+
+    <div>
+      <span class="sec-tag">О продукте</span>
+      <h2 class="sec-title">Почему шея<br><em>выдаёт возраст?</em></h2>
+    </div>
+
+    <p class="desc-text">
+      Кожа шеи в <b>3–4 раза тоньше</b>, чем на лице. Она первой теряет тонус и упругость — а обычные кремы только увлажняют поверхность.
+    </p>
+
+    <p class="desc-text">
+      Маска плотно прилегает к коже, создавая эффект <b>«уходового компресса»</b> — активные компоненты проникают глубоко и работают в полную силу.
+    </p>
+
+    <div class="info-pills">
+      <span class="info-pill">10 масок в наборе</span>
+      <span class="info-pill">2–3 раза в неделю</span>
+      <span class="info-pill">Курс 4 недели</span>
+      <span class="info-pill">Возраст 35+</span>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN 2 — ДО / ПОСЛЕ
+══════════════════════════════════════════ -->
+<div class="screen s2" id="screen2">
+
+  <div class="s2-body">
+
+    <div>
+      <span class="sec-tag">Результат</span>
+      <h2 class="sec-title">До и после<br>курса масок</h2>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-num">97%</div>
+        <div class="stat-lbl">Видят эффект</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">10</div>
+        <div class="stat-lbl">Масок в наборе</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">20<span style="font-size:14px">мин</span></div>
+        <div class="stat-lbl">Процедура</div>
+      </div>
+    </div>
+
+    <div class="ba-card">
+      <div class="ba-head">
+        <div class="ba-col">
+          <div class="ba-lbl">До</div>
+          <div class="ba-emoji">😔</div>
+          <div class="ba-points">дряблость<br>складки<br>сухость<br><b>тусклый тон</b></div>
+        </div>
+        <div class="ba-col after">
+          <div class="ba-lbl">После</div>
+          <div class="ba-emoji">✨</div>
+          <div class="ba-points"><b>упругость</b><br>подтяжка<br>увлажнение<br><b>сияние</b></div>
+        </div>
+      </div>
+      <div class="ba-foot">Эффект заметен после 3–5 применений</div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN 3 — ПРЕИМУЩЕСТВА
+══════════════════════════════════════════ -->
+<div class="screen s3" id="screen3">
+
+  <div class="s3-body">
+
+    <div>
+      <span class="sec-tag">Преимущества</span>
+      <h2 class="sec-title">Почему выбирают<br>эту маску</h2>
+    </div>
+
+    <div class="benefit-item">
       <div class="benefit-icon">⚡</div>
-      <div class="benefit-title">Быстрый эффект</div>
-      <div class="benefit-desc">Заметный лифтинг после первых применений</div>
+      <div>
+        <div class="benefit-title">Быстрый видимый эффект</div>
+        <div class="benefit-desc">Лифтинг и подтяжка уже после первых применений</div>
+      </div>
     </div>
-    <div class="benefit-card">
-      <div class="benefit-icon">💦</div>
-      <div class="benefit-title">Глубокое увлажнение</div>
-      <div class="benefit-desc">Кожа мягкая и напитанная 24 часа</div>
-    </div>
-    <div class="benefit-card">
+
+    <div class="benefit-item">
       <div class="benefit-icon">🎯</div>
-      <div class="benefit-title">Точечное действие</div>
-      <div class="benefit-desc">Специально для нежной зоны шеи</div>
+      <div>
+        <div class="benefit-title">Специально для шеи</div>
+        <div class="benefit-desc">Формула создана именно для тонкой кожи шейной зоны</div>
+      </div>
     </div>
-    <div class="benefit-card">
-      <div class="benefit-icon">📦</div>
-      <div class="benefit-title">Готовый курс</div>
-      <div class="benefit-desc">10 масок = полный курс ухода в одном наборе</div>
+
+    <div class="benefit-item">
+      <div class="benefit-icon">💦</div>
+      <div>
+        <div class="benefit-title">Глубокое увлажнение</div>
+        <div class="benefit-desc">Кожа мягкая и напитанная в течение всего дня</div>
+      </div>
     </div>
-    <div class="benefit-card">
+
+    <div class="benefit-item">
       <div class="benefit-icon">🏠</div>
-      <div class="benefit-title">Уход дома</div>
-      <div class="benefit-desc">Никаких салонов и записей</div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ -->
-<!--               REVIEWS                  -->
-<!-- ═══════════════════════════════════════ -->
-<section class="section section-white reveal">
-  <p class="section-tag">Отзывы покупательниц</p>
-  <h2 class="section-title">Что говорят наши клиентки?</h2>
-
-  <div class="review-card">
-    <div class="review-header">
-      <div class="review-avatar av1">👩</div>
       <div>
-        <div class="review-name">Мадина, 47 лет</div>
-        <div class="review-meta">Ташкент · <span class="review-stars">★★★★★</span></div>
+        <div class="benefit-title">Полный курс дома</div>
+        <div class="benefit-desc">10 масок в наборе — никаких салонов и записей</div>
       </div>
     </div>
-    <p class="review-text">
-      Купила скептически — думала, очередной "чудо-крем". Но уже после 4-й маски заметила, что кожа стала значительно упругее. Муж тоже заметил! Теперь заказала второй набор, на подарок дочери.
-    </p>
-    <span class="review-badge">✅ Проверенный покупатель</span>
+
+    <button class="s0-btn" style="margin-top:4px" onclick="goTo('screen7')">ЗАКАЗАТЬ СО СКИДКОЙ 50%</button>
+
   </div>
 
-  <div class="review-card">
-    <div class="review-header">
-      <div class="review-avatar av2">👩‍🦱</div>
-      <div>
-        <div class="review-name">Гульнора, 52 года</div>
-        <div class="review-meta">Самарканд · <span class="review-stars">★★★★★</span></div>
-      </div>
-    </div>
-    <p class="review-text">
-      Долго думала, потому что уже была одна маска для лица — не помогла. Эта совсем другое дело! Ощущение как после хорошего салонного ухода. Шея реально стала выглядеть моложе и подтянутее. Очень довольна!
-    </p>
-    <span class="review-badge">✅ Проверенный покупатель</span>
-  </div>
-
-  <div class="review-card">
-    <div class="review-header">
-      <div class="review-avatar av3">👩‍🦳</div>
-      <div>
-        <div class="review-name">Нилуфар, 39 лет</div>
-        <div class="review-meta">Фергана · <span class="review-stars">★★★★★</span></div>
-      </div>
-    </div>
-    <p class="review-text">
-      Доставили быстро, за 2 дня. Оплатила при получении — не нужно было никуда переводить заранее. Маски понравились: удобно наносить, не щиплет. После курса кожа стала мягче и заметно подтянулась.
-    </p>
-    <span class="review-badge">✅ Проверенный покупатель</span>
-  </div>
-
-  <div class="review-card">
-    <div class="review-header">
-      <div class="review-avatar av4">🧕</div>
-      <div>
-        <div class="review-name">Феруза, 45 лет</div>
-        <div class="review-meta">Бухара · <span class="review-stars">★★★★★</span></div>
-      </div>
-    </div>
-    <p class="review-text">
-      Взяла по акции 2+1. Себе и двум подругам. Все в восторге! Кожа после первых применений реально начала выглядеть лучше. Это не просто увлажнение — именно лифтинг-эффект чувствуется. Советую!
-    </p>
-    <span class="review-badge">✅ Проверенный покупатель</span>
-  </div>
-
-  <div style="text-align:center; margin-top:12px;">
-    <p style="font-size:13px; color:var(--text-light);">⭐ Средняя оценка <strong style="color:var(--gold);">4.9 из 5</strong> · на основе 320+ отзывов</p>
-  </div>
-</section>
-
-<!-- ─── CTA STRIP 2 ─── -->
-<div class="cta-strip reveal" style="background: linear-gradient(135deg, var(--text-dark), #4A2A1A);">
-  <p>Более <strong>3 200 женщин</strong> в Узбекистане уже попробовали маску. Успей получить по акционной цене!</p>
-  <button class="cta-strip-btn" onclick="scrollToForm()" style="color: var(--deep-rose);">Заказать сейчас →</button>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
-<!--             HOW TO ORDER               -->
-<!-- ═══════════════════════════════════════ -->
-<section class="section section-dark reveal">
-  <p class="section-tag" style="color:var(--gold);">Как оформить заказ</p>
-  <h2 class="section-title" style="color:#fff;">Всего 4 простых шага</h2>
+<!-- ══════════════════════════════════════════
+     SCREEN 4 — ОТЗЫВЫ
+══════════════════════════════════════════ -->
+<div class="screen s4" id="screen4">
 
-  <div class="steps-list">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-content">
-        <div class="step-title">Оставляете заявку на сайте</div>
-        <div class="step-desc">Указываете имя и номер телефона — это займёт 30 секунд</div>
-      </div>
+  <div class="s4-body">
+
+    <div>
+      <span class="sec-tag">Отзывы клиенток</span>
+      <h2 class="sec-title">3 200+ женщин<br>в Узбекистане</h2>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-content">
-        <div class="step-title">Звонок оператора</div>
-        <div class="step-desc">Перезвоним в течение 5 минут, уточним детали и адрес доставки</div>
+
+    <div class="review-card">
+      <div class="rv-top">
+        <div class="rv-av">👩</div>
+        <div>
+          <div class="rv-name">Мадина, 47 лет · Ташкент</div>
+          <div class="rv-loc"><span class="rv-stars">★★★★★</span></div>
+        </div>
       </div>
+      <p class="rv-text">После 4-й маски кожа стала <b>заметно упругее</b>. Муж тоже заметил! Взяла второй набор — на подарок дочери.</p>
     </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-content">
-        <div class="step-title">Доставка до двери за 1-2 дня</div>
-        <div class="step-desc">По всему Узбекистану. Без предоплаты — отправляем сразу</div>
+
+    <div class="review-card">
+      <div class="rv-top">
+        <div class="rv-av">👩‍🦱</div>
+        <div>
+          <div class="rv-name">Гульнора, 52 года · Самарканд</div>
+          <div class="rv-loc"><span class="rv-stars">★★★★★</span></div>
+        </div>
       </div>
+      <p class="rv-text">Ощущение как после <b>салонного ухода</b> — но дома. Шея реально стала выглядеть моложе!</p>
     </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-content">
-        <div class="step-title">Оплата при получении</div>
-        <div class="step-desc">Получаете посылку, проверяете — и только потом платите</div>
+
+    <div class="review-card">
+      <div class="rv-top">
+        <div class="rv-av">🧕</div>
+        <div>
+          <div class="rv-name">Феруза, 45 лет · Бухара</div>
+          <div class="rv-loc"><span class="rv-stars">★★★★★</span></div>
+        </div>
       </div>
+      <p class="rv-text">Взяла 2+1. Себе и двум подругам. <b>Все в восторге!</b> Именно лифтинг, не просто увлажнение.</p>
     </div>
+
+    <p class="rv-total">Средняя оценка <b>4.9 / 5</b> · 320+ отзывов</p>
+
   </div>
-</section>
 
-<!-- ═══════════════════════════════════════ -->
-<!--              GUARANTEES                -->
-<!-- ═══════════════════════════════════════ -->
-<section class="section section-rose reveal">
-  <p class="section-tag">Гарантии</p>
-  <h2 class="section-title">Покупай без риска</h2>
+</div>
 
-  <div class="guarantee-grid">
-    <div class="guarantee-item">
-      <div class="guarantee-icon">💳</div>
+<!-- ══════════════════════════════════════════
+     SCREEN 5 — КАК ЗАКАЗАТЬ
+══════════════════════════════════════════ -->
+<div class="screen s5" id="screen5">
+
+  <div class="s5-body">
+
+    <div>
+      <span class="sec-tag" style="color:rgba(255,255,255,.4)">Как заказать</span>
+      <h2 class="sec-title" style="color:#fff; margin-bottom:6px;">4 шага — и<br><em style="color:#A8D4FF">маска у вас</em></h2>
+    </div>
+
+    <div class="order-step">
+      <div class="os-num">1</div>
       <div>
-        <div class="guarantee-title">Оплата при получении</div>
-        <div class="guarantee-desc">Никаких предоплат. Получи товар — убедись в качестве — потом оплати</div>
+        <div class="os-title">Оставляете заявку</div>
+        <div class="os-desc">Имя и номер телефона — займёт 30 секунд</div>
       </div>
     </div>
-    <div class="guarantee-item">
-      <div class="guarantee-icon">🏅</div>
+
+    <div class="order-step">
+      <div class="os-num">2</div>
       <div>
-        <div class="guarantee-title">Оригинальный товар</div>
-        <div class="guarantee-desc">Официальный дистрибьютор бренда на территории Узбекистана</div>
+        <div class="os-title">Звонок оператора</div>
+        <div class="os-desc">Перезвоним за <span class="os-accent">5 минут</span>, уточним адрес</div>
       </div>
     </div>
-    <div class="guarantee-item">
-      <div class="guarantee-icon">🔄</div>
+
+    <div class="order-step">
+      <div class="os-num">3</div>
       <div>
-        <div class="guarantee-title">Обмен и возврат 30 дней</div>
-        <div class="guarantee-desc">Если что-то не устроило — вернём деньги или заменим без вопросов</div>
+        <div class="os-title">Доставка до двери</div>
+        <div class="os-desc"><span class="os-accent">1–2 дня</span> по всему Узбекистану</div>
       </div>
     </div>
-    <div class="guarantee-item">
-      <div class="guarantee-icon">🚚</div>
+
+    <div class="order-step">
+      <div class="os-num">4</div>
       <div>
-        <div class="guarantee-title">Быстрая доставка</div>
-        <div class="guarantee-desc">1-2 рабочих дня по всему Узбекистану. Отслеживание заказа</div>
+        <div class="os-title">Получаете — платите</div>
+        <div class="os-desc">Проверили — <span class="os-accent">только потом</span> оплачиваете</div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ═══════════════════════════════════════ -->
-<!--              FAQ / OBJECTIONS          -->
-<!-- ═══════════════════════════════════════ -->
-<section class="section section-white reveal">
-  <p class="section-tag">Частые вопросы</p>
-  <h2 class="section-title">Отвечаем на ваши вопросы</h2>
-
-  <div class="faq-list">
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">Для какого возраста подходит маска?</div>
-      <div class="faq-a">Маска подходит для женщин от 18 лет. Особенно эффективна в возрасте 35–60 лет, когда кожа шеи начинает терять тонус и эластичность.</div>
-    </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">Когда будет виден результат?</div>
-      <div class="faq-a">Первые изменения заметны уже после 3–5 применений. Полный курс из 10 масок даёт выраженный и стойкий лифтинг-эффект. Для поддержания результата рекомендуем применять регулярно.</div>
-    </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">Как часто нужно использовать маску?</div>
-      <div class="faq-a">Рекомендуется 2–3 раза в неделю. Нанесите маску на чистую кожу шеи, оставьте на 15–20 минут, затем снимите и нанесите остатки средства массажными движениями.</div>
-    </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">Есть ли противопоказания?</div>
-      <div class="faq-a">Маска сделана из безопасных компонентов. При чувствительной коже рекомендуем провести тест на маленьком участке перед применением. При аллергических реакциях — прекратить использование.</div>
-    </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">Нужно ли платить заранее?</div>
-      <div class="faq-a">Нет! Оплата только при получении. Вы получаете посылку, проверяете содержимое — и только потом оплачиваете. Никакого риска!</div>
-    </div>
-    <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">Доставляете ли в мой город?</div>
-      <div class="faq-a">Да, доставляем по всему Узбекистану: Ташкент, Самарканд, Фергана, Бухара, Наманган, Андижан и другие города. Срок доставки 1–2 рабочих дня.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════ -->
-<!--           FINAL OFFER + FORM           -->
-<!-- ═══════════════════════════════════════ -->
-<section class="section section-rose reveal" id="final-form" style="padding-bottom:40px;">
-  <p class="section-tag">Последний шанс</p>
-  <h2 class="section-title">Не упусти скидку <span style="color:var(--deep-rose);">50%</span></h2>
-
-  <div class="stock-line" style="margin-bottom:12px;">
-    <div class="stock-dot"></div>
-    <span class="stock-text">Осталось 23 набора по акционной цене</span>
   </div>
 
-  <div class="gift-banner" style="margin-bottom:20px;">
-    <div class="gift-icon">🎁</div>
-    <div class="gift-text">
-      <strong>Купи 2 — получи 3-й в подарок!</strong><br>
-      Акция действует до окончания остатка
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN 6 — ГАРАНТИИ
+══════════════════════════════════════════ -->
+<div class="screen s6" id="screen6">
+
+  <div class="s6-body">
+
+    <div>
+      <span class="sec-tag">Гарантии</span>
+      <h2 class="sec-title">Покупай<br>без риска</h2>
     </div>
+
+    <div class="g-card">
+      <div class="g-ico blue">💳</div>
+      <div>
+        <div class="g-title">Оплата при получении</div>
+        <div class="g-desc">Ни копейки вперёд. Получила — проверила — только потом оплатила</div>
+      </div>
+    </div>
+
+    <div class="g-card">
+      <div class="g-ico teal">🏅</div>
+      <div>
+        <div class="g-title">Оригинальный товар</div>
+        <div class="g-desc">Официальный дистрибьютор в Республике Узбекистан</div>
+      </div>
+    </div>
+
+    <div class="g-card">
+      <div class="g-ico red">🔄</div>
+      <div>
+        <div class="g-title">Обмен и возврат 30 дней</div>
+        <div class="g-desc">Не устроило — вернём деньги или заменим без вопросов</div>
+      </div>
+    </div>
+
+    <button class="s0-btn g-cta" onclick="goTo('screen7')">ЗАКАЗАТЬ СО СКИДКОЙ 50%</button>
+
   </div>
 
-  <div style="background:#fff; border-radius:var(--radius-lg); padding:22px 18px; box-shadow: var(--shadow-lg);">
-    <div class="price-row" style="margin-bottom:4px;">
-      <span class="price-old">299 000 сум</span>
-      <span class="price-save">−50%</span>
-    </div>
-    <div class="price-new" style="margin-bottom:16px;">149 000 <sup>сум</sup></div>
+</div>
 
-    <input class="form-field" type="text" placeholder="Ваше имя">
-    <input class="form-field" type="tel" placeholder="Номер телефона (+998...)">
-    <button class="cta-btn" onclick="submitForm(this)">🛒 Оформить заказ со скидкой 50%</button>
-    <div class="form-trust">
-      <span>🔒 Без предоплаты</span>
-      <span>🚚 Доставка 1-2 дня</span>
+<!-- ══════════════════════════════════════════
+     SCREEN 7 — ФИНАЛ
+══════════════════════════════════════════ -->
+<div class="screen s7" id="screen7">
+
+  <div class="s7-body">
+
+    <div>
+      <span class="sec-tag" style="color:var(--red)">Последний шанс</span>
+      <h2 class="sec-title">Оформить заказ</h2>
     </div>
+
+    <div class="stock-row">
+      <div class="stock-dot"></div>
+      <span class="stock-text">Осталось 23 набора по акционной цене</span>
+    </div>
+
+    <div class="final-price-card">
+      <div class="fp-top">
+        <span class="fp-old">299 000 сум</span>
+        <span class="fp-badge">−50%</span>
+      </div>
+      <div class="fp-new">149 000 <span class="fp-cur">сум</span></div>
+      <p class="fp-sub">набор 10 масок · полный курс ухода</p>
+    </div>
+
+    <div class="final-gift">
+      <div class="fg-icon">🎁</div>
+      <div>
+        <div class="fg-title">Купи 2 — получи 3-й бесплатно</div>
+        <div class="fg-sub">Акция действует до конца остатка</div>
+      </div>
+    </div>
+
+    <div class="final-form">
+      <input class="final-input" type="text" placeholder="Ваше имя" id="n7">
+      <input class="final-input" type="tel" placeholder="+998 — номер телефона" id="p7">
+      <button class="final-btn" onclick="go('n7','p7')">ОФОРМИТЬ ЗАКАЗ СО СКИДКОЙ 50%</button>
+      <p class="final-note">🔒 Без предоплаты · оплата при получении</p>
+    </div>
+
   </div>
-</section>
 
-<!-- ═══════════════════════════════════════ -->
-<!--                 FOOTER                 -->
-<!-- ═══════════════════════════════════════ -->
-<footer class="footer">
-  <div class="footer-logo">NeckLift Premium</div>
-  <p class="footer-text">
-    Официальный дистрибьютор бренда на территории<br>
-    Республики Узбекистан. Все права защищены.<br><br>
-    <a href="#" class="footer-link">Политика конфиденциальности</a>
+</div>
+
+<!-- FOOTER -->
+<div class="s8" id="screen8">
+  <div class="foot-logo">NeckLift Pro</div>
+  <div class="foot-badges">
+    <span class="foot-badge">✅ Оплата при получении</span>
+    <span class="foot-badge">🚚 Доставка 1–2 дня</span>
+    <span class="foot-badge">🔄 Возврат 30 дней</span>
+  </div>
+  <p class="foot-text">
+    Официальный дистрибьютор бренда<br>
+    на территории Республики Узбекистан.<br>
+    Все права защищены.<br>
+    <a href="#" class="foot-link">Политика конфиденциальности</a>
   </p>
-</footer>
+</div>
 
-<!-- ─── STICKY CTA ─── -->
-<div class="sticky-cta" id="sticky">
-  <div class="sticky-price-row">
+<!-- STICKY -->
+<div class="sticky" id="sticky">
+  <div class="sticky-row">
     <div>
       <div class="sticky-old">299 000 сум</div>
-      <div class="sticky-new">149 000 сум</div>
+      <div class="sticky-p">149 000 сум</div>
     </div>
     <div class="sticky-left">⚡ Осталось 23 шт.</div>
   </div>
-  <button class="sticky-btn" onclick="scrollToForm()">Заказать со скидкой 50% →</button>
+  <button class="sticky-btn" onclick="goTo('screen7')">ЗАКАЗАТЬ СО СКИДКОЙ 50% →</button>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
-<!--               SUCCESS MODAL            -->
-<!-- ═══════════════════════════════════════ -->
-<div id="modal" style="display:none; position:fixed; top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:999;align-items:center;justify-content:center;">
-  <div style="background:#fff;border-radius:var(--radius-lg);padding:32px 24px;margin:20px;text-align:center;max-width:360px;animation:fadeUp 0.4s ease;">
-    <div style="font-size:52px;margin-bottom:12px;">🎉</div>
-    <h3 style="font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--text-dark);margin-bottom:10px;">Заявка принята!</h3>
-    <p style="font-size:14px;color:var(--text-mid);line-height:1.6;margin-bottom:20px;">Наш менеджер перезвонит вам в течение <strong>5 минут</strong> для подтверждения заказа.</p>
-    <div style="background:var(--green-light);border-radius:var(--radius);padding:14px;font-size:13px;color:var(--green);font-weight:700;margin-bottom:20px;">
-      ✅ Ваш заказ: набор масок по цене 149 000 сум
-    </div>
-    <button onclick="closeModal()" style="width:100%;padding:14px;background:var(--deep-rose);color:#fff;border:none;border-radius:var(--radius);font-size:15px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;">Отлично, жду звонка!</button>
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-ico">🎉</div>
+    <h3 class="modal-title">Заявка принята!</h3>
+    <p class="modal-text">Менеджер перезвонит вам в течение <strong>5 минут</strong> для подтверждения заказа.</p>
+    <div class="modal-tag">✅ Заказ: 1 набор масок · 149 000 сум</div>
+    <button class="modal-btn" onclick="closeModal()">Отлично, жду звонка!</button>
   </div>
 </div>
 
 <script>
-// ─── COUNTDOWN ───
-(function() {
-  let total = 4 * 3600 + 27 * 60 + 44;
-  function pad(n){ return String(n).padStart(2,'0'); }
+// ── COUNTDOWN ──
+(function(){
+  let t = 4*3600+27*60+44;
+  const p = n => String(n).padStart(2,'0');
   function tick(){
-    if(total<=0){total=0;}
-    document.getElementById('cd-h').textContent = pad(Math.floor(total/3600));
-    document.getElementById('cd-m').textContent = pad(Math.floor((total%3600)/60));
-    document.getElementById('cd-s').textContent = pad(total%60);
-    if(total>0){ total--; setTimeout(tick,1000); }
+    const h=document.getElementById('cdh'), m=document.getElementById('cdm'), s=document.getElementById('cds');
+    if(!h) return;
+    h.textContent=p(Math.floor(t/3600));
+    m.textContent=p(Math.floor((t%3600)/60));
+    s.textContent=p(t%60);
+    if(t>0){ t--; setTimeout(tick,1000); }
   }
   tick();
 })();
 
-// ─── STICKY CTA ───
-window.addEventListener('scroll', function(){
-  const hero = document.querySelector('.price-block');
-  const sticky = document.getElementById('sticky');
-  const rect = hero.getBoundingClientRect();
-  if(rect.bottom < 0){
-    sticky.classList.add('visible');
-  } else {
-    sticky.classList.remove('visible');
-  }
+// ── NAV DOTS ──
+const screens = Array.from(document.querySelectorAll('.screen'));
+const dotsWrap = document.getElementById('navDots');
+screens.forEach((_,i)=>{
+  const d = document.createElement('div');
+  d.className = 'dot' + (i===0?' active':'');
+  d.onclick = () => screens[i].scrollIntoView({behavior:'smooth'});
+  dotsWrap.appendChild(d);
 });
 
-// ─── SCROLL REVEAL ───
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
-},{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+// Update active dot on scroll
+const dotEls = dotsWrap.querySelectorAll('.dot');
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const i = screens.indexOf(e.target);
+      if(i>=0) dotEls.forEach((d,j)=>d.classList.toggle('active',i===j));
+    }
+  });
+},{threshold:.5});
+screens.forEach(s=>io.observe(s));
 
-// ─── FAQ ───
-function toggleFaq(el){
-  el.classList.toggle('open');
+// ── STICKY ──
+const s0el = document.getElementById('screen0');
+window.addEventListener('scroll',()=>{
+  document.getElementById('sticky').classList.toggle('show', s0el.getBoundingClientRect().bottom < 0);
+},{passive:true});
+
+// ── HELPERS ──
+function goTo(id){ document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'}); }
+
+function go(nId,pId){
+  const n=document.getElementById(nId), p=document.getElementById(pId);
+  if(!n.value.trim()){ n.focus(); n.style.borderColor='#E74C3C'; return; }
+  if(!p.value.trim()){ p.focus(); p.style.borderColor='#E74C3C'; return; }
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
 }
-
-// ─── SCROLL TO FORM ───
-function scrollToForm(){
-  document.getElementById('final-form').scrollIntoView({behavior:'smooth', block:'start'});
-}
-
-// ─── FORM SUBMIT ───
-function submitForm(btn){
-  const section = btn.closest('.price-block') || btn.closest('section');
-  const inputs = section ? section.querySelectorAll('input') : [];
-  const name = inputs[0]?.value.trim();
-  const phone = inputs[1]?.value.trim();
-  if(!name){ inputs[0]?.focus(); inputs[0].style.borderColor='var(--deep-rose)'; return; }
-  if(!phone){ inputs[1]?.focus(); inputs[1].style.borderColor='var(--deep-rose)'; return; }
-  // Show modal
-  const modal = document.getElementById('modal');
-  modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-
 function closeModal(){
-  document.getElementById('modal').style.display = 'none';
-  document.body.style.overflow = '';
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
 }
 </script>
 </body>
