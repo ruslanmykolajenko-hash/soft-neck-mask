@@ -694,7 +694,7 @@ footer { background:var(--text); padding:36px 20px; }
 .ps-step-ico { width:32px; height:32px; border-radius:50%; background:#FFF3EE; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
 
 /* ══════════════════════════════════════════
-   SLIDESHOW BLOCK
+   SLIDESHOW BLOCK — SIMPLE
 ══════════════════════════════════════════ */
 .slideshow-section {
   background: var(--text);
@@ -702,247 +702,153 @@ footer { background:var(--text); padding:36px 20px; }
   position: relative;
   overflow: hidden;
 }
-
 .slideshow-section::before {
-  content: '';
-  position: absolute;
-  width: 300px; height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(242,213,200,.07) 0%, transparent 70%);
-  top: -80px; right: -80px;
-  pointer-events: none;
+  content:''; position:absolute;
+  width:300px; height:300px; border-radius:50%;
+  background:radial-gradient(circle,rgba(242,213,200,.07) 0%,transparent 70%);
+  top:-80px; right:-80px; pointer-events:none;
 }
 
 .ss-eyebrow {
-  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-  color: rgba(242,213,200,.55); font-weight: 700; margin-bottom: 8px; text-align: center;
+  font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  color:rgba(242,213,200,.55); font-weight:700; margin-bottom:8px; text-align:center;
 }
 .ss-title {
-  font-family: 'Playfair Display', serif; font-size: 26px; line-height: 1.2;
-  color: var(--white); font-weight: 700; text-align: center; margin-bottom: 6px;
+  font-family:'Playfair Display',serif; font-size:26px; line-height:1.2;
+  color:var(--white); font-weight:700; text-align:center; margin-bottom:6px;
 }
 .ss-sub {
-  font-size: 13px; color: rgba(255,255,255,.45); text-align: center;
-  line-height: 1.55; margin-bottom: 20px;
+  font-size:13px; color:rgba(255,255,255,.45); text-align:center;
+  line-height:1.55; margin-bottom:22px;
 }
 
-/* ── PREVIEW STRIP — 7 мініатюр ── */
-.ss-preview {
-  display: flex; gap: 5px; margin-bottom: 14px; overflow: hidden;
-}
-
-.ss-thumb {
-  flex: 1; border-radius: 9px; overflow: hidden;
-  position: relative; cursor: pointer;
-  transition: transform .15s;
-}
-.ss-thumb:active { transform: scale(.93); }
-
-.ss-thumb img {
-  width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block;
-}
-.ss-thumb-fallback {
-  width: 100%; aspect-ratio: 2/3;
-  display: flex; align-items: center; justify-content: center;
-}
-.ss-thumb:nth-child(1) .ss-thumb-fallback { background: #2E1A10; }
-.ss-thumb:nth-child(2) .ss-thumb-fallback { background: #3A2218; }
-.ss-thumb:nth-child(3) .ss-thumb-fallback { background: #4A2C20; }
-.ss-thumb:nth-child(4) .ss-thumb-fallback { background: #5A3828; }
-.ss-thumb:nth-child(5) .ss-thumb-fallback { background: #6A4432; }
-.ss-thumb:nth-child(6) .ss-thumb-fallback { background: #7A5040; }
-.ss-thumb:nth-child(7) .ss-thumb-fallback { background: #9A6855; }
-
-.ss-thumb-fallback span {
-  font-size: 9px; font-weight: 800; color: rgba(255,255,255,.4);
-  letter-spacing: .5px; text-transform: uppercase; text-align: center; padding: 0 2px;
-}
-
-.ss-thumb::after {
-  content: ''; position: absolute; inset: 0;
-  border: 2.5px solid transparent; border-radius: 9px;
-  transition: border-color .25s; pointer-events: none;
-}
-.ss-thumb.active::after { border-color: var(--rose); }
-
-.ss-thumb-day {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.7) 0%, transparent 100%);
-  font-size: 7.5px; font-weight: 800; color: rgba(255,255,255,.85);
-  letter-spacing: .3px; text-align: center;
-  padding: 8px 2px 4px; text-transform: uppercase;
-}
-
-/* ── PROGRESS ── */
-.ss-progress-bar {
-  height: 2px; background: rgba(255,255,255,.1);
-  border-radius: 2px; overflow: hidden; margin-bottom: 12px;
-}
-.ss-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--rose), var(--pink));
-  border-radius: 2px;
-  transition: width 1s ease;
-  width: calc(100% / 7);
-}
-
-/* ── STAGE — звичайний режим ── */
+/* ── STAGE ── */
 .ss-stage-wrap {
-  position: relative; border-radius: 18px; overflow: hidden;
-  background: #1A0E08; margin-bottom: 14px;
-  box-shadow: 0 10px 36px rgba(0,0,0,.45);
-  cursor: pointer;
+  position:relative; border-radius:18px; overflow:hidden;
+  background:#1A0E08; margin-bottom:14px;
+  box-shadow:0 10px 36px rgba(0,0,0,.45);
 }
 
-/* Стек слайдів: всі absolute, перехід через opacity */
-.ss-stack {
-  position: relative;
-  /* висота задається через aspect-ratio першого видимого */
-}
-
+/* стек слайдів */
 .ss-slide {
-  position: absolute; inset: 0;
-  opacity: 0;
-  transition: opacity 1s ease;
-  pointer-events: none;
+  position:absolute; inset:0; opacity:0;
+  transition:opacity 1.1s ease;
+  pointer-events:none;
 }
 .ss-slide.active {
-  opacity: 1;
-  position: relative; /* щоб контейнер мав висоту */
-  pointer-events: auto;
+  opacity:1; position:relative; pointer-events:auto;
 }
-
 .ss-slide img {
-  width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block;
+  width:100%; aspect-ratio:3/4; object-fit:cover; display:block;
 }
 .ss-slide-fallback {
-  width: 100%; aspect-ratio: 3/4;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
-  background: linear-gradient(160deg, #2E1A10, #5A3020);
+  width:100%; aspect-ratio:3/4;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  background:linear-gradient(160deg,#2E1A10,#5A3020);
 }
-.ss-slide-fallback .sf-day  { font-size: 14px; color: rgba(242,213,200,.7); font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
-.ss-slide-fallback .sf-desc { font-size: 12px; color: rgba(255,255,255,.35); text-align: center; padding: 0 20px; line-height: 1.5; }
+.ss-slide-fallback .sf-day  { font-size:14px; color:rgba(242,213,200,.7); font-weight:800; letter-spacing:1px; text-transform:uppercase; }
+.ss-slide-fallback .sf-desc { font-size:12px; color:rgba(255,255,255,.35); text-align:center; padding:0 20px; line-height:1.5; }
 
-/* Оверлей дня та опису знизу */
+/* ── КАЛЕДАРНИЙ ЛИСТОЧОК ── */
+.ss-day-badge {
+  position:absolute;
+  top:16px; left:16px;
+  z-index:10;
+  width:52px;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,.4));
+  animation:badgeIn .4s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+@keyframes badgeIn {
+  from { opacity:0; transform:scale(.5) rotate(-15deg); }
+  to   { opacity:1; transform:scale(1) rotate(0deg); }
+}
+
+/* анімація вилітання */
+.ss-day-badge.fly-out {
+  animation:badgeFly .5s ease-in forwards;
+}
+
+@keyframes badgeFly {
+  to { opacity:0; transform:translate(80px,-40px) rotate(25deg) scale(.6); }
+}
+
+/* SVG листочок — описуємо в JS через innerHTML */
+
+/* підпис-оверлей знизу */
 .ss-slide-overlay {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,0) 55%);
-  padding: 32px 18px 18px;
-  display: flex; align-items: flex-end; justify-content: space-between;
-  pointer-events: none;
+  position:absolute; bottom:0; left:0; right:0;
+  background:linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,0) 55%);
+  padding:28px 18px 18px;
+  display:flex; align-items:flex-end; justify-content:space-between;
+  pointer-events:none;
 }
 .ss-day-label {
-  font-family: 'Playfair Display', serif; font-size: 24px;
-  color: white; font-weight: 700; line-height: 1;
+  font-family:'Playfair Display',serif; font-size:20px;
+  color:white; font-weight:700; line-height:1;
 }
 .ss-day-desc {
-  font-size: 12px; color: rgba(255,255,255,.65);
-  text-align: right; line-height: 1.45; max-width: 130px;
+  font-size:12px; color:rgba(255,255,255,.65);
+  text-align:right; line-height:1.45; max-width:130px;
 }
 
-/* Кнопка «Нажми» поверх першого слайду */
-.ss-tap-hint {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  z-index: 5;
-  pointer-events: none;
-  transition: opacity .4s ease;
+/* ── PROGRESS DOTS ── */
+.ss-dots {
+  display:flex; justify-content:center; gap:6px; margin-bottom:18px;
 }
-.ss-tap-hint.hidden { opacity: 0; }
-
-.ss-tap-inner {
-  background: rgba(0,0,0,.45);
-  backdrop-filter: blur(6px);
-  border: 1.5px solid rgba(255,255,255,.25);
-  border-radius: 50px;
-  padding: 14px 26px;
-  display: flex; align-items: center; gap: 10px;
-  color: white;
+.ss-dot {
+  width:6px; height:6px; border-radius:50%;
+  background:rgba(255,255,255,.2);
+  transition:all .3s;
+  cursor:pointer;
 }
-.ss-tap-inner .tap-ico { font-size: 22px; animation: tapbounce 1.5s ease-in-out infinite; }
-.ss-tap-inner .tap-txt { font-size: 14px; font-weight: 700; letter-spacing: .3px; }
+.ss-dot.active { background:var(--rose); width:18px; border-radius:3px; }
 
-@keyframes tapbounce {
-  0%,100% { transform: scale(1); }
-  50%      { transform: scale(1.15); }
-}
-
-/* ── ФІНАЛЬНИЙ SPLIT ── */
+/* ── FINAL SPLIT ── */
 .ss-final-wrap {
-  display: none;
-  border-radius: 18px; overflow: hidden;
-  box-shadow: 0 10px 36px rgba(0,0,0,.45);
-  margin-bottom: 14px;
-  animation: splitIn .6s ease;
+  display:none; border-radius:18px; overflow:hidden;
+  box-shadow:0 10px 36px rgba(0,0,0,.45);
+  margin-bottom:14px;
+  animation:splitIn .7s cubic-bezier(.25,.8,.25,1);
 }
-
 @keyframes splitIn {
-  from { opacity: 0; transform: scale(.96); }
-  to   { opacity: 1; transform: scale(1); }
+  from { opacity:0; transform:scale(.94); }
+  to   { opacity:1; transform:scale(1); }
 }
-
 .ss-final-row {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  display:grid; grid-template-columns:1fr 1fr; position:relative;
 }
-
-.ss-final-side {
-  position: relative; overflow: hidden;
-}
-
+.ss-final-side { position:relative; overflow:hidden; }
 .ss-final-side img {
-  width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block;
+  width:100%; aspect-ratio:3/4; object-fit:cover; display:block;
 }
 .ss-final-side .sf-fallback {
-  width: 100%; aspect-ratio: 3/4;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  width:100%; aspect-ratio:3/4;
+  display:flex; align-items:center; justify-content:center;
 }
-.ss-final-side.before-side .sf-fallback { background: linear-gradient(160deg, #2E1A10, #4A2818); }
-.ss-final-side.after-side  .sf-fallback { background: linear-gradient(160deg, #5A3020, #8A5040); }
-.sf-fallback .sf-label { font-size: 12px; color: rgba(255,255,255,.5); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.ss-final-side.before-side .sf-fallback { background:linear-gradient(160deg,#2E1A10,#4A2818); }
+.ss-final-side.after-side  .sf-fallback { background:linear-gradient(160deg,#5A3020,#8A5040); }
+.sf-fallback .sf-label { font-size:12px; color:rgba(255,255,255,.5); font-weight:700; text-transform:uppercase; letter-spacing:1px; }
 
 .ss-final-lbl {
-  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-  font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
-  padding: 4px 12px; border-radius: 20px; white-space: nowrap;
+  position:absolute; top:10px; left:50%; transform:translateX(-50%);
+  font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
+  padding:4px 12px; border-radius:20px; white-space:nowrap;
 }
-.before-side .ss-final-lbl { background: rgba(255,255,255,.75); color: #3A2010; }
-.after-side  .ss-final-lbl { background: var(--rose); color: white; }
+.before-side .ss-final-lbl { background:rgba(255,255,255,.82); color:#3A2010; }
+.after-side  .ss-final-lbl { background:var(--rose); color:white; }
 
-/* роздільник посередині */
 .ss-final-divider {
-  position: absolute; top: 0; bottom: 0;
-  left: 50%; width: 2px;
-  background: white;
-  z-index: 10;
-  pointer-events: none;
+  position:absolute; top:0; bottom:0; left:50%; width:2px;
+  background:white; z-index:10; pointer-events:none;
 }
-
 .ss-final-caption {
-  background: rgba(0,0,0,.6); backdrop-filter: blur(4px);
-  padding: 12px 16px;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  font-size: 13px; color: rgba(255,255,255,.85); font-weight: 600; text-align: center;
+  background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
+  padding:12px 16px;
+  text-align:center; font-size:13px;
+  color:rgba(255,255,255,.85); font-weight:600;
 }
-.ss-final-caption strong { color: var(--pink); }
-
-/* ── CONTROLS (стрілки) ── */
-.ss-controls {
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-}
-.ss-btn-step {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: rgba(255,255,255,.1);
-  border: 1.5px solid rgba(255,255,255,.15);
-  color: white; font-size: 20px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: background .2s; flex-shrink: 0; line-height: 1;
-}
-.ss-btn-step:active { background: rgba(255,255,255,.22); }
-
-.ss-counter {
-  flex: 1; text-align: center; font-size: 12px;
-  color: rgba(255,255,255,.35); letter-spacing: 1px;
-}
+.ss-final-caption strong { color:var(--pink); }
 
 /* ── FADE IN ── */
 .fi { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
@@ -1077,155 +983,71 @@ footer { background:var(--text); padding:36px 20px; }
 <div class="slideshow-section fi">
 
   <p class="ss-eyebrow">Поэтапный результат</p>
-  <h2 class="ss-title">Посмотрите, что<br>происходит с шеей</h2>
-  <p class="ss-sub">Реальный результат клиентки за 7 дней<br>использования лифтинг-маски</p>
+  <h2 class="ss-title">7 дней —<br>и шея помолодела</h2>
+  <p class="ss-sub">Смотри, как меняется кожа день за днём</p>
 
-  <!-- PREVIEW STRIP — 7 мініатюр -->
-  <div class="ss-preview">
-    <div class="ss-thumb active" onclick="goSlide(0)">
+  <!-- ГОЛОВНИЙ STAGE -->
+  <div class="ss-stage-wrap" id="ss-stage">
+
+    <div class="ss-slide active" id="sl-0">
       <img src="img/slide1.jpg" alt="День 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="ss-thumb-fallback"><span>День<br>1</span></div>
-      <div class="ss-thumb-day">День 1</div>
+      <div class="ss-slide-fallback" style="display:none"><div class="sf-day">День 1</div><div class="sf-desc">Старт. Кожа без тонуса, видны складки</div></div>
+      <div class="ss-slide-overlay"><div class="ss-day-label">Старт</div><div class="ss-day-desc">Кожа без тонуса, видны складки</div></div>
     </div>
-    <div class="ss-thumb" onclick="goSlide(1)">
+
+    <div class="ss-slide" id="sl-1">
       <img src="img/slide2.jpg" alt="День 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="ss-thumb-fallback"><span>День<br>2</span></div>
-      <div class="ss-thumb-day">День 2</div>
+      <div class="ss-slide-fallback" style="display:none"><div class="sf-day">День 2</div><div class="sf-desc">Первое увлажнение, кожа мягче</div></div>
+      <div class="ss-slide-overlay"><div class="ss-day-label">Увлажнение</div><div class="ss-day-desc">Кожа заметно мягче и эластичнее</div></div>
     </div>
-    <div class="ss-thumb" onclick="goSlide(2)">
+
+    <div class="ss-slide" id="sl-2">
       <img src="img/slide3.jpg" alt="День 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="ss-thumb-fallback"><span>День<br>3</span></div>
-      <div class="ss-thumb-day">День 3</div>
+      <div class="ss-slide-fallback" style="display:none"><div class="sf-day">День 3</div><div class="sf-desc">Тонус начинает возвращаться</div></div>
+      <div class="ss-slide-overlay"><div class="ss-day-label">Тонус</div><div class="ss-day-desc">Тонус возвращается, складки уменьшаются</div></div>
     </div>
-    <div class="ss-thumb" onclick="goSlide(3)">
+
+    <div class="ss-slide" id="sl-3">
       <img src="img/slide4.jpg" alt="День 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="ss-thumb-fallback"><span>День<br>4</span></div>
-      <div class="ss-thumb-day">День 4</div>
+      <div class="ss-slide-fallback" style="display:none"><div class="sf-day">День 4</div><div class="sf-desc">Заметный лифтинг, кожа плотнее</div></div>
+      <div class="ss-slide-overlay"><div class="ss-day-label">Лифтинг</div><div class="ss-day-desc">Заметный лифтинг. Кожа стала плотнее</div></div>
     </div>
-    <div class="ss-thumb" onclick="goSlide(4)">
+
+    <div class="ss-slide" id="sl-4">
       <img src="img/slide5.jpg" alt="День 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="ss-thumb-fallback"><span>День<br>5</span></div>
-      <div class="ss-thumb-day">День 5</div>
+      <div class="ss-slide-fallback" style="display:none"><div class="sf-day">День 5</div><div class="sf-desc">Видимое омоложение, упругость</div></div>
+      <div class="ss-slide-overlay"><div class="ss-day-label">Упругость</div><div class="ss-day-desc">Видимое омоложение. Упругость и гладкость</div></div>
     </div>
-    <div class="ss-thumb" onclick="goSlide(5)">
+
+    <div class="ss-slide" id="sl-5">
       <img src="img/slide6.jpg" alt="День 6" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="ss-thumb-fallback"><span>День<br>6</span></div>
-      <div class="ss-thumb-day">День 6</div>
+      <div class="ss-slide-fallback" style="display:none"><div class="sf-day">День 6</div><div class="sf-desc">Кожа гладкая, шея подтянута</div></div>
+      <div class="ss-slide-overlay"><div class="ss-day-label">Гладкость</div><div class="ss-day-desc">Кожа гладкая. Шея заметно подтянута</div></div>
     </div>
-    <div class="ss-thumb" onclick="goSlide(6)">
+
+    <div class="ss-slide" id="sl-6">
       <img src="img/slide7.jpg" alt="День 7" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="ss-thumb-fallback"><span>День<br>7</span></div>
-      <div class="ss-thumb-day">День 7</div>
-    </div>
-  </div>
-
-  <!-- PROGRESS BAR -->
-  <div class="ss-progress-bar">
-    <div class="ss-progress-fill" id="ss-progress"></div>
-  </div>
-
-  <!-- ГОЛОВНИЙ STAGE — стек 7 слайдів -->
-  <div class="ss-stage-wrap" id="ss-stage" onclick="onStageTap()">
-
-    <div class="ss-stack">
-
-      <div class="ss-slide active" id="sl-0">
-        <img src="img/slide1.jpg" alt="День 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="ss-slide-fallback" style="display:none">
-          <div class="sf-day">День 1</div>
-          <div class="sf-desc">Старт. Кожа без тонуса, видны складки</div>
-        </div>
-        <div class="ss-slide-overlay">
-          <div class="ss-day-label">День 1</div>
-          <div class="ss-day-desc">Старт. Кожа без тонуса, видны складки</div>
-        </div>
-      </div>
-
-      <div class="ss-slide" id="sl-1">
-        <img src="img/slide2.jpg" alt="День 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="ss-slide-fallback" style="display:none">
-          <div class="sf-day">День 2</div>
-          <div class="sf-desc">Первое увлажнение, кожа мягче</div>
-        </div>
-        <div class="ss-slide-overlay">
-          <div class="ss-day-label">День 2</div>
-          <div class="ss-day-desc">Первое увлажнение. Кожа заметно мягче</div>
-        </div>
-      </div>
-
-      <div class="ss-slide" id="sl-2">
-        <img src="img/slide3.jpg" alt="День 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="ss-slide-fallback" style="display:none">
-          <div class="sf-day">День 3</div>
-          <div class="sf-desc">Тонус начинает возвращаться</div>
-        </div>
-        <div class="ss-slide-overlay">
-          <div class="ss-day-label">День 3</div>
-          <div class="ss-day-desc">Тонус возвращается, складки уменьшаются</div>
-        </div>
-      </div>
-
-      <div class="ss-slide" id="sl-3">
-        <img src="img/slide4.jpg" alt="День 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="ss-slide-fallback" style="display:none">
-          <div class="sf-day">День 4</div>
-          <div class="sf-desc">Заметный лифтинг, кожа плотнее</div>
-        </div>
-        <div class="ss-slide-overlay">
-          <div class="ss-day-label">День 4</div>
-          <div class="ss-day-desc">Заметный лифтинг. Кожа стала плотнее</div>
-        </div>
-      </div>
-
-      <div class="ss-slide" id="sl-4">
-        <img src="img/slide5.jpg" alt="День 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="ss-slide-fallback" style="display:none">
-          <div class="sf-day">День 5</div>
-          <div class="sf-desc">Видимое омоложение, упругость</div>
-        </div>
-        <div class="ss-slide-overlay">
-          <div class="ss-day-label">День 5</div>
-          <div class="ss-day-desc">Видимое омоложение. Упругость и гладкость</div>
-        </div>
-      </div>
-
-      <div class="ss-slide" id="sl-5">
-        <img src="img/slide6.jpg" alt="День 6" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="ss-slide-fallback" style="display:none">
-          <div class="sf-day">День 6</div>
-          <div class="sf-desc">Кожа гладкая, шея подтянута</div>
-        </div>
-        <div class="ss-slide-overlay">
-          <div class="ss-day-label">День 6</div>
-          <div class="ss-day-desc">Кожа гладкая. Шея заметно подтянута</div>
-        </div>
-      </div>
-
-      <div class="ss-slide" id="sl-6">
-        <img src="img/slide7.jpg" alt="День 7" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="ss-slide-fallback" style="display:none">
-          <div class="sf-day">День 7</div>
-          <div class="sf-desc">Финальный результат — шея молодая!</div>
-        </div>
-        <div class="ss-slide-overlay">
-          <div class="ss-day-label">День 7 ✨</div>
-          <div class="ss-day-desc">Финальный результат. Шея снова молодая!</div>
-        </div>
-      </div>
-
-    </div><!-- /ss-stack -->
-
-    <!-- Підказка «натисни» — зникає після першого тапу -->
-    <div class="ss-tap-hint" id="ss-tap-hint">
-      <div class="ss-tap-inner">
-        <span class="tap-ico">👆</span>
-        <span class="tap-txt">Нажми, чтобы начать</span>
-      </div>
+      <div class="ss-slide-fallback" style="display:none"><div class="sf-day">День 7</div><div class="sf-desc">Финальный результат — шея молодая!</div></div>
+      <div class="ss-slide-overlay"><div class="ss-day-label">Результат ✨</div><div class="ss-day-desc">Финальный результат. Шея снова молодая!</div></div>
     </div>
 
-  </div><!-- /ss-stage-wrap -->
+    <!-- Каледарний листочок — рендериться JS-ом -->
+    <div class="ss-day-badge" id="ss-badge"></div>
 
-  <!-- ФІНАЛЬНИЙ SPLIT (показується після слайду 7) -->
+  </div>
+
+  <!-- DOTS -->
+  <div class="ss-dots" id="ss-dots">
+    <div class="ss-dot active"></div>
+    <div class="ss-dot"></div>
+    <div class="ss-dot"></div>
+    <div class="ss-dot"></div>
+    <div class="ss-dot"></div>
+    <div class="ss-dot"></div>
+    <div class="ss-dot"></div>
+  </div>
+
+  <!-- FINAL SPLIT (показується після останнього слайду) -->
   <div class="ss-final-wrap" id="ss-final">
     <div class="ss-final-row">
       <div class="ss-final-side before-side">
@@ -1240,16 +1062,7 @@ footer { background:var(--text); padding:36px 20px; }
       </div>
       <div class="ss-final-divider"></div>
     </div>
-    <div class="ss-final-caption">
-      Результат за <strong>7 дней</strong> использования маски
-    </div>
-  </div>
-
-  <!-- CONTROLS -->
-  <div class="ss-controls">
-    <button class="ss-btn-step" onclick="stepSlide(-1)" aria-label="Назад">‹</button>
-    <div class="ss-counter" id="ss-counter">1 / 7</div>
-    <button class="ss-btn-step" onclick="stepSlide(1)" aria-label="Вперёд">›</button>
+    <div class="ss-final-caption">Результат за <strong>7 дней</strong> использования маски</div>
   </div>
 
   <!-- CTA -->
@@ -1509,99 +1322,103 @@ footer { background:var(--text); padding:36px 20px; }
 
 <script>
 // ── SLIDESHOW ──────────────────────
-const SS_TOTAL = 7;
-let ssIndex    = 0;
-let ssStarted  = false;
-let ssTimer    = null;
-const SS_DELAY = 2400;
+const SS_TOTAL    = 7;
+const SS_INTERVAL = 2600; // мс між слайдами
+const SS_DAYS     = ['1','2','3','4','5','6','7'];
 
-function goSlide(idx, skipAutoNext) {
+let ssIndex  = 0;
+let ssTimer  = null;
+
+// Малюємо каледарний листочок через SVG
+function renderBadge(day) {
+  const badge = document.getElementById('ss-badge');
+  if (!badge) return;
+
+  // знімаємо старі класи
+  badge.classList.remove('fly-out');
+  // форсуємо reflow
+  void badge.offsetWidth;
+
+  badge.innerHTML = `
+    <svg width="52" height="58" viewBox="0 0 52 58" xmlns="http://www.w3.org/2000/svg">
+      <!-- тінь -->
+      <ellipse cx="26" cy="55" rx="18" ry="4" fill="rgba(0,0,0,.25)"/>
+      <!-- тіло листочка -->
+      <rect x="2" y="8" width="48" height="44" rx="6" fill="white"/>
+      <!-- шапка-корінець червона -->
+      <rect x="2" y="8" width="48" height="16" rx="6" fill="#E03030"/>
+      <!-- перекриття знизу (прямокутник без округлення) -->
+      <rect x="2" y="18" width="48" height="6" fill="#E03030"/>
+      <!-- кільця зверху -->
+      <rect x="14" y="3" width="4" height="12" rx="2" fill="#555"/>
+      <rect x="34" y="3" width="4" height="12" rx="2" fill="#555"/>
+      <!-- текст ДЕНЬ маленький -->
+      <text x="26" y="20" text-anchor="middle" font-size="6" fill="rgba(255,255,255,.85)"
+            font-family="Nunito,sans-serif" font-weight="700" letter-spacing="1">ДЕНЬ</text>
+      <!-- цифра велика -->
+      <text x="26" y="46" text-anchor="middle" font-size="26" fill="#2A2118"
+            font-family="Playfair Display,serif" font-weight="900">${day}</text>
+    </svg>
+  `;
+}
+
+function goSlide(idx) {
   const prev = ssIndex;
-  ssIndex = Math.max(0, Math.min(idx, SS_TOTAL - 1));
+  ssIndex = ((idx % SS_TOTAL) + SS_TOTAL) % SS_TOTAL;
 
-  // оновлюємо слайди
-  document.querySelectorAll('.ss-slide').forEach((s, i) => {
-    s.classList.toggle('active', i === ssIndex);
-  });
+  // слайди
+  document.querySelectorAll('.ss-slide').forEach((s,i) => s.classList.toggle('active', i === ssIndex));
 
-  // оновлюємо thumbs
-  document.querySelectorAll('.ss-thumb').forEach((t, i) => {
-    t.classList.toggle('active', i === ssIndex);
-  });
+  // dots
+  document.querySelectorAll('.ss-dot').forEach((d,i) => d.classList.toggle('active', i === ssIndex));
 
-  // прогрес
-  document.getElementById('ss-progress').style.width =
-    ((ssIndex + 1) / SS_TOTAL * 100) + '%';
+  // badge — анімація вилітання старого і поява нового
+  const badge = document.getElementById('ss-badge');
+  if (badge && prev !== ssIndex) {
+    badge.classList.add('fly-out');
+    setTimeout(() => renderBadge(SS_DAYS[ssIndex]), 300);
+  }
 
-  // лічильник
-  document.getElementById('ss-counter').textContent =
-    (ssIndex + 1) + ' / ' + SS_TOTAL;
-
-  // фінальний split — показуємо ПІСЛЯ останнього слайду
-  const isFinal = (ssIndex === SS_TOTAL - 1);
-  if (isFinal && ssStarted) {
-    // невелика затримка щоб слайд 7 встиг показатись, потім split
+  // фінальний split після останнього
+  if (ssIndex === SS_TOTAL - 1) {
+    // дочекатись поки слайд 7 повністю відобразиться, потім split
     clearTimeout(ssTimer);
-    ssTimer = setTimeout(showFinalSplit, 1400);
-  } else {
-    hideFinalSplit();
+    ssTimer = setTimeout(showFinalSplit, SS_INTERVAL);
   }
 }
 
 function showFinalSplit() {
-  document.getElementById('ss-stage').style.display = 'none';
-  document.getElementById('ss-final').style.display = 'block';
-  // thumb 7 залишається active
+  document.getElementById('ss-stage').style.opacity = '0';
+  document.getElementById('ss-stage').style.transition = 'opacity .6s';
+  setTimeout(() => {
+    document.getElementById('ss-stage').style.display = 'none';
+    document.getElementById('ss-final').style.display = 'block';
+  }, 600);
 }
 
-function hideFinalSplit() {
-  document.getElementById('ss-stage').style.display = '';
-  document.getElementById('ss-final').style.display = 'none';
-}
-
-function onStageTap() {
-  // перший тап — ховаємо підказку
-  if (!ssStarted) {
-    ssStarted = true;
-    const hint = document.getElementById('ss-tap-hint');
-    hint.classList.add('hidden');
-    setTimeout(() => hint.style.display = 'none', 400);
-  }
-  // переходимо до наступного
-  if (ssIndex < SS_TOTAL - 1) {
+function startAutoPlay() {
+  // запускаємо через 1.2с після появи блоку
+  ssTimer = setTimeout(function tick() {
+    if (ssIndex >= SS_TOTAL - 1) return; // вже на останньому — split запустить goSlide
     goSlide(ssIndex + 1);
-  } else {
-    // вже останній — показуємо split негайно
-    showFinalSplit();
-  }
+    ssTimer = setTimeout(tick, SS_INTERVAL);
+  }, SS_INTERVAL);
 }
 
-function stepSlide(dir) {
-  // при ручній навігації теж запускаємо
-  if (!ssStarted && dir > 0) {
-    ssStarted = true;
-    const hint = document.getElementById('ss-tap-hint');
-    hint.classList.add('hidden');
-    setTimeout(() => hint.style.display = 'none', 400);
-  }
-  hideFinalSplit();
-  goSlide(ssIndex + dir, true);
-}
-
-// swipe на stage
+// IntersectionObserver для автозапуску коли блок з'являється
 (function(){
-  const stage = document.getElementById('ss-stage');
-  if (!stage) return;
-  let tx = 0;
-  stage.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive:true });
-  stage.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - tx;
-    if (Math.abs(dx) > 35) {
-      if (!ssStarted) { ssStarted = true; }
-      hideFinalSplit();
-      goSlide(ssIndex + (dx < 0 ? 1 : -1), true);
-    }
-  }, { passive:true });
+  const section = document.querySelector('.slideshow-section');
+  if (!section) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        renderBadge(SS_DAYS[0]);
+        startAutoPlay();
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  io.observe(section);
 })();
 
 // POPUP
