@@ -119,14 +119,13 @@ img { display: block; width: 100%; }
 /* Але шапка і стрічка обрізаються правильно */
 .order-card-head {
   border-radius: 20px 20px 0 0;
-  overflow: hidden;
 }
 
-/* Шапка — один темний колір */
+/* Шапка — лівостороннє вирівнювання */
 .order-card-head {
   background: var(--dark);
   padding: 28px 22px 22px;
-  text-align: center;
+  text-align: left;
 }
 
 .price-old {
@@ -155,6 +154,7 @@ img { display: block; width: 100%; }
   margin-bottom: 20px;
 }
 
+/* Таймер — ліворуч */
 .timer-block {
   display: inline-flex;
   align-items: center;
@@ -178,37 +178,34 @@ img { display: block; width: 100%; }
   letter-spacing: 2px;
 }
 
-/* Стрічка залишків — той самий темний, світліший відтінок */
+/* Стрічка залишків — ліворуч */
 .stock-counter {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background: var(--rose);
   padding: 13px 22px;
   font-size: 15px;
   font-weight: 600;
   color: white;
-  position: relative;
-  overflow: visible;
 }
 
 .stock-counter-text {
   display: flex;
   align-items: center;
   gap: 8px;
-  position: relative;
 }
 
-/* Фото одразу після «Успейте!», виступає вгору як наклейка */
+/* Фото — абсолютне відносно .order-card, праворуч, поверх обох блоків */
 .sc-img {
   position: absolute;
-  left: calc(100% + 6px);
-  bottom: -40px;
-  width: 180px;
-  height: 320px;
+  right: 12px;
+  bottom: -16px;
+  width: 140px;
+  height: 240px;
   object-fit: contain;
   pointer-events: none;
-  filter: drop-shadow(0 4px 16px rgba(0,0,0,.3));
+  filter: drop-shadow(-4px 4px 16px rgba(0,0,0,.35));
   z-index: 20;
 }
 
@@ -1537,6 +1534,10 @@ footer {
 
   <div class="order-card fi">
 
+    <!-- Фото маски — наклейка поверх обох блоків -->
+    <img src="img/phhy.png" alt="Маска" class="sc-img"
+         onerror="this.style.display='none'">
+
     <!-- Шапка: ціна -->
     <div class="order-card-head">
       <span class="price-old">299 000 сум</span>
@@ -1555,8 +1556,6 @@ footer {
         <span class="sc-num">19</span>
         <span class="sc-label">шт.</span>
         <span class="sc-urgent">Успейте!</span>
-        <img src="img/phhy.png" alt="Маска" class="sc-img"
-             onerror="this.style.display='none'">
       </div>
     </div>
 
