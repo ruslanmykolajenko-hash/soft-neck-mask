@@ -53,54 +53,64 @@ body {
   pointer-events:none;
 }
 
-.b1-eyebrow {
+/* ── B1 TAG ── */
+.b1-tag {
   font-size: 11px;
-  letter-spacing: 3px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--rose);
   font-weight: 700;
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   position: relative;
 }
 
 .b1-h1 {
   font-family: 'Fraunces', serif;
-  font-size: 38px;
-  line-height: 1.05;
+  font-size: 32px;
+  line-height: 1.15;
   color: var(--text);
   font-weight: 900;
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   position: relative;
-  /* розтягуємо по ширині */
-  letter-spacing: -0.5px;
 }
+.b1-h1 .accent { color: var(--rose); }
 
-.b1-h1 .accent { color: var(--rose); font-style: italic; }
-
-/* Горизонтальний рядок для заголовка */
-.b1-h1-row {
+/* ── ХУК ── */
+.b1-hook-block {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
-  flex-wrap: wrap;
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 11px 16px;
+  margin-bottom: 12px;
 }
-.b1-h1-line {
-  height: 3px;
-  flex: 1;
-  background: linear-gradient(90deg, transparent, var(--rose));
-  border-radius: 2px;
-  min-width: 20px;
-}
-.b1-h1-line-r {
-  background: linear-gradient(90deg, var(--rose), transparent);
-}
+.b1-hook-stars { font-size: 15px; color: #F5A623; flex-shrink: 0; letter-spacing: 1px; }
+.b1-hook-text  { font-size: 13px; color: var(--text); font-weight: 500; line-height: 1.4; }
+.b1-hook-text strong { color: var(--rose); font-weight: 800; }
 
-.b1-sub {
-  margin-bottom: 16px;
-  position: relative;
+/* ── ПІЛЮЛІ ── */
+.b1-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+  justify-content: center;
+}
+.pill {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 13px;
+  border-radius: 30px;
+  background: var(--text);
+  color: white;
+  letter-spacing: .2px;
+}
+.pill-accent {
+  background: var(--red);
+  font-weight: 700;
 }
 
 /* фото продукту */
@@ -108,23 +118,20 @@ body {
   width: 100%;
   border-radius: 20px;
   overflow: hidden;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   position: relative;
   box-shadow: 0 8px 32px rgba(42,33,24,.12);
 }
-
 .b1-photo img {
   width: 100%;
-  height: 240px;
+  height: 230px;
   object-fit: cover;
   display: block;
 }
-
-/* fallback якщо фото нема */
 .b1-photo-fallback {
   width: 100%;
-  height: 240px;
-  background: linear-gradient(135deg, #F5EAE4 0%, #EDD5C5 100%);
+  height: 230px;
+  background: linear-gradient(135deg, #F5EAE4, #EDD5C5);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -132,99 +139,57 @@ body {
   gap: 10px;
 }
 .b1-photo-fallback .pf-ico   { font-size: 52px; }
-.b1-photo-fallback .pf-label { font-size: 14px; color: var(--rose); font-weight: 600; letter-spacing: 1px; }
+.b1-photo-fallback .pf-label { font-size: 14px; color: var(--rose); font-weight: 600; }
 
-/* інфо-стрічка на фото */
-.b1-photo-strip {
+.b1-photo-badge {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
-  background: rgba(20, 12, 8, 0.82);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 10px 16px;
-}
-
-.bps-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.bps-big {
-  font-family: 'Fraunces', serif;
-  font-size: 20px;
-  font-weight: 800;
+  top: 14px; right: 14px;
+  background: var(--red);
   color: white;
-  line-height: 1;
-}
-
-.bps-item.bps-red .bps-big { color: #FF5252; }
-
-.bps-small {
-  font-size: 10px;
-  color: rgba(255,255,255,.55);
-  font-weight: 500;
-  letter-spacing: .3px;
-}
-
-.bps-timer {
-  font-family: 'Fraunces', serif;
-  font-size: 18px;
+  font-size: 13px;
   font-weight: 800;
-  color: #FFD166;
-  line-height: 1;
-  letter-spacing: 1px;
-}
-
-.bps-divider {
-  width: 1px;
-  height: 32px;
-  background: rgba(255,255,255,.15);
+  padding: 7px 14px;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(224,48,48,.4);
 }
 
 /* ── ФОРМА B1 ── */
-.b1-form {
-  position: relative;
-}
+.b1-form { position: relative; }
 
-.b1-form-label {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--muted);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  text-align: center;
-  display: block;
-  margin-bottom: 14px;
-}
-
-.b1-input {
+.b1-input-orig {
   width: 100%;
   background: var(--white);
-  border: 1.5px solid rgba(212,137,106,.25);
-  border-radius: 0;
-  padding: 16px 18px;
+  border: 2px solid rgba(212,137,106,.35);
+  border-radius: 14px;
+  padding: 17px 18px;
   font-size: 16px;
+  font-weight: 500;
   color: var(--text);
   font-family: 'Inter', sans-serif;
   outline: none;
-  margin-bottom: 0;
-  border-bottom: none;
-  transition: border-color .2s, background .2s;
+  margin-bottom: 10px;
+  transition: border-color .2s, box-shadow .2s;
   -webkit-appearance: none;
   display: block;
+  box-shadow: 0 2px 8px rgba(212,137,106,.1);
 }
-.b1-input::placeholder { color: rgba(42,33,24,.3); }
-.b1-input:focus { border-color: var(--rose); background: #FFFAF8; z-index:1; position:relative; }
+.b1-input-orig::placeholder { color: rgba(42,33,24,.35); }
+.b1-input-orig:focus {
+  border-color: var(--rose);
+  box-shadow: 0 0 0 4px rgba(212,137,106,.15);
+}
 
-/* Кнопка прямо під полями */
-.b1-form .btn-main {
-  border-radius: 0;
-  border-top: none;
-  margin-bottom: 0;
+.b1-trust {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.b1-trust span {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
 }
 
 .btn-main {
@@ -234,7 +199,7 @@ body {
   font-size: 17px;
   font-weight: 800;
   border: none;
-  border-radius: var(--r);
+  border-radius: 14px;
   padding: 18px;
   cursor: pointer;
   box-shadow: 0 8px 28px rgba(212,137,106,.4);
@@ -242,7 +207,8 @@ body {
   display: block;
   text-align: center;
   transition: transform .15s, box-shadow .15s;
-  letter-spacing: .3px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
 }
 .btn-main:active { transform: scale(.97); box-shadow: 0 4px 14px rgba(212,137,106,.3); }
 
@@ -1517,26 +1483,29 @@ footer { background:var(--text); padding:36px 20px; }
 ══════════════════════════════════════════ -->
 <div class="b1">
 
-  <!-- Заголовок — горизонтальний, займає весь рядок -->
-  <div class="b1-h1-row fi">
-    <div class="b1-h1-line"></div>
-    <h1 class="b1-h1" style="margin:0; white-space:nowrap;">Верни шее <span class="accent">молодость</span></h1>
-    <div class="b1-h1-line b1-h1-line-r"></div>
+  <!-- ЗАГОЛОВОК -->
+  <div class="b1-tag fi">Лифтинг-маска для шеи</div>
+
+  <h1 class="b1-h1 fi">
+    Маска, которая<br>вернёт вашей шее<br><span class="accent">молодость</span>
+  </h1>
+
+  <!-- ХУК -->
+  <div class="b1-hook-block fi">
+    <div class="b1-hook-stars">★★★★★</div>
+    <div class="b1-hook-text">Маска <strong>№1</strong> по эффективности<br>и отзывам покупателей</div>
   </div>
 
-  <!-- Хук + кольорові плашки ефектів -->
-  <div class="b1-hook fi">
-    <div class="b1-hook-title">Маска №1 по эффективности и отзывам</div>
-    <div class="b1-effects">
-      <span class="eff eff-1">✨ Омоложение</span>
-      <span class="eff eff-2">💧 Увлажнение</span>
-      <span class="eff eff-3">⬆️ Лифтинг</span>
-      <span class="eff eff-4">🎯 Подтяжка</span>
-      <span class="eff eff-5">🌿 Питание</span>
-    </div>
+  <!-- ЕФЕКТИ — чисті темні пілюлі -->
+  <div class="b1-pills fi">
+    <span class="pill">Лифтинг</span>
+    <span class="pill">Омоложение</span>
+    <span class="pill">Увлажнение</span>
+    <span class="pill">Подтяжка</span>
+    <span class="pill pill-accent">−50% скидка</span>
   </div>
 
-  <!-- ФОТО ПРОДУКТУ -->
+  <!-- ФОТО -->
   <div class="b1-photo fi">
     <img src="img/product.jpg" alt="Лифтинг-маска NeckGlow"
          onerror="this.style.display='none'; document.getElementById('b1-fallback').style.display='flex'">
@@ -1549,15 +1518,16 @@ footer { background:var(--text); padding:36px 20px; }
 
   <!-- ФОРМА -->
   <div class="b1-form fi">
-    <input class="b1-input-orig" type="text"  id="b1-name"  placeholder="👤  Ваше имя"      autocomplete="name">
-    <input class="b1-input-orig" type="tel"   id="b1-phone" placeholder="📞  Номер телефона" autocomplete="tel">
+    <input class="b1-input-orig" type="text" id="b1-name"
+           placeholder="Ваше имя" autocomplete="name">
+    <input class="b1-input-orig b1-phone-input" type="tel" id="b1-phone"
+           placeholder="+998 (__) ___-__-__" autocomplete="tel">
     <button class="btn-main" onclick="submitB1()">
-      ЗАКАЗАТЬ СО СКИДКОЙ 50%
+      Заказать со скидкой 50%
     </button>
     <div class="b1-trust">
-      <span>💳 При получении</span>
-      <span>📦 1–2 дня</span>
-      <span>↩️ 30 дней</span>
+      <span>💳 Оплата при получении</span>
+      <span>📦 Доставка 1–2 дня</span>
     </div>
   </div>
 
@@ -2094,6 +2064,31 @@ function startAutoPlay() {
     });
   }, { threshold: 0.4 });
   io.observe(section);
+})();
+
+// ── UZ PHONE MASK ──────────────────
+(function(){
+  const inp = document.getElementById('b1-phone');
+  if (!inp) return;
+  inp.addEventListener('focus', function(){
+    if (!this.value) this.value = '+998 ';
+  });
+  inp.addEventListener('input', function(){
+    let raw = this.value.replace(/\D/g,'');
+    if (raw.startsWith('998')) raw = raw.slice(3);
+    raw = raw.slice(0,9);
+    let out = '+998 ';
+    if (raw.length > 0) out += '(' + raw.slice(0,2);
+    if (raw.length >= 2) out += ') ' + raw.slice(2,5);
+    if (raw.length >= 5) out += '-' + raw.slice(5,7);
+    if (raw.length >= 7) out += '-' + raw.slice(7,9);
+    this.value = out;
+  });
+  inp.addEventListener('keydown', function(e){
+    if (e.key === 'Backspace' && this.value === '+998 ') {
+      e.preventDefault();
+    }
+  });
 })();
 
 // ── PHOTO STRIP TIMER ──────────────
