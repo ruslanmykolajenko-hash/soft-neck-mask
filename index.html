@@ -106,7 +106,7 @@ img { display: block; width: 100%; }
 /* ─── ФОРМА ─── */
 .form-section {
   background: var(--bg);
-  padding: 28px 20px 32px;
+  padding: 20px 8px 28px;
 }
 
 .order-card {
@@ -183,7 +183,6 @@ img { display: block; width: 100%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   background: var(--rose);
   padding: 13px 22px;
   font-size: 15px;
@@ -197,18 +196,19 @@ img { display: block; width: 100%; }
   display: flex;
   align-items: center;
   gap: 8px;
+  position: relative;
 }
 
-/* Фото — абсолютне, поверх як наклейка, не впливає на розмір блоку */
+/* Фото одразу після «Успейте!», виступає вгору як наклейка */
 .sc-img {
   position: absolute;
-  right: 14px;
-  top: -70px;
-  width: 80px;
-  height: 100px;
+  left: calc(100% + 8px);
+  bottom: -4px;
+  width: 70px;
+  height: 88px;
   object-fit: contain;
   pointer-events: none;
-  filter: drop-shadow(0 4px 14px rgba(0,0,0,.3));
+  filter: drop-shadow(0 -4px 14px rgba(0,0,0,.25));
   z-index: 20;
 }
 
@@ -1555,9 +1555,9 @@ footer {
         <span class="sc-num">19</span>
         <span class="sc-label">шт.</span>
         <span class="sc-urgent">Успейте!</span>
+        <img src="img/phhy.png" alt="Маска" class="sc-img"
+             onerror="this.style.display='none'">
       </div>
-      <img src="img/phhy.png" alt="Маска" class="sc-img"
-           onerror="this.style.display='none'">
     </div>
 
     <!-- Поля і кнопка -->
