@@ -269,13 +269,15 @@ img { display: block; width: 100%; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
   font-size: 11px;
   color: var(--muted);
   font-weight: 500;
   text-align: center;
+  flex: 1;
+  line-height: 1.4;
 }
-.ocf-item span:first-child { font-size: 20px; }
+.ocf-item span:first-child { font-size: 18px; }
 
 .guarantees {
   display: flex;
@@ -1879,9 +1881,9 @@ footer {
 
     <!-- Підвал: гарантії -->
     <div class="order-card-foot" id="main-form-foot">
-      <div class="ocf-item"><span>💳</span>При получении</div>
-      <div class="ocf-item"><span>📦</span>1–2 дня</div>
-      <div class="ocf-item"><span>↩️</span>30 дней</div>
+      <div class="ocf-item"><span>💳</span>Оплата при получении</div>
+      <div class="ocf-item"><span>📦</span>Доставка 1–2 дня по Узбекистану до двери</div>
+      <div class="ocf-item"><span>↩️</span>30 дней на возврат</div>
     </div>
 
   </div>
@@ -2208,9 +2210,9 @@ footer {
 
     <!-- Панорамне фото на всю ширину -->
     <div class="skin-timeline-photo">
-      <img src="img/nn32.jpg" alt="Как менялась кожа шеи клиентки по дням"
+      <img src="img/nn32.jpg" alt="Как менялась кожа шеи клиентки по дням" style="width:100%;height:auto;display:block;object-fit:cover;"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-      <div class="skin-timeline-photo-fallback" style="display:none">📸</div>
+      <div class="skin-timeline-photo-fallback" style="display:none;width:100%;height:220px;background:linear-gradient(135deg,#1a0e06,#3a2010);align-items:center;justify-content:center;font-size:60px;">📸</div>
     </div>
 
     <!-- Підпис під фото -->
@@ -2319,17 +2321,13 @@ footer {
 </section>
 
 <!-- ═══════════════════════════════════════════
-     ФІНАЛЬНИЙ CTA — ЧИСТИЙ ЛАКОНІЧНИЙ
+     ФІНАЛЬНИЙ CTA — ідентичний верхній формі
 ═══════════════════════════════════════════ -->
 <section class="final-cta">
 
   <div class="order-card fi">
 
-    <!-- Шапка — точно як верхня форма -->
     <div class="order-card-head">
-      <p style="font-size:17px; font-weight:700; color:white; margin-bottom:18px; line-height:1.4;">
-        Успейте забрать маску по акционной цене — скидка 50% сгорает через:
-      </p>
       <span class="price-old">299 000 сум</span>
       <span class="price-new">149 000 сум</span>
       <span class="price-sub">Ваша цена сегодня</span>
@@ -2339,7 +2337,17 @@ footer {
       </div>
     </div>
 
-    <!-- Поля і кнопка -->
+    <div class="stock-counter">
+      <div class="stock-counter-text">
+        <span class="sc-label">Осталось</span>
+        <span class="sc-num">19</span>
+        <span class="sc-label">шт.</span>
+        <span class="sc-urgent">Успейте!</span>
+      </div>
+      <img src="img/phhy.png" alt="Маска" class="sc-img"
+           onerror="this.style.display='none'">
+    </div>
+
     <div class="form-fields-wrap" id="final-form">
       <input class="form-field" type="text" id="ff-name"
              placeholder="Ваше имя" autocomplete="name">
@@ -2350,17 +2358,16 @@ footer {
       </button>
     </div>
 
-    <div id="final-success" style="display:none; text-align:center; padding:32px 22px;">
-      <div style="font-size:52px; margin-bottom:12px;">✅</div>
-      <div style="font-family:'Fraunces',serif; font-size:26px; color:var(--dark); font-weight:900; margin-bottom:8px;">Заявка принята!</div>
-      <div style="font-size:15px; color:var(--muted); line-height:1.6;">Перезвоним в течение 10 минут</div>
+    <div id="final-success" style="display:none; text-align:center; padding:40px 22px;">
+      <div style="font-size:56px; margin-bottom:14px;">✅</div>
+      <div style="font-family:'Fraunces',serif; font-size:28px; color:var(--dark); font-weight:900; margin-bottom:8px;">Заявка принята!</div>
+      <div style="font-size:16px; color:var(--muted); line-height:1.7;">Мы перезвоним вам<br>в течение 10 минут</div>
     </div>
 
-    <!-- Підвал: гарантії -->
     <div class="order-card-foot">
-      <div class="ocf-item"><span>💳</span>При получении</div>
-      <div class="ocf-item"><span>📦</span>1–2 дня</div>
-      <div class="ocf-item"><span>↩️</span>30 дней</div>
+      <div class="ocf-item"><span>💳</span>Оплата при получении</div>
+      <div class="ocf-item"><span>📦</span>Доставка 1–2 дня по Узбекистану до двери</div>
+      <div class="ocf-item"><span>↩️</span>30 дней на возврат</div>
     </div>
 
   </div>
