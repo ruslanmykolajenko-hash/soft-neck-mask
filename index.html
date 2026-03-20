@@ -105,55 +105,52 @@ img { display: block; width: 100%; }
 ═══════════════════════════ */
 /* ─── ФОРМА ─── */
 .form-section {
-  background: linear-gradient(170deg, #F5E6D8 0%, #EDD4BD 100%);
-  padding: 24px 22px 28px;
+  background: var(--white);
+  padding: 28px 22px 32px;
+  border-top: 1px solid rgba(0,0,0,.06);
 }
 
 /* Ціновий блок */
 .form-price-block {
-  background: #2A1A0E;
-  border-radius: var(--r);
-  padding: 22px 22px 18px;
-  margin-bottom: 12px;
-  display: block;
+  background: var(--dark);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-bottom: 8px;
 }
 
 .price-left {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
-/* стара ціна — велика, червона, закреслена бежевим */
+/* стара ціна */
 .price-old {
   font-family: 'Nunito', sans-serif;
-  font-size: 38px;
-  font-weight: 900;
-  color: #E03030;
+  font-size: 22px;
+  font-weight: 700;
+  color: rgba(255,255,255,.4);
   text-decoration: line-through;
-  text-decoration-color: #C4956A;
-  text-decoration-thickness: 4px;
+  text-decoration-color: rgba(255,255,255,.3);
   line-height: 1;
   display: block;
-  letter-spacing: -0.5px;
 }
 
-/* нова ціна — менша, золота */
+/* нова ціна */
 .price-new {
   font-family: 'Nunito', sans-serif;
-  font-size: 22px;
-  font-weight: 800;
+  font-size: 34px;
+  font-weight: 900;
   color: #FFD166;
   line-height: 1;
   display: block;
-  letter-spacing: -0.2px;
 }
 
 .price-new-sub {
   font-size: 12px;
-  color: rgba(255,255,255,.4);
+  color: rgba(255,255,255,.45);
   display: block;
-  margin-top: 3px;
+  margin-top: 2px;
 }
 
 /* таймер */
@@ -161,32 +158,30 @@ img { display: block; width: 100%; }
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 14px;
+  margin-top: 12px;
   border-top: 1px solid rgba(255,255,255,.1);
   padding-top: 12px;
-  width: 100%;
 }
 
 .timer-label {
   font-size: 13px;
   color: rgba(255,255,255,.5);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .timer-digits {
   font-family: 'Nunito', sans-serif;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 900;
   color: white;
   letter-spacing: 2px;
 }
 
-/* права частина -50% — прихована */
 .form-price-block .price-right { display: none; }
 .form-price-block .price-badge { display: none; }
 .form-price-block .price-badge-sub { display: none; }
 
-/* Залишки — червона стрічка на всю ширину */
+/* Залишки — стрічка */
 .stock-row {
   background: var(--red);
   display: flex;
@@ -196,19 +191,15 @@ img { display: block; width: 100%; }
   font-size: 15px;
   font-weight: 700;
   color: white;
-  padding: 12px 22px;
-  margin: 0 -22px 16px;
-  letter-spacing: .2px;
+  padding: 11px 22px;
+  margin: 0 -22px 20px;
   animation: stockPulse 2s ease-in-out infinite;
 }
 
-@keyframes stockPulse {
-  0%,100% { opacity: 1; }
-  50%      { opacity: .75; }
-}
+@keyframes stockPulse { 0%,100%{opacity:1;} 50%{opacity:.75;} }
 
 .stock-dot {
-  width: 8px; height: 8px; border-radius: 50%;
+  width: 7px; height: 7px; border-radius: 50%;
   background: white; flex-shrink: 0;
   animation: pulse 1.5s infinite;
 }
@@ -218,9 +209,9 @@ img { display: block; width: 100%; }
 /* Поля */
 .form-field {
   width: 100%;
-  background: var(--white);
-  border: 2px solid rgba(201,112,85,.25);
-  border-radius: var(--r);
+  background: var(--bg);
+  border: 2px solid rgba(201,112,85,.2);
+  border-radius: 14px;
   padding: 17px 18px;
   font-size: 18px;
   color: var(--dark);
@@ -230,10 +221,9 @@ img { display: block; width: 100%; }
   margin-bottom: 12px;
   -webkit-appearance: none;
   transition: border-color .2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,.05);
 }
 .form-field::placeholder { color: rgba(42,26,14,.3); }
-.form-field:focus { border-color: var(--rose); }
+.form-field:focus { border-color: var(--rose); background: var(--white); }
 
 /* Кнопка */
 .btn-order {
@@ -728,19 +718,19 @@ footer {
 
 /* ── ПІЛЮЛІ ── */
 .hero-pills {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 7px;
   margin-bottom: 18px;
-  justify-content: center;
 }
 .pill {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
-  padding: 8px 16px;
-  border-radius: 30px;
+  padding: 9px 8px;
+  border-radius: 8px;
   background: linear-gradient(135deg, #1d69b6, #2a7fd4);
   color: white;
+  text-align: center;
 }
 
 /* ── BA HEADER ── */
