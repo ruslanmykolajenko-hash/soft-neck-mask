@@ -1031,7 +1031,7 @@ footer {
 ═══════════════════════════ */
 .product-section {
   background: var(--white);
-  padding: 36px 22px 32px;
+  padding: 36px 0 32px;
 }
 
 .product-eyebrow {
@@ -1042,6 +1042,7 @@ footer {
   font-weight: 700;
   text-align: center;
   margin-bottom: 6px;
+  padding: 0 22px;
 }
 
 .product-title {
@@ -1051,65 +1052,68 @@ footer {
   color: var(--dark);
   text-align: center;
   line-height: 1.2;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+  padding: 0 22px;
 }
 
-/* Фото */
+/* Фото на всю ширину */
 .product-img-wrap {
-  width: 70%;
-  margin: 0 auto 28px;
+  width: 100%;
   position: relative;
+  margin-bottom: 28px;
 }
 
 .product-img-wrap img {
   width: 100%;
+  max-height: 280px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 12px 28px rgba(42,26,14,.18));
+  background: var(--bg);
 }
 
 .product-img-fallback {
   width: 100%;
-  height: 220px;
+  height: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 72px;
+  background: linear-gradient(135deg, #F5EAE4, #EDD5C5);
 }
 
-/* Бейдж кількості */
 .product-count-badge {
   position: absolute;
-  bottom: -14px;
-  right: -10px;
+  bottom: 14px;
+  right: 16px;
   background: var(--dark);
   border-radius: 50px;
   padding: 8px 16px;
   display: flex;
   align-items: baseline;
   gap: 5px;
-  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+  box-shadow: 0 4px 14px rgba(0,0,0,.3);
 }
 
 .pcb-num {
   font-family: 'Nunito', sans-serif;
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 900;
   color: #FFD166;
   line-height: 1;
 }
 
 .pcb-text {
-  font-size: 13px;
+  font-size: 12px;
   color: rgba(255,255,255,.8);
   font-weight: 600;
 }
 
-/* Список компонентів */
+/* Список */
 .product-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  padding: 0 22px;
   margin-bottom: 20px;
 }
 
@@ -1123,10 +1127,24 @@ footer {
 }
 
 .pi-ico {
-  font-size: 32px;
-  flex-shrink: 0;
   width: 48px;
-  text-align: center;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1d69b6, #2a7fd4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pi-ico svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: white;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .pi-name {
@@ -1142,14 +1160,15 @@ footer {
   line-height: 1.4;
 }
 
-/* Жирний акцент */
+/* Акцент */
 .product-highlight {
   background: linear-gradient(135deg, #1d69b6 0%, #2a7fd4 100%);
-  border-radius: 16px;
-  padding: 20px;
+  border-radius: 0;
+  padding: 20px 22px;
   display: flex;
   align-items: center;
   gap: 16px;
+  margin: 0;
 }
 
 .ph-num {
@@ -1272,7 +1291,7 @@ footer {
   <p class="product-eyebrow fi">Состав и действие</p>
   <h2 class="product-title fi">Почему это работает</h2>
 
-  <!-- Фото по центру -->
+  <!-- Фото на всю ширину -->
   <div class="product-img-wrap fi">
     <img src="img/product.png" alt="Маска NeckGlow"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
@@ -1283,39 +1302,56 @@ footer {
     </div>
   </div>
 
-  <!-- Список — великі, чіткі пункти -->
+  <!-- Список з медичними SVG іконками -->
   <div class="product-list fi">
+
     <div class="product-item">
-      <div class="pi-ico">🧬</div>
+      <div class="pi-ico">
+        <!-- ДНК / молекула -->
+        <svg viewBox="0 0 26 26"><path d="M5 4c3 2 8 3 11 6s2 6-1 8-8 3-11 6"/><path d="M21 4c-3 2-8 3-11 6s-2 6 1 8 8 3 11 6"/><path d="M8 9h10M8 17h10"/></svg>
+      </div>
       <div>
         <div class="pi-name">Коллаген + Пептиды</div>
-        <div class="pi-desc">Восстанавливают упругость кожи и убирают провисания</div>
+        <div class="pi-desc">Восстанавливают упругость и устраняют провисания</div>
       </div>
     </div>
+
     <div class="product-item">
-      <div class="pi-ico">💧</div>
+      <div class="pi-ico">
+        <!-- Крапля / молекула води -->
+        <svg viewBox="0 0 26 26"><path d="M13 3C13 3 5 11 5 16a8 8 0 0016 0c0-5-8-13-8-13z"/><path d="M9 17a4 4 0 004 3"/></svg>
+      </div>
       <div>
         <div class="pi-name">Гиалуроновая кислота</div>
-        <div class="pi-desc">Увлажняет глубоко на 24 часа после одного применения</div>
+        <div class="pi-desc">Увлажняет в глубоких слоях кожи на 24 часа</div>
       </div>
     </div>
+
     <div class="product-item">
-      <div class="pi-ico">✨</div>
+      <div class="pi-ico">
+        <!-- Зірка / кристал вітаміну -->
+        <svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="4"/><path d="M13 3v4M13 19v4M3 13h4M19 13h4M6.2 6.2l2.8 2.8M17 17l2.8 2.8M6.2 19.8l2.8-2.8M17 9l2.8-2.8"/></svg>
+      </div>
       <div>
         <div class="pi-name">Ретинол + Витамин C</div>
-        <div class="pi-desc">Разглаживают морщины, выравнивают тон и цвет кожи</div>
+        <div class="pi-desc">Разглаживают морщины, выравнивают и осветляют кожу</div>
       </div>
     </div>
+
     <div class="product-item">
-      <div class="pi-ico">🌸</div>
+      <div class="pi-ico">
+        <!-- Листок / натуральний екстракт -->
+        <svg viewBox="0 0 26 26"><path d="M4 22c0 0 2-10 9-14 4-2 9-2 9-2s0 5-2 9c-3 6-8 7-8 7"/><path d="M4 22l7-7"/></svg>
+      </div>
       <div>
         <div class="pi-name">Масло ши + Сквалан</div>
         <div class="pi-desc">Питают, смягчают и защищают нежную кожу шеи</div>
       </div>
     </div>
+
   </div>
 
-  <!-- Акцент: 10 масок -->
+  <!-- Акцент: 10 масок — на всю ширину -->
   <div class="product-highlight fi">
     <div class="ph-num">10</div>
     <div class="ph-text">масок в упаковке — полный курс омоложения на месяц</div>
