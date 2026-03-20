@@ -3,9 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Cache-Control" content="max-age=31536000">
 <title>Маска для шеи | Лифтинг и омоложение</title>
+
+<!-- DNS prefetch + preconnect для шрифтів -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Preload критичних зображень першого екрану -->
+<link rel="preload" as="image" href="img/product.png">
+
+<!-- Шрифти — тільки потрібні ваги, display=swap щоб текст показувався одразу -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Nunito:wght@900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Nunito:wght@900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet"></noscript>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1858,7 +1870,7 @@ footer {
   </div>
 
   <div class="hero-photo fi">
-    <img src="img/product.png" alt="Лифтинг-маска для шеи"
+    <img src="img/product.png" alt="Лифтинг-маска для шеи" fetchpriority="high" decoding="sync"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
     <div class="hero-photo-fallback" style="display:none">🎭</div>
   </div>
@@ -1889,10 +1901,9 @@ footer {
         <span class="sc-label">шт.</span>
         <span class="sc-urgent">Успейте!</span>
       </div>
-      <img src="img/phhy.png" alt="Маска" class="sc-img"
+      <img src="img/phhy.png" alt="Маска" class="sc-img" loading="lazy" decoding="async"
            onerror="this.style.display='none'">
     </div>
-
     <!-- Поля і кнопка — без дублю trust-list знизу -->
     <div class="form-fields-wrap" id="main-form">
       <input class="form-field" type="text" id="f-name"
@@ -1930,7 +1941,7 @@ footer {
   <h2 class="product-title fi">Почему это работает</h2>
 
   <div class="product-img-wrap fi">
-    <img src="img/mask.png" alt="Маска"
+    <img src="img/mask.png" loading="lazy" decoding="async" alt="Маска"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
     <div class="product-img-fallback" style="display:none">🎭</div>
     <div class="product-count-badge">
@@ -1998,14 +2009,14 @@ footer {
   <div class="ba-wrap fi">
 
     <div class="ba-card ba-before">
-      <img src="img/before.jpg" alt="До" class="ba-img"
+      <img src="img/before.jpg" loading="lazy" decoding="async" alt="До" class="ba-img"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
       <div class="ba-fallback" style="display:none">😞</div>
       <div class="ba-lbl">ДО</div>
     </div>
 
     <div class="ba-card ba-after">
-      <img src="img/after.png" alt="После" class="ba-img"
+      <img src="img/after.png" loading="lazy" decoding="async" alt="После" class="ba-img"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
       <div class="ba-fallback" style="display:none">😊</div>
       <div class="ba-lbl ba-lbl-rose">ПОСЛЕ</div>
@@ -2241,7 +2252,7 @@ footer {
 
     <!-- Панорамне фото на всю ширину -->
     <div class="skin-timeline-photo">
-      <img src="img/nn32.jpg" alt="Как менялась кожа шеи клиентки по дням" style="width:100%;height:auto;display:block;object-fit:cover;"
+      <img src="img/nn32.jpg" loading="lazy" decoding="async" alt="Как менялась кожа шеи клиентки по дням" style="width:100%;height:auto;display:block;object-fit:cover;"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
       <div class="skin-timeline-photo-fallback" style="display:none;width:100%;height:220px;background:linear-gradient(135deg,#1a0e06,#3a2010);align-items:center;justify-content:center;font-size:60px;">📸</div>
     </div>
@@ -2375,7 +2386,7 @@ footer {
         <span class="sc-label">шт.</span>
         <span class="sc-urgent">Успейте!</span>
       </div>
-      <img src="img/phhy.png" alt="Маска" class="sc-img"
+      <img src="img/phhy.png" alt="Маска" class="sc-img" loading="lazy" decoding="async"
            onerror="this.style.display='none'">
     </div>
 
