@@ -3,1473 +3,375 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Лифтинг-маска для шеи | NeckGlow</title>
+<title>Маска для шеи | Лифтинг и омоложение</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&display=swap" rel="stylesheet">
 <style>
-/* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:     #F8F5F0;
-  --white:  #FFFFFF;
-  --pink:   #F2D5C8;
-  --rose:   #D4896A;
-  --deep-r: #A85C42;
-  --text:   #2A2118;
-  --muted:  #8A7E74;
-  --red:    #E03030;
-  --green:  #4CAF7D;
-  --r: 18px;
-  --sh: 0 4px 24px rgba(42,33,24,.09);
+  --bg:    #FBF7F4;
+  --white: #FFFFFF;
+  --rose:  #C97055;
+  --dark:  #2A1A0E;
+  --muted: #8A7060;
+  --red:   #D93A2B;
+  --gold:  #C8902A;
+  --green: #3A9060;
+  --r: 16px;
 }
 
 html { scroll-behavior: smooth; }
+
 body {
   font-family: 'Inter', sans-serif;
   background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
+  color: var(--dark);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  font-size: 17px;
 }
 
-/* ══════════════════════════════════════════
-   BLOCK 1 — IMPULSE HERO
-══════════════════════════════════════════ */
-.b1 {
+img { display: block; width: 100%; }
+
+/* ═══════════════════════════
+   БЛОК 1 — ГОЛОВНИЙ ЕКРАН
+═══════════════════════════ */
+.hero {
   background: var(--white);
-  padding: 32px 20px 28px;
-  position: relative;
-  overflow: hidden;
+  padding: 28px 22px 0;
 }
 
-/* фоновий градієнт-блоб */
-.b1::before {
-  content:'';
-  position:absolute; inset:0;
-  background:
-    radial-gradient(ellipse 70% 50% at 80% 0%, rgba(242,213,200,.6) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 10% 100%, rgba(212,137,106,.12) 0%, transparent 60%);
-  pointer-events:none;
-}
-
-/* ── B1 TAG ── */
-.b1-tag {
-  font-size: 11px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--rose);
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 10px;
-  position: relative;
-}
-
-.b1-h1 {
+/* Заголовок */
+.hero-title {
   font-family: 'Fraunces', serif;
-  font-size: 32px;
-  line-height: 1.15;
-  color: var(--text);
+  font-size: 38px;
+  line-height: 1.12;
   font-weight: 900;
+  color: var(--dark);
+  margin-bottom: 10px;
   text-align: center;
-  margin-bottom: 14px;
-  position: relative;
 }
-.b1-h1 .accent { color: var(--rose); }
 
-/* ── ХУК ── */
-.b1-hook-block {
+.hero-title span { color: var(--rose); }
+
+/* Підзаголовок */
+.hero-sub {
+  font-size: 17px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+/* Рейтинг */
+.hero-rating {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #1d69b6 0%, #2a7fd4 100%);
-  border-radius: 14px;
-  padding: 12px 16px;
-  margin-bottom: 12px;
-}
-.b1-hook-stars { font-size: 15px; color: #FFD166; flex-shrink: 0; letter-spacing: 1px; }
-.b1-hook-text  { font-size: 13px; color: rgba(255,255,255,.95); font-weight: 500; line-height: 1.4; }
-.b1-hook-text strong { color: #FFD166; font-weight: 800; }
-
-/* ── ПІЛЮЛІ ── */
-.b1-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 18px;
   justify-content: center;
-}
-.pill {
-  font-size: 12px;
-  font-weight: 600;
-  padding: 5px 13px;
-  border-radius: 30px;
-  background: linear-gradient(135deg, #1d69b6 0%, #2a7fd4 100%);
-  color: white;
-  letter-spacing: .2px;
-}
-.pill-accent {
-  background: var(--red);
-  font-weight: 700;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
-/* фото продукту */
-.b1-photo {
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  margin-bottom: 18px;
+.hero-stars { font-size: 20px; color: #F5A623; letter-spacing: 2px; }
+.hero-rating-text { font-size: 15px; color: var(--muted); font-weight: 500; }
+
+/* Фото продукту */
+.hero-photo {
+  width: calc(100% + 44px);
+  margin-left: -22px;
   position: relative;
-  box-shadow: 0 8px 32px rgba(42,33,24,.12);
+  margin-bottom: 0;
 }
-.b1-photo img {
+
+.hero-photo img {
   width: 100%;
-  height: 230px;
+  height: 260px;
   object-fit: cover;
+}
+
+.hero-photo-fallback {
+  width: 100%;
+  height: 260px;
+  background: linear-gradient(135deg, #F5EAE4, #EDD5C5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+}
+
+/* ═══════════════════════════
+   БЛОК ФОРМИ
+═══════════════════════════ */
+.form-section {
+  background: linear-gradient(170deg, #F5E6D8 0%, #EDD4BD 100%);
+  padding: 24px 22px 28px;
+}
+
+/* Ціна */
+.price-block {
+  background: var(--dark);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.price-left {}
+
+.price-old {
+  font-size: 17px;
+  color: rgba(255,255,255,.4);
+  text-decoration: line-through;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.price-new {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: #FFD166;
+  line-height: 1;
   display: block;
 }
-.b1-photo-fallback {
+
+.price-new-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,.4);
+  margin-top: 3px;
+  display: block;
+}
+
+.price-right {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.price-badge {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--red);
+  display: block;
+  line-height: 1;
+}
+
+.price-badge-sub {
+  font-size: 10px;
+  color: rgba(255,255,255,.4);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+/* Таймер */
+.timer-block {
+  background: rgba(255,255,255,.1);
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timer-label {
+  font-size: 12px;
+  color: rgba(255,255,255,.5);
+}
+
+.timer-digits {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 2px;
+}
+
+/* Залишки */
+.stock-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--rose);
+  margin-bottom: 16px;
+}
+
+.stock-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--red); flex-shrink: 0;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.35;} }
+
+/* Поля */
+.form-field {
   width: 100%;
-  height: 230px;
-  background: linear-gradient(135deg, #F5EAE4, #EDD5C5);
+  background: var(--white);
+  border: 2px solid rgba(201,112,85,.25);
+  border-radius: var(--r);
+  padding: 17px 18px;
+  font-size: 18px;
+  color: var(--dark);
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  display: block;
+  margin-bottom: 12px;
+  -webkit-appearance: none;
+  transition: border-color .2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.form-field::placeholder { color: rgba(42,26,14,.3); }
+.form-field:focus { border-color: var(--rose); }
+
+/* Кнопка */
+.btn-order {
+  width: 100%;
+  background: var(--rose);
+  color: white;
+  font-size: 19px;
+  font-weight: 800;
+  border: none;
+  border-radius: var(--r);
+  padding: 20px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: .3px;
+  box-shadow: 0 6px 24px rgba(201,112,85,.4);
+  transition: transform .15s;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.btn-order:active { transform: scale(.97); }
+
+/* Гарантії */
+.guarantees {
+  display: flex;
+  justify-content: space-around;
+  gap: 4px;
+}
+
+.g-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-.b1-photo-fallback .pf-ico   { font-size: 52px; }
-.b1-photo-fallback .pf-label { font-size: 14px; color: var(--rose); font-weight: 600; }
-
-.b1-photo-badge {
-  position: absolute;
-  top: 14px; right: 14px;
-  background: var(--red);
-  color: white;
-  font-size: 13px;
-  font-weight: 800;
-  padding: 7px 14px;
-  border-radius: 30px;
-  box-shadow: 0 4px 12px rgba(224,48,48,.4);
-}
-
-/* ── ФОРМА B1 ── */
-.b1-form { position: relative; }
-
-.b1-input-orig {
-  width: 100%;
-  background: var(--white);
-  border: 2px solid rgba(212,137,106,.35);
-  border-radius: 14px;
-  padding: 17px 18px;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  outline: none;
-  margin-bottom: 10px;
-  transition: border-color .2s, box-shadow .2s;
-  -webkit-appearance: none;
-  display: block;
-  box-shadow: 0 2px 8px rgba(212,137,106,.1);
-}
-.b1-input-orig::placeholder { color: rgba(42,33,24,.35); }
-.b1-input-orig:focus {
-  border-color: var(--rose);
-  box-shadow: 0 0 0 4px rgba(212,137,106,.15);
-}
-
-.b1-trust {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-.b1-trust span {
-  font-size: 11px;
-  color: var(--muted);
-  font-weight: 500;
-}
-
-.btn-main {
-  width: 100%;
-  background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r) 100%);
-  color: white;
-  font-size: 17px;
-  font-weight: 800;
-  border: none;
-  border-radius: 14px;
-  padding: 18px;
-  cursor: pointer;
-  box-shadow: 0 8px 28px rgba(212,137,106,.4);
-  font-family: 'Inter', sans-serif;
-  display: block;
-  text-align: center;
-  transition: transform .15s, box-shadow .15s;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-}
-.btn-main:active { transform: scale(.97); box-shadow: 0 4px 14px rgba(212,137,106,.3); }
-
-.b1-trust {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 12px;
-}
-
-.b1-trust span {
-  font-size: 11px;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
   gap: 4px;
-  font-weight: 600;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+  text-align: center;
+  flex: 1;
 }
 
-/* ══════════════════════════════════════════
-   DIVIDER
-══════════════════════════════════════════ */
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212,137,106,.25), transparent);
-  margin: 0 20px;
+.g-icon { font-size: 20px; }
+
+/* ═══════════════════════════
+   БЛОК ДО / ПІСЛЯ
+═══════════════════════════ */
+.ba-section {
+  background: var(--white);
+  padding: 32px 22px;
 }
 
-/* ══════════════════════════════════════════
-   BLOCK 2 — РЕЗУЛЬТАТ (ДО/ПІСЛЯ)
-══════════════════════════════════════════ */
-.b2 {
-  background: var(--bg);
-  padding: 36px 20px 32px;
-}
-
-.b2-title {
+.section-title {
   font-family: 'Fraunces', serif;
-  font-size: 30px;
-  line-height: 1.15;
-  color: var(--text);
+  font-size: 28px;
   font-weight: 900;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.section-sub {
+  font-size: 15px;
+  color: var(--muted);
   text-align: center;
   margin-bottom: 22px;
+  line-height: 1.5;
 }
 
-/* ── ДО/ПІСЛЯ КАРТКИ ── */
-.ba-wrap {
-  position: relative;
+.ba-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .ba-card {
-  border-radius: 16px;
+  border-radius: var(--r);
   overflow: hidden;
   position: relative;
-  background: #EDE8E3;
 }
 
 .ba-img {
   width: 100%;
   aspect-ratio: 3/4;
   object-fit: cover;
-  display: block;
 }
 
-/* fallback */
 .ba-fallback {
+  width: 100%;
   aspect-ratio: 3/4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 52px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 50px;
 }
-.ba-before .ba-fallback { background: linear-gradient(160deg, #E8DDD6, #D4C4B8); }
-.ba-after  .ba-fallback { background: linear-gradient(160deg, #F5EAE4, #EDCFC2); }
+.ba-card.before .ba-fallback { background: linear-gradient(160deg,#E8DDD6,#D4C4B8); }
+.ba-card.after  .ba-fallback { background: linear-gradient(160deg,#F5EAE4,#EDCFC2); }
 
-.ba-lbl {
+.ba-tag {
   position: absolute;
-  top: 10px; left: 10px;
-  font-size: 10px;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 20px;
-}
-.ba-before .ba-lbl { background: rgba(255,255,255,.8); color: #5A4035; }
-.ba-after  .ba-lbl { background: var(--rose); color: white; }
-
-/* плашка по центру між двома фото знизу */
-.ba-center-badge {
-  position: absolute;
-  bottom: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--text);
-  color: white;
+  padding: 5px 14px;
   border-radius: 30px;
-  padding: 8px 20px;
   white-space: nowrap;
-  text-align: center;
-  z-index: 10;
-  box-shadow: 0 4px 16px rgba(0,0,0,.3);
-  font-size: 13px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
-/* extra bottom space for ba-wrap to show badge */
-.ba-wrap { padding-bottom: 22px; }
+.ba-card.before .ba-tag { background: rgba(255,255,255,.85); color: var(--dark); }
+.ba-card.after  .ba-tag { background: var(--rose); color: white; }
 
-.ba-center-badge .badge-num {
-  font-family: 'Fraunces', serif;
-  font-size: 22px;
-  font-weight: 900;
-  color: var(--pink);
-  line-height: 1;
-}
-
-/* ── OFFER STATS ── */
-.offer-stats {
+/* Stats */
+.ba-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3,1fr);
   gap: 8px;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
-.os-card {
-  background: var(--white);
+.ba-stat {
+  background: var(--bg);
   border-radius: 14px;
-  padding: 14px 10px;
+  padding: 14px 8px;
   text-align: center;
-  box-shadow: var(--sh);
 }
 
-.os-num {
+.ba-stat-num {
   font-family: 'Fraunces', serif;
-  font-size: 26px;
+  font-size: 28px;
+  font-weight: 900;
   color: var(--rose);
-  font-weight: 700;
   line-height: 1;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
-.os-lbl {
-  font-size: 11px;
-  color: var(--muted);
-  line-height: 1.35;
-  font-weight: 600;
-}
+.ba-stat-lbl { font-size: 11px; color: var(--muted); line-height: 1.4; font-weight: 500; }
 
-/* ── ДО/ПІСЛЯ темний оверлей ── */
-.ba-overlay {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.75) 0%, transparent 100%);
-  padding: 20px 10px 10px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.ba-overlay-rose {
-  background: linear-gradient(to top, rgba(168,92,66,.8) 0%, transparent 100%);
-}
-
-.ba-lbl-dark {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: white;
-  text-shadow: 0 1px 4px rgba(0,0,0,.4);
-}
-
-/* ── PRICE redesign ── */
-.price-block {
-  background: var(--white);
-  border-radius: var(--r);
-  overflow: hidden;
-  display: flex;
-  align-items: stretch;
-  margin-bottom: 16px;
-  box-shadow: var(--sh);
-  border: 1px solid rgba(212,137,106,.15);
-}
-
-.price-left {
-  flex: 1;
-  padding: 14px 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-}
-
-.price-was-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.price-was-lbl {
-  font-size: 11px;
-  color: var(--muted);
-  font-weight: 500;
-}
-
-.price-was {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--red);
-  text-decoration: line-through;
-  opacity: .8;
-}
-
-.price-divider-line {
-  height: 1px;
-  background: rgba(0,0,0,.06);
-  width: 100%;
-}
-
-.price-now-row {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-}
-
-.price-now {
-  font-family: 'Fraunces', serif;
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--text);
-  line-height: 1;
-}
-
-.price-currency {
-  font-size: 14px;
-  color: var(--muted);
-  font-weight: 500;
-}
-
-/* права плашка */
-.price-badge-red {
-  background: var(--red);
-  width: 26%;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 6px;
-  gap: 2px;
-}
-
-.pbr-pct {
-  font-family: 'Fraunces', serif;
-  font-size: 20px;
-  font-weight: 800;
-  color: white;
-  line-height: 1;
-}
-
-.pbr-lbl {
-  font-size: 8px;
-  font-weight: 700;
-  color: rgba(255,255,255,.75);
-  letter-spacing: .5px;
-  text-transform: uppercase;
-}
-
-.pbr-gift {
-  margin-top: 6px;
-  font-size: 9px;
-  font-weight: 600;
-  color: rgba(255,255,255,.85);
-  text-align: center;
-  line-height: 1.3;
-  padding: 4px 4px 0;
-  border-top: 1px solid rgba(255,255,255,.2);
-  width: 100%;
-}
-
-/* badge-num в ba-center-badge */
-.badge-num {
-  font-family: 'Fraunces', serif;
-  font-size: 24px;
-  font-weight: 800;
-  color: #FFD166;
-  line-height: 1;
-}
-
-.price-discount .disc-lbl {
-  font-size: 11px;
-  color: rgba(255,255,255,.8);
-  font-weight: 700;
-  letter-spacing: .5px;
-}
-
-/* gift chip */
-.gift-chip {
-  background: #FFF3EE;
-  border: 1.5px solid rgba(212,137,106,.25);
-  border-radius: 14px;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 16px;
-}
-.gift-chip .g-accent { color: var(--rose); font-weight: 800; }
-
-/* CTA кнопка в b2 */
-.btn-b2 {
-  width: 100%;
-  background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r) 100%);
-  color: white;
-  font-size: 16px;
-  font-weight: 800;
-  border: none;
-  border-radius: var(--r);
-  padding: 18px;
-  cursor: pointer;
-  box-shadow: 0 8px 28px rgba(212,137,106,.4);
-  font-family: 'Inter', sans-serif;
-  display: block; width: 100%;
-  text-align: center;
-  transition: transform .15s;
-  letter-spacing: .2px;
-}
-.btn-b2:active { transform: scale(.97); }
-
-/* ══════════════════════════════════════════
-   СЕКЦІЇ НИЖЧЕ
-══════════════════════════════════════════ */
-section { padding: 40px 20px; }
-
-.sec-tag {
-  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-  color: var(--rose); font-weight: 700; margin-bottom: 8px;
-}
-
-.sec-title {
-  font-family: 'Fraunces', serif;
-  font-size: 30px; line-height: 1.15;
-  color: var(--text); font-weight: 700; margin-bottom: 8px;
-}
-
-.sec-sub {
-  font-size: 14px; color: var(--muted);
-  line-height: 1.6; margin-bottom: 22px;
-}
-
-/* ── CTA STRIP (між блоками) ── */
-.cta-strip {
+/* CTA між блоками */
+.mid-cta {
   background: var(--rose);
   border-radius: var(--r);
-  padding: 16px 18px;
-  display: flex; align-items: center; gap: 12px; margin-top: 22px;
-}
-.cs-text { font-size: 14px; color: white; font-weight: 600; line-height: 1.4; flex: 1; }
-.cs-btn  {
-  background: white; color: var(--rose);
-  font-size: 13px; font-weight: 800;
-  padding: 11px 16px; border-radius: 12px; border: none;
-  cursor: pointer; white-space: nowrap; flex-shrink: 0;
-  font-family: 'Inter', sans-serif;
-}
-
-/* ── БОЛИ ── */
-#pain { background: var(--white); }
-
-.pain-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-.pain-card {
-  background: var(--bg);
-  border-radius: 16px; padding: 16px;
-  display: flex; align-items: flex-start; gap: 14px;
-}
-.pain-ico {
-  width: 44px; height: 44px; border-radius: 12px; background: #FFF3EE;
-  display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;
-}
-.p-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-.p-desc  { font-size: 13px; color: var(--muted); line-height: 1.5; }
-
-.solution-pill {
-  background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r) 100%);
-  border-radius: var(--r); padding: 20px; color: white; text-align: center;
-}
-.sp-title { font-family:'Fraunces',serif; font-size:20px; font-weight:700; margin-bottom:6px; }
-.sp-text  { font-size:14px; opacity:.88; line-height:1.55; }
-
-/* ── ПЕРЕВАГИ ── */
-#benefits { background: var(--bg); }
-
-.ben-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.ben-card { background: var(--white); border-radius: var(--r); padding: 18px 14px; box-shadow: var(--sh); }
-.ben-card.wide {
-  grid-column: span 2;
-  background: linear-gradient(135deg, #FFF3EE 0%, #FAE8DF 100%);
-  border: 1.5px solid rgba(212,137,106,.2);
-  display: flex; align-items: center; gap: 14px;
-}
-.b-ico   { font-size: 28px; margin-bottom: 8px; }
-.b-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; line-height: 1.3; }
-.b-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; }
-.ben-card.wide .b-ico   { font-size: 34px; margin: 0; flex-shrink: 0; }
-.ben-card.wide .b-title { font-size: 16px; }
-
-/* ── ВІДГУКИ ── */
-#reviews { background: var(--white); }
-
-.rating-bar {
-  background: var(--bg); border-radius: var(--r);
-  padding: 18px 20px; display: flex; align-items: center; gap: 16px; margin-bottom: 18px;
-}
-.rb-num { font-family:'Fraunces',serif; font-size:52px; color:var(--rose); font-weight:700; line-height:1; flex-shrink:0; }
-.rb-stars { font-size:18px; color:#F5A623; margin-bottom:4px; }
-.rb-count { font-size:12px; color:var(--muted); }
-
-.rev-card {
-  background: var(--bg); border-radius: var(--r);
-  padding: 18px; margin-bottom: 12px; position: relative;
-}
-.rev-head { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
-.rev-ava {
-  width:44px; height:44px; border-radius:50%;
-  background:linear-gradient(135deg,var(--pink),var(--rose));
-  display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;
-}
-.rev-name  { font-size:15px; font-weight:700; color:var(--text); }
-.rev-stars { font-size:12px; color:#F5A623; }
-.rev-city  { font-size:11px; color:var(--muted); }
-.rev-text  { font-size:14px; line-height:1.6; color:var(--text); }
-.rev-badge {
-  position:absolute; top:14px; right:14px;
-  background:#EAF7EF; color:#2E7D52;
-  font-size:9px; font-weight:700;
-  padding:4px 8px; border-radius:20px;
-  text-transform:uppercase; letter-spacing:.5px;
-}
-
-/* ── ЯК ЗАМОВИТИ ── */
-#how { background: var(--bg); }
-
-.steps { display:flex; flex-direction:column; gap:0; margin-bottom:24px; }
-.step  { display:flex; gap:16px; padding-bottom:20px; }
-.step:last-child { padding-bottom:0; }
-.step-lw { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
-.step-num {
-  width:42px; height:42px; border-radius:50%;
-  background:linear-gradient(135deg,var(--rose),var(--deep-r));
-  display:flex; align-items:center; justify-content:center;
-  font-family:'Fraunces',serif; font-size:18px; font-weight:700; color:white;
-}
-.step-line { width:2px; flex:1; min-height:14px; background:rgba(212,137,106,.2); margin-top:4px; }
-.step:last-child .step-line { display:none; }
-.s-title { font-size:16px; font-weight:700; color:var(--text); margin-bottom:3px; padding-top:8px; }
-.s-desc  { font-size:13px; color:var(--muted); line-height:1.5; }
-
-/* ── ГАРАНТІЇ ── */
-#guarantees { background: var(--white); }
-
-.g-cards { display:flex; flex-direction:column; gap:10px; }
-.g-card {
-  background: var(--bg); border-radius:var(--r);
-  padding:16px 18px; display:flex; align-items:center; gap:14px;
-}
-.g-ico {
-  width:50px; height:50px; border-radius:14px; background:#FFF3EE;
-  display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;
-}
-.g-title { font-size:15px; font-weight:700; color:var(--text); margin-bottom:2px; }
-.g-desc  { font-size:12px; color:var(--muted); line-height:1.5; }
-
-/* ── ФІНАЛЬНИЙ CTA ── */
-#final-cta {
-  background: linear-gradient(160deg, #FFF8F5 0%, #F5EAE3 100%);
-  padding: 44px 20px 40px; text-align: center;
-}
-
-.final-price-block {
-  background: white; border-radius: var(--r);
-  padding: 20px; margin-bottom: 20px; box-shadow: var(--sh);
-}
-.fp-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:14px; }
-.fp-row .fl { color:var(--muted); }
-.fp-row .fr { color:var(--text); font-weight:600; }
-.fp-row .strike { text-decoration:line-through; color:var(--muted); font-weight:400; }
-.fp-row .green  { color:var(--green); }
-.fp-div { height:1px; background:rgba(0,0,0,.06); margin:12px 0; }
-.fp-total { font-family:'Fraunces',serif; font-size:28px; color:var(--rose); font-weight:700; }
-
-/* ── FOOTER ── */
-footer { background:var(--text); padding:36px 20px; }
-.f-logo { font-family:'Fraunces',serif; font-size:24px; color:var(--pink); margin-bottom:4px; }
-.f-tag  { font-size:10px; color:rgba(255,255,255,.3); letter-spacing:2px; text-transform:uppercase; margin-bottom:22px; }
-.f-hr   { height:1px; background:rgba(255,255,255,.08); margin-bottom:18px; }
-.f-links { display:flex; flex-direction:column; gap:12px; margin-bottom:20px; }
-.f-link  { color:rgba(255,255,255,.4); font-size:13px; text-decoration:none; display:flex; align-items:center; gap:8px; }
-.f-copy  { font-size:10px; color:rgba(255,255,255,.2); line-height:1.7; }
-
-/* ── POPUP ── */
-.overlay {
-  position:fixed; inset:0; z-index:500;
-  background:rgba(42,33,24,.55);
-  backdrop-filter:blur(4px);
-  -webkit-backdrop-filter:blur(4px);
-  display:none; align-items:flex-end; justify-content:center;
-}
-.overlay.open { display:flex; }
-
-.popup {
-  background:var(--white);
-  border-radius:28px 28px 0 0;
-  width:100%; max-height:92svh;
-  overflow-y:auto; padding:0 0 32px;
-  animation:slideup .3s cubic-bezier(.25,.8,.25,1);
-  -webkit-overflow-scrolling:touch;
-}
-
-@keyframes slideup {
-  from { transform:translateY(60px); opacity:0; }
-  to   { transform:translateY(0); opacity:1; }
-}
-
-.popup-handle {
-  width:40px; height:4px; background:rgba(0,0,0,.1);
-  border-radius:2px; margin:14px auto 20px;
-}
-
-.popup-header { padding:0 20px 0; margin-bottom:16px; }
-.popup-title  { font-family:'Fraunces',serif; font-size:26px; color:var(--text); font-weight:700; margin-bottom:4px; line-height:1.2; }
-.popup-sub    { font-size:13px; color:var(--muted); line-height:1.5; }
-
-.popup-price-card {
-  margin:0 20px 18px;
-  background:linear-gradient(135deg,#FFF8F5 0%,#FBF0EA 100%);
-  border:1.5px solid rgba(212,137,106,.2);
-  border-radius:var(--r); padding:18px;
-}
-
-.pp-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:14px; }
-.pp-row .pl { color:var(--muted); }
-.pp-row .pr { color:var(--text); font-weight:600; }
-.pp-row .strike { text-decoration:line-through; color:rgba(42,33,24,.3); font-weight:400; font-size:13px; }
-.pp-row .green  { color:var(--green); font-size:15px; }
-.pp-row .gift   { color:var(--rose); }
-.pp-div  { height:1px; background:rgba(212,137,106,.2); margin:12px 0; }
-.pp-total-row { display:flex; justify-content:space-between; align-items:center; }
-.pp-total-lbl { font-size:15px; font-weight:700; color:var(--text); }
-.pp-total-val { font-family:'Fraunces',serif; font-size:30px; color:var(--rose); font-weight:700; line-height:1; }
-
-.pp-save {
-  background:rgba(76,175,125,.1); border-radius:10px;
-  padding:10px 14px; margin-top:12px; font-size:13px;
-  color:var(--green); font-weight:700; text-align:center;
-  display:flex; align-items:center; justify-content:center; gap:6px;
-}
-
-.popup-fields { padding:0 20px; }
-.p-label { font-size:11px; font-weight:700; color:var(--muted); letter-spacing:.5px; text-transform:uppercase; margin-bottom:6px; display:block; }
-.p-input {
-  width:100%; background:var(--bg); border:1.5px solid rgba(0,0,0,.08);
-  border-radius:14px; padding:15px 16px; font-size:16px; color:var(--text);
-  font-family:'Inter',sans-serif; outline:none; margin-bottom:12px;
-  transition:border-color .2s; -webkit-appearance:none; display:block;
-}
-.p-input:focus { border-color:var(--rose); background:white; }
-
-.btn-popup {
-  width:100%; background:linear-gradient(135deg,var(--rose) 0%,var(--deep-r) 100%);
-  color:white; font-size:16px; font-weight:700; border:none;
-  border-radius:var(--r); padding:18px; cursor:pointer;
-  box-shadow:0 8px 24px rgba(212,137,106,.35);
-  font-family:'Inter',sans-serif; display:block; transition:transform .15s;
-}
-.btn-popup:active { transform:scale(.97); }
-
-.popup-note { font-size:11px; color:rgba(42,33,24,.3); text-align:center; margin-top:10px; line-height:1.6; }
-.popup-trust { display:flex; justify-content:center; gap:14px; margin-top:14px; }
-.pt-item { display:flex; align-items:center; gap:4px; font-size:11px; color:var(--muted); font-weight:600; }
-
-.popup-success { display:none; padding:20px 20px 10px; text-align:center; }
-.ps-ico   { font-size:56px; margin-bottom:14px; }
-.ps-title { font-family:'Fraunces',serif; font-size:26px; color:var(--text); margin-bottom:8px; }
-.ps-sub   { font-size:15px; color:var(--muted); line-height:1.6; margin-bottom:20px; }
-.ps-steps { background:var(--bg); border-radius:var(--r); padding:16px; text-align:left; }
-.ps-step  { display:flex; align-items:center; gap:12px; padding:8px 0; font-size:14px; color:var(--text); border-bottom:1px solid rgba(0,0,0,.05); }
-.ps-step:last-child { border-bottom:none; }
-.ps-step-ico { width:32px; height:32px; border-radius:50%; background:#FFF3EE; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
-
-/* ══════════════════════════════════════════
-   SLIDESHOW BLOCK — SIMPLE
-══════════════════════════════════════════ */
-.slideshow-section {
-  background: var(--text);
-  padding: 36px 20px 32px;
-  position: relative;
-  overflow: hidden;
-}
-.slideshow-section::before {
-  content:''; position:absolute;
-  width:300px; height:300px; border-radius:50%;
-  background:radial-gradient(circle,rgba(242,213,200,.07) 0%,transparent 70%);
-  top:-80px; right:-80px; pointer-events:none;
-}
-
-.ss-eyebrow {
-  font-size:10px; letter-spacing:3px; text-transform:uppercase;
-  color:rgba(242,213,200,.55); font-weight:700; margin-bottom:8px; text-align:center;
-}
-.ss-title {
-  font-family:'Fraunces',serif; font-size:20px; line-height:1.25;
-  color:var(--white); font-weight:700; text-align:center; margin-bottom:6px;
-}
-.ss-sub {
-  font-size:13px; color:rgba(255,255,255,.45); text-align:center;
-  line-height:1.55; margin-bottom:22px;
-}
-
-/* ── STAGE ── */
-.ss-stage-wrap {
-  position:relative; border-radius:18px; overflow:hidden;
-  background:#1A0E08; margin-bottom:14px;
-  box-shadow:0 10px 36px rgba(0,0,0,.45);
-}
-
-/* стек слайдів */
-.ss-slide {
-  position:absolute; inset:0; opacity:0;
-  transition:opacity 1.1s ease;
-  pointer-events:none;
-}
-.ss-slide.active {
-  opacity:1; position:relative; pointer-events:auto;
-}
-.ss-slide img {
-  width:100%; aspect-ratio:16/10; object-fit:cover; display:block;
-}
-.ss-slide-fallback {
-  width:100%; aspect-ratio:16/10;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
-  background:linear-gradient(160deg,#2E1A10,#5A3020);
-}
-.ss-slide-fallback .sf-day  { font-size:14px; color:rgba(242,213,200,.7); font-weight:800; letter-spacing:1px; text-transform:uppercase; }
-.ss-slide-fallback .sf-desc { font-size:12px; color:rgba(255,255,255,.35); text-align:center; padding:0 20px; line-height:1.5; }
-
-/* ── КАЛЕДАРНИЙ ЛИСТОЧОК ── */
-.ss-day-badge {
-  position:absolute;
-  top:16px; left:16px;
-  z-index:10;
-  width:52px;
-  filter:drop-shadow(0 4px 12px rgba(0,0,0,.4));
-  animation:badgeIn .4s cubic-bezier(.34,1.56,.64,1) both;
-}
-
-@keyframes badgeIn {
-  from { opacity:0; transform:scale(.5) rotate(-15deg); }
-  to   { opacity:1; transform:scale(1) rotate(0deg); }
-}
-
-/* анімація вилітання */
-.ss-day-badge.fly-out {
-  animation:badgeFly .5s ease-in forwards;
-}
-
-@keyframes badgeFly {
-  to { opacity:0; transform:translate(80px,-40px) rotate(25deg) scale(.6); }
-}
-
-/* SVG листочок — описуємо в JS через innerHTML */
-
-/* підпис-оверлей знизу */
-.ss-slide-overlay {
-  position:absolute; bottom:0; left:0; right:0;
-  background:linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,0) 55%);
-  padding:28px 18px 18px;
-  display:flex; align-items:flex-end; justify-content:space-between;
-  pointer-events:none;
-}
-.ss-day-label {
-  font-family:'Fraunces',serif; font-size:20px;
-  color:white; font-weight:700; line-height:1;
-}
-.ss-day-desc {
-  font-size:12px; color:rgba(255,255,255,.65);
-  text-align:right; line-height:1.45; max-width:130px;
-}
-
-/* ── PROGRESS DOTS ── */
-.ss-dots {
-  display:flex; justify-content:center; gap:6px; margin-bottom:18px;
-}
-.ss-dot {
-  width:6px; height:6px; border-radius:50%;
-  background:rgba(255,255,255,.2);
-  transition:all .3s;
-  cursor:pointer;
-}
-.ss-dot.active { background:var(--rose); width:18px; border-radius:3px; }
-
-/* ── FINAL SPLIT ── */
-.ss-final-wrap {
-  display:none; border-radius:18px; overflow:hidden;
-  box-shadow:0 10px 36px rgba(0,0,0,.45);
-  margin-bottom:14px;
-  animation:splitIn .7s cubic-bezier(.25,.8,.25,1);
-  background:#1A0E08;
-}
-@keyframes splitIn {
-  from { opacity:0; transform:scale(.94); }
-  to   { opacity:1; transform:scale(1); }
-}
-
-/* заголовок фінального split */
-.ss-final-title {
-  text-align:center;
-  font-family:'Fraunces',serif;
-  font-size:15px; font-weight:700;
-  color:rgba(255,255,255,.7);
-  padding:14px 16px 10px;
-  letter-spacing:.3px;
-}
-.ss-final-title strong { color:var(--pink); font-size:18px; }
-
-.ss-final-row {
-  display:grid; grid-template-columns:1fr 1fr; position:relative;
-}
-.ss-final-side { position:relative; overflow:hidden; }
-.ss-final-side img {
-  width:100%; aspect-ratio:1/1; object-fit:cover; display:block;
-}
-.ss-final-side .sf-fallback {
-  width:100%; aspect-ratio:1/1;
-  display:flex; align-items:center; justify-content:center;
-}
-.ss-final-side.before-side .sf-fallback { background:linear-gradient(160deg,#2E1A10,#4A2818); }
-.ss-final-side.after-side  .sf-fallback { background:linear-gradient(160deg,#5A3020,#8A5040); }
-.sf-fallback .sf-label { font-size:12px; color:rgba(255,255,255,.5); font-weight:700; text-transform:uppercase; letter-spacing:1px; }
-
-.ss-final-lbl {
-  position:absolute; bottom:8px; left:50%; transform:translateX(-50%);
-  font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
-  padding:4px 12px; border-radius:20px; white-space:nowrap;
-}
-.before-side .ss-final-lbl { background:rgba(255,255,255,.82); color:#3A2010; }
-.after-side  .ss-final-lbl { background:var(--rose); color:white; }
-
-.ss-final-divider {
-  position:absolute; top:0; bottom:0; left:50%; width:2px;
-  background:white; z-index:10; pointer-events:none;
-}
-
-/* картки характеристик під фото */
-.ss-final-cards {
-  display:grid; grid-template-columns:1fr 1fr;
-  border-top:1px solid rgba(255,255,255,.08);
-}
-.ss-final-card {
-  padding:14px 12px;
-  border-right:1px solid rgba(255,255,255,.08);
-  text-align:center;
-}
-.ss-final-card:last-child { border-right:none; }
-.sfc-icon { font-size:18px; margin-bottom:4px; }
-.sfc-title { font-size:11px; font-weight:700; color:rgba(255,255,255,.45); text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
-.sfc-val   { font-size:13px; font-weight:700; color:white; line-height:1.3; }
-
-/* ── FORM HEADER (таймер + бейдж) ── */
-.form-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--text);
-  border-radius: 14px 14px 0 0;
-  padding: 12px 16px;
-  margin-bottom: 0;
-}
-
-.form-timer-label {
-  font-size: 11px;
-  color: rgba(255,255,255,.55);
-  font-weight: 500;
-  margin-bottom: 6px;
-  letter-spacing: .3px;
-}
-
-.form-timer-row {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-}
-
-.ftb {
-  background: rgba(255,255,255,.12);
-  border-radius: 6px;
-  padding: 4px 8px;
-  font-size: 18px;
-  font-weight: 800;
-  color: white;
-  min-width: 34px;
-  text-align: center;
-  font-family: 'Fraunces', serif;
-}
-
-.ftd { font-size: 16px; color: rgba(255,255,255,.5); font-weight: 700; padding: 0 1px; }
-
-.form-header-badge {
-  background: var(--red);
-  color: white;
-  font-size: 22px;
-  font-weight: 900;
-  line-height: 1;
-  padding: 8px 14px;
-  border-radius: 12px;
-  text-align: center;
-  font-family: 'Fraunces', serif;
-}
-.form-header-badge span {
-  display: block;
-  font-size: 10px;
-  font-weight: 600;
-  opacity: .8;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-}
-
-/* Інпути з'єднані з хедером */
-.b1-form .b1-input:first-of-type {
-  border-radius: 0;
-  border-top: none;
-}
-.b1-form .b1-input:last-of-type {
-  border-radius: 0 0 0 0;
-}
-
-/* ── ГАРАНТІЇ В ФОРМІ ── */
-.form-guarantees {
-  display: flex;
-  justify-content: space-around;
-  background: #F0F9F5;
-  border: 1px solid rgba(76,175,125,.2);
-  border-radius: 0 0 12px 12px;
-  padding: 10px 8px;
-  margin-bottom: 10px;
-  border-top: none;
-}
-
-.fg-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  font-size: 10px;
-  color: #3A7A5A;
-  font-weight: 600;
-  text-align: center;
-}
-
-.fg-item span { color: #3A7A5A; }
-
-/* ── STOCK ── */
-.form-stock {
-  background: rgba(224,48,48,.07);
-  border: 1px solid rgba(224,48,48,.2);
-  border-radius: 10px;
-  padding: 9px 14px;
-  font-size: 12px;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.form-stock-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--red); flex-shrink: 0;
-  animation: blink 1.4s infinite;
-}
-@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
-.form-stock strong { color: var(--red); }
-
-/* ── B1 HOOK + EFFECT PILLS ── */
-.b1-hook {
-  margin-bottom: 16px;
-}
-
-.b1-hook-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text);
-  text-align: center;
-  margin-bottom: 10px;
-  letter-spacing: .2px;
-}
-
-.b1-effects {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  justify-content: center;
-}
-
-.eff {
-  font-size: 13px;
-  font-weight: 600;
-  padding: 6px 13px;
-  border-radius: 30px;
-  letter-spacing: .2px;
-}
-
-.eff-1 { background: #FFF3E0; color: #E65100; }
-.eff-2 { background: #E3F2FD; color: #1565C0; }
-.eff-3 { background: #F3E5F5; color: #6A1B9A; }
-.eff-4 { background: #FFF8E1; color: #F57F17; }
-.eff-5 { background: #E8F5E9; color: #2E7D32; }
-
-/* trust row 3 items */
-.b1-trust {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-
-.b1-trust span {
-  font-size: 11px;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-weight: 500;
-}
-
-/* ── ФОРМА B1 — оригінальна ── */
-.b1-form {
-  position: relative;
-}
-
-.b1-form-label {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--muted);
-  letter-spacing: .5px;
-  text-transform: uppercase;
-  text-align: center;
-  display: block;
-  margin-bottom: 12px;
-}
-
-.b1-input-orig {
-  width: 100%;
-  background: var(--white);
-  border: 2px solid rgba(212,137,106,.35);
-  border-radius: 14px;
-  padding: 17px 18px;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  outline: none;
-  margin-bottom: 10px;
-  transition: border-color .2s, box-shadow .2s;
-  -webkit-appearance: none;
-  display: block;
-  box-shadow: 0 2px 8px rgba(212,137,106,.1);
-}
-.b1-input-orig::placeholder { color: rgba(42,33,24,.35); }
-.b1-input-orig:focus {
-  border-color: var(--rose);
-  box-shadow: 0 0 0 4px rgba(212,137,106,.15), 0 2px 8px rgba(212,137,106,.1);
-}
-
-/* мала плашка знижки поверх фото */
-.b1-photo-badge {
-  position: absolute;
-  top: 14px; right: 14px;
-  background: var(--red);
-  color: white;
-  font-size: 13px;
-  font-weight: 800;
-  padding: 7px 14px;
-  border-radius: 30px;
-  box-shadow: 0 4px 12px rgba(224,48,48,.4);
-}
-
-/* ba-wrap original */
-.ba-wrap {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 32px;
-  overflow: visible;
-}
-
-.ba-card { border-radius: 16px; overflow: hidden; position: relative; background: #EDE8E3; }
-
-/* оригінальні мітки */
-.ba-lbl {
-  position: absolute;
-  top: 10px; left: 10px;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background: rgba(255,255,255,.8);
-  color: #5A4035;
-}
-.ba-lbl-rose {
-  background: var(--rose);
-  color: white;
-}
-
-/* плашка по центру знизу між двома фото */
-.ba-center-badge {
-  position: absolute;
-  bottom: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--text);
-  color: white;
-  border-radius: 30px;
-  padding: 8px 18px;
-  white-space: nowrap;
-  text-align: center;
-  z-index: 10;
-  box-shadow: 0 4px 16px rgba(0,0,0,.3);
-  font-size: 13px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.badge-num {
-  font-family: 'Fraunces', serif;
-  font-size: 22px;
-  font-weight: 900;
-  color: #FFD166;
-  line-height: 1;
-}
-.b1-chips {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
-  position: relative;
-}
-
-.b1-chip {
-  background: var(--bg);
-  border: 1.5px solid rgba(212,137,106,.2);
-  border-radius: 12px;
-  padding: 11px 16px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.b1-chip-accent {
-  background: linear-gradient(135deg, #FFF3EE 0%, #FAE8DF 100%);
-  border-color: var(--rose);
-  color: var(--deep-r);
-  font-weight: 700;
-}
-
-/* ── FORM redesign ── */
-.b1-form {
-  position: relative;
-}
-
-.form-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.form-title-text {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.form-title-pct {
-  color: var(--red);
-  font-family: 'Fraunces', serif;
-  font-size: 20px;
-  font-weight: 900;
-}
-
-.form-stock-pill {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  background: rgba(224,48,48,.08);
-  border: 1px solid rgba(224,48,48,.2);
-  border-radius: 20px;
-  padding: 4px 10px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--red);
-}
-
-.fsp-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--red);
-  animation: blink 1.4s infinite;
-}
-
-.form-inputs-wrap {
-  background: var(--white);
-  border: 2px solid var(--rose);
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 20px rgba(212,137,106,.2);
-}
-
-.form-input-row {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid rgba(212,137,106,.2);
-}
-
-.form-input-row:last-child { border-bottom: none; }
-
-.fi-icon {
-  font-size: 18px;
-  padding: 0 14px;
-  flex-shrink: 0;
-}
-
-.b1-input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  padding: 16px 16px 16px 0;
-  font-size: 16px;
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  outline: none;
-  -webkit-appearance: none;
-  display: block;
-  width: 100%;
-}
-.b1-input::placeholder { color: rgba(42,33,24,.35); }
-
-.form-trust-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 10px;
-}
-
-.ftr-item {
-  font-size: 11px;
-  color: var(--muted);
-  font-weight: 500;
-}
-
-.ftr-sep {
-  color: rgba(42,33,24,.2);
-  font-size: 11px;
-}
-
-/* ── B2 HEADER ── */
-.b2-header {
-  background: var(--text);
-  border-radius: 18px 18px 0 0;
-  padding: 18px 20px 16px;
-  margin-bottom: 0;
-  text-align: center;
-}
-
-.b2-header-eyebrow {
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(255,255,255,.5);
-  letter-spacing: .5px;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-}
-
-.b2-header-days {
-  font-family: 'Fraunces', serif;
-  font-size: 34px;
-  font-weight: 900;
-  color: white;
-  line-height: 1.1;
-}
-
-.b2-days-num {
-  color: #FFD166;
-  font-size: 44px;
-}
-
-/* ba-wrap connects to header */
-.ba-wrap {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 18px;
-  overflow: visible;
-}
-
-.ba-card { border-radius: 16px; overflow: hidden; position: relative; background: #EDE8E3; }
-.ba-before { border-radius: 0 0 0 16px; }
-.ba-after  { border-radius: 0 0 16px 0; }
-
-/* ── FINAL SPLIT bottom ── */
-.ss-final-bottom {
-  display: grid;
-  grid-template-columns: 1fr 1px 1fr;
-  background: rgba(255,255,255,.06);
-  border-top: 1px solid rgba(255,255,255,.1);
-}
-.ss-fb-sep { background: rgba(255,255,255,.15); }
-.ss-fb-col { padding: 12px 14px; text-align: center; }
-.ss-fb-tag {
-  font-size: 10px; font-weight: 800; letter-spacing: 2px;
-  text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 4px;
-}
-.ss-fb-tag-rose { color: var(--pink); }
-.ss-fb-text {
-  font-size: 12px; color: rgba(255,255,255,.75);
-  font-weight: 500; line-height: 1.4;
-}
-
-/* ── FORM CLEAN ── */
-.b1-form { position: relative; margin: 0 -20px; }
-
-.form-clean {
-  background: linear-gradient(160deg, #F5E6D8 0%, #EDD4BD 50%, #E8C9A8 100%);
-  overflow: hidden;
-}
-
-/* ── PRICE CARD ── */
-.fc-price-card {
-  margin: 20px 18px 0;
-  background: #2A1A0E;
-  border-radius: 18px;
   padding: 18px 20px;
   display: flex;
   align-items: center;
@@ -1477,142 +379,322 @@ footer { background:var(--text); padding:36px 20px; }
   gap: 12px;
 }
 
-.fc-left {}
-
-.fc-old {
-  font-size: 13px;
-  color: rgba(255,255,255,.45);
-  text-decoration: line-through;
-  font-weight: 500;
-  display: block;
-  margin-bottom: 2px;
+.mid-cta-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.3;
 }
 
-.fc-new-price {
+.mid-cta-btn {
+  background: white;
+  color: var(--rose);
+  font-size: 15px;
+  font-weight: 800;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════
+   БЛОК ПЕРЕВАГИ
+═══════════════════════════ */
+.benefits-section {
+  background: var(--bg);
+  padding: 32px 22px;
+}
+
+.benefit-item {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+}
+
+.benefit-ico {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: #FFF3EE;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.benefit-title { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+.benefit-desc  { font-size: 14px; color: var(--muted); line-height: 1.4; }
+
+/* ═══════════════════════════
+   БЛОК ВІДГУКИ
+═══════════════════════════ */
+.reviews-section {
+  background: var(--white);
+  padding: 32px 22px;
+}
+
+.review-card {
+  background: var(--bg);
+  border-radius: var(--r);
+  padding: 18px;
+  margin-bottom: 14px;
+}
+
+.review-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.review-ava {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, #F2D5C8, var(--rose));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+
+.review-name  { font-size: 17px; font-weight: 700; color: var(--dark); }
+.review-stars { font-size: 14px; color: #F5A623; letter-spacing: 1px; }
+.review-city  { font-size: 13px; color: var(--muted); }
+.review-text  { font-size: 16px; line-height: 1.55; color: var(--dark); }
+
+.review-badge {
+  float: right;
+  background: #E8F5EE;
+  color: #2A7050;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 9px;
+  border-radius: 20px;
+  letter-spacing: .3px;
+  text-transform: uppercase;
+  margin-left: 8px;
+}
+
+/* ═══════════════════════════
+   ЯК ЗАМОВИТИ
+═══════════════════════════ */
+.how-section {
+  background: var(--dark);
+  padding: 32px 22px;
+}
+
+.how-section .section-title { color: white; }
+.how-section .section-sub   { color: rgba(255,255,255,.5); }
+
+.step {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 22px;
+}
+.step:last-child { padding-bottom: 0; }
+
+.step-num {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--rose);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-size: 22px; font-weight: 900; color: white;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.step-line {
+  width: 2px;
+  background: rgba(201,112,85,.3);
+  position: absolute;
+  top: 46px; left: 50%;
+  transform: translateX(-50%);
+  height: 22px;
+}
+.step:last-child .step-line { display: none; }
+
+.step-title { font-size: 18px; font-weight: 700; color: white; padding-top: 8px; margin-bottom: 4px; }
+.step-desc  { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.5; }
+
+/* ═══════════════════════════
+   ГАРАНТІЇ
+═══════════════════════════ */
+.guarantee-section {
+  background: var(--bg);
+  padding: 32px 22px;
+}
+
+.guarantee-card {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+}
+
+.g-card-ico {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: #FFF3EE;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; flex-shrink: 0;
+}
+.g-card-title { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+.g-card-desc  { font-size: 14px; color: var(--muted); line-height: 1.4; }
+
+/* ═══════════════════════════
+   ФІНАЛЬНИЙ CTA
+═══════════════════════════ */
+.final-cta {
+  background: var(--white);
+  padding: 32px 22px;
+  text-align: center;
+}
+
+.final-price {
+  font-family: 'Fraunces', serif;
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--rose);
+  margin-bottom: 4px;
+}
+
+.final-old {
+  font-size: 18px;
+  color: var(--muted);
+  text-decoration: line-through;
+  margin-bottom: 18px;
+}
+
+/* ═══════════════════════════
+   ФУТЕР
+═══════════════════════════ */
+footer {
+  background: var(--dark);
+  padding: 28px 22px;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  color: #FFD166;
+  margin-bottom: 6px;
+}
+
+.footer-tagline { font-size: 12px; color: rgba(255,255,255,.35); margin-bottom: 18px; letter-spacing: 1px; text-transform: uppercase; }
+
+.footer-links { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+.footer-link  { color: rgba(255,255,255,.4); font-size: 14px; text-decoration: none; }
+.footer-copy  { font-size: 11px; color: rgba(255,255,255,.2); line-height: 1.7; }
+
+/* ═══════════════════════════
+   POPUP
+═══════════════════════════ */
+.overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(42,26,14,.6);
+  backdrop-filter: blur(4px);
+  display: none; align-items: flex-end; justify-content: center;
+}
+.overlay.open { display: flex; }
+
+.popup {
+  background: var(--white);
+  border-radius: 28px 28px 0 0;
+  width: 100%;
+  max-height: 92svh;
+  overflow-y: auto;
+  padding: 0 0 32px;
+  animation: slideup .3s ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+@keyframes slideup {
+  from { transform: translateY(50px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+.popup-handle {
+  width: 40px; height: 4px;
+  background: rgba(0,0,0,.1);
+  border-radius: 2px;
+  margin: 14px auto 22px;
+}
+
+.popup-inner { padding: 0 22px; }
+
+.popup-title {
   font-family: 'Fraunces', serif;
   font-size: 28px;
   font-weight: 900;
-  color: #FFD166;
-  line-height: 1;
-  display: block;
-}
-
-.fc-new-sub {
-  font-size: 11px;
-  color: rgba(255,255,255,.4);
-  margin-top: 2px;
-  display: block;
-}
-
-.fc-right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-
-.fc-badge {
-  background: #E03030;
-  color: white;
-  font-size: 18px;
-  font-weight: 900;
-  font-family: 'Fraunces', serif;
-  padding: 4px 14px;
-  border-radius: 30px;
+  color: var(--dark);
+  margin-bottom: 6px;
   line-height: 1.2;
 }
 
-/* таймер окремою строкою */
-.fc-timer {
-  background: rgba(255,255,255,.12);
-  border-radius: 10px;
-  padding: 6px 10px;
+.popup-sub { font-size: 15px; color: var(--muted); margin-bottom: 20px; line-height: 1.5; }
+
+/* Ціна в попапі */
+.popup-price {
+  background: var(--dark);
+  border-radius: var(--r);
+  padding: 18px 20px;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: space-between;
 }
 
-.fc-t-lbl {
-  font-size: 9px;
-  color: rgba(255,255,255,.45);
-  letter-spacing: .3px;
+.pp-old { font-size: 14px; color: rgba(255,255,255,.38); text-decoration: line-through; }
+.pp-new { font-family: 'Fraunces', serif; font-size: 30px; font-weight: 900; color: #FFD166; line-height: 1; margin-top: 2px; display: block; }
+.pp-save { background: var(--red); color: white; font-size: 14px; font-weight: 800; padding: 6px 14px; border-radius: 30px; }
+
+.popup-field {
+  width: 100%;
+  background: var(--bg);
+  border: 2px solid rgba(201,112,85,.25);
+  border-radius: var(--r);
+  padding: 17px 18px;
+  font-size: 18px;
+  color: var(--dark);
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  display: block;
+  margin-bottom: 12px;
+  -webkit-appearance: none;
+  transition: border-color .2s;
+}
+.popup-field::placeholder { color: rgba(42,26,14,.3); }
+.popup-field:focus { border-color: var(--rose); background: var(--white); }
+
+.popup-btn {
+  width: 100%;
+  background: var(--rose);
+  color: white;
+  font-size: 19px;
+  font-weight: 800;
+  border: none;
+  border-radius: var(--r);
+  padding: 20px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 6px 24px rgba(201,112,85,.4);
+  margin-bottom: 14px;
   text-transform: uppercase;
 }
 
-.fc-t-num {
-  font-family: 'Fraunces', serif;
-  font-size: 16px;
-  font-weight: 900;
-  color: white;
-  letter-spacing: 1px;
-  line-height: 1;
-}
+.popup-note { font-size: 12px; color: rgba(42,26,14,.3); text-align: center; line-height: 1.6; }
 
-/* ── STOCK ROW ── */
-.fc-stock {
-  margin: 10px 18px 0;
-  background: rgba(42,26,14,.08);
-  border-radius: 12px;
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #6B3A1F;
-}
-
-.fc-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: #E03030; flex-shrink: 0;
-  animation: blink2 1.4s infinite;
-}
-.fc-stock strong { color: #C0391B; }
-
-/* ── ПОЛЯ ── */
-.fc-fields {
-  padding: 14px 18px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.fc-fields .b1-input-orig {
-  background: white;
-  border: 1.5px solid rgba(212,137,106,.3);
-  border-radius: 12px;
-  color: var(--text);
-  font-size: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.06);
-  margin-bottom: 0;
-}
-.fc-fields .b1-input-orig::placeholder { color: rgba(42,33,24,.35); }
-.fc-fields .b1-input-orig:focus {
-  border-color: var(--rose);
-  box-shadow: 0 0 0 3px rgba(212,137,106,.2);
-  background: white;
-}
-
-/* ── КНОПКА ── */
-.fc-btn {
-  margin: 14px 18px 0 !important;
-  border-radius: 14px !important;
-  width: calc(100% - 36px) !important;
-  box-shadow: 0 6px 20px rgba(168,92,66,.35) !important;
-  font-size: 16px !important;
-  background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r) 100%) !important;
-}
-
-/* ── ГАРАНТІЇ ── */
-.fc-guarantees {
-  font-size: 11px;
-  color: rgba(90,50,30,.55);
-  font-weight: 500;
-  text-align: center;
-  padding: 12px 18px 20px;
-}
-
-@keyframes blink2 { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+.popup-success { display: none; text-align: center; padding: 20px 0; }
+.ps-ico   { font-size: 58px; margin-bottom: 14px; }
+.ps-title { font-family: 'Fraunces', serif; font-size: 28px; color: var(--dark); margin-bottom: 8px; font-weight: 900; }
+.ps-sub   { font-size: 16px; color: var(--muted); line-height: 1.6; }
 
 /* ── FADE IN ── */
 .fi { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
@@ -1621,756 +703,437 @@ footer { background:var(--text); padding:36px 20px; }
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════
-     BLOCK 1 — ІМПУЛЬСНИЙ ОФФЕР + ФОРМА
-══════════════════════════════════════════ -->
-<div class="b1">
+<!-- ═══════════════════════════
+     БЛОК 1 — ЗАГОЛОВОК + ФОТО
+═══════════════════════════ -->
+<section class="hero">
 
-  <!-- ЗАГОЛОВОК -->
-  <div class="b1-tag fi">Лифтинг-маска для шеи</div>
-
-  <h1 class="b1-h1 fi">
-    Маска, которая<br>вернёт вашей шее<br><span class="accent">молодость</span>
+  <h1 class="hero-title fi">
+    Маска для шеи,<br>которая <span>вернёт молодость</span>
   </h1>
 
-  <!-- ХУК -->
-  <div class="b1-hook-block fi">
-    <div class="b1-hook-stars">★★★★★</div>
-    <div class="b1-hook-text">Маска <strong>№1</strong> по эффективности<br>и отзывам покупателей</div>
+  <p class="hero-sub fi">
+    Видимый результат уже после первого применения
+  </p>
+
+  <div class="hero-rating fi">
+    <span class="hero-stars">★★★★★</span>
+    <span class="hero-rating-text">1 240 довольных клиенток</span>
   </div>
 
-  <!-- ЕФЕКТИ — чисті темні пілюлі (без скидки) -->
-  <div class="b1-pills fi">
-    <span class="pill">Лифтинг</span>
-    <span class="pill">Омоложение</span>
-    <span class="pill">Увлажнение</span>
-    <span class="pill">Подтяжка</span>
-    <span class="pill">Питание</span>
+  <div class="hero-photo fi">
+    <img src="img/product.png" alt="Лифтинг-маска для шеи"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+    <div class="hero-photo-fallback" style="display:none">🎭</div>
   </div>
 
-  <!-- ФОТО -->
-  <div class="b1-photo fi">
-    <img src="img/product.png" alt="Лифтинг-маска NeckGlow"
-         onerror="this.style.display='none'; document.getElementById('b1-fallback').style.display='flex'">
-    <div class="b1-photo-fallback" id="b1-fallback" style="display:none">
-      <div class="pf-ico">🎭</div>
-      <div class="pf-label">Фото маски</div>
-    </div>
-  </div>
+</section>
 
-  <!-- ФОРМА -->
-  <div class="b1-form fi">
-    <div class="form-clean">
+<!-- ═══════════════════════════
+     БЛОК 2 — ФОРМА
+═══════════════════════════ -->
+<section class="form-section" id="order">
 
-      <!-- Картка ціни -->
-      <div class="fc-price-card">
-        <div class="fc-left">
-          <span class="fc-old">299 000 сум</span>
-          <span class="fc-new-price">149 000 сум</span>
-          <span class="fc-new-sub">Ваша цена со скидкой</span>
-        </div>
-        <div class="fc-right">
-          <div class="fc-badge">−50%</div>
-          <div class="fc-timer">
-            <span class="fc-t-lbl">осталось&nbsp;</span>
-            <span class="fc-t-num"><span id="fth2">05</span>:<span id="ftm2">37</span>:<span id="fts2">22</span></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Залишки -->
-      <div class="fc-stock">
-        <span class="fc-dot"></span>
-        Осталось <strong>&nbsp;19 комплектов</strong> по акционной цене
-      </div>
-
-      <!-- Поля -->
-      <div class="fc-fields">
-        <input class="b1-input-orig" type="text" id="b1-name"
-               placeholder="Ваше имя" autocomplete="name">
-        <input class="b1-input-orig b1-phone-input" type="tel" id="b1-phone"
-               placeholder="+998 (__) ___-__-__" autocomplete="tel">
-      </div>
-
-      <!-- Кнопка -->
-      <button class="btn-main fc-btn" onclick="submitB1()">
-        ЗАКАЗАТЬ СО СКИДКОЙ 50%
-      </button>
-
-      <!-- Гарантії -->
-      <div class="fc-guarantees">💳 Оплата при получении &nbsp;·&nbsp; 📦 Доставка 1–2 дня &nbsp;·&nbsp; ↩️ Возврат 30 дней</div>
-
-    </div>
-  </div>
-
-</div>
-
-<div class="divider"></div>
-
-<!-- ══════════════════════════════════════════
-     BLOCK 2 — РЕЗУЛЬТАТ ДО / ПІСЛЯ
-══════════════════════════════════════════ -->
-<div class="b2">
-
-  <h2 class="b2-title fi">Результат, который<br>ждёт вас через<br><span style="color:var(--rose);">7 дней</span></h2>
-
-  <!-- ДО / ПІСЛЯ -->
-  <div class="ba-wrap fi">
-
-    <div class="ba-card ba-before">
-      <img src="img/before.png" alt="До" class="ba-img"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-      <div class="ba-fallback" style="display:none">😞</div>
-      <div class="ba-lbl">ДО</div>
-    </div>
-
-    <div class="ba-card ba-after">
-      <img src="img/after.png" alt="После" class="ba-img"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-      <div class="ba-fallback" style="display:none">😊</div>
-      <div class="ba-lbl ba-lbl-rose">ПОСЛЕ</div>
-    </div>
-
-    <!-- Плашка по центру знизу між фото -->
-    <div class="ba-center-badge">
-      Результат нашей клиентки спустя <span class="badge-num">7</span> дней
-    </div>
-
-  </div>
-
-  <!-- 3 оффери -->
-  <div class="offer-stats fi">
-    <div class="os-card">
-      <div class="os-num">−10</div>
-      <div class="os-lbl">лет визуально с первого курса</div>
-    </div>
-    <div class="os-card">
-      <div class="os-num">24ч</div>
-      <div class="os-lbl">удержание влаги после применения</div>
-    </div>
-    <div class="os-card">
-      <div class="os-num">×3</div>
-      <div class="os-lbl">эффективнее любого крема для шеи</div>
-    </div>
-  </div>
-
-  <!-- ЦІНА -->
+  <!-- Ціна -->
   <div class="price-block fi">
     <div class="price-left">
-      <div class="price-was-row">
-        <span class="price-was-lbl">Обычная цена</span>
-        <span class="price-was">299 000 сум</span>
-      </div>
-      <div class="price-divider-line"></div>
-      <div class="price-now-row">
-        <span class="price-now">149 000</span>
-        <span class="price-currency">сум</span>
+      <span class="price-old">299 000 сум</span>
+      <span class="price-new">149 000 сум</span>
+      <span class="price-new-sub">Ваша цена сегодня</span>
+      <div class="timer-block">
+        <span class="timer-label">До конца скидки:</span>
+        <span class="timer-digits"><span id="th">05</span>:<span id="tm">37</span>:<span id="ts">22</span></span>
       </div>
     </div>
-    <div class="price-badge-red">
-      <div class="pbr-pct">−50%</div>
-      <div class="pbr-lbl">СКИДКА</div>
-      <div class="pbr-gift">🎁 3-я в подарок</div>
+    <div class="price-right">
+      <span class="price-badge">−50%</span>
+      <span class="price-badge-sub">скидка</span>
     </div>
   </div>
 
-  <button class="btn-b2 fi" onclick="openPopup()">
-    Хочу такой же результат — Заказать
-  </button>
-
-</div>
-
-<div class="divider"></div>
-
-<!-- ══════════════════════════════════════════
-     SLIDESHOW — ПОЕТАПНИЙ РЕЗУЛЬТАТ
-══════════════════════════════════════════ -->
-<div class="slideshow-section fi">
-
-  <p class="ss-eyebrow">Поэтапный результат</p>
-  <h2 class="ss-title">Смотри, как маска<br>меняет кожу день за днём</h2>
-  <p class="ss-sub">Реальный результат нашей клиентки</p>
-
-  <!-- ГОЛОВНИЙ STAGE -->
-  <div class="ss-stage-wrap" id="ss-stage">
-
-    <div class="ss-slide active" id="sl-0">
-      <img src="img/slide1.jpg" alt="День 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="ss-slide-fallback" style="display:none"><div class="sf-day">День 1</div><div class="sf-desc">Старт. Кожа без тонуса, видны складки</div></div>
-      <div class="ss-slide-overlay"><div class="ss-day-label">Старт</div><div class="ss-day-desc">Кожа без тонуса, видны складки</div></div>
-    </div>
-
-    <div class="ss-slide" id="sl-1">
-      <img src="img/slide2.jpg" alt="День 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="ss-slide-fallback" style="display:none"><div class="sf-day">День 2</div><div class="sf-desc">Первое увлажнение, кожа мягче</div></div>
-      <div class="ss-slide-overlay"><div class="ss-day-label">Увлажнение</div><div class="ss-day-desc">Кожа заметно мягче и эластичнее</div></div>
-    </div>
-
-    <div class="ss-slide" id="sl-2">
-      <img src="img/slide3.jpg" alt="День 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="ss-slide-fallback" style="display:none"><div class="sf-day">День 3</div><div class="sf-desc">Тонус начинает возвращаться</div></div>
-      <div class="ss-slide-overlay"><div class="ss-day-label">Тонус</div><div class="ss-day-desc">Тонус возвращается, складки уменьшаются</div></div>
-    </div>
-
-    <div class="ss-slide" id="sl-3">
-      <img src="img/slide4.jpg" alt="День 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="ss-slide-fallback" style="display:none"><div class="sf-day">День 4</div><div class="sf-desc">Заметный лифтинг, кожа плотнее</div></div>
-      <div class="ss-slide-overlay"><div class="ss-day-label">Лифтинг</div><div class="ss-day-desc">Заметный лифтинг. Кожа стала плотнее</div></div>
-    </div>
-
-    <div class="ss-slide" id="sl-4">
-      <img src="img/slide5.jpg" alt="День 5" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="ss-slide-fallback" style="display:none"><div class="sf-day">День 5</div><div class="sf-desc">Видимое омоложение, упругость</div></div>
-      <div class="ss-slide-overlay"><div class="ss-day-label">Упругость</div><div class="ss-day-desc">Видимое омоложение. Упругость и гладкость</div></div>
-    </div>
-
-    <div class="ss-slide" id="sl-5">
-      <img src="img/slide6.jpg" alt="День 6" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="ss-slide-fallback" style="display:none"><div class="sf-day">День 6</div><div class="sf-desc">Кожа гладкая, шея подтянута</div></div>
-      <div class="ss-slide-overlay"><div class="ss-day-label">Гладкость</div><div class="ss-day-desc">Кожа гладкая. Шея заметно подтянута</div></div>
-    </div>
-
-    <div class="ss-slide" id="sl-6">
-      <img src="img/slide7.jpg" alt="День 7" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="ss-slide-fallback" style="display:none"><div class="sf-day">День 7</div><div class="sf-desc">Финальный результат — шея молодая!</div></div>
-      <div class="ss-slide-overlay"><div class="ss-day-label">Результат ✨</div><div class="ss-day-desc">Финальный результат. Шея снова молодая!</div></div>
-    </div>
-
-    <!-- Каледарний листочок — рендериться JS-ом -->
-    <div class="ss-day-badge" id="ss-badge"></div>
-
+  <!-- Залишки -->
+  <div class="stock-row fi">
+    <div class="stock-dot"></div>
+    <span>Осталось <strong>19 наборов</strong> по акционной цене</span>
   </div>
 
-  <!-- DOTS -->
-  <div class="ss-dots" id="ss-dots">
-    <div class="ss-dot active"></div>
-    <div class="ss-dot"></div>
-    <div class="ss-dot"></div>
-    <div class="ss-dot"></div>
-    <div class="ss-dot"></div>
-    <div class="ss-dot"></div>
-    <div class="ss-dot"></div>
+  <!-- Форма -->
+  <div id="main-form">
+    <input class="form-field fi" type="text" id="f-name"
+           placeholder="Ваше имя" autocomplete="name">
+    <input class="form-field fi phone-input" type="tel" id="f-phone"
+           placeholder="+998 (__) ___-__-__" autocomplete="tel">
+    <button class="btn-order fi" onclick="submitMain()">
+      Заказать со скидкой 50%
+    </button>
   </div>
 
-  <!-- FINAL SPLIT (показується після останнього слайду) -->
-  <div class="ss-final-wrap" id="ss-final">
-    <div class="ss-final-title">Результат после <strong>7 дней</strong> использования</div>
-    <div class="ss-final-row">
-      <div class="ss-final-side before-side">
-        <img src="img/slide1.jpg" alt="До" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="sf-fallback"><div class="sf-label">ДО</div></div>
-        <div class="ss-final-lbl">ДО</div>
-      </div>
-      <div class="ss-final-side after-side">
-        <img src="img/slide7.jpg" alt="После" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="sf-fallback"><div class="sf-label">ПОСЛЕ</div></div>
-        <div class="ss-final-lbl">ПОСЛЕ</div>
-      </div>
-      <div class="ss-final-divider"></div>
-    </div>
-    <div class="ss-final-bottom">
-      <div class="ss-fb-col">
-        <div class="ss-fb-tag">ДО</div>
-        <div class="ss-fb-text">Дряблость · Складки · Сухость</div>
-      </div>
-      <div class="ss-fb-sep"></div>
-      <div class="ss-fb-col">
-        <div class="ss-fb-tag ss-fb-tag-rose">ПОСЛЕ</div>
-        <div class="ss-fb-text">Упругость · Лифтинг · Молодость</div>
-      </div>
-    </div>
+  <div id="main-success" style="display:none; text-align:center; padding:20px 0;">
+    <div style="font-size:52px; margin-bottom:12px;">✅</div>
+    <div style="font-family:'Fraunces',serif; font-size:26px; color:var(--dark); font-weight:900; margin-bottom:8px;">Заявка принята!</div>
+    <div style="font-size:16px; color:var(--muted); line-height:1.6;">Мы перезвоним вам<br>в течение 10 минут</div>
   </div>
 
-  <!-- CTA -->
-  <div style="margin-top:20px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:var(--r); padding:16px 18px; display:flex; align-items:center; gap:12px;">
-    <div style="flex:1; font-size:14px; color:white; font-weight:600; line-height:1.4;">Хочу такой результат<br>для своей шеи</div>
-    <button onclick="openPopup()" style="background:var(--rose);color:white;font-size:13px;font-weight:800;padding:12px 16px;border-radius:12px;border:none;cursor:pointer;white-space:nowrap;font-family:Inter,sans-serif;">Заказать →</button>
+  <!-- Гарантії -->
+  <div class="guarantees fi" style="margin-top:18px;">
+    <div class="g-item"><span class="g-icon">💳</span>Оплата при получении</div>
+    <div class="g-item"><span class="g-icon">📦</span>Доставка 1–2 дня</div>
+    <div class="g-item"><span class="g-icon">↩️</span>Возврат 30 дней</div>
   </div>
 
-</div>
-
-<div class="divider"></div>
-
-<!-- ══════════════════════════
-     БОЛИ
-══════════════════════════ -->
-<section id="pain">
-  <p class="sec-tag fi">Вы узнаёте себя?</p>
-  <h2 class="sec-title fi">Шея выдаёт<br>ваш возраст</h2>
-  <p class="sec-sub fi">С возрастом кожа шеи теряет упругость быстрее, чем лицо. Обычный крем не справляется.</p>
-
-  <div class="pain-cards fi">
-    <div class="pain-card">
-      <div class="pain-ico">😔</div>
-      <div><div class="p-title">Кожа стала дряблой</div><div class="p-desc">Складки, провисания, потеря тонуса</div></div>
-    </div>
-    <div class="pain-card">
-      <div class="pain-ico">😟</div>
-      <div><div class="p-title">Обычный уход не помогает</div><div class="p-desc">Нежная зона шеи требует особого ухода</div></div>
-    </div>
-    <div class="pain-card">
-      <div class="pain-ico">😣</div>
-      <div><div class="p-title">Стесняетесь открытых нарядов</div><div class="p-desc">Хочется чувствовать себя молодой и уверенной</div></div>
-    </div>
-  </div>
-
-  <div class="solution-pill fi">
-    <div class="sp-title">Решение найдено!</div>
-    <div class="sp-text">Лифтинг-маска создана именно для кожи шеи — интенсивный уход там, где он нужен больше всего</div>
-  </div>
-
-  <div class="cta-strip fi">
-    <div class="cs-text">Попробовать<br>со скидкой 50%</div>
-    <button class="cs-btn" onclick="openPopup()">Заказать →</button>
-  </div>
 </section>
 
-<div class="divider"></div>
+<!-- ═══════════════════════════
+     БЛОК 3 — ДО / ПІСЛЯ
+═══════════════════════════ -->
+<section class="ba-section">
 
-<!-- ══════════════════════════
-     ПЕРЕВАГИ
-══════════════════════════ -->
-<section id="benefits">
-  <p class="sec-tag fi">Почему выбирают нас</p>
-  <h2 class="sec-title fi">5 причин<br>попробовать</h2>
+  <h2 class="section-title fi">Результат,<br>который вас ждёт</h2>
+  <p class="section-sub fi">Реальный результат нашей клиентки через 7 дней</p>
 
-  <div class="ben-grid fi">
-    <div class="ben-card wide">
-      <div class="b-ico">✨</div>
-      <div>
-        <div class="b-title">Лифтинг уже после 1–2 применений</div>
-        <div class="b-desc">Видимый результат с первых дней</div>
-      </div>
+  <div class="ba-grid fi">
+    <div class="ba-card before">
+      <img src="img/before.png" alt="До маски"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="ba-img">
+      <div class="ba-fallback">😔</div>
+      <div class="ba-tag">ДО</div>
     </div>
-    <div class="ben-card"><div class="b-ico">💧</div><div class="b-title">Глубокое увлажнение</div><div class="b-desc">Питает нежную кожу шеи</div></div>
-    <div class="ben-card"><div class="b-ico">🎯</div><div class="b-title">Плотное прилегание</div><div class="b-desc">Компоненты проникают глубже</div></div>
-    <div class="ben-card"><div class="b-ico">📦</div><div class="b-title">10 масок в наборе</div><div class="b-desc">Полный курс ухода</div></div>
-    <div class="ben-card"><div class="b-ico">⏱</div><div class="b-title">Всего 20 минут</div><div class="b-desc">Удобно в любое время</div></div>
+    <div class="ba-card after">
+      <img src="img/after.png" alt="После маски"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="ba-img">
+      <div class="ba-fallback">😊</div>
+      <div class="ba-tag">ПОСЛЕ</div>
+    </div>
   </div>
 
-  <div class="cta-strip fi" style="background:var(--deep-r);">
-    <div class="cs-text">Попробовать без риска</div>
-    <button class="cs-btn" onclick="openPopup()" style="color:var(--deep-r);">Заказать →</button>
+  <div class="ba-stats fi">
+    <div class="ba-stat">
+      <div class="ba-stat-num">7</div>
+      <div class="ba-stat-lbl">дней до результата</div>
+    </div>
+    <div class="ba-stat">
+      <div class="ba-stat-num">92%</div>
+      <div class="ba-stat-lbl">довольны результатом</div>
+    </div>
+    <div class="ba-stat">
+      <div class="ba-stat-num">10</div>
+      <div class="ba-stat-lbl">масок в наборе</div>
+    </div>
   </div>
+
+  <div class="mid-cta fi">
+    <div class="mid-cta-text">Хочу такой же результат!</div>
+    <button class="mid-cta-btn" onclick="openPopup()">Заказать</button>
+  </div>
+
 </section>
 
-<div class="divider"></div>
+<!-- ═══════════════════════════
+     БЛОК 4 — ПЕРЕВАГИ
+═══════════════════════════ -->
+<section class="benefits-section">
 
-<!-- ══════════════════════════
-     ВІДГУКИ
-══════════════════════════ -->
-<section id="reviews">
-  <p class="sec-tag fi">Отзывы покупателей</p>
-  <h2 class="sec-title fi">Женщины<br>в восторге</h2>
-
-  <div class="rating-bar fi">
-    <div class="rb-num">4.9</div>
-    <div><div class="rb-stars">★★★★★</div><div class="rb-count">на основе 1 240 отзывов</div></div>
-  </div>
+  <h2 class="section-title fi">Почему эта маска<br>лучшая?</h2>
+  <p class="section-sub fi" style="margin-bottom:22px;">Создана специально для кожи шеи</p>
 
   <div class="fi">
-    <div class="rev-card">
-      <div class="rev-badge">✓ КУПИЛА</div>
-      <div class="rev-head"><div class="rev-ava">👩</div><div><div class="rev-name">Нилуфар Р.</div><div class="rev-stars">★★★★★</div><div class="rev-city">Ташкент</div></div></div>
-      <p class="rev-text">После 5 масок заметила разницу — шея подтянулась, кожа стала мягче. Дочь спросила, что я делаю по-другому 😊</p>
+    <div class="benefit-item">
+      <div class="benefit-ico">✨</div>
+      <div>
+        <div class="benefit-title">Лифтинг с 1-го применения</div>
+        <div class="benefit-desc">Видимый результат с первых дней</div>
+      </div>
     </div>
-    <div class="rev-card">
-      <div class="rev-badge">✓ КУПИЛА</div>
-      <div class="rev-head"><div class="rev-ava">👩‍🦳</div><div><div class="rev-name">Дилноза М.</div><div class="rev-stars">★★★★★</div><div class="rev-city">Самарканд</div></div></div>
-      <p class="rev-text">Заказала сразу 2 набора — сестре тоже взяла. Доставили быстро, оплатила при получении. Маска очень нежная, запах приятный.</p>
+    <div class="benefit-item">
+      <div class="benefit-ico">💧</div>
+      <div>
+        <div class="benefit-title">Глубокое увлажнение</div>
+        <div class="benefit-desc">Питает кожу на 24 часа</div>
+      </div>
     </div>
-    <div class="rev-card">
-      <div class="rev-badge">✓ КУПИЛА</div>
-      <div class="rev-head"><div class="rev-ava">🧕</div><div><div class="rev-name">Мухаббат А.</div><div class="rev-stars">★★★★★</div><div class="rev-city">Бухара</div></div></div>
-      <p class="rev-text">Мне 47 лет, всегда переживала из-за шеи. После курса коллеги стали спрашивать, помолодела ли я! Очень довольна.</p>
+    <div class="benefit-item">
+      <div class="benefit-ico">🎯</div>
+      <div>
+        <div class="benefit-title">Создана для шеи</div>
+        <div class="benefit-desc">Обычный крем не справляется — маска да</div>
+      </div>
+    </div>
+    <div class="benefit-item">
+      <div class="benefit-ico">📦</div>
+      <div>
+        <div class="benefit-title">10 масок в наборе</div>
+        <div class="benefit-desc">Полный курс ухода</div>
+      </div>
     </div>
   </div>
 
-  <div class="cta-strip fi">
-    <div class="cs-text">Хочу такой же результат</div>
-    <button class="cs-btn" onclick="openPopup()">Заказать →</button>
+  <div class="mid-cta fi" style="margin-top:22px;">
+    <div class="mid-cta-text">Попробовать со скидкой 50%</div>
+    <button class="mid-cta-btn" onclick="openPopup()">Заказать</button>
   </div>
+
 </section>
 
-<div class="divider"></div>
+<!-- ═══════════════════════════
+     БЛОК 5 — ВІДГУКИ
+═══════════════════════════ -->
+<section class="reviews-section">
 
-<!-- ══════════════════════════
-     ЯК ЗАМОВИТИ
-══════════════════════════ -->
-<section id="how">
-  <p class="sec-tag fi">Всё просто</p>
-  <h2 class="sec-title fi">Как сделать<br>заказ</h2>
+  <h2 class="section-title fi">Что говорят<br>наши клиентки</h2>
 
-  <div class="steps fi">
-    <div class="step">
-      <div class="step-lw"><div class="step-num">1</div><div class="step-line"></div></div>
-      <div><div class="s-title">Оставьте заявку</div><div class="s-desc">Нажмите кнопку и заполните форму</div></div>
+  <div class="fi">
+    <div class="review-card">
+      <span class="review-badge">✓ Купила</span>
+      <div class="review-head">
+        <div class="review-ava">👩</div>
+        <div>
+          <div class="review-name">Нилуфар Р.</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-city">Ташкент</div>
+        </div>
+      </div>
+      <p class="review-text">После 5 масок шея заметно подтянулась. Дочь спросила, что я делаю по-другому 😊</p>
     </div>
-    <div class="step">
-      <div class="step-lw"><div class="step-num">2</div><div class="step-line"></div></div>
-      <div><div class="s-title">Звонок оператора</div><div class="s-desc">Свяжемся и уточним детали доставки</div></div>
+
+    <div class="review-card">
+      <span class="review-badge">✓ Купила</span>
+      <div class="review-head">
+        <div class="review-ava">👩‍🦳</div>
+        <div>
+          <div class="review-name">Дилноза М.</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-city">Самарканд</div>
+        </div>
+      </div>
+      <p class="review-text">Заказала сразу 2 набора. Доставили быстро, оплатила при получении. Очень довольна!</p>
     </div>
-    <div class="step">
-      <div class="step-lw"><div class="step-num">3</div><div class="step-line"></div></div>
-      <div><div class="s-title">Доставка 1–2 дня</div><div class="s-desc">По всему Узбекистану до двери</div></div>
-    </div>
-    <div class="step">
-      <div class="step-lw"><div class="step-num">4</div></div>
-      <div><div class="s-title">Оплата при получении</div><div class="s-desc">Платите только когда держите товар в руках</div></div>
+
+    <div class="review-card">
+      <span class="review-badge">✓ Купила</span>
+      <div class="review-head">
+        <div class="review-ava">🧕</div>
+        <div>
+          <div class="review-name">Мухаббат А.</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-city">Бухара</div>
+        </div>
+      </div>
+      <p class="review-text">Мне 52 года. После курса коллеги спросили, помолодела ли я. Очень рада!</p>
     </div>
   </div>
 
-  <button class="btn-main fi" onclick="openPopup()">Заказать со скидкой 50% →</button>
+  <div class="mid-cta fi" style="margin-top:22px;">
+    <div class="mid-cta-text">Хочу такой же результат</div>
+    <button class="mid-cta-btn" onclick="openPopup()">Заказать</button>
+  </div>
+
 </section>
 
-<div class="divider"></div>
+<!-- ═══════════════════════════
+     БЛОК 6 — ЯК ЗАМОВИТИ
+═══════════════════════════ -->
+<section class="how-section">
 
-<!-- ══════════════════════════
-     ГАРАНТІЇ
-══════════════════════════ -->
-<section id="guarantees">
-  <p class="sec-tag fi">Покупайте без риска</p>
-  <h2 class="sec-title fi">Мы заботимся<br>о вас</h2>
+  <h2 class="section-title fi" style="margin-bottom:6px;">Как сделать заказ</h2>
+  <p class="section-sub fi" style="margin-bottom:24px;">Всё просто — 4 шага</p>
 
-  <div class="g-cards fi">
-    <div class="g-card"><div class="g-ico">💳</div><div><div class="g-title">Оплата при получении</div><div class="g-desc">Платите только после получения товара</div></div></div>
-    <div class="g-card"><div class="g-ico">🏆</div><div><div class="g-title">Оригинальный товар</div><div class="g-desc">Официальный дистрибьютор в Узбекистане</div></div></div>
-    <div class="g-card"><div class="g-ico">🔄</div><div><div class="g-title">Обмен и возврат 30 дней</div><div class="g-desc">Вернём деньги без вопросов</div></div></div>
-    <div class="g-card"><div class="g-ico">🚚</div><div><div class="g-title">Быстрая доставка</div><div class="g-desc">1–2 рабочих дня по всему Узбекистану</div></div></div>
+  <div class="fi">
+    <div class="step">
+      <div class="step-num">1<div class="step-line"></div></div>
+      <div><div class="step-title">Оставьте заявку</div><div class="step-desc">Введите имя и телефон</div></div>
+    </div>
+    <div class="step">
+      <div class="step-num">2<div class="step-line"></div></div>
+      <div><div class="step-title">Мы перезвоним</div><div class="step-desc">Уточним детали и адрес</div></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3<div class="step-line"></div></div>
+      <div><div class="step-title">Доставим за 1–2 дня</div><div class="step-desc">По всему Узбекистану</div></div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div><div class="step-title">Оплатите при получении</div><div class="step-desc">Платите только когда держите товар в руках</div></div>
+    </div>
   </div>
 
-  <div class="cta-strip fi" style="background:var(--deep-r); margin-top:22px;">
-    <div class="cs-text" style="color:white;">Ничем не рискуете.<br>Попробуйте сегодня!</div>
-    <button class="cs-btn" onclick="openPopup()" style="color:var(--deep-r);">Заказать</button>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══════════════════════════
-     ФІНАЛЬНИЙ CTA
-══════════════════════════ -->
-<section id="final-cta">
-  <p class="sec-tag fi" style="text-align:center;">Специальное предложение</p>
-  <h2 class="sec-title fi" style="text-align:center; margin-bottom:20px;">Ваша выгода<br>сегодня</h2>
-
-  <div class="final-price-block fi">
-    <div class="fp-row"><span class="fl">Обычная цена</span><span class="fr strike">299 000 сум</span></div>
-    <div class="fp-row"><span class="fl">Скидка 50%</span><span class="fr green">−150 000 сум</span></div>
-    <div class="fp-row" style="font-size:13px;"><span class="fl" style="color:rgba(42,33,24,.4)">3-я маска в подарок</span><span class="fr green" style="font-size:13px;">бесплатно</span></div>
-    <div class="fp-div"></div>
-    <div class="fp-row" style="margin:0;"><span class="fl" style="font-size:16px;font-weight:700;color:var(--text);">Итого</span><span class="fp-total">149 000 сум</span></div>
-  </div>
-
-  <button class="btn-main fi" onclick="openPopup()">
-    Хочу такой же результат — Заказать
+  <button class="btn-order fi" onclick="openPopup()" style="margin-top:24px;">
+    Заказать со скидкой 50%
   </button>
 
-  <div style="margin-top:12px; text-align:center; font-size:12px; color:var(--muted);" class="fi">
-    📦 Доставка 1–2 дня &nbsp;·&nbsp; 💳 Оплата при получении &nbsp;·&nbsp; ↩️ Возврат 30 дней
+</section>
+
+<!-- ═══════════════════════════
+     БЛОК 7 — ГАРАНТІЇ
+═══════════════════════════ -->
+<section class="guarantee-section">
+
+  <h2 class="section-title fi">Покупайте<br>без риска</h2>
+  <p class="section-sub fi" style="margin-bottom:22px;">Мы берём все риски на себя</p>
+
+  <div class="fi">
+    <div class="guarantee-card"><div class="g-card-ico">💳</div><div><div class="g-card-title">Оплата при получении</div><div class="g-card-desc">Платите только когда получили товар</div></div></div>
+    <div class="guarantee-card"><div class="g-card-ico">🏆</div><div><div class="g-card-title">Оригинальный товар</div><div class="g-card-desc">Официальный дистрибьютор в Узбекистане</div></div></div>
+    <div class="guarantee-card"><div class="g-card-ico">🔄</div><div><div class="g-card-title">Возврат 30 дней</div><div class="g-card-desc">Не подойдёт — вернём деньги</div></div></div>
+    <div class="guarantee-card"><div class="g-card-ico">🚚</div><div><div class="g-card-title">Быстрая доставка</div><div class="g-card-desc">1–2 дня по всему Узбекистану</div></div></div>
   </div>
+
+</section>
+
+<!-- ═══════════════════════════
+     ФІНАЛЬНИЙ CTA
+═══════════════════════════ -->
+<section class="final-cta">
+
+  <h2 class="section-title fi" style="margin-bottom:8px;">Последний шанс<br>по этой цене</h2>
+  <div class="final-old fi">Обычная цена: 299 000 сум</div>
+  <div class="final-price fi">149 000 сум</div>
+
+  <button class="btn-order fi" onclick="openPopup()" style="margin-top:4px;">
+    Заказать со скидкой 50%
+  </button>
+
+  <p class="fi" style="font-size:13px; color:var(--muted); margin-top:10px;">
+    💳 Оплата при получении &nbsp;·&nbsp; 📦 Доставка 1–2 дня
+  </p>
+
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="f-logo">NeckGlow</div>
-  <div class="f-tag">Лифтинг-маска для шеи</div>
-  <div class="f-hr"></div>
-  <div class="f-links">
-    <a href="#" class="f-link">🔒 Политика конфиденциальности</a>
-    <a href="#" class="f-link">📋 Условия доставки</a>
-    <a href="#" class="f-link">🔄 Возврат и обмен</a>
+  <div class="footer-logo">NeckGlow</div>
+  <div class="footer-tagline">Лифтинг-маска для шеи</div>
+  <div class="footer-links">
+    <a href="#" class="footer-link">Политика конфиденциальности</a>
+    <a href="#" class="footer-link">Условия доставки</a>
+    <a href="#" class="footer-link">Возврат и обмен</a>
   </div>
-  <p class="f-copy">© 2025 NeckGlow. Официальный дистрибьютор<br>на территории Республики Узбекистан.<br>Все права защищены.</p>
+  <p class="footer-copy">© 2025 NeckGlow. Официальный дистрибьютор<br>на территории Республики Узбекистан.</p>
 </footer>
 
-<!-- ══════════════════════════
-     POPUP
-══════════════════════════ -->
+<!-- POPUP -->
 <div class="overlay" id="overlay" onclick="overlayClick(event)">
   <div class="popup" id="popup">
     <div class="popup-handle"></div>
 
-    <div id="popup-form-wrap">
-      <div class="popup-header">
-        <div class="popup-title">Оформить заказ</div>
-        <div class="popup-sub">Менеджер перезвонит в течение 10 минут</div>
+    <div class="popup-inner" id="popup-form">
+      <div class="popup-title">Оформить заказ</div>
+      <p class="popup-sub">Перезвоним в течение 10 минут</p>
+
+      <div class="popup-price">
+        <div>
+          <span class="pp-old">299 000 сум</span>
+          <span class="pp-new">149 000 сум</span>
+        </div>
+        <div class="pp-save">−50%</div>
       </div>
 
-      <div class="popup-price-card">
-        <div class="pp-row"><span class="pl">Обычная цена</span><span class="pr strike">299 000 сум</span></div>
-        <div class="pp-row"><span class="pl">Скидка −50%</span><span class="pr green">−150 000 сум</span></div>
-        <div class="pp-row"><span class="pl">3-я маска в подарок</span><span class="pr gift">🎁 бесплатно</span></div>
-        <div class="pp-div"></div>
-        <div class="pp-total-row">
-          <span class="pp-total-lbl">Итого</span>
-          <span class="pp-total-val">149 000 сум</span>
-        </div>
-        <div class="pp-save">✅ Вы экономите 150 000 сум + подарок</div>
-      </div>
-
-      <div class="popup-fields">
-        <label class="p-label">Ваше имя</label>
-        <input class="p-input" type="text" id="p-name"  placeholder="Например: Нилуфар" autocomplete="name">
-        <label class="p-label">Номер телефона</label>
-        <input class="p-input" type="tel"  id="p-phone" placeholder="+998 __ ___ __ __" autocomplete="tel">
-        <button class="btn-popup" onclick="submitPopup()">Получить маску со скидкой 50% →</button>
-        <div class="popup-trust">
-          <div class="pt-item">💳 Оплата при получении</div>
-          <div class="pt-item">📦 Доставка 1–2 дня</div>
-        </div>
-        <p class="popup-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
-      </div>
+      <input class="popup-field" type="text" id="p-name"
+             placeholder="Ваше имя" autocomplete="name">
+      <input class="popup-field phone-input" type="tel" id="p-phone"
+             placeholder="+998 (__) ___-__-__" autocomplete="tel">
+      <button class="popup-btn" onclick="submitPopup()">Заказать со скидкой 50%</button>
+      <p class="popup-note">Нажимая кнопку, вы соглашаетесь<br>на обработку персональных данных</p>
     </div>
 
-    <div class="popup-success" id="popup-success">
+    <div class="popup-inner popup-success" id="popup-success">
       <div class="ps-ico">🎉</div>
       <div class="ps-title">Заявка принята!</div>
-      <div class="ps-sub">Наш менеджер свяжется<br>с вами в течение 10 минут</div>
-      <div class="ps-steps">
-        <div class="ps-step"><div class="ps-step-ico">📞</div><span>Менеджер уточнит детали заказа</span></div>
-        <div class="ps-step"><div class="ps-step-ico">🚚</div><span>Доставка 1–2 дня по Узбекистану</span></div>
-        <div class="ps-step"><div class="ps-step-ico">💳</div><span>Оплата при получении товара</span></div>
-      </div>
+      <p class="ps-sub">Мы перезвоним вам<br>в течение 10 минут</p>
     </div>
   </div>
 </div>
 
 <script>
-// ── SLIDESHOW ──────────────────────
-const SS_TOTAL    = 7;
-const SS_INTERVAL = 2600; // мс між слайдами
-const SS_DAYS     = ['1','2','3','4','5','6','7'];
-
-let ssIndex  = 0;
-let ssTimer  = null;
-
-// Малюємо каледарний листочок через SVG
-function renderBadge(day) {
-  const badge = document.getElementById('ss-badge');
-  if (!badge) return;
-
-  // знімаємо старі класи
-  badge.classList.remove('fly-out');
-  // форсуємо reflow
-  void badge.offsetWidth;
-
-  badge.innerHTML = `
-    <svg width="52" height="58" viewBox="0 0 52 58" xmlns="http://www.w3.org/2000/svg">
-      <!-- тінь -->
-      <ellipse cx="26" cy="55" rx="18" ry="4" fill="rgba(0,0,0,.25)"/>
-      <!-- тіло листочка -->
-      <rect x="2" y="8" width="48" height="44" rx="6" fill="white"/>
-      <!-- шапка-корінець червона -->
-      <rect x="2" y="8" width="48" height="16" rx="6" fill="#E03030"/>
-      <!-- перекриття знизу (прямокутник без округлення) -->
-      <rect x="2" y="18" width="48" height="6" fill="#E03030"/>
-      <!-- кільця зверху -->
-      <rect x="14" y="3" width="4" height="12" rx="2" fill="#555"/>
-      <rect x="34" y="3" width="4" height="12" rx="2" fill="#555"/>
-      <!-- текст ДЕНЬ маленький -->
-      <text x="26" y="20" text-anchor="middle" font-size="6" fill="rgba(255,255,255,.85)"
-            font-family="Inter,sans-serif" font-weight="700" letter-spacing="1">ДЕНЬ</text>
-      <!-- цифра велика -->
-      <text x="26" y="46" text-anchor="middle" font-size="26" fill="#2A2118"
-            font-family="DM Serif Display,serif" font-weight="900">${day}</text>
-    </svg>
-  `;
-}
-
-function goSlide(idx) {
-  const prev = ssIndex;
-  ssIndex = ((idx % SS_TOTAL) + SS_TOTAL) % SS_TOTAL;
-
-  // слайди
-  document.querySelectorAll('.ss-slide').forEach((s,i) => s.classList.toggle('active', i === ssIndex));
-
-  // dots
-  document.querySelectorAll('.ss-dot').forEach((d,i) => d.classList.toggle('active', i === ssIndex));
-
-  // badge — анімація вилітання старого і поява нового
-  const badge = document.getElementById('ss-badge');
-  if (badge && prev !== ssIndex) {
-    badge.classList.add('fly-out');
-    setTimeout(() => renderBadge(SS_DAYS[ssIndex]), 300);
-  }
-
-  // фінальний split після останнього
-  if (ssIndex === SS_TOTAL - 1) {
-    // дочекатись поки слайд 7 повністю відобразиться, потім split
-    clearTimeout(ssTimer);
-    ssTimer = setTimeout(showFinalSplit, SS_INTERVAL);
-  }
-}
-
-function showFinalSplit() {
-  document.getElementById('ss-stage').style.opacity = '0';
-  document.getElementById('ss-stage').style.transition = 'opacity .6s';
-  setTimeout(() => {
-    document.getElementById('ss-stage').style.display = 'none';
-    document.getElementById('ss-final').style.display = 'block';
-  }, 600);
-}
-
-function startAutoPlay() {
-  // запускаємо через 1.2с після появи блоку
-  ssTimer = setTimeout(function tick() {
-    if (ssIndex >= SS_TOTAL - 1) return; // вже на останньому — split запустить goSlide
-    goSlide(ssIndex + 1);
-    ssTimer = setTimeout(tick, SS_INTERVAL);
-  }, SS_INTERVAL);
-}
-
-// IntersectionObserver для автозапуску коли блок з'являється
-(function(){
-  const section = document.querySelector('.slideshow-section');
-  if (!section) return;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        renderBadge(SS_DAYS[0]);
-        startAutoPlay();
-        io.disconnect();
-      }
-    });
-  }, { threshold: 0.4 });
-  io.observe(section);
-})();
-
-// ── FORM TIMER 2 (form-box) ────────
+// ── ТАЙМЕР ──────────────────────────
 (function(){
   const end = new Date(Date.now() + (5*3600+37*60+22)*1000);
   function pad(n){ return n<10?'0'+n:String(n); }
   function tick(){
-    const d = Math.max(0, end-Date.now());
-    const h=document.getElementById('fth2'), m=document.getElementById('ftm2'), s=document.getElementById('fts2');
-    if(h) h.textContent=pad(Math.floor(d/3600000));
-    if(m) m.textContent=pad(Math.floor((d%3600000)/60000));
-    if(s) s.textContent=pad(Math.floor((d%60000)/1000));
+    const d = Math.max(0, end - Date.now());
+    ['th','tm','ts'].forEach((id,i) => {
+      const el = document.getElementById(id);
+      if(el) el.textContent = pad(Math.floor(d / [3600000,60000,1000][i]) % 60);
+    });
+    // fix hours
+    const th = document.getElementById('th');
+    if(th) th.textContent = pad(Math.floor(d/3600000));
   }
-  tick(); setInterval(tick,1000);
+  tick(); setInterval(tick, 1000);
 })();
 
-// ── UZ PHONE MASK ──────────────────
-(function(){
-  const inp = document.getElementById('b1-phone');
+// ── МАСКА ТЕЛЕФОНУ ──────────────────
+function applyPhoneMask(inp) {
   if (!inp) return;
-
   const PREFIX = '+998 ';
-
   inp.addEventListener('focus', function(){
     if (!this.value) this.value = PREFIX;
-    // курсор в кінець
     const l = this.value.length;
     this.setSelectionRange(l, l);
   });
-
-  inp.addEventListener('input', function(e){
+  inp.addEventListener('input', function(){
     let val = this.value;
-    // якщо стерли префікс — відновлюємо
     if (!val.startsWith(PREFIX)) {
-      // витягаємо тільки цифри після 998
-      let digits = val.replace(/\D/g,'');
-      if (digits.startsWith('998')) digits = digits.slice(3);
-      val = PREFIX + digits;
+      let d = val.replace(/\D/g,'');
+      if (d.startsWith('998')) d = d.slice(3);
+      val = PREFIX + d;
     }
-    // беремо тільки цифри після PREFIX
-    let digits = val.slice(PREFIX.length).replace(/\D/g,'').slice(0,9);
+    let d = val.slice(PREFIX.length).replace(/\D/g,'').slice(0,9);
     let out = PREFIX;
-    if (digits.length > 0) out += '(' + digits.slice(0,2);
-    if (digits.length >= 2) out += ') ' + digits.slice(2,5);
-    if (digits.length >= 5) out += '-' + digits.slice(5,7);
-    if (digits.length >= 7) out += '-' + digits.slice(7,9);
+    if (d.length > 0) out += '(' + d.slice(0,2);
+    if (d.length >= 2) out += ') ' + d.slice(2,5);
+    if (d.length >= 5) out += '-' + d.slice(5,7);
+    if (d.length >= 7) out += '-' + d.slice(7,9);
     this.value = out;
   });
-
   inp.addEventListener('keydown', function(e){
-    // не дозволяємо стерти PREFIX
-    const sel = this.selectionStart;
-    if ((e.key === 'Backspace' || e.key === 'Delete') && sel <= PREFIX.length) {
-      e.preventDefault();
-    }
+    if ((e.key==='Backspace'||e.key==='Delete') && this.selectionStart <= PREFIX.length) e.preventDefault();
   });
-
   inp.addEventListener('click', function(){
-    if (this.selectionStart < PREFIX.length) {
-      this.setSelectionRange(PREFIX.length, PREFIX.length);
-    }
+    if (this.selectionStart < PREFIX.length) this.setSelectionRange(PREFIX.length, PREFIX.length);
   });
-})();
-
-// ── PHOTO STRIP TIMER ──────────────
-(function(){
-  const end = new Date(Date.now() + (5*3600+37*60+22)*1000);
-  function pad(n){ return n<10?'0'+n:String(n); }
-  function tick(){
-    const d = Math.max(0, end-Date.now());
-    const h=document.getElementById('pt-h'), m=document.getElementById('pt-m'), s=document.getElementById('pt-s');
-    if(h) h.textContent=pad(Math.floor(d/3600000));
-    if(m) m.textContent=pad(Math.floor((d%3600000)/60000));
-    if(s) s.textContent=pad(Math.floor((d%60000)/1000));
-  }
-  tick(); setInterval(tick,1000);
-})();
-
-// ── FORM TIMER ─────────────────────
-(function(){
-  const end = new Date(Date.now() + (5*3600+37*60+22)*1000);
-  function pad(n){ return n<10?'0'+n:n; }
-  function tick(){
-    const d = Math.max(0, end-Date.now());
-    const th = document.getElementById('fth');
-    const tm = document.getElementById('ftm');
-    const ts = document.getElementById('fts');
-    if(th) th.textContent = pad(Math.floor(d/3600000));
-    if(tm) tm.textContent = pad(Math.floor((d%3600000)/60000));
-    if(ts) ts.textContent = pad(Math.floor((d%60000)/1000));
-  }
-  tick(); setInterval(tick,1000);
-})();
-
-// POPUP
-function openPopup() {
-  document.getElementById('overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
 }
-function closePopup() {
-  document.getElementById('overlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function overlayClick(e) {
-  if (e.target === document.getElementById('overlay')) closePopup();
+applyPhoneMask(document.getElementById('f-phone'));
+applyPhoneMask(document.getElementById('p-phone'));
+
+// ── ФОРМИ ───────────────────────────
+function submitMain(){
+  const n = document.getElementById('f-name').value.trim();
+  const p = document.getElementById('f-phone').value.trim();
+  if (!n || p.length < 18) { alert('Пожалуйста, заполните имя и номер телефона'); return; }
+  document.getElementById('main-form').style.display = 'none';
+  document.getElementById('main-success').style.display = 'block';
 }
 
-// swipe down to close
-let startY = 0;
-document.getElementById('popup').addEventListener('touchstart', e => { startY = e.touches[0].clientY; }, { passive:true });
-document.getElementById('popup').addEventListener('touchend', e => {
-  if (e.changedTouches[0].clientY - startY > 80) closePopup();
-}, { passive:true });
-
-// B1 FORM (inline)
-function submitB1() {
-  const n = document.getElementById('b1-name').value.trim();
-  const p = document.getElementById('b1-phone').value.trim();
-  if (!n || !p) { alert('Пожалуйста, заполните имя и телефон'); return; }
-  const f = document.querySelector('.b1-form');
-  f.innerHTML = '<div style="text-align:center;padding:24px 0"><div style="font-size:48px;margin-bottom:12px">✅</div><div style="font-family:DM Serif Display,serif;font-size:22px;color:var(--text);margin-bottom:8px;font-weight:700">Заявка принята!</div><div style="font-size:14px;color:var(--muted);line-height:1.6">Менеджер перезвонит<br>в течение 10 минут</div></div>';
-}
-
-// POPUP FORM
-function submitPopup() {
+function submitPopup(){
   const n = document.getElementById('p-name').value.trim();
   const p = document.getElementById('p-phone').value.trim();
-  if (!n || !p) { alert('Пожалуйста, заполните имя и телефон'); return; }
-  document.getElementById('popup-form-wrap').style.display = 'none';
+  if (!n || p.length < 18) { alert('Пожалуйста, заполните имя и номер телефона'); return; }
+  document.getElementById('popup-form').style.display = 'none';
   document.getElementById('popup-success').style.display = 'block';
 }
 
-// FADE IN
+// ── ПОПАП ────────────────────────────
+function openPopup(){
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePopup(){
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function overlayClick(e){
+  if (e.target === document.getElementById('overlay')) closePopup();
+}
+let _sy = 0;
+document.getElementById('popup').addEventListener('touchstart', e => { _sy = e.touches[0].clientY; }, {passive:true});
+document.getElementById('popup').addEventListener('touchend', e => {
+  if (e.changedTouches[0].clientY - _sy > 80) closePopup();
+}, {passive:true});
+
+// ── FADE IN ──────────────────────────
 const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-}, { threshold: 0.08 });
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.1 });
 document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 </script>
 </body>
