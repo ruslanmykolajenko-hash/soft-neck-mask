@@ -1471,6 +1471,134 @@ footer { background:var(--text); padding:36px 20px; }
   line-height: 1.5;
 }
 
+/* ── FORM BOX ── */
+.form-box {
+  background: var(--white);
+  border: 2px solid var(--rose);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 28px rgba(212,137,106,.2);
+}
+
+/* верхня частина: ціна + таймер */
+.form-box-top {
+  background: var(--text);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* ціна */
+.form-box-price {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.fbp-old {
+  font-size: 12px;
+  color: rgba(255,255,255,.4);
+  text-decoration: line-through;
+  font-weight: 500;
+}
+.fbp-new {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: #FFD166;
+  line-height: 1;
+}
+.fbp-new em { font-size: 13px; font-style: normal; color: rgba(255,255,255,.5); font-family: 'Inter',sans-serif; font-weight: 400; }
+.fbp-badge {
+  background: var(--red);
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 20px;
+  align-self: flex-start;
+  margin-top: 3px;
+}
+
+/* таймер */
+.form-box-timer { text-align: right; }
+.fbt-label {
+  font-size: 10px;
+  color: rgba(255,255,255,.45);
+  display: block;
+  margin-bottom: 6px;
+  letter-spacing: .3px;
+}
+.fbt-blocks {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  justify-content: flex-end;
+}
+.fbt-block {
+  background: rgba(255,255,255,.1);
+  border-radius: 7px;
+  padding: 5px 8px;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+.fbt-num {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+}
+.fbt-unit { font-size: 9px; color: rgba(255,255,255,.45); font-weight: 500; }
+.fbt-sep  { font-size: 16px; color: rgba(255,255,255,.35); font-weight: 700; }
+
+/* рядок залишків */
+.form-box-stock {
+  background: rgba(224,48,48,.08);
+  border-bottom: 1px solid rgba(212,137,106,.15);
+  padding: 10px 18px;
+  font-size: 12px;
+  color: var(--text);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.fbs-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--red); flex-shrink: 0;
+  animation: blink2 1.4s infinite;
+}
+@keyframes blink2 { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+.form-box-stock strong { color: var(--red); font-weight: 700; }
+
+/* поля всередині box */
+.form-box-fields { padding: 14px 16px 0; }
+.form-box-fields .b1-input-orig:last-child { margin-bottom: 0; }
+
+/* кнопка */
+.form-box .btn-main {
+  border-radius: 0 0 18px 18px;
+  margin-top: 12px;
+  box-shadow: none;
+}
+
+/* trust */
+.form-box-trust {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px 14px;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+.fbt-dot { color: rgba(42,33,24,.2); }
+
 /* ── FADE IN ── */
 .fi { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
 .fi.show { opacity:1; transform:none; }
@@ -1496,39 +1624,74 @@ footer { background:var(--text); padding:36px 20px; }
     <div class="b1-hook-text">Маска <strong>№1</strong> по эффективности<br>и отзывам покупателей</div>
   </div>
 
-  <!-- ЕФЕКТИ — чисті темні пілюлі -->
+  <!-- ЕФЕКТИ — чисті темні пілюлі (без скидки) -->
   <div class="b1-pills fi">
     <span class="pill">Лифтинг</span>
     <span class="pill">Омоложение</span>
     <span class="pill">Увлажнение</span>
     <span class="pill">Подтяжка</span>
-    <span class="pill pill-accent">−50% скидка</span>
+    <span class="pill">Питание</span>
   </div>
 
   <!-- ФОТО -->
   <div class="b1-photo fi">
-    <img src="img/product.png" alt="Лифтинг-маска NeckGlow"
+    <img src="img/product.jpg" alt="Лифтинг-маска NeckGlow"
          onerror="this.style.display='none'; document.getElementById('b1-fallback').style.display='flex'">
     <div class="b1-photo-fallback" id="b1-fallback" style="display:none">
       <div class="pf-ico">🎭</div>
       <div class="pf-label">Фото маски</div>
     </div>
-    <div class="b1-photo-badge">−50% сегодня</div>
   </div>
 
-  <!-- ФОРМА -->
+  <!-- ФОРМА — виділена рамка, таймер, ціна, залишки -->
   <div class="b1-form fi">
-    <input class="b1-input-orig" type="text" id="b1-name"
-           placeholder="Ваше имя" autocomplete="name">
-    <input class="b1-input-orig b1-phone-input" type="tel" id="b1-phone"
-           placeholder="+998 (__) ___-__-__" autocomplete="tel">
-    <button class="btn-main" onclick="submitB1()">
-      Заказать со скидкой 50%
-    </button>
-    <div class="b1-trust">
-      <span>💳 Оплата при получении</span>
-      <span>📦 Доставка 1–2 дня</span>
-    </div>
+
+    <!-- Шапка форми: ціна + таймер -->
+    <div class="form-box">
+
+      <div class="form-box-top">
+        <div class="form-box-price">
+          <span class="fbp-old">299 000 сум</span>
+          <span class="fbp-new">149 000 <em>сум</em></span>
+          <span class="fbp-badge">−50%</span>
+        </div>
+        <div class="form-box-timer">
+          <span class="fbt-label">Акция заканчивается через</span>
+          <div class="fbt-blocks">
+            <div class="fbt-block"><span class="fbt-num" id="fth2">05</span><span class="fbt-unit">ч</span></div>
+            <span class="fbt-sep">:</span>
+            <div class="fbt-block"><span class="fbt-num" id="ftm2">37</span><span class="fbt-unit">м</span></div>
+            <span class="fbt-sep">:</span>
+            <div class="fbt-block"><span class="fbt-num" id="fts2">22</span><span class="fbt-unit">с</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-box-stock">
+        <span class="fbs-dot"></span>
+        Осталось <strong>19 комплектов</strong> по акционной цене
+      </div>
+
+      <div class="form-box-fields">
+        <input class="b1-input-orig" type="text" id="b1-name"
+               placeholder="Ваше имя" autocomplete="name">
+        <input class="b1-input-orig b1-phone-input" type="tel" id="b1-phone"
+               placeholder="+998 (__) ___-__-__" autocomplete="tel">
+      </div>
+
+      <button class="btn-main" onclick="submitB1()">
+        ЗАКАЗАТЬ СО СКИДКОЙ 50%
+      </button>
+
+      <div class="form-box-trust">
+        <span>💳 При получении</span>
+        <span class="fbt-dot">·</span>
+        <span>📦 1–2 дня</span>
+        <span class="fbt-dot">·</span>
+        <span>↩️ 30 дней</span>
+      </div>
+
+    </div><!-- /form-box -->
   </div>
 
 </div>
@@ -2064,6 +2227,20 @@ function startAutoPlay() {
     });
   }, { threshold: 0.4 });
   io.observe(section);
+})();
+
+// ── FORM TIMER 2 (form-box) ────────
+(function(){
+  const end = new Date(Date.now() + (5*3600+37*60+22)*1000);
+  function pad(n){ return n<10?'0'+n:String(n); }
+  function tick(){
+    const d = Math.max(0, end-Date.now());
+    const h=document.getElementById('fth2'), m=document.getElementById('ftm2'), s=document.getElementById('fts2');
+    if(h) h.textContent=pad(Math.floor(d/3600000));
+    if(m) m.textContent=pad(Math.floor((d%3600000)/60000));
+    if(s) s.textContent=pad(Math.floor((d%60000)/1000));
+  }
+  tick(); setInterval(tick,1000);
 })();
 
 // ── UZ PHONE MASK ──────────────────
