@@ -1119,7 +1119,114 @@ footer { background:var(--text); padding:36px 20px; }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
 .form-stock strong { color: var(--red); }
 
-/* ── B1 BENEFIT CHIPS ── */
+/* ── ФОРМА B1 — оригінальна ── */
+.b1-form {
+  position: relative;
+}
+
+.b1-form-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.b1-input-orig {
+  width: 100%;
+  background: var(--white);
+  border: 1.5px solid rgba(212,137,106,.3);
+  border-radius: 14px;
+  padding: 16px 18px;
+  font-size: 16px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  margin-bottom: 10px;
+  transition: border-color .2s, box-shadow .2s;
+  -webkit-appearance: none;
+  display: block;
+}
+.b1-input-orig::placeholder { color: rgba(42,33,24,.3); }
+.b1-input-orig:focus {
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgba(212,137,106,.12);
+}
+
+/* мала плашка знижки поверх фото */
+.b1-photo-badge {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: var(--red);
+  color: white;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 7px 14px;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(224,48,48,.4);
+}
+
+/* ba-wrap original */
+.ba-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 32px;
+  overflow: visible;
+}
+
+.ba-card { border-radius: 16px; overflow: hidden; position: relative; background: #EDE8E3; }
+
+/* оригінальні мітки */
+.ba-lbl {
+  position: absolute;
+  top: 10px; left: 10px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.8);
+  color: #5A4035;
+}
+.ba-lbl-rose {
+  background: var(--rose);
+  color: white;
+}
+
+/* плашка по центру знизу між двома фото */
+.ba-center-badge {
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: white;
+  border-radius: 30px;
+  padding: 8px 18px;
+  white-space: nowrap;
+  text-align: center;
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-num {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: #FFD166;
+  line-height: 1;
+}
 .b1-chips {
   display: flex;
   flex-direction: column;
@@ -1346,7 +1453,7 @@ footer { background:var(--text); padding:36px 20px; }
   </h1>
 
   <p class="b1-sub fi">
-    Единственная маска, созданная специально для кожи шеи — подтягивает, увлажняет и убирает складки уже после первого применения.
+    Пока другие думают — ты уже выглядишь на 10 лет моложе. Каждый день без маски — это упущенный результат.
   </p>
 
   <!-- ФОТО ПРОДУКТУ -->
@@ -1357,33 +1464,20 @@ footer { background:var(--text); padding:36px 20px; }
       <div class="pf-ico">🎭</div>
       <div class="pf-label">Фото маски</div>
     </div>
+    <div class="b1-photo-badge">−50% сегодня</div>
   </div>
 
   <!-- ФОРМА -->
   <div class="b1-form fi">
-    <div class="form-title-row">
-      <div class="form-title-text">Оформить заказ со скидкой <span class="form-title-pct">50%</span></div>
-      <div class="form-stock-pill"><span class="fsp-dot"></span>19 шт</div>
-    </div>
-    <div class="form-inputs-wrap">
-      <div class="form-input-row">
-        <span class="fi-icon">👤</span>
-        <input class="b1-input" type="text" id="b1-name" placeholder="Ваше имя" autocomplete="name">
-      </div>
-      <div class="form-input-row">
-        <span class="fi-icon">📞</span>
-        <input class="b1-input" type="tel" id="b1-phone" placeholder="Номер телефона" autocomplete="tel">
-      </div>
-    </div>
+    <span class="b1-form-label">Оставьте заявку — перезвоним за 5 минут</span>
+    <input class="b1-input-orig" type="text"  id="b1-name"  placeholder="Ваше имя"      autocomplete="name">
+    <input class="b1-input-orig" type="tel"   id="b1-phone" placeholder="Номер телефона" autocomplete="tel">
     <button class="btn-main" onclick="submitB1()">
       Получить маску со скидкой 50% →
     </button>
-    <div class="form-trust-row">
-      <span class="ftr-item">💳 При получении</span>
-      <span class="ftr-sep">·</span>
-      <span class="ftr-item">📦 1–2 дня</span>
-      <span class="ftr-sep">·</span>
-      <span class="ftr-item">↩️ 30 дней</span>
+    <div class="b1-trust">
+      <span>💳 Оплата при получении</span>
+      <span>📦 Доставка 1–2 дня</span>
     </div>
   </div>
 
@@ -1396,11 +1490,7 @@ footer { background:var(--text); padding:36px 20px; }
 ══════════════════════════════════════════ -->
 <div class="b2">
 
-  <!-- темна шапка блоку -->
-  <div class="b2-header fi">
-    <div class="b2-header-eyebrow">Реальный результат нашей клиентки</div>
-    <div class="b2-header-days">Спустя <span class="b2-days-num">7</span> дней</div>
-  </div>
+  <h2 class="b2-title fi">Посмотри,<br>что будет с твоей шеей</h2>
 
   <!-- ДО / ПІСЛЯ -->
   <div class="ba-wrap fi">
@@ -1409,24 +1499,24 @@ footer { background:var(--text); padding:36px 20px; }
       <img src="img/before.jpg" alt="До" class="ba-img"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
       <div class="ba-fallback" style="display:none">😞</div>
-      <!-- тёмный оверлей снизу с подписью -->
-      <div class="ba-overlay">
-        <span class="ba-lbl-dark">ДО</span>
-      </div>
+      <div class="ba-lbl">ДО</div>
     </div>
 
     <div class="ba-card ba-after">
-      <img src="img/after.png" alt="После" class="ba-img"
+      <img src="img/after.jpg" alt="После" class="ba-img"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
       <div class="ba-fallback" style="display:none">😊</div>
-      <div class="ba-overlay ba-overlay-rose">
-        <span class="ba-lbl-dark">ПОСЛЕ</span>
-      </div>
+      <div class="ba-lbl ba-lbl-rose">ПОСЛЕ</div>
+    </div>
+
+    <!-- Плашка по центру знизу між фото -->
+    <div class="ba-center-badge">
+      Результат нашей клиентки спустя <span class="badge-num">7</span> дней
     </div>
 
   </div>
 
-  <!-- 3 сильних оффера -->
+  <!-- 3 оффери -->
   <div class="offer-stats fi">
     <div class="os-card">
       <div class="os-num">−10</div>
@@ -1442,9 +1532,8 @@ footer { background:var(--text); padding:36px 20px; }
     </div>
   </div>
 
-  <!-- ЦІНА — компактна, продаюча -->
+  <!-- ЦІНА -->
   <div class="price-block fi">
-    <!-- ліва: стара ціна закреслена + нова велика -->
     <div class="price-left">
       <div class="price-was-row">
         <span class="price-was-lbl">Обычная цена</span>
@@ -1456,7 +1545,6 @@ footer { background:var(--text); padding:36px 20px; }
         <span class="price-currency">сум</span>
       </div>
     </div>
-    <!-- права: червона плашка зі знижкою -->
     <div class="price-badge-red">
       <div class="pbr-pct">−50%</div>
       <div class="pbr-lbl">СКИДКА</div>
