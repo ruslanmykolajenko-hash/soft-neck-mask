@@ -202,11 +202,11 @@ img { display: block; width: 100%; }
 /* Фото — наклейка на правому краї стрічки залишків */
 .sc-img {
   position: absolute;
-  right: 0;
+  right: -8px;
   top: 50%;
-  transform: translateY(-62%);
-  width: 110px;
-  height: 180px;
+  transform: translateY(-75%);
+  width: 165px;
+  height: 270px;
   object-fit: contain;
   pointer-events: none;
   filter: drop-shadow(-3px 4px 14px rgba(0,0,0,.3));
@@ -1538,10 +1538,6 @@ footer {
 
   <div class="order-card fi">
 
-    <!-- Фото маски — наклейка поверх обох блоків -->
-    <img src="img/phhy.png" alt="Маска" class="sc-img"
-         onerror="this.style.display='none'">
-
     <!-- Шапка: ціна -->
     <div class="order-card-head">
       <span class="price-old">299 000 сум</span>
@@ -1553,7 +1549,7 @@ footer {
       </div>
     </div>
 
-    <!-- Залишки -->
+    <!-- Залишки — фото наклейка справа -->
     <div class="stock-counter">
       <div class="stock-counter-text">
         <span class="sc-label">Осталось</span>
@@ -1561,6 +1557,8 @@ footer {
         <span class="sc-label">шт.</span>
         <span class="sc-urgent">Успейте!</span>
       </div>
+      <img src="img/phhy.png" alt="Маска" class="sc-img"
+           onerror="this.style.display='none'">
     </div>
 
     <!-- Поля і кнопка -->
