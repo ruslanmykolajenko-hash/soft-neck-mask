@@ -741,13 +741,13 @@ footer {
 /* ── BA HEADER ── */
 .ba-header {
   background: var(--dark);
-  border-radius: 16px 16px 0 0;
-  padding: 18px 20px 16px;
+  border-radius: 16px;
+  padding: 20px 20px 18px;
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: 14px;
 }
 .ba-header-eyebrow {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: rgba(255,255,255,.5);
   letter-spacing: .5px;
@@ -763,16 +763,8 @@ footer {
 }
 .ba-days-num {
   color: #FFD166;
-  font-size: 42px;
+  font-size: 44px;
 }
-
-/* ── BA GRID приєднана до header ── */
-.ba-header + .ba-grid {
-  gap: 0;
-  margin-bottom: 16px;
-}
-.ba-header + .ba-grid .ba-card.before { border-radius: 0 0 0 16px; }
-.ba-header + .ba-grid .ba-card.after  { border-radius: 0 0 16px 0; }
 
 /* ── FADE IN ── */
 .fi { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
@@ -875,14 +867,27 @@ footer {
 ═══════════════════════════ -->
 <section class="ba-section">
 
-  <!-- Темна шапка -->
+  <!-- Заголовок окремо -->
   <div class="ba-header fi">
     <div class="ba-header-eyebrow">Реальный результат нашей клиентки</div>
     <div class="ba-header-days">Спустя <span class="ba-days-num">7</span> дней</div>
   </div>
 
-  <!-- Фото ДО/ПІСЛЯ -->
+  <!-- Фото окремо, з нормальними відступами -->
   <div class="ba-grid fi">
+    <div class="ba-card before">
+      <img src="img/before.png" alt="До маски"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="ba-img">
+      <div class="ba-fallback">😔</div>
+      <div class="ba-tag">ДО</div>
+    </div>
+    <div class="ba-card after">
+      <img src="img/after.png" alt="После маски"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="ba-img">
+      <div class="ba-fallback">😊</div>
+      <div class="ba-tag">ПОСЛЕ</div>
+    </div>
+  </div>
     <div class="ba-card before">
       <img src="img/before.png" alt="До маски"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="ba-img">
