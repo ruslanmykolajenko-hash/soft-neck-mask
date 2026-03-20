@@ -855,10 +855,10 @@ footer { background:var(--text); padding:36px 20px; }
   opacity:1; position:relative; pointer-events:auto;
 }
 .ss-slide img {
-  width:100%; aspect-ratio:4/5; object-fit:cover; display:block;
+  width:100%; aspect-ratio:16/10; object-fit:cover; display:block;
 }
 .ss-slide-fallback {
-  width:100%; aspect-ratio:4/5;
+  width:100%; aspect-ratio:16/10;
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
   background:linear-gradient(160deg,#2E1A10,#5A3020);
 }
@@ -1438,107 +1438,124 @@ footer { background:var(--text); padding:36px 20px; }
 .ba-before { border-radius: 0 0 0 16px; }
 .ba-after  { border-radius: 0 0 16px 0; }
 
-/* ── FINAL SPLIT текст ── */
-.ss-final-text-row {
+/* ── FINAL SPLIT bottom ── */
+.ss-final-bottom {
   display: grid;
   grid-template-columns: 1fr 1px 1fr;
-  background: rgba(255,255,255,.07);
+  background: rgba(255,255,255,.06);
   border-top: 1px solid rgba(255,255,255,.1);
 }
-
-.ss-ft-divider { background: rgba(255,255,255,.15); }
-
-.ss-ft-col {
-  padding: 14px 14px;
-  text-align: center;
+.ss-fb-sep { background: rgba(255,255,255,.15); }
+.ss-fb-col { padding: 12px 14px; text-align: center; }
+.ss-fb-tag {
+  font-size: 10px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 4px;
 }
-
-.ss-ft-head {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.45);
-  margin-bottom: 5px;
-}
-
-.ss-ft-head-after { color: var(--pink); }
-
-.ss-ft-desc {
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(255,255,255,.75);
-  line-height: 1.5;
+.ss-fb-tag-rose { color: var(--pink); }
+.ss-fb-text {
+  font-size: 12px; color: rgba(255,255,255,.75);
+  font-weight: 500; line-height: 1.4;
 }
 
 /* ── FORM CLEAN ── */
+.b1-form { position: relative; margin: 0 -20px; }
+
 .form-clean {
-  background: #1d69b6;
-  border-radius: 20px;
+  background: #3D2B1F;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 6px 32px rgba(29,105,182,.35);
 }
 
-/* ціна вгорі */
 .fc-head {
-  padding: 22px 22px 18px;
-  text-align: center;
-  border-bottom: 1px solid rgba(255,255,255,.15);
+  padding: 24px 22px 20px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
 }
 
+/* рядок: стара ціна + -50% */
 .fc-old-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 8px;
+  gap: 12px;
+  margin-bottom: 6px;
 }
 
 .fc-old {
   font-family: 'Fraunces', serif;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 900;
-  color: rgba(255,255,255,.45);
+  color: var(--red);
   text-decoration: line-through;
   line-height: 1;
 }
 
 .fc-disc {
-  font-size: 18px;
-  font-weight: 800;
-  color: #FFD166;
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1;
 }
 
+/* нова ціна */
 .fc-new {
   display: block;
-  font-size: 16px;
-  font-weight: 600;
-  color: rgba(255,255,255,.75);
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #FFD166;
   margin-bottom: 14px;
+  line-height: 1;
 }
 
 /* таймер */
 .fc-timer-row {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(0,0,0,.2);
-  border-radius: 30px;
-  padding: 7px 16px;
+  gap: 10px;
 }
 
 .fc-timer-lbl {
-  font-size: 12px;
-  color: rgba(255,255,255,.6);
+  font-size: 13px;
+  color: rgba(255,255,255,.55);
   font-weight: 500;
+  flex-shrink: 0;
 }
 
 .fc-timer-val {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.fc-tblock {
+  background: rgba(255,255,255,.12);
+  border-radius: 8px;
+  padding: 6px 10px;
+  min-width: 44px;
+  text-align: center;
+}
+
+.fc-tnum {
   font-family: 'Fraunces', serif;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 900;
   color: white;
-  letter-spacing: 2px;
+  display: block;
+  line-height: 1;
+}
+
+.fc-tunit {
+  font-size: 9px;
+  color: rgba(255,255,255,.4);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.fc-tsep {
+  font-size: 20px;
+  color: rgba(255,255,255,.3);
+  font-weight: 700;
+  padding: 0 1px;
 }
 
 /* залишки */
@@ -1546,13 +1563,11 @@ footer { background:var(--text); padding:36px 20px; }
   padding: 10px 22px;
   font-size: 13px;
   font-weight: 600;
-  color: rgba(255,255,255,.7);
-  text-align: center;
+  color: rgba(255,255,255,.65);
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 7px;
-  border-bottom: 1px solid rgba(255,255,255,.15);
+  border-bottom: 1px solid rgba(255,255,255,.1);
 }
 
 .fc-dot {
@@ -1560,50 +1575,47 @@ footer { background:var(--text); padding:36px 20px; }
   background: #FF6B6B; flex-shrink: 0;
   animation: blink2 1.4s infinite;
 }
-
 .fc-stock strong { color: white; font-weight: 800; }
 
-/* поля — світлі на синьому */
+/* поля */
 .fc-fields {
-  padding: 18px 18px 0;
+  padding: 18px 22px 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .fc-fields .b1-input-orig {
-  background: rgba(255,255,255,.95);
-  border: none;
-  color: var(--text);
-  box-shadow: none;
-  font-size: 16px;
+  background: rgba(255,255,255,.12);
+  border: 1.5px solid rgba(255,255,255,.2);
   border-radius: 12px;
+  color: white;
+  box-shadow: none;
   margin-bottom: 0;
 }
-
-.fc-fields .b1-input-orig::placeholder { color: rgba(42,33,24,.4); }
+.fc-fields .b1-input-orig::placeholder { color: rgba(255,255,255,.45); }
 .fc-fields .b1-input-orig:focus {
-  background: #fff;
-  box-shadow: 0 0 0 3px rgba(255,255,255,.4);
-  border: none;
+  background: rgba(255,255,255,.18);
+  border-color: var(--blush, #E8C5B0);
+  box-shadow: none;
 }
 
 /* кнопка */
 .fc-btn {
-  border-radius: 0 0 20px 20px !important;
+  border-radius: 0 !important;
   margin-top: 16px;
   box-shadow: none !important;
   font-size: 17px !important;
-  background: var(--text) !important;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r) 100%) !important;
 }
 
 /* гарантії */
 .fc-guarantees {
-  font-size: 11px;
-  color: rgba(255,255,255,.45);
+  font-size: 12px;
+  color: rgba(255,255,255,.35);
   font-weight: 500;
   text-align: center;
-  padding: 10px 16px 16px;
+  padding: 12px 22px 18px;
 }
 
 @keyframes blink2 { 0%,100%{opacity:1;} 50%{opacity:.3;} }
@@ -1662,10 +1674,16 @@ footer { background:var(--text); padding:36px 20px; }
           <span class="fc-old">299 000 сум</span>
           <span class="fc-disc">−50%</span>
         </div>
-        <span class="fc-new">Ваша цена: 149 000 сум</span>
+        <span class="fc-new">Цена сегодня: 149 000 сум</span>
         <div class="fc-timer-row">
           <span class="fc-timer-lbl">До конца скидки:</span>
-          <span class="fc-timer-val"><span id="fth2">05</span>:<span id="ftm2">37</span>:<span id="fts2">22</span></span>
+          <div class="fc-timer-val">
+            <div class="fc-tblock"><span class="fc-tnum" id="fth2">05</span><span class="fc-tunit">ч</span></div>
+            <span class="fc-tsep">:</span>
+            <div class="fc-tblock"><span class="fc-tnum" id="ftm2">37</span><span class="fc-tunit">мин</span></div>
+            <span class="fc-tsep">:</span>
+            <div class="fc-tblock"><span class="fc-tnum" id="fts2">22</span><span class="fc-tunit">сек</span></div>
+          </div>
         </div>
       </div>
 
@@ -1716,7 +1734,7 @@ footer { background:var(--text); padding:36px 20px; }
     </div>
 
     <div class="ba-card ba-after">
-      <img src="img/after.jpg" alt="После" class="ba-img"
+      <img src="img/after.png" alt="После" class="ba-img"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
       <div class="ba-fallback" style="display:none">😊</div>
       <div class="ba-lbl ba-lbl-rose">ПОСЛЕ</div>
@@ -1859,16 +1877,15 @@ footer { background:var(--text); padding:36px 20px; }
       </div>
       <div class="ss-final-divider"></div>
     </div>
-    <!-- чисті текстові підписи замість карток з іконками -->
-    <div class="ss-final-text-row">
-      <div class="ss-ft-col">
-        <div class="ss-ft-head">ДО</div>
-        <div class="ss-ft-desc">Дряблость · Складки · Сухость</div>
+    <div class="ss-final-bottom">
+      <div class="ss-fb-col">
+        <div class="ss-fb-tag">ДО</div>
+        <div class="ss-fb-text">Дряблость · Складки · Сухость</div>
       </div>
-      <div class="ss-ft-divider"></div>
-      <div class="ss-ft-col">
-        <div class="ss-ft-head ss-ft-head-after">ПОСЛЕ</div>
-        <div class="ss-ft-desc">Упругость · Лифтинг · Молодость</div>
+      <div class="ss-fb-sep"></div>
+      <div class="ss-fb-col">
+        <div class="ss-fb-tag ss-fb-tag-rose">ПОСЛЕ</div>
+        <div class="ss-fb-text">Упругость · Лифтинг · Молодость</div>
       </div>
     </div>
   </div>
@@ -2247,23 +2264,46 @@ function startAutoPlay() {
 (function(){
   const inp = document.getElementById('b1-phone');
   if (!inp) return;
+
+  const PREFIX = '+998 ';
+
   inp.addEventListener('focus', function(){
-    if (!this.value) this.value = '+998 ';
+    if (!this.value) this.value = PREFIX;
+    // курсор в кінець
+    const l = this.value.length;
+    this.setSelectionRange(l, l);
   });
-  inp.addEventListener('input', function(){
-    let raw = this.value.replace(/\D/g,'');
-    if (raw.startsWith('998')) raw = raw.slice(3);
-    raw = raw.slice(0,9);
-    let out = '+998 ';
-    if (raw.length > 0) out += '(' + raw.slice(0,2);
-    if (raw.length >= 2) out += ') ' + raw.slice(2,5);
-    if (raw.length >= 5) out += '-' + raw.slice(5,7);
-    if (raw.length >= 7) out += '-' + raw.slice(7,9);
+
+  inp.addEventListener('input', function(e){
+    let val = this.value;
+    // якщо стерли префікс — відновлюємо
+    if (!val.startsWith(PREFIX)) {
+      // витягаємо тільки цифри після 998
+      let digits = val.replace(/\D/g,'');
+      if (digits.startsWith('998')) digits = digits.slice(3);
+      val = PREFIX + digits;
+    }
+    // беремо тільки цифри після PREFIX
+    let digits = val.slice(PREFIX.length).replace(/\D/g,'').slice(0,9);
+    let out = PREFIX;
+    if (digits.length > 0) out += '(' + digits.slice(0,2);
+    if (digits.length >= 2) out += ') ' + digits.slice(2,5);
+    if (digits.length >= 5) out += '-' + digits.slice(5,7);
+    if (digits.length >= 7) out += '-' + digits.slice(7,9);
     this.value = out;
   });
+
   inp.addEventListener('keydown', function(e){
-    if (e.key === 'Backspace' && this.value === '+998 ') {
+    // не дозволяємо стерти PREFIX
+    const sel = this.selectionStart;
+    if ((e.key === 'Backspace' || e.key === 'Delete') && sel <= PREFIX.length) {
       e.preventDefault();
+    }
+  });
+
+  inp.addEventListener('click', function(){
+    if (this.selectionStart < PREFIX.length) {
+      this.setSelectionRange(PREFIX.length, PREFIX.length);
     }
   });
 })();
