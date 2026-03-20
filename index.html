@@ -103,37 +103,46 @@ img { display: block; width: 100%; }
 /* ═══════════════════════════
    БЛОК ФОРМИ
 ═══════════════════════════ */
+/* ─── ФОРМА ─── */
 .form-section {
   background: linear-gradient(170deg, #F5E6D8 0%, #EDD4BD 100%);
   padding: 24px 22px 28px;
 }
 
-/* Ціна */
-.price-block {
-  background: var(--dark);
+/* Ціновий блок */
+.form-price-block {
+  background: #2A1A0E;
   border-radius: var(--r);
-  padding: 18px 20px;
-  margin-bottom: 16px;
+  padding: 20px;
+  margin-bottom: 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  align-items: stretch;
+  gap: 0;
+  overflow: hidden;
 }
 
-.price-left {}
+.price-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
+/* стара ціна — велика, червона, закреслена */
 .price-old {
-  font-size: 17px;
-  color: rgba(255,255,255,.4);
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--red);
   text-decoration: line-through;
-  font-weight: 500;
+  line-height: 1;
   display: block;
-  margin-bottom: 4px;
 }
 
+/* нова ціна — золота */
 .price-new {
   font-family: 'Fraunces', serif;
-  font-size: 32px;
+  font-size: 22px;
   font-weight: 900;
   color: #FFD166;
   line-height: 1;
@@ -141,71 +150,89 @@ img { display: block; width: 100%; }
 }
 
 .price-new-sub {
-  font-size: 12px;
+  font-size: 11px;
   color: rgba(255,255,255,.4);
-  margin-top: 3px;
   display: block;
 }
 
+/* таймер */
+.timer-block {
+  background: rgba(255,255,255,.1);
+  border-radius: 8px;
+  padding: 7px 10px;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  align-self: flex-start;
+}
+
+.timer-label {
+  font-size: 11px;
+  color: rgba(255,255,255,.45);
+}
+
+.timer-digits {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 2px;
+}
+
+/* права частина -50% */
 .price-right {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--red);
+  margin: -20px -20px -20px 16px;
+  padding: 0 18px;
   flex-shrink: 0;
+  border-radius: 0 var(--r) var(--r) 0;
 }
 
 .price-badge {
   font-family: 'Fraunces', serif;
   font-size: 28px;
   font-weight: 900;
-  color: var(--red);
+  color: white;
   display: block;
   line-height: 1;
 }
 
 .price-badge-sub {
-  font-size: 10px;
-  color: rgba(255,255,255,.4);
+  font-size: 9px;
+  color: rgba(255,255,255,.7);
   text-transform: uppercase;
   letter-spacing: .5px;
 }
 
-/* Таймер */
-.timer-block {
-  background: rgba(255,255,255,.1);
-  border-radius: 10px;
-  padding: 8px 12px;
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.timer-label {
-  font-size: 12px;
-  color: rgba(255,255,255,.5);
-}
-
-.timer-digits {
-  font-family: 'Fraunces', serif;
-  font-size: 20px;
-  font-weight: 900;
-  color: white;
-  letter-spacing: 2px;
-}
-
-/* Залишки */
+/* Залишки — червона стрічка на всю ширину */
 .stock-row {
+  background: var(--red);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   font-size: 15px;
-  font-weight: 600;
-  color: var(--rose);
-  margin-bottom: 16px;
+  font-weight: 700;
+  color: white;
+  padding: 12px 22px;
+  margin: 0 -22px 16px;
+  letter-spacing: .2px;
+  animation: stockPulse 2s ease-in-out infinite;
+}
+
+@keyframes stockPulse {
+  0%,100% { opacity: 1; }
+  50%      { opacity: .75; }
 }
 
 .stock-dot {
   width: 8px; height: 8px; border-radius: 50%;
-  background: var(--red); flex-shrink: 0;
+  background: white; flex-shrink: 0;
   animation: pulse 1.5s infinite;
 }
 
@@ -766,6 +793,261 @@ footer {
   font-size: 44px;
 }
 
+
+/* ══════════════════════════════════════════
+   BLOCK 2 — b2 styles (from backup)
+══════════════════════════════════════════ */
+.b2 {
+  background: var(--bg, #F8F5F0);
+  padding: 36px 20px 32px;
+}
+
+.b2-title {
+  font-family: 'Fraunces', serif;
+  font-size: 30px;
+  line-height: 1.15;
+  color: var(--dark);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.ba-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 22px;
+  overflow: visible;
+}
+
+.ba-card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  background: #EDE8E3;
+}
+
+.ba-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+}
+
+.ba-fallback {
+  aspect-ratio: 3/4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 52px;
+}
+.ba-card.ba-before .ba-fallback,
+.ba-before .ba-fallback { background: linear-gradient(160deg, #E8DDD6, #D4C4B8); }
+.ba-card.ba-after .ba-fallback,
+.ba-after  .ba-fallback { background: linear-gradient(160deg, #F5EAE4, #EDCFC2); }
+
+.ba-lbl {
+  position: absolute;
+  top: 10px; left: 10px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.8);
+  color: #5A4035;
+}
+.ba-lbl-rose { background: var(--rose); color: white; }
+
+.ba-center-badge {
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--dark);
+  color: white;
+  border-radius: 30px;
+  padding: 8px 18px;
+  white-space: nowrap;
+  text-align: center;
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-num {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: #FFD166;
+  line-height: 1;
+}
+
+.offer-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 18px;
+  margin-top: 18px;
+}
+
+.os-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 14px 10px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(42,33,24,.09);
+}
+
+.os-num {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  color: var(--rose);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.os-lbl {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.price-block {
+  background: var(--white);
+  border-radius: var(--r, 16px);
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 24px rgba(42,33,24,.09);
+  border: 1px solid rgba(212,137,106,.15);
+}
+
+.price-left {
+  flex: 1;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.price-was-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-was-lbl {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.price-was {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--red);
+  text-decoration: line-through;
+  opacity: .8;
+}
+
+.price-divider-line {
+  height: 1px;
+  background: rgba(0,0,0,.06);
+  width: 100%;
+}
+
+.price-now-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.price-now {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1;
+}
+
+.price-currency {
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.price-badge-red {
+  background: var(--red);
+  width: 26%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 6px;
+  gap: 2px;
+}
+
+.pbr-pct {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: white;
+  line-height: 1;
+}
+
+.pbr-lbl {
+  font-size: 8px;
+  font-weight: 700;
+  color: rgba(255,255,255,.75);
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+.pbr-gift {
+  margin-top: 6px;
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(255,255,255,.85);
+  text-align: center;
+  line-height: 1.3;
+  padding: 4px 4px 0;
+  border-top: 1px solid rgba(255,255,255,.2);
+  width: 100%;
+}
+
+.btn-b2 {
+  width: 100%;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r, #A85C42) 100%);
+  color: white;
+  font-size: 16px;
+  font-weight: 800;
+  border: none;
+  border-radius: var(--r, 16px);
+  padding: 18px;
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(212,137,106,.4);
+  font-family: 'Inter', sans-serif;
+  display: block;
+  width: 100%;
+  text-align: center;
+  transition: transform .15s;
+  letter-spacing: .2px;
+}
+.btn-b2:active { transform: scale(.97); }
+
 /* ── FADE IN ── */
 .fi { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
 .fi.show { opacity:1; transform:none; }
@@ -814,7 +1096,7 @@ footer {
 <section class="form-section" id="order">
 
   <!-- Ціна -->
-  <div class="price-block fi">
+  <div class="form-price-block fi">
     <div class="price-left">
       <span class="price-old">299 000 сум</span>
       <span class="price-new">149 000 сум</span>
@@ -830,7 +1112,7 @@ footer {
     </div>
   </div>
 
-  <!-- Залишки -->
+  <!-- Залишки — червона стрічка -->
   <div class="stock-row fi">
     <div class="stock-dot"></div>
     <span>Осталось <strong>19 наборов</strong> по акционной цене</span>
@@ -865,9 +1147,9 @@ footer {
 <!-- ═══════════════════════════
      БЛОК 3 — ДО / ПІСЛЯ
 ═══════════════════════════ -->
-<div class="b2" style="background:var(--bg); padding:36px 20px 32px;">
+<div class="b2">
 
-  <h2 class="b2-title fi">Результат, который<br>ждёт вас через<br><span style="color:var(--rose);">7 дней</span></h2>
+  <h2 class="b2-title fi">Реальные фото.<br>Реальный результат<br><span style="color:var(--rose);">за 7 дней</span></h2>
 
   <div class="ba-wrap fi">
 
