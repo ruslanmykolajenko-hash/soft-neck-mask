@@ -9,6 +9,11 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 :root {
   --bg:    #FBF7F4;
   --white: #FFFFFF;
@@ -80,7 +85,7 @@ img { display: block; width: 100%; }
   letter-spacing: 0.5px;
 }
 
-.hero-title span { color: var(--rose); }
+.hero-title span { color: inherit; }
 
 .hero-sub {
   font-size: 17px;
