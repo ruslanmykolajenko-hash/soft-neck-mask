@@ -42,14 +42,14 @@ img { display: block; width: 100%; }
   padding: 28px 22px 0;
 }
 
-/* Заголовок */
+/* Заголовок — менший щоб займав менше вертикалі */
 .hero-title {
   font-family: 'Fraunces', serif;
-  font-size: 38px;
-  line-height: 1.12;
+  font-size: 30px;
+  line-height: 1.1;
   font-weight: 900;
   color: var(--dark);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   text-align: center;
 }
 
@@ -240,11 +240,11 @@ img { display: block; width: 100%; }
   width: 100%;
   background: var(--rose);
   color: white;
-  font-size: 19px;
+  font-size: 16px;
   font-weight: 800;
   border: none;
   border-radius: var(--r);
-  padding: 20px;
+  padding: 17px 16px;
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   letter-spacing: .3px;
@@ -252,6 +252,7 @@ img { display: block; width: 100%; }
   transition: transform .15s;
   margin-bottom: 14px;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 .btn-order:active { transform: scale(.97); }
 
@@ -721,22 +722,22 @@ footer {
   padding: 11px 16px;
   margin-bottom: 12px;
 }
-.hero-stars { font-size: 16px; color: #FFD166; letter-spacing: 1px; flex-shrink: 0; }
-.hero-hook-text { font-size: 14px; color: rgba(255,255,255,.95); font-weight: 500; line-height: 1.4; }
+.hero-stars { font-size: 18px; color: #FFD166; letter-spacing: 1px; flex-shrink: 0; }
+.hero-hook-text { font-size: 16px; color: rgba(255,255,255,.95); font-weight: 600; line-height: 1.4; }
 .hero-hook-text strong { color: #FFD166; font-weight: 800; }
 
 /* ── ПІЛЮЛІ ── */
 .hero-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 7px;
   margin-bottom: 18px;
   justify-content: center;
 }
 .pill {
-  font-size: 13px;
-  font-weight: 600;
-  padding: 6px 14px;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 8px 16px;
   border-radius: 30px;
   background: linear-gradient(135deg, #1d69b6, #2a7fd4);
   color: white;
@@ -1040,7 +1041,7 @@ footer {
   <div class="b1-tag fi">Лифтинг-маска для шеи</div>
 
   <h1 class="hero-title fi">
-    Маска, которая<br>вернёт вашей шее<br><span>молодость</span>
+    Маска, которая вернёт<br>вашей шее <span>молодость</span>
   </h1>
 
   <!-- Хук з рейтингом -->
@@ -1092,7 +1093,7 @@ footer {
   <!-- Залишки — червона стрічка -->
   <div class="stock-row fi">
     <div class="stock-dot"></div>
-    <span>Осталось <strong>19 наборов</strong> по акционной цене</span>
+    Осталось <strong>&nbsp;19 шт&nbsp;</strong> — торопитесь!
   </div>
 
   <!-- Форма -->
