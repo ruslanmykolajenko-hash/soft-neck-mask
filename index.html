@@ -1599,6 +1599,39 @@ footer {
   flex-wrap: wrap;
 }
 
+/* Гарантії під кнопкою — обидві форми */
+.trust-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.ti-icon { font-size: 18px; flex-shrink: 0; }
+
+/* Final form wrapper */
+.final-form-wrap {
+  padding: 20px 22px 24px;
+}
+
+/* Final price row inside dark head */
+.final-offer-head .final-price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+
 /* ── FADE IN ── */
 .fi { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
 .fi.show { opacity:1; transform:none; }
@@ -1680,7 +1713,11 @@ footer {
       <button class="btn-order" onclick="submitMain()">
         Заказать со скидкой 50%
       </button>
-    </div>
+      <div class="trust-list">
+        <div class="trust-item"><span class="ti-icon">💳</span><span>Оплата при получении</span></div>
+        <div class="trust-item"><span class="ti-icon">📦</span><span>Доставка 1–2 дня до двери</span></div>
+        <div class="trust-item"><span class="ti-icon">↩️</span><span>30 дней на возврат товара</span></div>
+      </div>
 
     <!-- Підвал: гарантії -->
     <div class="order-card-foot" id="main-form-foot">
@@ -2095,18 +2132,15 @@ footer {
     <!-- Офер -->
     <div class="final-offer-head">
       <div class="final-offer-tag">⏰ Акция заканчивается сегодня</div>
-      <h2 class="final-offer-title">Молодая шея<br>за полцены —<br>последний шанс</h2>
-      <p class="final-offer-sub">Пока другие сомневаются — вы уже заказали. Скидка 50% только сегодня.</p>
-    </div>
-
-    <!-- Ціна -->
-    <div class="final-price-row">
-      <span class="final-price-old">299 000 сум</span>
-      <span class="final-price-new">149 000 сум</span>
+      <h2 class="final-offer-title">Молодая шея<br>за полцены</h2>
+      <div class="final-price-row">
+        <span class="final-price-old">299 000 сум</span>
+        <span class="final-price-new">149 000 сум</span>
+      </div>
     </div>
 
     <!-- Форма -->
-    <div id="final-form">
+    <div class="final-form-wrap" id="final-form">
       <input class="form-field" type="text" id="ff-name"
              placeholder="Ваше имя" autocomplete="name">
       <input class="form-field phone-input" type="tel" id="ff-phone"
@@ -2114,18 +2148,18 @@ footer {
       <button class="btn-order" onclick="submitFinal()">
         Забрать маску со скидкой 50%
       </button>
+
+      <div class="trust-list">
+        <div class="trust-item"><span class="ti-icon">💳</span><span>Оплата при получении</span></div>
+        <div class="trust-item"><span class="ti-icon">📦</span><span>Доставка 1–2 дня до двери</span></div>
+        <div class="trust-item"><span class="ti-icon">↩️</span><span>30 дней на возврат товара</span></div>
+      </div>
     </div>
 
-    <div id="final-success" style="display:none; text-align:center; padding:20px 0;">
-      <div style="font-size:48px; margin-bottom:10px;">✅</div>
-      <div style="font-family:'Fraunces',serif; font-size:24px; color:var(--dark); font-weight:900; margin-bottom:6px;">Заявка принята!</div>
-      <div style="font-size:15px; color:var(--muted);">Перезвоним в течение 10 минут</div>
-    </div>
-
-    <div class="final-trust">
-      <span>💳 При получении</span>
-      <span>📦 1–2 дня</span>
-      <span>↩️ 30 дней возврат</span>
+    <div id="final-success" style="display:none; text-align:center; padding:32px 22px;">
+      <div style="font-size:52px; margin-bottom:12px;">✅</div>
+      <div style="font-family:'Fraunces',serif; font-size:26px; color:var(--dark); font-weight:900; margin-bottom:8px;">Заявка принята!</div>
+      <div style="font-size:15px; color:var(--muted); line-height:1.6;">Перезвоним в течение 10 минут</div>
     </div>
 
   </div>
