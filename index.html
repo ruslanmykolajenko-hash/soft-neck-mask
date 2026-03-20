@@ -1026,6 +1026,164 @@ footer {
 }
 .btn-b2:active { transform: scale(.97); }
 
+/* ═══════════════════════════
+   PRODUCT SECTION
+═══════════════════════════ */
+.product-section {
+  background: var(--white);
+  padding: 36px 18px 32px;
+}
+
+.product-eyebrow {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.product-title {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--dark);
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+/* Трьохколонний лейаут */
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr 110px 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+/* Теги */
+.product-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ptag {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.ptag-r {
+  justify-content: flex-end;
+}
+
+.ptag-ico {
+  font-size: 22px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.ptag-name {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.2;
+}
+
+.ptag-desc {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.4;
+  margin-top: 1px;
+}
+
+/* Фото центр */
+.product-img-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-img-wrap img {
+  width: 110px;
+  height: 140px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 8px 20px rgba(42,26,14,.2));
+}
+
+.product-img-fallback {
+  width: 110px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 52px;
+  background: linear-gradient(135deg, #F5EAE4, #EDD5C5);
+  border-radius: 16px;
+}
+
+/* Бейдж під фото */
+.product-count-badge {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--dark);
+  border-radius: 20px;
+  padding: 5px 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+}
+
+.pcb-num {
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: #FFD166;
+  line-height: 1;
+}
+
+.pcb-text {
+  font-size: 10px;
+  color: rgba(255,255,255,.7);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Жирний акцент знизу */
+.product-highlight {
+  background: linear-gradient(135deg, #1d69b6 0%, #2a7fd4 100%);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ph-num {
+  font-family: 'Nunito', sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: #FFD166;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.ph-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.4;
+}
+
 /* ── FADE IN ── */
 .fi { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
 .fi.show { opacity:1; transform:none; }
@@ -1123,8 +1281,87 @@ footer {
 </section>
 
 <!-- ═══════════════════════════
-     БЛОК 3 — ДО / ПІСЛЯ
+     БЛОК — ОПИС ПРОДУКТУ
 ═══════════════════════════ -->
+<section class="product-section">
+
+  <p class="product-eyebrow fi">Что внутри набора</p>
+  <h2 class="product-title fi">Всё, что нужно<br>вашей коже</h2>
+
+  <!-- Фото по центру + теги навколо -->
+  <div class="product-layout fi">
+
+    <!-- Ліва колонка -->
+    <div class="product-tags left">
+      <div class="ptag">
+        <div class="ptag-ico">🧬</div>
+        <div class="ptag-text">
+          <div class="ptag-name">Коллаген</div>
+          <div class="ptag-desc">Восстанавливает упругость</div>
+        </div>
+      </div>
+      <div class="ptag">
+        <div class="ptag-ico">🌿</div>
+        <div class="ptag-text">
+          <div class="ptag-name">Гиалуронат</div>
+          <div class="ptag-desc">Глубокое увлажнение 24ч</div>
+        </div>
+      </div>
+      <div class="ptag">
+        <div class="ptag-ico">🫧</div>
+        <div class="ptag-text">
+          <div class="ptag-name">Ретинол</div>
+          <div class="ptag-desc">Разглаживает морщины</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Фото по центру -->
+    <div class="product-img-wrap">
+      <img src="img/product.png" alt="Маска NeckGlow"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="product-img-fallback" style="display:none">🎭</div>
+      <!-- Бейдж знизу фото -->
+      <div class="product-count-badge">
+        <span class="pcb-num">10</span>
+        <span class="pcb-text">масок<br>в упаковке</span>
+      </div>
+    </div>
+
+    <!-- Права колонка -->
+    <div class="product-tags right">
+      <div class="ptag ptag-r">
+        <div class="ptag-text" style="text-align:right;">
+          <div class="ptag-name">Пептиды</div>
+          <div class="ptag-desc">Лифтинг с 1-го применения</div>
+        </div>
+        <div class="ptag-ico">⚡</div>
+      </div>
+      <div class="ptag ptag-r">
+        <div class="ptag-text" style="text-align:right;">
+          <div class="ptag-name">Витамин C</div>
+          <div class="ptag-desc">Осветляет и выравнивает тон</div>
+        </div>
+        <div class="ptag-ico">✨</div>
+      </div>
+      <div class="ptag ptag-r">
+        <div class="ptag-text" style="text-align:right;">
+          <div class="ptag-name">Масло ши</div>
+          <div class="ptag-desc">Питает и смягчает кожу</div>
+        </div>
+        <div class="ptag-ico">🌸</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Жирний акцент знизу -->
+  <div class="product-highlight fi">
+    <span class="ph-num">10</span>
+    <span class="ph-text">масок в упаковке — полный курс омоложения на весь месяц</span>
+  </div>
+
+</section>
 <div class="b2">
 
   <h2 class="b2-title fi">Реальные фото.<br>Реальный результат<br><span style="color:var(--rose);">за 7 дней</span></h2>
@@ -1132,7 +1369,7 @@ footer {
   <div class="ba-wrap fi">
 
     <div class="ba-card ba-before">
-      <img src="img/before.jpg" alt="До" class="ba-img"
+      <img src="img/before.png" alt="До" class="ba-img"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
       <div class="ba-fallback" style="display:none">😞</div>
       <div class="ba-lbl">ДО</div>
