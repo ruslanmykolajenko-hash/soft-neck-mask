@@ -42,7 +42,6 @@ img { display: block; width: 100%; }
   padding: 28px 22px 0;
 }
 
-/* Заголовок — менший щоб займав менше вертикалі */
 .hero-title {
   font-family: 'Fraunces', serif;
   font-size: 30px;
@@ -55,7 +54,6 @@ img { display: block; width: 100%; }
 
 .hero-title span { color: var(--rose); }
 
-/* Підзаголовок */
 .hero-sub {
   font-size: 17px;
   color: var(--muted);
@@ -64,7 +62,6 @@ img { display: block; width: 100%; }
   margin-bottom: 18px;
 }
 
-/* Рейтинг */
 .hero-rating {
   display: flex;
   align-items: center;
@@ -76,7 +73,6 @@ img { display: block; width: 100%; }
 .hero-stars { font-size: 20px; color: #F5A623; letter-spacing: 2px; }
 .hero-rating-text { font-size: 15px; color: var(--muted); font-weight: 500; }
 
-/* Фото продукту */
 .hero-photo {
   width: calc(100% + 44px);
   margin-left: -22px;
@@ -103,7 +99,6 @@ img { display: block; width: 100%; }
 /* ═══════════════════════════
    БЛОК ФОРМИ
 ═══════════════════════════ */
-/* ─── ФОРМА ─── */
 .form-section {
   background: var(--bg);
   padding: 20px 8px 28px;
@@ -117,12 +112,10 @@ img { display: block; width: 100%; }
   position: relative;
 }
 
-/* Але шапка і стрічка обрізаються правильно */
 .order-card-head {
   border-radius: 20px 20px 0 0;
 }
 
-/* Шапка — лівостороннє вирівнювання */
 .order-card-head {
   background: var(--dark);
   padding: 28px 22px 22px;
@@ -155,7 +148,6 @@ img { display: block; width: 100%; }
   margin-bottom: 20px;
 }
 
-/* Таймер — ліворуч */
 .timer-block {
   display: inline-flex;
   align-items: center;
@@ -179,7 +171,6 @@ img { display: block; width: 100%; }
   letter-spacing: 2px;
 }
 
-/* Стрічка залишків — ліворуч */
 .stock-counter {
   display: flex;
   align-items: center;
@@ -199,7 +190,6 @@ img { display: block; width: 100%; }
   gap: 8px;
 }
 
-/* Фото — наклейка на правому краї стрічки залишків */
 .sc-img {
   position: absolute;
   right: -30px;
@@ -226,7 +216,6 @@ img { display: block; width: 100%; }
   font-weight: 700;
 }
 
-/* Поля */
 .form-fields-wrap {
   padding: 22px 22px 20px;
 }
@@ -249,7 +238,6 @@ img { display: block; width: 100%; }
 .form-field::placeholder { color: rgba(42,26,14,.3); }
 .form-field:focus { border-color: var(--rose); background: white; }
 
-/* Кнопка — єдиний акцент */
 .btn-order {
   width: 100%;
   background: var(--rose);
@@ -270,7 +258,6 @@ img { display: block; width: 100%; }
 }
 .btn-order:active { transform: scale(.97); }
 
-/* Підвал картки — гарантії */
 .order-card-foot {
   display: flex;
   justify-content: space-around;
@@ -290,9 +277,6 @@ img { display: block; width: 100%; }
 }
 .ocf-item span:first-child { font-size: 20px; }
 
-
-
-/* Гарантії */
 .guarantees {
   display: flex;
   justify-content: space-around;
@@ -383,7 +367,6 @@ img { display: block; width: 100%; }
 .ba-card.before .ba-tag { background: rgba(255,255,255,.85); color: var(--dark); }
 .ba-card.after  .ba-tag { background: var(--rose); color: white; }
 
-/* Stats */
 .ba-stats {
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -409,7 +392,6 @@ img { display: block; width: 100%; }
 
 .ba-stat-lbl { font-size: 11px; color: var(--muted); line-height: 1.4; font-weight: 500; }
 
-/* CTA між блоками */
 .mid-cta {
   background: var(--rose);
   border-radius: var(--r);
@@ -681,7 +663,6 @@ footer {
 
 .popup-sub { font-size: 15px; color: var(--muted); margin-bottom: 20px; line-height: 1.5; }
 
-/* Ціна в попапі */
 .popup-price {
   background: var(--dark);
   border-radius: var(--r);
@@ -763,7 +744,6 @@ footer {
   position: relative;
   overflow: hidden;
 }
-/* блік зверху */
 .hero-hook::after {
   content: '';
   position: absolute;
@@ -835,7 +815,7 @@ footer {
 
 
 /* ══════════════════════════════════════════
-   BLOCK 2 — b2 styles (from backup)
+   BLOCK 2 — b2 styles
 ══════════════════════════════════════════ */
 .b2 {
   background: var(--bg, #F8F5F0);
@@ -1118,7 +1098,6 @@ footer {
   padding: 0 22px;
 }
 
-/* Фото на всю ширину */
 .product-img-wrap {
   width: 100%;
   position: relative;
@@ -1170,7 +1149,6 @@ footer {
   font-weight: 600;
 }
 
-/* Список */
 .product-list {
   display: flex;
   flex-direction: column;
@@ -1222,7 +1200,6 @@ footer {
   line-height: 1.4;
 }
 
-/* Акцент */
 .product-highlight {
   background: linear-gradient(135deg, #1d69b6 0%, #2a7fd4 100%);
   border-radius: 0;
@@ -1515,91 +1492,289 @@ footer {
   flex-shrink: 0;
 }
 
-/* ── FINAL CTA ── */
-.final-cta {
-  background: var(--bg);
-  padding: 28px 20px 36px;
-}
-
-.final-card {
-  background: var(--white);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 4px 32px rgba(42,26,14,.1);
-}
-
-.final-offer-head {
+/* ═══════════════════════════════════════
+   ПРОГРЕС ПО ДНЯХ — SKIN TIMELINE
+═══════════════════════════════════════ */
+.skin-timeline {
   background: var(--dark);
-  padding: 28px 22px 22px;
+  padding: 0;
+  margin-top: 0;
+}
+
+.skin-timeline-head {
+  padding: 28px 22px 20px;
   text-align: center;
 }
 
-.final-offer-tag {
-  font-size: 12px;
-  font-weight: 700;
-  color: rgba(255,255,255,.45);
-  letter-spacing: 1px;
+.skin-timeline-eyebrow {
+  font-size: 11px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  color: rgba(255,255,255,.4);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.skin-timeline-title {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: white;
+  line-height: 1.2;
+}
+
+.skin-timeline-title span { color: #FFD166; }
+
+.skin-timeline-photo {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.skin-timeline-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.skin-timeline-photo-fallback {
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(135deg, #1a0e06, #3a2010);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+}
+
+/* Дні-мітки поверх фото */
+.skin-days-overlay {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: rgba(42,26,14,.85);
+  backdrop-filter: blur(6px);
+}
+
+.skin-day-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex: 1;
+}
+
+.skin-day-num {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: #FFD166;
+  line-height: 1;
+}
+
+.skin-day-label {
+  font-size: 10px;
+  color: rgba(255,255,255,.55);
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.skin-day-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--rose);
+  margin-top: 2px;
+}
+
+.skin-day-dot.active {
+  background: #FFD166;
+  width: 8px;
+  height: 8px;
+}
+
+/* Лінія прогресу */
+.skin-progress-bar {
+  height: 4px;
+  background: rgba(255,255,255,.1);
+  position: relative;
+  margin: 0 16px;
+}
+
+.skin-progress-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #C97055, #FFD166);
+  border-radius: 2px;
+}
+
+/* ── FINAL CTA — НОВА ВЕРСІЯ ── */
+.final-cta {
+  background: var(--bg);
+  padding: 20px 8px 28px;
+}
+
+/* Urgency-банер перед карткою */
+.final-urgency-banner {
+  background: var(--red);
+  border-radius: 14px 14px 0 0;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.fub-icon { font-size: 20px; }
+
+.fub-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.fub-text strong { font-size: 16px; }
+
+.final-card {
+  background: var(--white);
+  border-radius: 0 0 20px 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(42,26,14,.12);
+}
+
+/* Офер-шапка — темна, як у верхній формі */
+.final-offer-head {
+  background: var(--dark);
+  padding: 24px 22px 20px;
+  text-align: left;
+}
+
+/* Емоційний заголовок */
+.final-offer-hook {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .final-offer-title {
   font-family: 'Fraunces', serif;
-  font-size: 30px;
+  font-size: 27px;
   font-weight: 900;
   color: white;
   line-height: 1.15;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
-.final-offer-sub {
-  font-size: 14px;
-  color: rgba(255,255,255,.5);
-  line-height: 1.55;
-}
+.final-offer-title span { color: #FFD166; }
 
-.final-price-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 14px;
-  padding: 18px 22px 0;
-  background: var(--dark);
-  border-bottom: 1px solid rgba(255,255,255,.08);
-  padding-bottom: 20px;
-}
-
-.final-price-old {
-  font-size: 18px;
+/* Ціна — точно як у верхній формі */
+.final-offer-price-old {
+  font-size: 16px;
+  font-weight: 500;
   color: rgba(255,255,255,.3);
   text-decoration: line-through;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.final-offer-price-new {
+  font-family: 'Nunito', sans-serif;
+  font-size: 44px;
+  font-weight: 900;
+  color: white;
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.final-offer-price-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,.4);
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* Таймер — як у верхній формі */
+.final-timer-block {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,.08);
+  border-radius: 10px;
+  padding: 9px 16px;
+}
+
+.final-timer-label {
+  font-size: 13px;
+  color: rgba(255,255,255,.45);
   font-weight: 500;
 }
 
-.final-price-new {
+.final-timer-digits {
   font-family: 'Nunito', sans-serif;
-  font-size: 36px;
+  font-size: 22px;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 2px;
+}
+
+/* Бонус-стрічка */
+.final-bonus-strip {
+  background: linear-gradient(135deg, #1d69b6, #2a7fd4);
+  padding: 12px 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fbs-icon { font-size: 22px; flex-shrink: 0; }
+
+.fbs-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.35;
+}
+
+.fbs-text span { color: #FFD166; }
+
+/* Залишки — як у верхній формі */
+.final-stock {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: var(--rose);
+  padding: 12px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  gap: 8px;
+}
+
+.final-stock-num {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
   font-weight: 900;
   color: white;
 }
 
-.final-card #final-form,
-.final-card #final-success {
-  padding: 20px 22px 0;
+/* Поля форми */
+.final-form-wrap {
+  padding: 20px 22px 24px;
 }
 
-.final-trust {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  padding: 14px 22px 20px;
-  font-size: 12px;
-  color: var(--muted);
-  font-weight: 500;
-  flex-wrap: wrap;
-}
-
-/* Гарантії під кнопкою — обидві форми */
+/* Trust list під кнопкою */
 .trust-list {
   display: flex;
   flex-direction: column;
@@ -1617,20 +1792,6 @@ footer {
 }
 
 .ti-icon { font-size: 18px; flex-shrink: 0; }
-
-/* Final form wrapper */
-.final-form-wrap {
-  padding: 20px 22px 24px;
-}
-
-/* Final price row inside dark head */
-.final-offer-head .final-price-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 14px;
-  margin-top: 16px;
-}
 
 /* ── FADE IN ── */
 .fi { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
@@ -1650,13 +1811,11 @@ footer {
     Маска, которая вернёт<br>вашей шее <span>молодость</span>
   </h1>
 
-  <!-- Хук з рейтингом -->
   <div class="hero-hook fi">
     <div class="hero-stars">★★★★★</div>
     <div class="hero-hook-text">Маска <strong>№1</strong> по эффективности<br>и отзывам покупателей</div>
   </div>
 
-  <!-- Пілюлі ефектів -->
   <div class="hero-pills fi">
     <span class="pill">Лифтинг</span>
     <span class="pill">Омоложение</span>
@@ -1665,7 +1824,6 @@ footer {
     <span class="pill">Питание</span>
   </div>
 
-  <!-- Фото продукту -->
   <div class="hero-photo fi">
     <img src="img/product.png" alt="Лифтинг-маска для шеи"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
@@ -1675,13 +1833,12 @@ footer {
 </section>
 
 <!-- ═══════════════════════════
-     БЛОК 2 — ФОРМА
+     БЛОК 2 — ФОРМА (верхня)
 ═══════════════════════════ -->
 <section class="form-section" id="order">
 
   <div class="order-card fi">
 
-    <!-- Шапка: ціна -->
     <div class="order-card-head">
       <span class="price-old">299 000 сум</span>
       <span class="price-new">149 000 сум</span>
@@ -1692,7 +1849,6 @@ footer {
       </div>
     </div>
 
-    <!-- Залишки — фото наклейка справа -->
     <div class="stock-counter">
       <div class="stock-counter-text">
         <span class="sc-label">Осталось</span>
@@ -1704,7 +1860,7 @@ footer {
            onerror="this.style.display='none'">
     </div>
 
-    <!-- Поля і кнопка -->
+    <!-- Поля і кнопка — без дублю trust-list знизу -->
     <div class="form-fields-wrap" id="main-form">
       <input class="form-field" type="text" id="f-name"
              placeholder="Ваше имя" autocomplete="name">
@@ -1713,11 +1869,13 @@ footer {
       <button class="btn-order" onclick="submitMain()">
         Заказать со скидкой 50%
       </button>
-      <div class="trust-list">
-        <div class="trust-item"><span class="ti-icon">💳</span><span>Оплата при получении</span></div>
-        <div class="trust-item"><span class="ti-icon">📦</span><span>Доставка 1–2 дня до двери</span></div>
-        <div class="trust-item"><span class="ti-icon">↩️</span><span>30 дней на возврат товара</span></div>
-      </div>
+    </div>
+
+    <div id="main-success" style="display:none; text-align:center; padding:40px 22px;">
+      <div style="font-size:56px; margin-bottom:14px;">✅</div>
+      <div style="font-family:'Fraunces',serif; font-size:28px; color:var(--dark); font-weight:900; margin-bottom:8px;">Заявка принята!</div>
+      <div style="font-size:16px; color:var(--muted); line-height:1.7;">Мы перезвоним вам<br>в течение 10 минут</div>
+    </div>
 
     <!-- Підвал: гарантії -->
     <div class="order-card-foot" id="main-form-foot">
@@ -1726,12 +1884,6 @@ footer {
       <div class="ocf-item"><span>↩️</span>30 дней</div>
     </div>
 
-  </div>
-
-  <div id="main-success" style="display:none; text-align:center; padding:40px 22px;">
-    <div style="font-size:56px; margin-bottom:14px;">✅</div>
-    <div style="font-family:'Fraunces',serif; font-size:28px; color:var(--dark); font-weight:900; margin-bottom:8px;">Заявка принята!</div>
-    <div style="font-size:16px; color:var(--muted); line-height:1.7;">Мы перезвоним вам<br>в течение 10 минут</div>
   </div>
 
 </section>
@@ -1744,9 +1896,8 @@ footer {
   <p class="product-eyebrow fi">Состав и действие</p>
   <h2 class="product-title fi">Почему это работает</h2>
 
-  <!-- Фото на всю ширину -->
   <div class="product-img-wrap fi">
-    <img src="img/mask.png" alt="Маска "
+    <img src="img/mask.png" alt="Маска"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
     <div class="product-img-fallback" style="display:none">🎭</div>
     <div class="product-count-badge">
@@ -1755,12 +1906,10 @@ footer {
     </div>
   </div>
 
-  <!-- Список з медичними SVG іконками -->
   <div class="product-list fi">
 
     <div class="product-item">
       <div class="pi-ico">
-        <!-- ДНК / молекула -->
         <svg viewBox="0 0 26 26"><path d="M5 4c3 2 8 3 11 6s2 6-1 8-8 3-11 6"/><path d="M21 4c-3 2-8 3-11 6s-2 6 1 8 8 3 11 6"/><path d="M8 9h10M8 17h10"/></svg>
       </div>
       <div>
@@ -1771,7 +1920,6 @@ footer {
 
     <div class="product-item">
       <div class="pi-ico">
-        <!-- Крапля / молекула води -->
         <svg viewBox="0 0 26 26"><path d="M13 3C13 3 5 11 5 16a8 8 0 0016 0c0-5-8-13-8-13z"/><path d="M9 17a4 4 0 004 3"/></svg>
       </div>
       <div>
@@ -1782,7 +1930,6 @@ footer {
 
     <div class="product-item">
       <div class="pi-ico">
-        <!-- Зірка / кристал вітаміну -->
         <svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="4"/><path d="M13 3v4M13 19v4M3 13h4M19 13h4M6.2 6.2l2.8 2.8M17 17l2.8 2.8M6.2 19.8l2.8-2.8M17 9l2.8-2.8"/></svg>
       </div>
       <div>
@@ -1793,7 +1940,6 @@ footer {
 
     <div class="product-item">
       <div class="pi-ico">
-        <!-- Листок / натуральний екстракт -->
         <svg viewBox="0 0 26 26"><path d="M4 22c0 0 2-10 9-14 4-2 9-2 9-2s0 5-2 9c-3 6-8 7-8 7"/><path d="M4 22l7-7"/></svg>
       </div>
       <div>
@@ -1804,13 +1950,14 @@ footer {
 
   </div>
 
-  <!-- Акцент: 10 масок — на всю ширину -->
   <div class="product-highlight fi">
     <div class="ph-num">10</div>
     <div class="ph-text">масок в упаковке — полный курс омоложения на месяц</div>
   </div>
 
 </section>
+
+<!-- БЛОК ДО/ПІСЛЯ -->
 <div class="b2">
 
   <h2 class="b2-title fi">Реальные фото.<br>Реальный результат<br><span style="color:var(--rose);">за 7 дней</span></h2>
@@ -1865,7 +2012,6 @@ footer {
 
   <h2 class="section-title fi">Почему именно<br>эта маска?</h2>
 
-  <!-- Великий лічильник довіри -->
   <div class="trust-counter fi">
     <div class="tc-num">200 000+</div>
     <div class="tc-text">довольных клиенток<br>по всей Средней Азии</div>
@@ -1937,7 +2083,6 @@ footer {
 ═══════════════════════════ -->
 <section class="reviews-section">
 
-  <!-- Заголовок з загальним рейтингом -->
   <div class="reviews-header fi">
     <div class="rh-left">
       <div class="rh-score">4.9</div>
@@ -1958,7 +2103,6 @@ footer {
     </div>
   </div>
 
-  <!-- Картки відгуків -->
   <div class="fi">
 
     <div class="review-card">
@@ -2023,6 +2167,60 @@ footer {
 
   </div>
 
+  <!-- ═══ БЛОК ПРОГРЕСУ ПО ДНЯХ — після відгуків ═══ -->
+  <div class="skin-timeline fi" style="margin: 22px -22px 0; border-radius: 18px; overflow: hidden;">
+
+    <div class="skin-timeline-head">
+      <div class="skin-timeline-eyebrow">Дневник клиентки</div>
+      <h3 class="skin-timeline-title">Как менялась кожа шеи<br><span>клиентки по дням</span></h3>
+    </div>
+
+    <!-- Прогрес-бар днів -->
+    <div style="padding: 0 16px 10px;">
+      <div class="skin-progress-bar">
+        <div class="skin-progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- Мітки днів -->
+    <div class="skin-days-overlay">
+      <div class="skin-day-item">
+        <div class="skin-day-num">1</div>
+        <div class="skin-day-label">Нанесение<br>первой маски</div>
+        <div class="skin-day-dot"></div>
+      </div>
+      <div class="skin-day-item">
+        <div class="skin-day-num">3</div>
+        <div class="skin-day-label">Кожа<br>увлажнилась</div>
+        <div class="skin-day-dot"></div>
+      </div>
+      <div class="skin-day-item">
+        <div class="skin-day-num">5</div>
+        <div class="skin-day-label">Заметный<br>лифтинг</div>
+        <div class="skin-day-dot"></div>
+      </div>
+      <div class="skin-day-item">
+        <div class="skin-day-num">7</div>
+        <div class="skin-day-label">Результат<br>на фото</div>
+        <div class="skin-day-dot active"></div>
+      </div>
+    </div>
+
+    <!-- Панорамне фото на всю ширину -->
+    <div class="skin-timeline-photo">
+      <img src="img/nn32.jpg" alt="Как менялась кожа шеи клиентки по дням"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="skin-timeline-photo-fallback" style="display:none">📸</div>
+    </div>
+
+    <!-- Підпис під фото -->
+    <div style="background:var(--dark); padding: 14px 22px; display:flex; align-items:center; gap:10px;">
+      <span style="font-size:18px;">✨</span>
+      <span style="font-size:13px; color:rgba(255,255,255,.7); line-height:1.5; font-weight:500;">Реальный результат нашей клиентки после <strong style="color:#FFD166;">7 дней</strong> применения маски</span>
+    </div>
+
+  </div>
+
   <div class="mid-cta fi" style="margin-top:22px;">
     <div class="mid-cta-text">Хочу такой же результат</div>
     <button class="mid-cta-btn" onclick="openPopup()">Заказать</button>
@@ -2068,7 +2266,6 @@ footer {
 ═══════════════════════════ -->
 <section class="guarantee-section">
 
-  <!-- Заголовок -->
   <div class="protect-header fi">
     <div class="protect-icon">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3L4 8v8c0 7 5.5 12.5 12 14 6.5-1.5 12-7 12-14V8L16 3z"/><path d="M11 16l3 3 7-7"/></svg>
@@ -2079,7 +2276,6 @@ footer {
     </div>
   </div>
 
-  <!-- Кроки захисту -->
   <div class="protect-steps fi">
 
     <div class="protect-step">
@@ -2122,44 +2318,49 @@ footer {
 
 </section>
 
-<!-- ═══════════════════════════
-     ФІНАЛЬНИЙ CTA
-═══════════════════════════ -->
+<!-- ═══════════════════════════════════════════
+     ФІНАЛЬНИЙ CTA — ЧИСТИЙ ЛАКОНІЧНИЙ
+═══════════════════════════════════════════ -->
 <section class="final-cta">
 
-  <div class="final-card fi">
+  <div class="order-card fi">
 
-    <!-- Офер -->
-    <div class="final-offer-head">
-      <div class="final-offer-tag">⏰ Акция заканчивается сегодня</div>
-      <h2 class="final-offer-title">Молодая шея<br>за полцены</h2>
-      <div class="final-price-row">
-        <span class="final-price-old">299 000 сум</span>
-        <span class="final-price-new">149 000 сум</span>
+    <!-- Шапка — точно як верхня форма -->
+    <div class="order-card-head">
+      <p style="font-size:17px; font-weight:700; color:white; margin-bottom:18px; line-height:1.4;">
+        Успейте забрать маску по акционной цене — скидка 50% сгорает через:
+      </p>
+      <span class="price-old">299 000 сум</span>
+      <span class="price-new">149 000 сум</span>
+      <span class="price-sub">Ваша цена сегодня</span>
+      <div class="timer-block">
+        <span class="timer-label">До конца акции:</span>
+        <span class="timer-digits"><span id="fth">05</span>:<span id="ftm">37</span>:<span id="fts">22</span></span>
       </div>
     </div>
 
-    <!-- Форма -->
-    <div class="final-form-wrap" id="final-form">
+    <!-- Поля і кнопка -->
+    <div class="form-fields-wrap" id="final-form">
       <input class="form-field" type="text" id="ff-name"
              placeholder="Ваше имя" autocomplete="name">
       <input class="form-field phone-input" type="tel" id="ff-phone"
              placeholder="+998 (__) ___-__-__" autocomplete="tel">
       <button class="btn-order" onclick="submitFinal()">
-        Забрать маску со скидкой 50%
+        Заказать со скидкой 50%
       </button>
-
-      <div class="trust-list">
-        <div class="trust-item"><span class="ti-icon">💳</span><span>Оплата при получении</span></div>
-        <div class="trust-item"><span class="ti-icon">📦</span><span>Доставка 1–2 дня до двери</span></div>
-        <div class="trust-item"><span class="ti-icon">↩️</span><span>30 дней на возврат товара</span></div>
-      </div>
     </div>
 
     <div id="final-success" style="display:none; text-align:center; padding:32px 22px;">
       <div style="font-size:52px; margin-bottom:12px;">✅</div>
       <div style="font-family:'Fraunces',serif; font-size:26px; color:var(--dark); font-weight:900; margin-bottom:8px;">Заявка принята!</div>
       <div style="font-size:15px; color:var(--muted); line-height:1.6;">Перезвоним в течение 10 минут</div>
+    </div>
+
+    <!-- Підвал: гарантії -->
+    <div class="order-card-foot">
+      <div class="ocf-item"><span>💳</span>При получении</div>
+      <div class="ocf-item"><span>📦</span>1–2 дня</div>
+      <div class="ocf-item"><span>↩️</span>30 дней</div>
     </div>
 
   </div>
@@ -2212,19 +2413,18 @@ footer {
 </div>
 
 <script>
-// ── ТАЙМЕР ──────────────────────────
+// ── ТАЙМЕР — синхронізований для обох форм ──────────────────────────
 (function(){
   const end = new Date(Date.now() + (5*3600+37*60+22)*1000);
   function pad(n){ return n<10?'0'+n:String(n); }
   function tick(){
     const d = Math.max(0, end - Date.now());
-    ['th','tm','ts'].forEach((id,i) => {
-      const el = document.getElementById(id);
-      if(el) el.textContent = pad(Math.floor(d / [3600000,60000,1000][i]) % 60);
-    });
-    // fix hours
-    const th = document.getElementById('th');
-    if(th) th.textContent = pad(Math.floor(d/3600000));
+    const h = Math.floor(d/3600000);
+    const m = Math.floor(d/60000)%60;
+    const s = Math.floor(d/1000)%60;
+    ['th','fth'].forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent=pad(h); });
+    ['tm','ftm'].forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent=pad(m); });
+    ['ts','fts'].forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent=pad(s); });
   }
   tick(); setInterval(tick, 1000);
 })();
