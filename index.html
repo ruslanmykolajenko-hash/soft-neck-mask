@@ -109,7 +109,6 @@ img { display: block; width: 100%; }
   padding: 28px 20px 32px;
 }
 
-/* Єдина картка форми */
 .order-card {
   background: var(--white);
   border-radius: 20px;
@@ -117,20 +116,20 @@ img { display: block; width: 100%; }
   box-shadow: 0 4px 32px rgba(42,26,14,.1);
 }
 
-/* Шапка картки — ціна */
+/* Шапка — один темний колір */
 .order-card-head {
   background: var(--dark);
-  padding: 24px 22px;
+  padding: 28px 22px 22px;
   text-align: center;
 }
 
 .price-old {
   font-size: 16px;
   font-weight: 500;
-  color: rgba(255,255,255,.35);
+  color: rgba(255,255,255,.3);
   text-decoration: line-through;
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .price-new {
@@ -147,22 +146,21 @@ img { display: block; width: 100%; }
   font-size: 13px;
   color: rgba(255,255,255,.4);
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
-/* Таймер всередині шапки */
 .timer-block {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255,255,255,.1);
+  background: rgba(255,255,255,.08);
   border-radius: 10px;
   padding: 9px 16px;
 }
 
 .timer-label {
   font-size: 13px;
-  color: rgba(255,255,255,.55);
+  color: rgba(255,255,255,.45);
   font-weight: 500;
 }
 
@@ -174,36 +172,56 @@ img { display: block; width: 100%; }
   letter-spacing: 2px;
 }
 
-/* Стрічка залишків */
+/* Стрічка залишків — той самий темний, світліший відтінок */
 .stock-counter {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--red);
-  padding: 10px 22px;
+  justify-content: space-between;
+  background: rgba(42,26,14,.85);
+  padding: 0 0 0 22px;
   font-size: 15px;
-  font-weight: 700;
-  color: white;
-  animation: stockPulse 2s ease-in-out infinite;
+  font-weight: 600;
+  color: rgba(255,255,255,.7);
+  animation: stockPulse 2.5s ease-in-out infinite;
+  position: relative;
+  overflow: visible;
+  min-height: 64px;
 }
 
-@keyframes stockPulse { 0%,100%{opacity:1;} 50%{opacity:.8;} }
+.stock-counter-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+}
+
+/* Фото маски виступає вгору */
+.sc-img {
+  width: 72px;
+  height: 90px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-top: -26px;
+  margin-right: 16px;
+  filter: drop-shadow(0 -4px 12px rgba(0,0,0,.3));
+}
+
+@keyframes stockPulse { 0%,100%{opacity:1;} 50%{opacity:.75;} }
 
 .sc-label { font-weight: 500; }
 .sc-num {
   font-family: 'Nunito', sans-serif;
   font-size: 22px;
   font-weight: 900;
-  background: white;
-  color: var(--red);
-  border-radius: 6px;
-  padding: 0 8px;
-  line-height: 1.4;
+  color: white;
+  line-height: 1;
 }
-.sc-urgent { font-weight: 800; }
+.sc-urgent {
+  color: white;
+  font-weight: 700;
+}
 
-/* Тіло картки — поля */
+/* Поля */
 .form-fields-wrap {
   padding: 22px 22px 20px;
 }
@@ -226,6 +244,7 @@ img { display: block; width: 100%; }
 .form-field::placeholder { color: rgba(42,26,14,.3); }
 .form-field:focus { border-color: var(--rose); background: white; }
 
+/* Кнопка — єдиний акцент */
 .btn-order {
   width: 100%;
   background: var(--rose);
@@ -238,7 +257,7 @@ img { display: block; width: 100%; }
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   letter-spacing: .3px;
-  box-shadow: 0 4px 16px rgba(201,112,85,.35);
+  box-shadow: 0 4px 16px rgba(201,112,85,.3);
   transition: transform .15s;
   margin-bottom: 0;
   text-transform: uppercase;
@@ -1527,10 +1546,14 @@ footer {
 
     <!-- Залишки -->
     <div class="stock-counter">
-      <span class="sc-label">Осталось</span>
-      <span class="sc-num">19</span>
-      <span class="sc-label">шт.</span>
-      <span class="sc-urgent">Успейте!</span>
+      <div class="stock-counter-text">
+        <span class="sc-label">Осталось</span>
+        <span class="sc-num">19</span>
+        <span class="sc-label">шт.</span>
+        <span class="sc-urgent">Успейте!</span>
+      </div>
+      <img src="img/phhy.png" alt="Маска" class="sc-img"
+           onerror="this.style.display='none'">
     </div>
 
     <!-- Поля і кнопка -->
