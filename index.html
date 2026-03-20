@@ -1187,6 +1187,185 @@ footer {
   line-height: 1.4;
 }
 
+/* ── TRUST COUNTER ── */
+.trust-counter {
+  background: linear-gradient(135deg, #1d69b6, #2a7fd4);
+  border-radius: 18px;
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.tc-num {
+  font-family: 'Nunito', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: #FFD166;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.tc-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  line-height: 1.4;
+}
+
+/* ── BENEFIT SVG ICONS ── */
+.benefit-ico-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #1d69b6, #2a7fd4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.benefit-ico-wrap svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* ── REVIEWS HEADER ── */
+.reviews-header {
+  display: flex;
+  gap: 16px;
+  background: var(--bg);
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 18px;
+  align-items: flex-start;
+}
+
+.rh-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 64px;
+}
+
+.rh-score {
+  font-family: 'Nunito', sans-serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--rose);
+  line-height: 1;
+}
+
+.rh-stars { font-size: 14px; color: #F5A623; letter-spacing: 1px; margin: 2px 0; }
+.rh-count { font-size: 11px; color: var(--muted); font-weight: 500; text-align: center; }
+
+.rh-right { flex: 1; }
+.rh-title { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+
+.rh-verified {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #3A9060;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.rh-bars { display: flex; flex-direction: column; gap: 4px; }
+
+.rh-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.rh-bar > span:first-child { min-width: 20px; text-align: right; }
+.rh-bar > span:last-child  { min-width: 28px; }
+
+.rb-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(0,0,0,.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.rb-fill { height: 100%; background: #F5A623; border-radius: 3px; }
+.rb-fill-muted { background: var(--muted); }
+
+/* ── REVIEW CARD NEW ── */
+.review-card {
+  background: var(--bg);
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+
+.review-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.review-ava {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink, #F2D5C8), var(--rose));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.review-info { flex: 1; }
+.review-name { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 2px; }
+
+.review-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.review-stars { font-size: 13px; color: #F5A623; letter-spacing: 1px; }
+.review-date  { font-size: 12px; color: var(--muted); }
+.review-location { font-size: 12px; color: var(--muted); font-weight: 500; }
+
+.review-verified {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  color: #3A9060;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.review-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+
+.review-product {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
 /* ── FADE IN ── */
 .fi { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
 .fi.show { opacity:1; transform:none; }
@@ -1293,7 +1472,7 @@ footer {
 
   <!-- Фото на всю ширину -->
   <div class="product-img-wrap fi">
-    <img src="img/mask.png" alt="Маска NeckGlow"
+    <img src="img/product.png" alt="Маска NeckGlow"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
     <div class="product-img-fallback" style="display:none">🎭</div>
     <div class="product-count-badge">
@@ -1410,38 +1589,66 @@ footer {
 ═══════════════════════════ -->
 <section class="benefits-section">
 
-  <h2 class="section-title fi">Почему эта маска<br>лучшая?</h2>
-  <p class="section-sub fi" style="margin-bottom:22px;">Создана специально для кожи шеи</p>
+  <h2 class="section-title fi">Почему именно<br>эта маска?</h2>
+
+  <!-- Великий лічильник довіри -->
+  <div class="trust-counter fi">
+    <div class="tc-num">200 000+</div>
+    <div class="tc-text">довольных клиенток<br>по всей Средней Азии</div>
+  </div>
 
   <div class="fi">
+
     <div class="benefit-item">
-      <div class="benefit-ico">✨</div>
+      <div class="benefit-ico-wrap">
+        <svg viewBox="0 0 28 28" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><path d="M14 3l2.5 6.5H23l-5.5 4 2 6.5L14 16l-5.5 4 2-6.5L5 9.5h6.5z"/></svg>
+      </div>
       <div>
-        <div class="benefit-title">Лифтинг с 1-го применения</div>
-        <div class="benefit-desc">Видимый результат с первых дней</div>
+        <div class="benefit-title">Лифтинг уже с первого применения</div>
+        <div class="benefit-desc">Кожа заметно подтягивается после первой же маски. Вы почувствуете разницу сразу</div>
       </div>
     </div>
+
     <div class="benefit-item">
-      <div class="benefit-ico">💧</div>
+      <div class="benefit-ico-wrap">
+        <svg viewBox="0 0 28 28" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="8" width="20" height="14" rx="3"/><path d="M9 8V6a5 5 0 0110 0v2"/><path d="M14 14v3"/><circle cx="14" cy="13" r="1" fill="white"/></svg>
+      </div>
       <div>
-        <div class="benefit-title">Глубокое увлажнение</div>
-        <div class="benefit-desc">Питает кожу на 24 часа</div>
+        <div class="benefit-title">Оригинальный сертифицированный товар</div>
+        <div class="benefit-desc">Официальный дистрибьютор. Документы и сертификаты качества в наличии</div>
       </div>
     </div>
+
     <div class="benefit-item">
-      <div class="benefit-ico">🎯</div>
+      <div class="benefit-ico-wrap">
+        <svg viewBox="0 0 28 28" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><path d="M4 14l6 6L24 8"/></svg>
+      </div>
       <div>
-        <div class="benefit-title">Создана для шеи</div>
-        <div class="benefit-desc">Обычный крем не справляется — маска да</div>
+        <div class="benefit-title">Реальные фото результатов клиенток</div>
+        <div class="benefit-desc">Никаких фотошоп-манипуляций. Только настоящие «до» и «после» наших покупательниц</div>
       </div>
     </div>
+
     <div class="benefit-item">
-      <div class="benefit-ico">📦</div>
+      <div class="benefit-ico-wrap">
+        <svg viewBox="0 0 28 28" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><circle cx="14" cy="14" r="10"/><path d="M14 9v5l3 3"/></svg>
+      </div>
       <div>
-        <div class="benefit-title">10 масок в наборе</div>
-        <div class="benefit-desc">Полный курс ухода</div>
+        <div class="benefit-title">Создана только для кожи шеи</div>
+        <div class="benefit-desc">Обычный крем для лица не работает на шее. Эта маска разработана именно для этой зоны</div>
       </div>
     </div>
+
+    <div class="benefit-item">
+      <div class="benefit-ico-wrap">
+        <svg viewBox="0 0 28 28" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h20M4 14h14M4 21h9"/><circle cx="22" cy="19" r="4"/><path d="M20.5 19l1 1 2-2"/></svg>
+      </div>
+      <div>
+        <div class="benefit-title">Лучшая цена на рынке Узбекистана</div>
+        <div class="benefit-desc">Сравните сами — в аптеках и магазинах аналог стоит в 3 раза дороже. У нас скидка 50%</div>
+      </div>
+    </div>
+
   </div>
 
   <div class="mid-cta fi" style="margin-top:22px;">
@@ -1456,47 +1663,90 @@ footer {
 ═══════════════════════════ -->
 <section class="reviews-section">
 
-  <h2 class="section-title fi">Что говорят<br>наши клиентки</h2>
+  <!-- Заголовок з загальним рейтингом -->
+  <div class="reviews-header fi">
+    <div class="rh-left">
+      <div class="rh-score">4.9</div>
+      <div class="rh-stars">★★★★★</div>
+      <div class="rh-count">1 240 отзывов</div>
+    </div>
+    <div class="rh-right">
+      <div class="rh-title">Отзывы покупателей</div>
+      <div class="rh-verified">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#3A9060"/><path d="M4 7l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Все отзывы проверены
+      </div>
+      <div class="rh-bars">
+        <div class="rh-bar"><span>5★</span><div class="rb-track"><div class="rb-fill" style="width:88%"></div></div><span>88%</span></div>
+        <div class="rh-bar"><span>4★</span><div class="rb-track"><div class="rb-fill" style="width:9%"></div></div><span>9%</span></div>
+        <div class="rh-bar"><span>3★</span><div class="rb-track"><div class="rb-fill rb-fill-muted" style="width:3%"></div></div><span>3%</span></div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Картки відгуків -->
   <div class="fi">
+
     <div class="review-card">
-      <span class="review-badge">✓ Купила</span>
-      <div class="review-head">
+      <div class="review-card-top">
         <div class="review-ava">👩</div>
-        <div>
-          <div class="review-name">Нилуфар Р.</div>
-          <div class="review-stars">★★★★★</div>
-          <div class="review-city">Ташкент</div>
+        <div class="review-info">
+          <div class="review-name">Нилуфар Расулова</div>
+          <div class="review-meta">
+            <span class="review-stars">★★★★★</span>
+            <span class="review-date">12 марта 2025</span>
+          </div>
+          <div class="review-location">📍 Ташкент, Юнусабад</div>
+        </div>
+        <div class="review-verified">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#EAF7EF"/><path d="M5 8l2 2 4-4" stroke="#3A9060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Купила
         </div>
       </div>
-      <p class="review-text">После 5 масок шея заметно подтянулась. Дочь спросила, что я делаю по-другому 😊</p>
+      <p class="review-text">«После 5 масок шея заметно подтянулась. Дочь спросила, что я делаю по-другому 😊 Уже заказываю второй набор — хочу пройти полный курс. Доставили быстро, всё пришло в целости.»</p>
+      <div class="review-product">📦 Набор 10 масок NeckGlow</div>
     </div>
 
     <div class="review-card">
-      <span class="review-badge">✓ Купила</span>
-      <div class="review-head">
+      <div class="review-card-top">
         <div class="review-ava">👩‍🦳</div>
-        <div>
-          <div class="review-name">Дилноза М.</div>
-          <div class="review-stars">★★★★★</div>
-          <div class="review-city">Самарканд</div>
+        <div class="review-info">
+          <div class="review-name">Дилноза Маматова</div>
+          <div class="review-meta">
+            <span class="review-stars">★★★★★</span>
+            <span class="review-date">28 февраля 2025</span>
+          </div>
+          <div class="review-location">📍 Самарканд</div>
+        </div>
+        <div class="review-verified">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#EAF7EF"/><path d="M5 8l2 2 4-4" stroke="#3A9060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Купила
         </div>
       </div>
-      <p class="review-text">Заказала сразу 2 набора. Доставили быстро, оплатила при получении. Очень довольна!</p>
+      <p class="review-text">«Заказала сразу 2 набора — себе и сестре. Оплатила при получении, что очень удобно. Маска очень нежная, запах приятный. Через неделю кожа стала мягче и упругее. Сестра тоже очень довольна!»</p>
+      <div class="review-product">📦 2 набора NeckGlow</div>
     </div>
 
     <div class="review-card">
-      <span class="review-badge">✓ Купила</span>
-      <div class="review-head">
+      <div class="review-card-top">
         <div class="review-ava">🧕</div>
-        <div>
-          <div class="review-name">Мухаббат А.</div>
-          <div class="review-stars">★★★★★</div>
-          <div class="review-city">Бухара</div>
+        <div class="review-info">
+          <div class="review-name">Мухаббат Азимова</div>
+          <div class="review-meta">
+            <span class="review-stars">★★★★★</span>
+            <span class="review-date">15 февраля 2025</span>
+          </div>
+          <div class="review-location">📍 Бухара</div>
+        </div>
+        <div class="review-verified">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#EAF7EF"/><path d="M5 8l2 2 4-4" stroke="#3A9060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Купила
         </div>
       </div>
-      <p class="review-text">Мне 52 года. После курса коллеги спросили, помолодела ли я. Очень рада!</p>
+      <p class="review-text">«Мне 52 года, всегда переживала из-за шеи. После полного курса коллеги на работе стали спрашивать, похудела ли я или сделала что-то с лицом 😄 Эффект реальный, не преувеличенный. Обязательно закажу ещё.»</p>
+      <div class="review-product">📦 Набор 10 масок NeckGlow</div>
     </div>
+
   </div>
 
   <div class="mid-cta fi" style="margin-top:22px;">
