@@ -752,14 +752,28 @@ footer {
 .hero-hook {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #1d69b6 0%, #2a7fd4 100%);
+  gap: 12px;
+  background: linear-gradient(135deg, #0f4a96 0%, #1d69b6 40%, #3589d8 70%, #1d69b6 100%);
   border-radius: 14px;
-  padding: 11px 16px;
-  margin-bottom: 12px;
+  padding: 14px 20px;
+  margin-bottom: 10px;
+  box-shadow: 0 6px 24px rgba(21,88,168,.4), inset 0 1px 0 rgba(255,255,255,.15);
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
-.hero-stars { font-size: 18px; color: #FFD166; letter-spacing: 1px; flex-shrink: 0; }
-.hero-hook-text { font-size: 16px; color: rgba(255,255,255,.95); font-weight: 600; line-height: 1.4; }
+/* блік зверху */
+.hero-hook::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255,255,255,.12), transparent);
+  pointer-events: none;
+}
+.hero-stars { font-size: 15px; color: #FFD166; letter-spacing: 3px; flex-shrink: 0; }
+.hero-hook-text { font-size: 15px; color: white; font-weight: 600; line-height: 1.4; }
 .hero-hook-text strong { color: #FFD166; font-weight: 800; }
 
 /* ── ПІЛЮЛІ ── */
@@ -772,11 +786,23 @@ footer {
 .pill {
   font-size: 14px;
   font-weight: 700;
-  padding: 9px 8px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #1d69b6, #2a7fd4);
+  padding: 10px 8px;
+  border-radius: 10px;
+  background: linear-gradient(160deg, #1d6fc0 0%, #1558a8 50%, #0f4a96 100%);
   color: white;
   text-align: center;
+  box-shadow: 0 3px 12px rgba(15,74,150,.35), inset 0 1px 0 rgba(255,255,255,.18);
+  position: relative;
+  overflow: hidden;
+}
+.pill::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255,255,255,.15), transparent);
+  pointer-events: none;
+  border-radius: 10px 10px 0 0;
 }
 
 /* ── BA HEADER ── */
@@ -1489,6 +1515,90 @@ footer {
   flex-shrink: 0;
 }
 
+/* ── FINAL CTA ── */
+.final-cta {
+  background: var(--bg);
+  padding: 28px 20px 36px;
+}
+
+.final-card {
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(42,26,14,.1);
+}
+
+.final-offer-head {
+  background: var(--dark);
+  padding: 28px 22px 22px;
+  text-align: center;
+}
+
+.final-offer-tag {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255,255,255,.45);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.final-offer-title {
+  font-family: 'Fraunces', serif;
+  font-size: 30px;
+  font-weight: 900;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.final-offer-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,.5);
+  line-height: 1.55;
+}
+
+.final-price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 14px;
+  padding: 18px 22px 0;
+  background: var(--dark);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding-bottom: 20px;
+}
+
+.final-price-old {
+  font-size: 18px;
+  color: rgba(255,255,255,.3);
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+.final-price-new {
+  font-family: 'Nunito', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: white;
+}
+
+.final-card #final-form,
+.final-card #final-success {
+  padding: 20px 22px 0;
+}
+
+.final-trust {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 14px 22px 20px;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+
 /* ── FADE IN ── */
 .fi { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
 .fi.show { opacity:1; transform:none; }
@@ -1599,7 +1709,7 @@ footer {
 
   <!-- Фото на всю ширину -->
   <div class="product-img-wrap fi">
-    <img src="img/mask.png" alt="Маска NeckGlow"
+    <img src="img/mask.png" alt="Маска "
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
     <div class="product-img-fallback" style="display:none">🎭</div>
     <div class="product-count-badge">
@@ -1831,7 +1941,7 @@ footer {
         </div>
       </div>
       <p class="review-text">«После 5 масок шея заметно подтянулась. Дочь спросила, что я делаю по-другому 😊 Уже заказываю второй набор — хочу пройти полный курс. Доставили быстро, всё пришло в целости.»</p>
-      <div class="review-product">📦 Набор 10 масок NeckGlow</div>
+      <div class="review-product">📦 Набор 10 масок</div>
     </div>
 
     <div class="review-card">
@@ -1851,7 +1961,7 @@ footer {
         </div>
       </div>
       <p class="review-text">«Заказала сразу 2 набора — себе и сестре. Оплатила при получении, что очень удобно. Маска очень нежная, запах приятный. Через неделю кожа стала мягче и упругее. Сестра тоже очень довольна!»</p>
-      <div class="review-product">📦 2 набора NeckGlow</div>
+      <div class="review-product">📦 2 набора</div>
     </div>
 
     <div class="review-card">
@@ -1871,7 +1981,7 @@ footer {
         </div>
       </div>
       <p class="review-text">«Мне 52 года, всегда переживала из-за шеи. После полного курса коллеги на работе стали спрашивать, похудела ли я или сделала что-то с лицом 😄 Эффект реальный, не преувеличенный. Обязательно закажу ещё.»</p>
-      <div class="review-product">📦 Набор 10 масок NeckGlow</div>
+      <div class="review-product">📦 Набор 10 масок</div>
     </div>
 
   </div>
@@ -1980,30 +2090,58 @@ footer {
 ═══════════════════════════ -->
 <section class="final-cta">
 
-  <h2 class="section-title fi" style="margin-bottom:8px;">Последний шанс<br>по этой цене</h2>
-  <div class="final-old fi">Обычная цена: 299 000 сум</div>
-  <div class="final-price fi">149 000 сум</div>
+  <div class="final-card fi">
 
-  <button class="btn-order fi" onclick="openPopup()" style="margin-top:4px;">
-    Заказать со скидкой 50%
-  </button>
+    <!-- Офер -->
+    <div class="final-offer-head">
+      <div class="final-offer-tag">⏰ Акция заканчивается сегодня</div>
+      <h2 class="final-offer-title">Молодая шея<br>за полцены —<br>последний шанс</h2>
+      <p class="final-offer-sub">Пока другие сомневаются — вы уже заказали. Скидка 50% только сегодня.</p>
+    </div>
 
-  <p class="fi" style="font-size:13px; color:var(--muted); margin-top:10px;">
-    💳 Оплата при получении &nbsp;·&nbsp; 📦 Доставка 1–2 дня
-  </p>
+    <!-- Ціна -->
+    <div class="final-price-row">
+      <span class="final-price-old">299 000 сум</span>
+      <span class="final-price-new">149 000 сум</span>
+    </div>
+
+    <!-- Форма -->
+    <div id="final-form">
+      <input class="form-field" type="text" id="ff-name"
+             placeholder="Ваше имя" autocomplete="name">
+      <input class="form-field phone-input" type="tel" id="ff-phone"
+             placeholder="+998 (__) ___-__-__" autocomplete="tel">
+      <button class="btn-order" onclick="submitFinal()">
+        Забрать маску со скидкой 50%
+      </button>
+    </div>
+
+    <div id="final-success" style="display:none; text-align:center; padding:20px 0;">
+      <div style="font-size:48px; margin-bottom:10px;">✅</div>
+      <div style="font-family:'Fraunces',serif; font-size:24px; color:var(--dark); font-weight:900; margin-bottom:6px;">Заявка принята!</div>
+      <div style="font-size:15px; color:var(--muted);">Перезвоним в течение 10 минут</div>
+    </div>
+
+    <div class="final-trust">
+      <span>💳 При получении</span>
+      <span>📦 1–2 дня</span>
+      <span>↩️ 30 дней возврат</span>
+    </div>
+
+  </div>
 
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">NeckGlow</div>
+  <div class="footer-logo"></div>
   <div class="footer-tagline">Лифтинг-маска для шеи</div>
   <div class="footer-links">
     <a href="#" class="footer-link">Политика конфиденциальности</a>
     <a href="#" class="footer-link">Условия доставки</a>
     <a href="#" class="footer-link">Возврат и обмен</a>
   </div>
-  <p class="footer-copy">© 2025 NeckGlow. Официальный дистрибьютор<br>на территории Республики Узбекистан.</p>
+  <p class="footer-copy">© 2025 . Официальный дистрибьютор<br>на территории Республики Узбекистан.</p>
 </footer>
 
 <!-- POPUP -->
@@ -2090,8 +2228,17 @@ function applyPhoneMask(inp) {
 }
 applyPhoneMask(document.getElementById('f-phone'));
 applyPhoneMask(document.getElementById('p-phone'));
+applyPhoneMask(document.getElementById('ff-phone'));
 
 // ── ФОРМИ ───────────────────────────
+function submitFinal(){
+  const n = document.getElementById('ff-name').value.trim();
+  const p = document.getElementById('ff-phone').value.trim();
+  if (!n || p.length < 9) { alert('Пожалуйста, заполните имя и номер телефона'); return; }
+  document.getElementById('final-form').style.display = 'none';
+  document.getElementById('final-success').style.display = 'block';
+}
+
 function submitMain(){
   const n = document.getElementById('f-name').value.trim();
   const p = document.getElementById('f-phone').value.trim();
