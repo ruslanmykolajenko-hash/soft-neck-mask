@@ -696,6 +696,84 @@ footer {
 .ps-title { font-family: 'Fraunces', serif; font-size: 28px; color: var(--dark); margin-bottom: 8px; font-weight: 900; }
 .ps-sub   { font-size: 16px; color: var(--muted); line-height: 1.6; }
 
+/* ── B1 TAG ── */
+.b1-tag {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* ── ХУК ── */
+.hero-hook {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 11px 16px;
+  margin-bottom: 12px;
+}
+.hero-stars { font-size: 16px; color: #F5A623; letter-spacing: 1px; flex-shrink: 0; }
+.hero-hook-text { font-size: 14px; color: var(--dark); font-weight: 500; line-height: 1.4; }
+.hero-hook-text strong { color: var(--rose); font-weight: 800; }
+
+/* ── ПІЛЮЛІ ── */
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+  justify-content: center;
+}
+.pill {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #1d69b6, #2a7fd4);
+  color: white;
+}
+
+/* ── BA HEADER ── */
+.ba-header {
+  background: var(--dark);
+  border-radius: 16px 16px 0 0;
+  padding: 18px 20px 16px;
+  text-align: center;
+  margin-bottom: 0;
+}
+.ba-header-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,.5);
+  letter-spacing: .5px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.ba-header-days {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: white;
+  line-height: 1.1;
+}
+.ba-days-num {
+  color: #FFD166;
+  font-size: 42px;
+}
+
+/* ── BA GRID приєднана до header ── */
+.ba-header + .ba-grid {
+  gap: 0;
+  margin-bottom: 16px;
+}
+.ba-header + .ba-grid .ba-card.before { border-radius: 0 0 0 16px; }
+.ba-header + .ba-grid .ba-card.after  { border-radius: 0 0 16px 0; }
+
 /* ── FADE IN ── */
 .fi { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
 .fi.show { opacity:1; transform:none; }
@@ -708,19 +786,28 @@ footer {
 ═══════════════════════════ -->
 <section class="hero">
 
+  <div class="b1-tag fi">Лифтинг-маска для шеи</div>
+
   <h1 class="hero-title fi">
-    Маска для шеи,<br>которая <span>вернёт молодость</span>
+    Маска, которая<br>вернёт вашей шее<br><span>молодость</span>
   </h1>
 
-  <p class="hero-sub fi">
-    Видимый результат уже после первого применения
-  </p>
-
-  <div class="hero-rating fi">
-    <span class="hero-stars">★★★★★</span>
-    <span class="hero-rating-text">1 240 довольных клиенток</span>
+  <!-- Хук з рейтингом -->
+  <div class="hero-hook fi">
+    <div class="hero-stars">★★★★★</div>
+    <div class="hero-hook-text">Маска <strong>№1</strong> по эффективности<br>и отзывам покупателей</div>
   </div>
 
+  <!-- Пілюлі ефектів -->
+  <div class="hero-pills fi">
+    <span class="pill">Лифтинг</span>
+    <span class="pill">Омоложение</span>
+    <span class="pill">Увлажнение</span>
+    <span class="pill">Подтяжка</span>
+    <span class="pill">Питание</span>
+  </div>
+
+  <!-- Фото продукту -->
   <div class="hero-photo fi">
     <img src="img/product.png" alt="Лифтинг-маска для шеи"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
@@ -788,9 +875,13 @@ footer {
 ═══════════════════════════ -->
 <section class="ba-section">
 
-  <h2 class="section-title fi">Результат,<br>который вас ждёт</h2>
-  <p class="section-sub fi">Реальный результат нашей клиентки через 7 дней</p>
+  <!-- Темна шапка -->
+  <div class="ba-header fi">
+    <div class="ba-header-eyebrow">Реальный результат нашей клиентки</div>
+    <div class="ba-header-days">Спустя <span class="ba-days-num">7</span> дней</div>
+  </div>
 
+  <!-- Фото ДО/ПІСЛЯ -->
   <div class="ba-grid fi">
     <div class="ba-card before">
       <img src="img/before.png" alt="До маски"
