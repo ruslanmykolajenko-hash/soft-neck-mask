@@ -1461,161 +1461,155 @@ footer { background:var(--text); padding:36px 20px; }
 .b1-form { position: relative; margin: 0 -20px; }
 
 .form-clean {
-  background: #3D2B1F;
-  border-radius: 0;
+  background: linear-gradient(160deg, #F5E6D8 0%, #EDD4BD 50%, #E8C9A8 100%);
   overflow: hidden;
 }
 
-.fc-head {
-  padding: 24px 22px 20px;
-  border-bottom: 1px solid rgba(255,255,255,.1);
-}
-
-/* рядок: стара ціна + -50% */
-.fc-old-row {
+/* ── PRICE CARD ── */
+.fc-price-card {
+  margin: 20px 18px 0;
+  background: #2A1A0E;
+  border-radius: 18px;
+  padding: 18px 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
-  margin-bottom: 6px;
 }
+
+.fc-left {}
 
 .fc-old {
-  font-family: 'Fraunces', serif;
-  font-size: 30px;
-  font-weight: 900;
-  color: var(--red);
+  font-size: 13px;
+  color: rgba(255,255,255,.45);
   text-decoration: line-through;
-  line-height: 1;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 2px;
 }
 
-.fc-disc {
+.fc-new-price {
   font-family: 'Fraunces', serif;
   font-size: 28px;
   font-weight: 900;
-  color: var(--red);
-  line-height: 1;
-}
-
-/* нова ціна */
-.fc-new {
-  display: block;
-  font-family: 'Fraunces', serif;
-  font-size: 22px;
-  font-weight: 700;
   color: #FFD166;
-  margin-bottom: 14px;
   line-height: 1;
+  display: block;
 }
 
-/* таймер */
-.fc-timer-row {
+.fc-new-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  margin-top: 2px;
+  display: block;
+}
+
+.fc-right {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
 }
 
-.fc-timer-lbl {
-  font-size: 13px;
-  color: rgba(255,255,255,.55);
-  font-weight: 500;
-  flex-shrink: 0;
-}
-
-.fc-timer-val {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-
-.fc-tblock {
-  background: rgba(255,255,255,.12);
-  border-radius: 8px;
-  padding: 6px 10px;
-  min-width: 44px;
-  text-align: center;
-}
-
-.fc-tnum {
+.fc-badge {
+  background: #E03030;
+  color: white;
+  font-size: 18px;
+  font-weight: 900;
   font-family: 'Fraunces', serif;
-  font-size: 22px;
+  padding: 4px 14px;
+  border-radius: 30px;
+  line-height: 1.2;
+}
+
+/* таймер окремою строкою */
+.fc-timer {
+  background: rgba(255,255,255,.12);
+  border-radius: 10px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fc-t-lbl {
+  font-size: 9px;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .3px;
+  text-transform: uppercase;
+}
+
+.fc-t-num {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
   font-weight: 900;
   color: white;
-  display: block;
+  letter-spacing: 1px;
   line-height: 1;
 }
 
-.fc-tunit {
-  font-size: 9px;
-  color: rgba(255,255,255,.4);
-  text-transform: uppercase;
-  letter-spacing: .5px;
-}
-
-.fc-tsep {
-  font-size: 20px;
-  color: rgba(255,255,255,.3);
-  font-weight: 700;
-  padding: 0 1px;
-}
-
-/* залишки */
+/* ── STOCK ROW ── */
 .fc-stock {
-  padding: 10px 22px;
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255,255,255,.65);
+  margin: 10px 18px 0;
+  background: rgba(42,26,14,.08);
+  border-radius: 12px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
-  gap: 7px;
-  border-bottom: 1px solid rgba(255,255,255,.1);
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6B3A1F;
 }
 
 .fc-dot {
   width: 7px; height: 7px; border-radius: 50%;
-  background: #FF6B6B; flex-shrink: 0;
+  background: #E03030; flex-shrink: 0;
   animation: blink2 1.4s infinite;
 }
-.fc-stock strong { color: white; font-weight: 800; }
+.fc-stock strong { color: #C0391B; }
 
-/* поля */
+/* ── ПОЛЯ ── */
 .fc-fields {
-  padding: 18px 22px 0;
+  padding: 14px 18px 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .fc-fields .b1-input-orig {
-  background: rgba(255,255,255,.12);
-  border: 1.5px solid rgba(255,255,255,.2);
+  background: white;
+  border: 1.5px solid rgba(212,137,106,.3);
   border-radius: 12px;
-  color: white;
-  box-shadow: none;
+  color: var(--text);
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
   margin-bottom: 0;
 }
-.fc-fields .b1-input-orig::placeholder { color: rgba(255,255,255,.45); }
+.fc-fields .b1-input-orig::placeholder { color: rgba(42,33,24,.35); }
 .fc-fields .b1-input-orig:focus {
-  background: rgba(255,255,255,.18);
-  border-color: var(--blush, #E8C5B0);
-  box-shadow: none;
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgba(212,137,106,.2);
+  background: white;
 }
 
-/* кнопка */
+/* ── КНОПКА ── */
 .fc-btn {
-  border-radius: 0 !important;
-  margin-top: 16px;
-  box-shadow: none !important;
-  font-size: 17px !important;
+  margin: 14px 18px 0 !important;
+  border-radius: 14px !important;
+  width: calc(100% - 36px) !important;
+  box-shadow: 0 6px 20px rgba(168,92,66,.35) !important;
+  font-size: 16px !important;
   background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r) 100%) !important;
 }
 
-/* гарантії */
+/* ── ГАРАНТІЇ ── */
 .fc-guarantees {
-  font-size: 12px;
-  color: rgba(255,255,255,.35);
+  font-size: 11px;
+  color: rgba(90,50,30,.55);
   font-weight: 500;
   text-align: center;
-  padding: 12px 22px 18px;
+  padding: 12px 18px 20px;
 }
 
 @keyframes blink2 { 0%,100%{opacity:1;} 50%{opacity:.3;} }
@@ -1664,25 +1658,22 @@ footer { background:var(--text); padding:36px 20px; }
     </div>
   </div>
 
-  <!-- ФОРМА — чиста і проста -->
+  <!-- ФОРМА -->
   <div class="b1-form fi">
     <div class="form-clean">
 
-      <!-- Ціна -->
-      <div class="fc-head">
-        <div class="fc-old-row">
+      <!-- Картка ціни -->
+      <div class="fc-price-card">
+        <div class="fc-left">
           <span class="fc-old">299 000 сум</span>
-          <span class="fc-disc">−50%</span>
+          <span class="fc-new-price">149 000 сум</span>
+          <span class="fc-new-sub">Ваша цена со скидкой</span>
         </div>
-        <span class="fc-new">Цена сегодня: 149 000 сум</span>
-        <div class="fc-timer-row">
-          <span class="fc-timer-lbl">До конца скидки:</span>
-          <div class="fc-timer-val">
-            <div class="fc-tblock"><span class="fc-tnum" id="fth2">05</span><span class="fc-tunit">ч</span></div>
-            <span class="fc-tsep">:</span>
-            <div class="fc-tblock"><span class="fc-tnum" id="ftm2">37</span><span class="fc-tunit">мин</span></div>
-            <span class="fc-tsep">:</span>
-            <div class="fc-tblock"><span class="fc-tnum" id="fts2">22</span><span class="fc-tunit">сек</span></div>
+        <div class="fc-right">
+          <div class="fc-badge">−50%</div>
+          <div class="fc-timer">
+            <span class="fc-t-lbl">осталось&nbsp;</span>
+            <span class="fc-t-num"><span id="fth2">05</span>:<span id="ftm2">37</span>:<span id="fts2">22</span></span>
           </div>
         </div>
       </div>
@@ -1690,7 +1681,7 @@ footer { background:var(--text); padding:36px 20px; }
       <!-- Залишки -->
       <div class="fc-stock">
         <span class="fc-dot"></span>
-        Осталось <strong>&nbsp;19 комплектов</strong>
+        Осталось <strong>&nbsp;19 комплектов</strong> по акционной цене
       </div>
 
       <!-- Поля -->
