@@ -82,14 +82,14 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--bg);
+  background: linear-gradient(135deg, #1d69b6 0%, #2a7fd4 100%);
   border-radius: 14px;
-  padding: 11px 16px;
+  padding: 12px 16px;
   margin-bottom: 12px;
 }
-.b1-hook-stars { font-size: 15px; color: #F5A623; flex-shrink: 0; letter-spacing: 1px; }
-.b1-hook-text  { font-size: 13px; color: var(--text); font-weight: 500; line-height: 1.4; }
-.b1-hook-text strong { color: var(--rose); font-weight: 800; }
+.b1-hook-stars { font-size: 15px; color: #FFD166; flex-shrink: 0; letter-spacing: 1px; }
+.b1-hook-text  { font-size: 13px; color: rgba(255,255,255,.95); font-weight: 500; line-height: 1.4; }
+.b1-hook-text strong { color: #FFD166; font-weight: 800; }
 
 /* ── ПІЛЮЛІ ── */
 .b1-pills {
@@ -104,7 +104,7 @@ body {
   font-weight: 600;
   padding: 5px 13px;
   border-radius: 30px;
-  background: var(--text);
+  background: linear-gradient(135deg, #1d69b6 0%, #2a7fd4 100%);
   color: white;
   letter-spacing: .2px;
 }
@@ -1471,133 +1471,112 @@ footer { background:var(--text); padding:36px 20px; }
   line-height: 1.5;
 }
 
-/* ── FORM BOX ── */
-.form-box {
+/* ── FORM CLEAN ── */
+.form-clean {
   background: var(--white);
   border: 2px solid var(--rose);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 6px 28px rgba(212,137,106,.2);
+  box-shadow: 0 4px 24px rgba(212,137,106,.18);
 }
 
-/* верхня частина: ціна + таймер */
-.form-box-top {
+/* шапка — ціна + таймер в одному рядку */
+.fc-head {
   background: var(--text);
-  padding: 16px 18px;
+  padding: 14px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
 }
 
-/* ціна */
-.form-box-price {
+.fc-price-row {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 8px;
 }
-.fbp-old {
+.fc-old {
   font-size: 12px;
-  color: rgba(255,255,255,.4);
+  color: rgba(255,255,255,.38);
   text-decoration: line-through;
-  font-weight: 500;
 }
-.fbp-new {
+.fc-new {
   font-family: 'Fraunces', serif;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 900;
   color: #FFD166;
   line-height: 1;
 }
-.fbp-new em { font-size: 13px; font-style: normal; color: rgba(255,255,255,.5); font-family: 'Inter',sans-serif; font-weight: 400; }
-.fbp-badge {
+.fc-disc {
   background: var(--red);
   color: white;
   font-size: 11px;
   font-weight: 800;
-  padding: 3px 9px;
+  padding: 3px 8px;
   border-radius: 20px;
-  align-self: flex-start;
-  margin-top: 3px;
 }
 
-/* таймер */
-.form-box-timer { text-align: right; }
-.fbt-label {
-  font-size: 10px;
-  color: rgba(255,255,255,.45);
-  display: block;
-  margin-bottom: 6px;
+.fc-timer-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+.fc-timer-lbl {
+  font-size: 9px;
+  color: rgba(255,255,255,.4);
   letter-spacing: .3px;
 }
-.fbt-blocks {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  justify-content: flex-end;
-}
-.fbt-block {
-  background: rgba(255,255,255,.1);
-  border-radius: 7px;
-  padding: 5px 8px;
-  display: flex;
-  align-items: baseline;
-  gap: 2px;
-}
-.fbt-num {
+.fc-timer-val {
   font-family: 'Fraunces', serif;
   font-size: 20px;
   font-weight: 900;
   color: white;
+  letter-spacing: 2px;
   line-height: 1;
 }
-.fbt-unit { font-size: 9px; color: rgba(255,255,255,.45); font-weight: 500; }
-.fbt-sep  { font-size: 16px; color: rgba(255,255,255,.35); font-weight: 700; }
 
-/* рядок залишків */
-.form-box-stock {
-  background: rgba(224,48,48,.08);
-  border-bottom: 1px solid rgba(212,137,106,.15);
-  padding: 10px 18px;
+/* поля */
+.fc-fields {
+  padding: 14px 16px 0;
+}
+
+/* кнопка */
+.fc-btn {
+  border-radius: 0 !important;
+  margin-top: 12px;
+  box-shadow: none !important;
+}
+
+/* нижня частина */
+.fc-foot {
+  padding: 10px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+.fc-stock {
   font-size: 12px;
-  color: var(--text);
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--red);
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
 }
-.fbs-dot {
-  width: 7px; height: 7px; border-radius: 50%;
+.fc-dot {
+  width: 6px; height: 6px; border-radius: 50%;
   background: var(--red); flex-shrink: 0;
   animation: blink2 1.4s infinite;
 }
-@keyframes blink2 { 0%,100%{opacity:1;} 50%{opacity:.3;} }
-.form-box-stock strong { color: var(--red); font-weight: 700; }
-
-/* поля всередині box */
-.form-box-fields { padding: 14px 16px 0; }
-.form-box-fields .b1-input-orig:last-child { margin-bottom: 0; }
-
-/* кнопка */
-.form-box .btn-main {
-  border-radius: 0 0 18px 18px;
-  margin-top: 12px;
-  box-shadow: none;
-}
-
-/* trust */
-.form-box-trust {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px 14px;
+.fc-stock strong { font-weight: 800; }
+.fc-guarantees {
   font-size: 11px;
   color: var(--muted);
   font-weight: 500;
-  flex-wrap: wrap;
+  text-align: center;
 }
-.fbt-dot { color: rgba(42,33,24,.2); }
+
+@keyframes blink2 { 0%,100%{opacity:1;} 50%{opacity:.3;} }
 
 /* ── FADE IN ── */
 .fi { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
@@ -1643,55 +1622,45 @@ footer { background:var(--text); padding:36px 20px; }
     </div>
   </div>
 
-  <!-- ФОРМА — виділена рамка, таймер, ціна, залишки -->
+  <!-- ФОРМА — чиста і проста -->
   <div class="b1-form fi">
+    <div class="form-clean">
 
-    <!-- Шапка форми: ціна + таймер -->
-    <div class="form-box">
-
-      <div class="form-box-top">
-        <div class="form-box-price">
-          <span class="fbp-old">299 000 сум</span>
-          <span class="fbp-new">149 000 <em>сум</em></span>
-          <span class="fbp-badge">−50%</span>
+      <!-- Заголовок форми -->
+      <div class="fc-head">
+        <div class="fc-price-row">
+          <span class="fc-old">299 000 сум</span>
+          <span class="fc-new">149 000 сум</span>
+          <span class="fc-disc">−50%</span>
         </div>
-        <div class="form-box-timer">
-          <span class="fbt-label">Акция заканчивается через</span>
-          <div class="fbt-blocks">
-            <div class="fbt-block"><span class="fbt-num" id="fth2">05</span><span class="fbt-unit">ч</span></div>
-            <span class="fbt-sep">:</span>
-            <div class="fbt-block"><span class="fbt-num" id="ftm2">37</span><span class="fbt-unit">м</span></div>
-            <span class="fbt-sep">:</span>
-            <div class="fbt-block"><span class="fbt-num" id="fts2">22</span><span class="fbt-unit">с</span></div>
-          </div>
+        <div class="fc-timer-row">
+          <span class="fc-timer-lbl">До конца акции:</span>
+          <span class="fc-timer-val">
+            <span id="fth2">05</span>:<span id="ftm2">37</span>:<span id="fts2">22</span>
+          </span>
         </div>
       </div>
 
-      <div class="form-box-stock">
-        <span class="fbs-dot"></span>
-        Осталось <strong>19 комплектов</strong> по акционной цене
-      </div>
-
-      <div class="form-box-fields">
+      <!-- Поля -->
+      <div class="fc-fields">
         <input class="b1-input-orig" type="text" id="b1-name"
                placeholder="Ваше имя" autocomplete="name">
         <input class="b1-input-orig b1-phone-input" type="tel" id="b1-phone"
                placeholder="+998 (__) ___-__-__" autocomplete="tel">
       </div>
 
-      <button class="btn-main" onclick="submitB1()">
+      <!-- Кнопка -->
+      <button class="btn-main fc-btn" onclick="submitB1()">
         ЗАКАЗАТЬ СО СКИДКОЙ 50%
       </button>
 
-      <div class="form-box-trust">
-        <span>💳 При получении</span>
-        <span class="fbt-dot">·</span>
-        <span>📦 1–2 дня</span>
-        <span class="fbt-dot">·</span>
-        <span>↩️ 30 дней</span>
+      <!-- Залишки + гарантії -->
+      <div class="fc-foot">
+        <div class="fc-stock"><span class="fc-dot"></span>Осталось <strong>19 комплектов</strong></div>
+        <div class="fc-guarantees">💳 При получении &nbsp;·&nbsp; 📦 1–2 дня &nbsp;·&nbsp; ↩️ 30 дней</div>
       </div>
 
-    </div><!-- /form-box -->
+    </div>
   </div>
 
 </div>
@@ -1703,7 +1672,7 @@ footer { background:var(--text); padding:36px 20px; }
 ══════════════════════════════════════════ -->
 <div class="b2">
 
-  <h2 class="b2-title fi">Посмотри,<br>что будет с твоей шеей</h2>
+  <h2 class="b2-title fi">Шея может быть<br>молодой снова —<br><span style="color:var(--rose);">убедись сама</span></h2>
 
   <!-- ДО / ПІСЛЯ -->
   <div class="ba-wrap fi">
