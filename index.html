@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Маска для шеи | Лифтинг и омоложение</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -113,101 +113,78 @@ img { display: block; width: 100%; }
 .form-price-block {
   background: #2A1A0E;
   border-radius: var(--r);
-  padding: 20px;
-  margin-bottom: 0;
-  display: flex;
-  align-items: stretch;
-  gap: 0;
-  overflow: hidden;
+  padding: 22px 22px 18px;
+  margin-bottom: 12px;
+  display: block;
 }
 
 .price-left {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
-/* стара ціна — велика, червона, закреслена */
+/* стара ціна — велика, червона, закреслена бежевим */
 .price-old {
-  font-family: 'Fraunces', serif;
-  font-size: 26px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 38px;
   font-weight: 900;
-  color: var(--red);
+  color: #E03030;
   text-decoration: line-through;
+  text-decoration-color: #C4956A;
+  text-decoration-thickness: 4px;
   line-height: 1;
   display: block;
+  letter-spacing: -0.5px;
 }
 
-/* нова ціна — золота */
+/* нова ціна — менша, золота */
 .price-new {
-  font-family: 'Fraunces', serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 22px;
-  font-weight: 900;
+  font-weight: 800;
   color: #FFD166;
   line-height: 1;
   display: block;
+  letter-spacing: -0.2px;
 }
 
 .price-new-sub {
-  font-size: 11px;
+  font-size: 12px;
   color: rgba(255,255,255,.4);
   display: block;
+  margin-top: 3px;
 }
 
 /* таймер */
 .timer-block {
-  background: rgba(255,255,255,.1);
-  border-radius: 8px;
-  padding: 7px 10px;
-  margin-top: 8px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 7px;
-  align-self: flex-start;
+  gap: 8px;
+  margin-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding-top: 12px;
+  width: 100%;
 }
 
 .timer-label {
-  font-size: 11px;
-  color: rgba(255,255,255,.45);
+  font-size: 13px;
+  color: rgba(255,255,255,.5);
+  font-weight: 600;
 }
 
 .timer-digits {
-  font-family: 'Fraunces', serif;
-  font-size: 18px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 24px;
   font-weight: 900;
   color: white;
   letter-spacing: 2px;
 }
 
-/* права частина -50% */
-.price-right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: var(--red);
-  margin: -20px -20px -20px 16px;
-  padding: 0 18px;
-  flex-shrink: 0;
-  border-radius: 0 var(--r) var(--r) 0;
-}
-
-.price-badge {
-  font-family: 'Fraunces', serif;
-  font-size: 28px;
-  font-weight: 900;
-  color: white;
-  display: block;
-  line-height: 1;
-}
-
-.price-badge-sub {
-  font-size: 9px;
-  color: rgba(255,255,255,.7);
-  text-transform: uppercase;
-  letter-spacing: .5px;
-}
+/* права частина -50% — прихована */
+.form-price-block .price-right { display: none; }
+.form-price-block .price-badge { display: none; }
+.form-price-block .price-badge-sub { display: none; }
 
 /* Залишки — червона стрічка на всю ширину */
 .stock-row {
@@ -739,14 +716,14 @@ footer {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--bg);
+  background: linear-gradient(135deg, #1d69b6 0%, #2a7fd4 100%);
   border-radius: 14px;
   padding: 11px 16px;
   margin-bottom: 12px;
 }
-.hero-stars { font-size: 16px; color: #F5A623; letter-spacing: 1px; flex-shrink: 0; }
-.hero-hook-text { font-size: 14px; color: var(--dark); font-weight: 500; line-height: 1.4; }
-.hero-hook-text strong { color: var(--rose); font-weight: 800; }
+.hero-stars { font-size: 16px; color: #FFD166; letter-spacing: 1px; flex-shrink: 0; }
+.hero-hook-text { font-size: 14px; color: rgba(255,255,255,.95); font-weight: 500; line-height: 1.4; }
+.hero-hook-text strong { color: #FFD166; font-weight: 800; }
 
 /* ── ПІЛЮЛІ ── */
 .hero-pills {
@@ -1185,25 +1162,6 @@ footer {
     <div class="os-card">
       <div class="os-num">×3</div>
       <div class="os-lbl">эффективнее любого крема для шеи</div>
-    </div>
-  </div>
-
-  <div class="price-block fi">
-    <div class="price-left">
-      <div class="price-was-row">
-        <span class="price-was-lbl">Обычная цена</span>
-        <span class="price-was">299 000 сум</span>
-      </div>
-      <div class="price-divider-line"></div>
-      <div class="price-now-row">
-        <span class="price-now">149 000</span>
-        <span class="price-currency">сум</span>
-      </div>
-    </div>
-    <div class="price-badge-red">
-      <div class="pbr-pct">−50%</div>
-      <div class="pbr-lbl">СКИДКА</div>
-      <div class="pbr-gift">🎁 3-я в подарок</div>
     </div>
   </div>
 
