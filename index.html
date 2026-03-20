@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Лифтинг-маска для шеи | NeckGlow</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@700;800&display=swap" rel="stylesheet">
 <style>
 /* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,7 +26,7 @@
 
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
@@ -65,7 +65,7 @@ body {
 }
 
 .b1-h1 {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Sora', sans-serif;
   font-size: 36px;
   line-height: 1.1;
   color: var(--text);
@@ -118,17 +118,55 @@ body {
 .b1-photo-fallback .pf-ico   { font-size: 52px; }
 .b1-photo-fallback .pf-label { font-size: 14px; color: var(--rose); font-weight: 600; letter-spacing: 1px; }
 
-/* мала плашка знижки поверх фото */
-.b1-photo-badge {
+/* інфо-стрічка на фото */
+.b1-photo-strip {
   position: absolute;
-  top: 14px; right: 14px;
-  background: var(--red);
-  color: white;
-  font-size: 13px;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(20, 12, 8, 0.82);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 16px;
+}
+
+.bps-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.bps-big {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
   font-weight: 800;
-  padding: 7px 14px;
-  border-radius: 30px;
-  box-shadow: 0 4px 12px rgba(224,48,48,.4);
+  color: white;
+  line-height: 1;
+}
+
+.bps-item.bps-red .bps-big { color: #FF5252; }
+
+.bps-small {
+  font-size: 10px;
+  color: rgba(255,255,255,.55);
+  font-weight: 500;
+  letter-spacing: .3px;
+}
+
+.bps-timer {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #FFD166;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.bps-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,.15);
 }
 
 /* ── ФОРМА B1 ── */
@@ -149,21 +187,29 @@ body {
 
 .b1-input {
   width: 100%;
-  background: var(--bg);
-  border: 2px solid rgba(212,137,106,.2);
-  border-radius: 14px;
+  background: var(--white);
+  border: 1.5px solid rgba(212,137,106,.25);
+  border-radius: 0;
   padding: 16px 18px;
   font-size: 16px;
   color: var(--text);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   outline: none;
-  margin-bottom: 10px;
+  margin-bottom: 0;
+  border-bottom: none;
   transition: border-color .2s, background .2s;
   -webkit-appearance: none;
   display: block;
 }
 .b1-input::placeholder { color: rgba(42,33,24,.3); }
-.b1-input:focus { border-color: var(--rose); background: var(--white); }
+.b1-input:focus { border-color: var(--rose); background: #FFFAF8; z-index:1; position:relative; }
+
+/* Кнопка прямо під полями */
+.b1-form .btn-main {
+  border-radius: 0;
+  border-top: none;
+  margin-bottom: 0;
+}
 
 .btn-main {
   width: 100%;
@@ -176,7 +222,7 @@ body {
   padding: 18px;
   cursor: pointer;
   box-shadow: 0 8px 28px rgba(212,137,106,.4);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   display: block;
   text-align: center;
   transition: transform .15s, box-shadow .15s;
@@ -218,7 +264,7 @@ body {
 }
 
 .b2-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Sora', sans-serif;
   font-size: 30px;
   line-height: 1.15;
   color: var(--text);
@@ -296,7 +342,7 @@ body {
 }
 
 .ba-center-badge .badge-num {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Sora', sans-serif;
   font-size: 22px;
   font-weight: 900;
   color: var(--pink);
@@ -320,7 +366,7 @@ body {
 }
 
 .os-num {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Sora', sans-serif;
   font-size: 26px;
   color: var(--rose);
   font-weight: 700;
@@ -335,7 +381,31 @@ body {
   font-weight: 600;
 }
 
-/* ── ЦІНА ── */
+/* ── ДО/ПІСЛЯ темний оверлей ── */
+.ba-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.75) 0%, transparent 100%);
+  padding: 20px 10px 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.ba-overlay-rose {
+  background: linear-gradient(to top, rgba(168,92,66,.8) 0%, transparent 100%);
+}
+
+.ba-lbl-dark {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 0 1px 4px rgba(0,0,0,.4);
+}
+
+/* ── PRICE redesign ── */
 .price-block {
   background: var(--white);
   border-radius: var(--r);
@@ -347,46 +417,108 @@ body {
   border: 1px solid rgba(212,137,106,.15);
 }
 
-.price-main {
+.price-left {
   flex: 1;
-  padding: 18px 16px;
+  padding: 14px 18px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 4px;
+  gap: 6px;
 }
 
-.price-old {
-  font-size: 22px;
-  font-weight: 900;
+.price-was-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-was-lbl {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.price-was {
+  font-size: 15px;
+  font-weight: 700;
   color: var(--red);
   text-decoration: line-through;
+  opacity: .8;
+}
+
+.price-divider-line {
+  height: 1px;
+  background: rgba(0,0,0,.06);
+  width: 100%;
+}
+
+.price-now-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.price-now {
+  font-family: 'Sora', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text);
   line-height: 1;
 }
 
-.price-new {
+.price-currency {
   font-size: 14px;
   color: var(--muted);
-  font-weight: 600;
+  font-weight: 500;
 }
 
-/* права частина — 22% ширини, червона, -50% */
-.price-discount {
-  width: 22%;
+/* права плашка */
+.price-badge-red {
   background: var(--red);
+  width: 26%;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px 6px;
-  flex-shrink: 0;
+  padding: 12px 6px;
+  gap: 2px;
 }
 
-.price-discount .disc-num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 28px;
-  font-weight: 900;
+.pbr-pct {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
   color: white;
+  line-height: 1;
+}
+
+.pbr-lbl {
+  font-size: 8px;
+  font-weight: 700;
+  color: rgba(255,255,255,.75);
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+.pbr-gift {
+  margin-top: 6px;
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(255,255,255,.85);
+  text-align: center;
+  line-height: 1.3;
+  padding: 4px 4px 0;
+  border-top: 1px solid rgba(255,255,255,.2);
+  width: 100%;
+}
+
+/* badge-num в ba-center-badge */
+.badge-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #FFD166;
   line-height: 1;
 }
 
@@ -425,7 +557,7 @@ body {
   padding: 18px;
   cursor: pointer;
   box-shadow: 0 8px 28px rgba(212,137,106,.4);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   display: block; width: 100%;
   text-align: center;
   transition: transform .15s;
@@ -444,7 +576,7 @@ section { padding: 40px 20px; }
 }
 
 .sec-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Sora', sans-serif;
   font-size: 30px; line-height: 1.15;
   color: var(--text); font-weight: 700; margin-bottom: 8px;
 }
@@ -467,7 +599,7 @@ section { padding: 40px 20px; }
   font-size: 13px; font-weight: 800;
   padding: 11px 16px; border-radius: 12px; border: none;
   cursor: pointer; white-space: nowrap; flex-shrink: 0;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 /* ── БОЛИ ── */
@@ -490,7 +622,7 @@ section { padding: 40px 20px; }
   background: linear-gradient(135deg, var(--rose) 0%, var(--deep-r) 100%);
   border-radius: var(--r); padding: 20px; color: white; text-align: center;
 }
-.sp-title { font-family:'Outfit',sans-serif; font-size:20px; font-weight:700; margin-bottom:6px; }
+.sp-title { font-family:'Sora',sans-serif; font-size:20px; font-weight:700; margin-bottom:6px; }
 .sp-text  { font-size:14px; opacity:.88; line-height:1.55; }
 
 /* ── ПЕРЕВАГИ ── */
@@ -517,7 +649,7 @@ section { padding: 40px 20px; }
   background: var(--bg); border-radius: var(--r);
   padding: 18px 20px; display: flex; align-items: center; gap: 16px; margin-bottom: 18px;
 }
-.rb-num { font-family:'Outfit',sans-serif; font-size:52px; color:var(--rose); font-weight:700; line-height:1; flex-shrink:0; }
+.rb-num { font-family:'Sora',sans-serif; font-size:52px; color:var(--rose); font-weight:700; line-height:1; flex-shrink:0; }
 .rb-stars { font-size:18px; color:#F5A623; margin-bottom:4px; }
 .rb-count { font-size:12px; color:var(--muted); }
 
@@ -554,7 +686,7 @@ section { padding: 40px 20px; }
   width:42px; height:42px; border-radius:50%;
   background:linear-gradient(135deg,var(--rose),var(--deep-r));
   display:flex; align-items:center; justify-content:center;
-  font-family:'Outfit',sans-serif; font-size:18px; font-weight:700; color:white;
+  font-family:'Sora',sans-serif; font-size:18px; font-weight:700; color:white;
 }
 .step-line { width:2px; flex:1; min-height:14px; background:rgba(212,137,106,.2); margin-top:4px; }
 .step:last-child .step-line { display:none; }
@@ -592,11 +724,11 @@ section { padding: 40px 20px; }
 .fp-row .strike { text-decoration:line-through; color:var(--muted); font-weight:400; }
 .fp-row .green  { color:var(--green); }
 .fp-div { height:1px; background:rgba(0,0,0,.06); margin:12px 0; }
-.fp-total { font-family:'Outfit',sans-serif; font-size:28px; color:var(--rose); font-weight:700; }
+.fp-total { font-family:'Sora',sans-serif; font-size:28px; color:var(--rose); font-weight:700; }
 
 /* ── FOOTER ── */
 footer { background:var(--text); padding:36px 20px; }
-.f-logo { font-family:'Outfit',sans-serif; font-size:24px; color:var(--pink); margin-bottom:4px; }
+.f-logo { font-family:'Sora',sans-serif; font-size:24px; color:var(--pink); margin-bottom:4px; }
 .f-tag  { font-size:10px; color:rgba(255,255,255,.3); letter-spacing:2px; text-transform:uppercase; margin-bottom:22px; }
 .f-hr   { height:1px; background:rgba(255,255,255,.08); margin-bottom:18px; }
 .f-links { display:flex; flex-direction:column; gap:12px; margin-bottom:20px; }
@@ -633,7 +765,7 @@ footer { background:var(--text); padding:36px 20px; }
 }
 
 .popup-header { padding:0 20px 0; margin-bottom:16px; }
-.popup-title  { font-family:'Outfit',sans-serif; font-size:26px; color:var(--text); font-weight:700; margin-bottom:4px; line-height:1.2; }
+.popup-title  { font-family:'Sora',sans-serif; font-size:26px; color:var(--text); font-weight:700; margin-bottom:4px; line-height:1.2; }
 .popup-sub    { font-size:13px; color:var(--muted); line-height:1.5; }
 
 .popup-price-card {
@@ -652,7 +784,7 @@ footer { background:var(--text); padding:36px 20px; }
 .pp-div  { height:1px; background:rgba(212,137,106,.2); margin:12px 0; }
 .pp-total-row { display:flex; justify-content:space-between; align-items:center; }
 .pp-total-lbl { font-size:15px; font-weight:700; color:var(--text); }
-.pp-total-val { font-family:'Outfit',sans-serif; font-size:30px; color:var(--rose); font-weight:700; line-height:1; }
+.pp-total-val { font-family:'Sora',sans-serif; font-size:30px; color:var(--rose); font-weight:700; line-height:1; }
 
 .pp-save {
   background:rgba(76,175,125,.1); border-radius:10px;
@@ -666,7 +798,7 @@ footer { background:var(--text); padding:36px 20px; }
 .p-input {
   width:100%; background:var(--bg); border:1.5px solid rgba(0,0,0,.08);
   border-radius:14px; padding:15px 16px; font-size:16px; color:var(--text);
-  font-family:'DM Sans',sans-serif; outline:none; margin-bottom:12px;
+  font-family:'Inter',sans-serif; outline:none; margin-bottom:12px;
   transition:border-color .2s; -webkit-appearance:none; display:block;
 }
 .p-input:focus { border-color:var(--rose); background:white; }
@@ -676,7 +808,7 @@ footer { background:var(--text); padding:36px 20px; }
   color:white; font-size:16px; font-weight:700; border:none;
   border-radius:var(--r); padding:18px; cursor:pointer;
   box-shadow:0 8px 24px rgba(212,137,106,.35);
-  font-family:'DM Sans',sans-serif; display:block; transition:transform .15s;
+  font-family:'Inter',sans-serif; display:block; transition:transform .15s;
 }
 .btn-popup:active { transform:scale(.97); }
 
@@ -686,7 +818,7 @@ footer { background:var(--text); padding:36px 20px; }
 
 .popup-success { display:none; padding:20px 20px 10px; text-align:center; }
 .ps-ico   { font-size:56px; margin-bottom:14px; }
-.ps-title { font-family:'Outfit',sans-serif; font-size:26px; color:var(--text); margin-bottom:8px; }
+.ps-title { font-family:'Sora',sans-serif; font-size:26px; color:var(--text); margin-bottom:8px; }
 .ps-sub   { font-size:15px; color:var(--muted); line-height:1.6; margin-bottom:20px; }
 .ps-steps { background:var(--bg); border-radius:var(--r); padding:16px; text-align:left; }
 .ps-step  { display:flex; align-items:center; gap:12px; padding:8px 0; font-size:14px; color:var(--text); border-bottom:1px solid rgba(0,0,0,.05); }
@@ -714,7 +846,7 @@ footer { background:var(--text); padding:36px 20px; }
   color:rgba(242,213,200,.55); font-weight:700; margin-bottom:8px; text-align:center;
 }
 .ss-title {
-  font-family:'Outfit',sans-serif; font-size:26px; line-height:1.2;
+  font-family:'Sora',sans-serif; font-size:26px; line-height:1.2;
   color:var(--white); font-weight:700; text-align:center; margin-bottom:6px;
 }
 .ss-sub {
@@ -739,10 +871,10 @@ footer { background:var(--text); padding:36px 20px; }
   opacity:1; position:relative; pointer-events:auto;
 }
 .ss-slide img {
-  width:100%; aspect-ratio:3/4; object-fit:cover; display:block;
+  width:100%; aspect-ratio:4/5; object-fit:cover; display:block;
 }
 .ss-slide-fallback {
-  width:100%; aspect-ratio:3/4;
+  width:100%; aspect-ratio:4/5;
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
   background:linear-gradient(160deg,#2E1A10,#5A3020);
 }
@@ -784,7 +916,7 @@ footer { background:var(--text); padding:36px 20px; }
   pointer-events:none;
 }
 .ss-day-label {
-  font-family:'Outfit',sans-serif; font-size:20px;
+  font-family:'Sora',sans-serif; font-size:20px;
   color:white; font-weight:700; line-height:1;
 }
 .ss-day-desc {
@@ -810,20 +942,33 @@ footer { background:var(--text); padding:36px 20px; }
   box-shadow:0 10px 36px rgba(0,0,0,.45);
   margin-bottom:14px;
   animation:splitIn .7s cubic-bezier(.25,.8,.25,1);
+  background:#1A0E08;
 }
 @keyframes splitIn {
   from { opacity:0; transform:scale(.94); }
   to   { opacity:1; transform:scale(1); }
 }
+
+/* заголовок фінального split */
+.ss-final-title {
+  text-align:center;
+  font-family:'Sora',sans-serif;
+  font-size:15px; font-weight:700;
+  color:rgba(255,255,255,.7);
+  padding:14px 16px 10px;
+  letter-spacing:.3px;
+}
+.ss-final-title strong { color:var(--pink); font-size:18px; }
+
 .ss-final-row {
   display:grid; grid-template-columns:1fr 1fr; position:relative;
 }
 .ss-final-side { position:relative; overflow:hidden; }
 .ss-final-side img {
-  width:100%; aspect-ratio:3/4; object-fit:cover; display:block;
+  width:100%; aspect-ratio:1/1; object-fit:cover; display:block;
 }
 .ss-final-side .sf-fallback {
-  width:100%; aspect-ratio:3/4;
+  width:100%; aspect-ratio:1/1;
   display:flex; align-items:center; justify-content:center;
 }
 .ss-final-side.before-side .sf-fallback { background:linear-gradient(160deg,#2E1A10,#4A2818); }
@@ -831,7 +976,7 @@ footer { background:var(--text); padding:36px 20px; }
 .sf-fallback .sf-label { font-size:12px; color:rgba(255,255,255,.5); font-weight:700; text-transform:uppercase; letter-spacing:1px; }
 
 .ss-final-lbl {
-  position:absolute; top:10px; left:50%; transform:translateX(-50%);
+  position:absolute; bottom:8px; left:50%; transform:translateX(-50%);
   font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
   padding:4px 12px; border-radius:20px; white-space:nowrap;
 }
@@ -842,15 +987,137 @@ footer { background:var(--text); padding:36px 20px; }
   position:absolute; top:0; bottom:0; left:50%; width:2px;
   background:white; z-index:10; pointer-events:none;
 }
-.ss-final-caption {
-  background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
-  padding:12px 16px;
-  text-align:center; font-size:13px;
-  color:rgba(255,255,255,.85); font-weight:600;
-}
-.ss-final-caption strong { color:var(--pink); }
 
-/* ── FADE IN ── */
+/* картки характеристик під фото */
+.ss-final-cards {
+  display:grid; grid-template-columns:1fr 1fr;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.ss-final-card {
+  padding:14px 12px;
+  border-right:1px solid rgba(255,255,255,.08);
+  text-align:center;
+}
+.ss-final-card:last-child { border-right:none; }
+.sfc-icon { font-size:18px; margin-bottom:4px; }
+.sfc-title { font-size:11px; font-weight:700; color:rgba(255,255,255,.45); text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
+.sfc-val   { font-size:13px; font-weight:700; color:white; line-height:1.3; }
+
+/* ── FORM HEADER (таймер + бейдж) ── */
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--text);
+  border-radius: 14px 14px 0 0;
+  padding: 12px 16px;
+  margin-bottom: 0;
+}
+
+.form-timer-label {
+  font-size: 11px;
+  color: rgba(255,255,255,.55);
+  font-weight: 500;
+  margin-bottom: 6px;
+  letter-spacing: .3px;
+}
+
+.form-timer-row {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.ftb {
+  background: rgba(255,255,255,.12);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 18px;
+  font-weight: 800;
+  color: white;
+  min-width: 34px;
+  text-align: center;
+  font-family: 'Sora', sans-serif;
+}
+
+.ftd { font-size: 16px; color: rgba(255,255,255,.5); font-weight: 700; padding: 0 1px; }
+
+.form-header-badge {
+  background: var(--red);
+  color: white;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+  padding: 8px 14px;
+  border-radius: 12px;
+  text-align: center;
+  font-family: 'Sora', sans-serif;
+}
+.form-header-badge span {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  opacity: .8;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+/* Інпути з'єднані з хедером */
+.b1-form .b1-input:first-of-type {
+  border-radius: 0;
+  border-top: none;
+}
+.b1-form .b1-input:last-of-type {
+  border-radius: 0 0 0 0;
+}
+
+/* ── ГАРАНТІЇ В ФОРМІ ── */
+.form-guarantees {
+  display: flex;
+  justify-content: space-around;
+  background: #F0F9F5;
+  border: 1px solid rgba(76,175,125,.2);
+  border-radius: 0 0 12px 12px;
+  padding: 10px 8px;
+  margin-bottom: 10px;
+  border-top: none;
+}
+
+.fg-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  color: #3A7A5A;
+  font-weight: 600;
+  text-align: center;
+}
+
+.fg-item span { color: #3A7A5A; }
+
+/* ── STOCK ── */
+.form-stock {
+  background: rgba(224,48,48,.07);
+  border: 1px solid rgba(224,48,48,.2);
+  border-radius: 10px;
+  padding: 9px 14px;
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-stock-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--red); flex-shrink: 0;
+  animation: blink 1.4s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+.form-stock strong { color: var(--red); }
+
+/* badge-num in ba-center-badge — see below */
 .fi { opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
 .fi.show { opacity:1; transform:none; }
 </style>
@@ -869,7 +1136,7 @@ footer { background:var(--text); padding:36px 20px; }
   </h1>
 
   <p class="b1-sub fi">
-    Пока другие думают — ты уже выглядишь на 10 лет моложе. Каждый день без маски — это упущенный результат.
+    Единственная маска, созданная специально для кожи шеи. Подтягивает, увлажняет и убирает складки — уже после первого применения.
   </p>
 
   <!-- ФОТО ПРОДУКТУ -->
@@ -880,23 +1147,59 @@ footer { background:var(--text); padding:36px 20px; }
       <div class="pf-ico">🎭</div>
       <div class="pf-label">Фото маски</div>
     </div>
-    <div class="b1-photo-badge">−50% сегодня</div>
+    <div class="b1-photo-strip">
+      <div class="bps-item bps-red">
+        <div class="bps-big">−50%</div>
+        <div class="bps-small">скидка</div>
+      </div>
+      <div class="bps-divider"></div>
+      <div class="bps-item">
+        <div class="bps-small">⏱ Осталось</div>
+        <div class="bps-timer"><span id="pt-h">05</span>:<span id="pt-m">37</span>:<span id="pt-s">22</span></div>
+      </div>
+      <div class="bps-divider"></div>
+      <div class="bps-item">
+        <div class="bps-small">📦 В наличии</div>
+        <div class="bps-big">19 <span style="font-size:11px;font-weight:600;">шт</span></div>
+      </div>
+    </div>
   </div>
 
-  <!-- ФОРМА -->
+  <!-- ФОРМА — контрастна, з оффером -->
   <div class="b1-form fi">
-    <!-- оффер над формою -->
-    <div class="form-offer-bar">
-      <div class="fob-item"><span class="fob-ico">🎁</span><span>3-я маска в подарок</span></div>
-      <div class="fob-sep"></div>
-      <div class="fob-item"><span class="fob-ico">⚡</span><span>Осталось 27 масок</span></div>
+
+    <!-- Міні-оффер шапка форми -->
+    <div class="form-header">
+      <div class="form-header-left">
+        <div class="form-timer-label">⏰ Акция заканчивается через:</div>
+        <div class="form-timer-row">
+          <span class="ftb" id="fth">05</span><span class="ftd">:</span>
+          <span class="ftb" id="ftm">37</span><span class="ftd">:</span>
+          <span class="ftb" id="fts">22</span>
+        </div>
+      </div>
+      <div class="form-header-badge">−50%<br><span>скидка</span></div>
     </div>
+
     <input class="b1-input" type="text"  id="b1-name"  placeholder="Ваше имя"      autocomplete="name">
     <input class="b1-input" type="tel"   id="b1-phone" placeholder="Номер телефона" autocomplete="tel">
     <button class="btn-main" onclick="submitB1()">
-      Получить маску со скидкой 50% →
+      Получить со скидкой 50% →
     </button>
-    <p class="form-bottom-note">💳 Оплата при получении &nbsp;·&nbsp; 📦 Доставка 1–2 дня</p>
+
+    <!-- Гарантії всередині форми -->
+    <div class="form-guarantees">
+      <div class="fg-item">💳<span>Оплата при получении</span></div>
+      <div class="fg-item">📦<span>Доставка 1–2 дня</span></div>
+      <div class="fg-item">↩️<span>Возврат 30 дней</span></div>
+    </div>
+
+    <!-- Стрілочка-каунтер залишків -->
+    <div class="form-stock">
+      <div class="form-stock-dot"></div>
+      Осталось <strong>27 масок</strong> по акционной цене
+    </div>
+
   </div>
 
 </div>
@@ -917,32 +1220,37 @@ footer { background:var(--text); padding:36px 20px; }
       <img src="img/before.jpg" alt="До" class="ba-img"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
       <div class="ba-fallback" style="display:none">😞</div>
-      <div class="ba-lbl">ДО</div>
+      <!-- тёмный оверлей снизу с подписью -->
+      <div class="ba-overlay">
+        <span class="ba-lbl-dark">ДО</span>
+      </div>
     </div>
 
     <div class="ba-card ba-after">
-      <img src="img/after.jpg" alt="После" class="ba-img"
+      <img src="img/after.png" alt="После" class="ba-img"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
       <div class="ba-fallback" style="display:none">😊</div>
-      <div class="ba-lbl">ПОСЛЕ</div>
+      <div class="ba-overlay ba-overlay-rose">
+        <span class="ba-lbl-dark">ПОСЛЕ</span>
+      </div>
     </div>
 
-    <!-- Плашка по центру знизу між фото — накладається -->
+    <!-- Плашка по центру знизу — накладається -->
     <div class="ba-center-badge">
       Спустя <span class="badge-num">7</span> дней
     </div>
 
   </div>
 
-  <!-- OFFER STATS — 3 серйозних оффери -->
+  <!-- 3 сильних оффера -->
   <div class="offer-stats fi">
     <div class="os-card">
       <div class="os-num">−10</div>
-      <div class="os-lbl">лет — визуальный эффект омоложения</div>
+      <div class="os-lbl">лет визуально с первого курса</div>
     </div>
     <div class="os-card">
       <div class="os-num">24ч</div>
-      <div class="os-lbl">увлажнение после одного применения</div>
+      <div class="os-lbl">удержание влаги после применения</div>
     </div>
     <div class="os-card">
       <div class="os-num">×3</div>
@@ -950,17 +1258,25 @@ footer { background:var(--text); padding:36px 20px; }
     </div>
   </div>
 
-  <!-- ЦІНА — redesigned -->
+  <!-- ЦІНА — компактна, продаюча -->
   <div class="price-block fi">
-    <div class="price-main">
-      <div class="price-old-label">Обычная цена</div>
-      <div class="price-old">299 000 сум</div>
-      <div class="price-new-label">Ваша цена сегодня</div>
-      <div class="price-new">149 000 сум</div>
+    <!-- ліва: стара ціна закреслена + нова велика -->
+    <div class="price-left">
+      <div class="price-was-row">
+        <span class="price-was-lbl">Обычная цена</span>
+        <span class="price-was">299 000 сум</span>
+      </div>
+      <div class="price-divider-line"></div>
+      <div class="price-now-row">
+        <span class="price-now">149 000</span>
+        <span class="price-currency">сум</span>
+      </div>
     </div>
-    <div class="price-discount">
-      <div class="disc-num">−50%</div>
-      <div class="disc-sub">скидка</div>
+    <!-- права: червона плашка зі знижкою -->
+    <div class="price-badge-red">
+      <div class="pbr-pct">−50%</div>
+      <div class="pbr-lbl">СКИДКА</div>
+      <div class="pbr-gift">🎁 3-я в подарок</div>
     </div>
   </div>
 
@@ -978,8 +1294,8 @@ footer { background:var(--text); padding:36px 20px; }
 <div class="slideshow-section fi">
 
   <p class="ss-eyebrow">Поэтапный результат</p>
-  <h2 class="ss-title">Кожа меняется<br>с каждым днём</h2>
-  <p class="ss-sub">Реальный результат клиентки день за днём</p>
+  <h2 class="ss-title">Смотри, как маска<br>меняет кожу день за днём</h2>
+  <p class="ss-sub">Реальный результат нашей клиентки</p>
 
   <!-- ГОЛОВНИЙ STAGE -->
   <div class="ss-stage-wrap" id="ss-stage">
@@ -1044,6 +1360,7 @@ footer { background:var(--text); padding:36px 20px; }
 
   <!-- FINAL SPLIT (показується після останнього слайду) -->
   <div class="ss-final-wrap" id="ss-final">
+    <div class="ss-final-title">До маски vs <strong>7 дней</strong> с маской</div>
     <div class="ss-final-row">
       <div class="ss-final-side before-side">
         <img src="img/slide1.jpg" alt="До" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -1057,13 +1374,24 @@ footer { background:var(--text); padding:36px 20px; }
       </div>
       <div class="ss-final-divider"></div>
     </div>
-    <div class="ss-final-caption">Результат за <strong>7 дней</strong> использования маски</div>
+    <div class="ss-final-cards">
+      <div class="ss-final-card">
+        <div class="sfc-icon">😔</div>
+        <div class="sfc-title">До</div>
+        <div class="sfc-val">Дряблость, складки, сухость</div>
+      </div>
+      <div class="ss-final-card">
+        <div class="sfc-icon">✨</div>
+        <div class="sfc-title">После</div>
+        <div class="sfc-val">Упругость, лифтинг, молодость</div>
+      </div>
+    </div>
   </div>
 
   <!-- CTA -->
   <div style="margin-top:20px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:var(--r); padding:16px 18px; display:flex; align-items:center; gap:12px;">
     <div style="flex:1; font-size:14px; color:white; font-weight:600; line-height:1.4;">Хочу такой результат<br>для своей шеи</div>
-    <button onclick="openPopup()" style="background:var(--rose);color:white;font-size:13px;font-weight:800;padding:12px 16px;border-radius:12px;border:none;cursor:pointer;white-space:nowrap;font-family:DM Sans,sans-serif;">Заказать →</button>
+    <button onclick="openPopup()" style="background:var(--rose);color:white;font-size:13px;font-weight:800;padding:12px 16px;border-radius:12px;border:none;cursor:pointer;white-space:nowrap;font-family:Inter,sans-serif;">Заказать →</button>
   </div>
 
 </div>
@@ -1349,7 +1677,7 @@ function renderBadge(day) {
       <rect x="34" y="3" width="4" height="12" rx="2" fill="#555"/>
       <!-- текст ДЕНЬ маленький -->
       <text x="26" y="20" text-anchor="middle" font-size="6" fill="rgba(255,255,255,.85)"
-            font-family="DM Sans,sans-serif" font-weight="700" letter-spacing="1">ДЕНЬ</text>
+            font-family="Inter,sans-serif" font-weight="700" letter-spacing="1">ДЕНЬ</text>
       <!-- цифра велика -->
       <text x="26" y="46" text-anchor="middle" font-size="26" fill="#2A2118"
             font-family="DM Serif Display,serif" font-weight="900">${day}</text>
@@ -1414,6 +1742,36 @@ function startAutoPlay() {
     });
   }, { threshold: 0.4 });
   io.observe(section);
+})();
+
+// ── PHOTO STRIP TIMER ──────────────
+(function(){
+  const end = new Date(Date.now() + (5*3600+37*60+22)*1000);
+  function pad(n){ return n<10?'0'+n:String(n); }
+  function tick(){
+    const d = Math.max(0, end-Date.now());
+    const h=document.getElementById('pt-h'), m=document.getElementById('pt-m'), s=document.getElementById('pt-s');
+    if(h) h.textContent=pad(Math.floor(d/3600000));
+    if(m) m.textContent=pad(Math.floor((d%3600000)/60000));
+    if(s) s.textContent=pad(Math.floor((d%60000)/1000));
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+// ── FORM TIMER ─────────────────────
+(function(){
+  const end = new Date(Date.now() + (5*3600+37*60+22)*1000);
+  function pad(n){ return n<10?'0'+n:n; }
+  function tick(){
+    const d = Math.max(0, end-Date.now());
+    const th = document.getElementById('fth');
+    const tm = document.getElementById('ftm');
+    const ts = document.getElementById('fts');
+    if(th) th.textContent = pad(Math.floor(d/3600000));
+    if(tm) tm.textContent = pad(Math.floor((d%3600000)/60000));
+    if(ts) ts.textContent = pad(Math.floor((d%60000)/1000));
+  }
+  tick(); setInterval(tick,1000);
 })();
 
 // POPUP
