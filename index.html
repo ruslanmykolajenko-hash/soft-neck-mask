@@ -112,8 +112,14 @@ img { display: block; width: 100%; }
 .order-card {
   background: var(--white);
   border-radius: 20px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 4px 32px rgba(42,26,14,.1);
+}
+
+/* Але шапка і стрічка обрізаються правильно */
+.order-card-head {
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
 }
 
 /* Шапка — один темний колір */
@@ -176,39 +182,37 @@ img { display: block; width: 100%; }
 .stock-counter {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: rgba(42,26,14,.85);
-  padding: 0 0 0 22px;
+  justify-content: center;
+  gap: 8px;
+  background: var(--rose);
+  padding: 13px 22px;
   font-size: 15px;
   font-weight: 600;
-  color: rgba(255,255,255,.7);
-  animation: stockPulse 2.5s ease-in-out infinite;
+  color: white;
   position: relative;
   overflow: visible;
-  min-height: 64px;
 }
 
 .stock-counter-text {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 0;
 }
 
-/* Фото маски виступає вгору */
+/* Фото — абсолютне, поверх як наклейка, не впливає на розмір блоку */
 .sc-img {
-  width: 180px;
-  height: 225px;
+  position: absolute;
+  right: 14px;
+  top: -70px;
+  width: 80px;
+  height: 100px;
   object-fit: contain;
-  flex-shrink: 0;
-  margin-top: -65px;
-  margin-right: 16px;
-  filter: drop-shadow(0 -4px 12px rgba(0,0,0,.3));
+  pointer-events: none;
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,.3));
+  z-index: 20;
 }
 
-@keyframes stockPulse { 0%,100%{opacity:1;} 50%{opacity:.75;} }
-
-.sc-label { font-weight: 500; }
+.sc-label { font-weight: 500; color: rgba(255,255,255,.85); }
 .sc-num {
   font-family: 'Nunito', sans-serif;
   font-size: 22px;
