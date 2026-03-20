@@ -865,64 +865,71 @@ footer {
 <!-- ═══════════════════════════
      БЛОК 3 — ДО / ПІСЛЯ
 ═══════════════════════════ -->
-<section class="ba-section">
+<div class="b2" style="background:var(--bg); padding:36px 20px 32px;">
 
-  <!-- Заголовок окремо -->
-  <div class="ba-header fi">
-    <div class="ba-header-eyebrow">Реальный результат нашей клиентки</div>
-    <div class="ba-header-days">Спустя <span class="ba-days-num">7</span> дней</div>
+  <h2 class="b2-title fi">Результат, который<br>ждёт вас через<br><span style="color:var(--rose);">7 дней</span></h2>
+
+  <div class="ba-wrap fi">
+
+    <div class="ba-card ba-before">
+      <img src="img/before.png" alt="До" class="ba-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="ba-fallback" style="display:none">😞</div>
+      <div class="ba-lbl">ДО</div>
+    </div>
+
+    <div class="ba-card ba-after">
+      <img src="img/after.png" alt="После" class="ba-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="ba-fallback" style="display:none">😊</div>
+      <div class="ba-lbl ba-lbl-rose">ПОСЛЕ</div>
+    </div>
+
+    <div class="ba-center-badge">
+      Результат нашей клиентки спустя <span class="badge-num">7</span> дней
+    </div>
+
   </div>
 
-  <!-- Фото окремо, з нормальними відступами -->
-  <div class="ba-grid fi">
-    <div class="ba-card before">
-      <img src="img/before.png" alt="До маски"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="ba-img">
-      <div class="ba-fallback">😔</div>
-      <div class="ba-tag">ДО</div>
+  <div class="offer-stats fi">
+    <div class="os-card">
+      <div class="os-num">−10</div>
+      <div class="os-lbl">лет визуально с первого курса</div>
     </div>
-    <div class="ba-card after">
-      <img src="img/after.png" alt="После маски"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="ba-img">
-      <div class="ba-fallback">😊</div>
-      <div class="ba-tag">ПОСЛЕ</div>
+    <div class="os-card">
+      <div class="os-num">24ч</div>
+      <div class="os-lbl">удержание влаги после применения</div>
     </div>
-  </div>
-    <div class="ba-card before">
-      <img src="img/before.png" alt="До маски"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="ba-img">
-      <div class="ba-fallback">😔</div>
-      <div class="ba-tag">ДО</div>
-    </div>
-    <div class="ba-card after">
-      <img src="img/after.png" alt="После маски"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" class="ba-img">
-      <div class="ba-fallback">😊</div>
-      <div class="ba-tag">ПОСЛЕ</div>
-    </div>
-  </div>
-
-  <div class="ba-stats fi">
-    <div class="ba-stat">
-      <div class="ba-stat-num">7</div>
-      <div class="ba-stat-lbl">дней до результата</div>
-    </div>
-    <div class="ba-stat">
-      <div class="ba-stat-num">92%</div>
-      <div class="ba-stat-lbl">довольны результатом</div>
-    </div>
-    <div class="ba-stat">
-      <div class="ba-stat-num">10</div>
-      <div class="ba-stat-lbl">масок в наборе</div>
+    <div class="os-card">
+      <div class="os-num">×3</div>
+      <div class="os-lbl">эффективнее любого крема для шеи</div>
     </div>
   </div>
 
-  <div class="mid-cta fi">
-    <div class="mid-cta-text">Хочу такой же результат!</div>
-    <button class="mid-cta-btn" onclick="openPopup()">Заказать</button>
+  <div class="price-block fi">
+    <div class="price-left">
+      <div class="price-was-row">
+        <span class="price-was-lbl">Обычная цена</span>
+        <span class="price-was">299 000 сум</span>
+      </div>
+      <div class="price-divider-line"></div>
+      <div class="price-now-row">
+        <span class="price-now">149 000</span>
+        <span class="price-currency">сум</span>
+      </div>
+    </div>
+    <div class="price-badge-red">
+      <div class="pbr-pct">−50%</div>
+      <div class="pbr-lbl">СКИДКА</div>
+      <div class="pbr-gift">🎁 3-я в подарок</div>
+    </div>
   </div>
 
-</section>
+  <button class="btn-b2 fi" onclick="openPopup()">
+    Хочу такой же результат — Заказать
+  </button>
+
+</div>
 
 <!-- ═══════════════════════════
      БЛОК 4 — ПЕРЕВАГИ
