@@ -1,1 +1,371 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Политика конфиденциальности</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { overflow-x: hidden; max-width: 100%; }
 
+:root {
+  --bg:    #FBF7F4;
+  --white: #FFFFFF;
+  --rose:  #C97055;
+  --dark:  #1A0A04;
+  --muted: #8A7060;
+  --r: 16px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── ШАПКА ── */
+.page-header {
+  background: var(--dark);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,.3);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.1);
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: background .2s;
+}
+
+.header-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── HERO ── */
+.doc-hero {
+  background: var(--dark);
+  padding: 32px 20px 28px;
+  text-align: center;
+}
+
+.doc-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(201,112,85,.2);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 16px;
+}
+
+.doc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.doc-date {
+  font-size: 13px;
+  color: rgba(255,255,255,.4);
+  font-weight: 500;
+}
+
+/* ── КОНТЕНТ ── */
+.doc-body {
+  padding: 24px 20px 48px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.doc-section {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+}
+
+.doc-section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--dark);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ds-num {
+  width: 28px;
+  height: 28px;
+  background: var(--rose);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 900;
+  color: white;
+  flex-shrink: 0;
+}
+
+.doc-text {
+  font-size: 14px;
+  color: #4A3828;
+  line-height: 1.75;
+}
+
+.doc-text + .doc-text {
+  margin-top: 10px;
+}
+
+.doc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.doc-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: #4A3828;
+  line-height: 1.6;
+}
+
+.doc-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--rose);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.doc-highlight {
+  background: #FFF3EE;
+  border-left: 3px solid var(--rose);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 16px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--dark);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.doc-contact {
+  background: var(--dark);
+  border-radius: var(--r);
+  padding: 20px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dc-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.dc-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 3px;
+}
+
+.dc-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,.5);
+  line-height: 1.5;
+}
+
+/* ── ФУТЕР ── */
+.doc-footer {
+  background: var(--dark);
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.doc-footer-text {
+  font-size: 12px;
+  color: rgba(255,255,255,.3);
+  line-height: 1.7;
+}
+</style>
+</head>
+<body>
+
+<!-- ШАПКА -->
+<header class="page-header">
+  <div class="header-inner">
+    <a href="index.html" class="back-btn">←</a>
+    <div class="header-title">Политика конфиденциальности</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="doc-hero">
+  <div class="doc-icon">🔒</div>
+  <h1 class="doc-title">Политика<br>конфиденциальности</h1>
+  <div class="doc-date">Последнее обновление: 1 января 2025 года</div>
+</div>
+
+<!-- ТІЛО -->
+<div class="doc-body">
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">1</span>Общие положения</div>
+    <p class="doc-text">Настоящая Политика конфиденциальности регулирует порядок сбора, хранения, использования и защиты персональных данных пользователей, которые посещают наш сайт и оформляют заказы на приобретение лифтинг-маски для шеи.</p>
+    <p class="doc-text">Используя наш сайт и оставляя заявку, вы подтверждаете своё согласие с условиями настоящей Политики. Если вы не согласны с какими-либо положениями, пожалуйста, воздержитесь от использования сайта.</p>
+    <div class="doc-highlight">Мы уважаем вашу конфиденциальность и обязуемся защищать ваши персональные данные в соответствии с законодательством Республики Узбекистан.</div>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">2</span>Какие данные мы собираем</div>
+    <p class="doc-text">При оформлении заказа мы собираем следующие персональные данные:</p>
+    <ul class="doc-list">
+      <li>Имя и фамилия покупателя</li>
+      <li>Контактный номер телефона</li>
+      <li>Адрес доставки (область, город, улица, дом)</li>
+      <li>История заказов и предпочтения</li>
+    </ul>
+    <p class="doc-text" style="margin-top:12px;">При посещении сайта автоматически могут фиксироваться:</p>
+    <ul class="doc-list">
+      <li>IP-адрес устройства</li>
+      <li>Тип браузера и операционная система</li>
+      <li>Страницы, которые вы посещали</li>
+      <li>Дата и время визита</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">3</span>Цели использования данных</div>
+    <p class="doc-text">Собранные данные используются исключительно в следующих целях:</p>
+    <ul class="doc-list">
+      <li>Обработка и подтверждение заказа</li>
+      <li>Связь с покупателем для уточнения деталей доставки</li>
+      <li>Доставка товара по указанному адресу</li>
+      <li>Информирование об изменении статуса заказа</li>
+      <li>Улучшение качества обслуживания</li>
+      <li>Предотвращение мошеннических операций</li>
+    </ul>
+    <div class="doc-highlight">Мы никогда не используем ваши данные в маркетинговых целях без вашего явного согласия.</div>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">4</span>Передача данных третьим лицам</div>
+    <p class="doc-text">Мы не продаём, не сдаём в аренду и не передаём ваши персональные данные третьим лицам, за исключением случаев, необходимых для выполнения заказа:</p>
+    <ul class="doc-list">
+      <li>Курьерские и почтовые службы — для доставки товара</li>
+      <li>Платёжные системы — при безналичной оплате</li>
+      <li>Государственные органы — по требованию законодательства</li>
+    </ul>
+    <p class="doc-text" style="margin-top:12px;">Все партнёры, которым передаются данные, обязаны соблюдать конфиденциальность и не использовать информацию в иных целях.</p>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">5</span>Хранение и защита данных</div>
+    <p class="doc-text">Ваши персональные данные хранятся на защищённых серверах с применением современных методов шифрования. Доступ к данным имеет ограниченный круг сотрудников, связанных с обработкой заказов.</p>
+    <ul class="doc-list">
+      <li>Данные хранятся не дольше, чем это необходимо для выполнения заказа</li>
+      <li>После завершения обслуживания данные архивируются или удаляются</li>
+      <li>Используется шифрование SSL при передаче данных</li>
+      <li>Регулярно проводятся проверки систем безопасности</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">6</span>Права пользователя</div>
+    <p class="doc-text">Вы имеете право в любое время:</p>
+    <ul class="doc-list">
+      <li>Запросить информацию о том, какие ваши данные хранятся</li>
+      <li>Потребовать исправления неточных данных</li>
+      <li>Потребовать удаления ваших персональных данных</li>
+      <li>Отозвать согласие на обработку данных</li>
+      <li>Подать жалобу в уполномоченный орган по защите данных</li>
+    </ul>
+    <div class="doc-highlight">Для реализации любого из перечисленных прав свяжитесь с нами по контактам, указанным ниже.</div>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">7</span>Файлы cookie</div>
+    <p class="doc-text">Наш сайт может использовать файлы cookie — небольшие текстовые файлы, сохраняемые на вашем устройстве. Они помогают нам запоминать ваши предпочтения и улучшать работу сайта.</p>
+    <p class="doc-text">Вы можете отключить cookie в настройках браузера, однако это может повлиять на корректную работу некоторых функций сайта.</p>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">8</span>Изменения политики</div>
+    <p class="doc-text">Мы оставляем за собой право вносить изменения в настоящую Политику конфиденциальности. Все изменения вступают в силу с момента их публикации на данной странице.</p>
+    <p class="doc-text">Рекомендуем периодически проверять эту страницу, чтобы быть в курсе актуальных условий обработки данных.</p>
+  </div>
+
+  <!-- Контакти -->
+  <div class="doc-contact">
+    <div class="dc-icon">📞</div>
+    <div>
+      <div class="dc-title">Вопросы по конфиденциальности?</div>
+      <div class="dc-sub">Свяжитесь с нами — ответим в течение рабочего дня</div>
+    </div>
+  </div>
+
+  <div class="doc-contact">
+    <div class="dc-icon">📍</div>
+    <div>
+      <div class="dc-title">Официальный дистрибьютор</div>
+      <div class="dc-sub">Республика Узбекистан<br>© 2025. Все права защищены.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ФУТЕР -->
+<footer class="doc-footer">
+  <p class="doc-footer-text">© 2025 · Лифтинг-маска для шеи<br>Официальный дистрибьютор в Узбекистане<br>Все права защищены</p>
+</footer>
+
+</body>
+</html>
