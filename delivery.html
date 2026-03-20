@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Условия доставки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { overflow-x: hidden; max-width: 100%; }
+
+:root {
+  --bg:    #FBF7F4;
+  --white: #FFFFFF;
+  --rose:  #C97055;
+  --dark:  #1A0A04;
+  --muted: #8A7060;
+  --green: #3A9060;
+  --r: 16px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── ШАПКА ── */
+.page-header {
+  background: var(--dark);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,.3);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.1);
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.header-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── HERO ── */
+.doc-hero {
+  background: var(--dark);
+  padding: 32px 20px 28px;
+  text-align: center;
+}
+
+.doc-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(201,112,85,.2);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 16px;
+}
+
+.doc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.doc-date {
+  font-size: 13px;
+  color: rgba(255,255,255,.4);
+  font-weight: 500;
+}
+
+/* ── ШВИДКІ ФАКТИ ── */
+.quick-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 20px;
+  background: var(--white);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.qf-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.qf-icon { font-size: 24px; }
+
+.qf-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--rose);
+  line-height: 1;
+}
+
+.qf-lbl {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* ── КОНТЕНТ ── */
+.doc-body {
+  padding: 20px 20px 48px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.doc-section {
+  background: var(--white);
+  border-radius: var(--r);
+  padding: 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+}
+
+.doc-section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--dark);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ds-num {
+  width: 28px;
+  height: 28px;
+  background: var(--rose);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 900;
+  color: white;
+  flex-shrink: 0;
+}
+
+.doc-text {
+  font-size: 14px;
+  color: #4A3828;
+  line-height: 1.75;
+}
+
+.doc-text + .doc-text { margin-top: 10px; }
+
+.doc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.doc-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: #4A3828;
+  line-height: 1.6;
+}
+
+.doc-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--rose);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.doc-highlight {
+  background: #FFF3EE;
+  border-left: 3px solid var(--rose);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 16px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--dark);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.doc-highlight-green {
+  background: #EAF7EF;
+  border-left: 3px solid var(--green);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 16px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #1A4A30;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* ── КРОКИ ДОСТАВКИ ── */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.step-row {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.step-row:last-child { padding-bottom: 0; }
+
+.step-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.step-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--rose);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+  flex-shrink: 0;
+}
+
+.step-line-v {
+  width: 2px;
+  flex: 1;
+  background: rgba(201,112,85,.25);
+  margin-top: 6px;
+}
+
+.step-row:last-child .step-line-v { display: none; }
+
+.step-content { padding-top: 8px; flex: 1; }
+.step-title { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+.step-desc  { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+/* ── РЕГІОНИ ── */
+.regions-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.region-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: var(--bg);
+  border-radius: 12px;
+}
+
+.region-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.region-time {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--rose);
+  white-space: nowrap;
+}
+
+/* ── КОНТАКТ ── */
+.doc-contact {
+  background: var(--dark);
+  border-radius: var(--r);
+  padding: 20px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dc-icon { font-size: 28px; flex-shrink: 0; }
+.dc-title { font-size: 15px; font-weight: 700; color: white; margin-bottom: 3px; }
+.dc-sub   { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.5; }
+
+/* ── ФУТЕР ── */
+.doc-footer {
+  background: var(--dark);
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.doc-footer-text {
+  font-size: 12px;
+  color: rgba(255,255,255,.3);
+  line-height: 1.7;
+}
+</style>
+</head>
+<body>
+
+<!-- ШАПКА -->
+<header class="page-header">
+  <div class="header-inner">
+    <a href="index.html" class="back-btn">←</a>
+    <div class="header-title">Условия доставки</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="doc-hero">
+  <div class="doc-icon">📦</div>
+  <h1 class="doc-title">Условия<br>доставки</h1>
+  <div class="doc-date">Доставляем по всему Узбекистану</div>
+</div>
+
+<!-- ШВИДКІ ФАКТИ -->
+<div class="quick-facts">
+  <div class="qf-item">
+    <div class="qf-icon">⚡</div>
+    <div class="qf-val">1–2 дня</div>
+    <div class="qf-lbl">срок доставки</div>
+  </div>
+  <div class="qf-item">
+    <div class="qf-icon">💳</div>
+    <div class="qf-val">При получении</div>
+    <div class="qf-lbl">оплата</div>
+  </div>
+  <div class="qf-item">
+    <div class="qf-icon">🆓</div>
+    <div class="qf-val">Бесплатно</div>
+    <div class="qf-lbl">стоимость доставки</div>
+  </div>
+</div>
+
+<!-- ТІЛО -->
+<div class="doc-body">
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">1</span>Как работает доставка</div>
+    <div class="steps">
+      <div class="step-row">
+        <div class="step-left">
+          <div class="step-circle">1</div>
+          <div class="step-line-v"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Оставляете заявку</div>
+          <div class="step-desc">Вводите имя и номер телефона на сайте — никакой предоплаты</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-left">
+          <div class="step-circle">2</div>
+          <div class="step-line-v"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Мы перезваниваем</div>
+          <div class="step-desc">Оператор свяжется с вами в течение 10 минут, уточнит адрес и детали заказа</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-left">
+          <div class="step-circle">3</div>
+          <div class="step-line-v"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Отправляем посылку</div>
+          <div class="step-desc">Заказ упаковывается и передаётся курьерской службе в день подтверждения</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-left">
+          <div class="step-circle">4</div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Получаете и оплачиваете</div>
+          <div class="step-desc">Курьер доставляет товар до двери. Оплата наличными при получении</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">2</span>Сроки доставки по регионам</div>
+    <div class="regions-grid">
+      <div class="region-row">
+        <div class="region-name">🏙️ Ташкент (город)</div>
+        <div class="region-time">1 день</div>
+      </div>
+      <div class="region-row">
+        <div class="region-name">🏘️ Ташкентская область</div>
+        <div class="region-time">1–2 дня</div>
+      </div>
+      <div class="region-row">
+        <div class="region-name">🌆 Самарканд</div>
+        <div class="region-time">1–2 дня</div>
+      </div>
+      <div class="region-row">
+        <div class="region-name">🌆 Бухара</div>
+        <div class="region-time">1–2 дня</div>
+      </div>
+      <div class="region-row">
+        <div class="region-name">🌆 Андижан, Наманган, Фергана</div>
+        <div class="region-time">1–2 дня</div>
+      </div>
+      <div class="region-row">
+        <div class="region-name">🌄 Другие регионы</div>
+        <div class="region-time">2–3 дня</div>
+      </div>
+    </div>
+    <div class="doc-highlight">Доставка осуществляется ежедневно, включая субботу. Воскресенье — выходной день для курьерской службы.</div>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">3</span>Стоимость доставки</div>
+    <p class="doc-text">Доставка по всему Узбекистану осуществляется <strong>бесплатно</strong>. Никаких скрытых платежей и дополнительных сборов — вы платите только стоимость товара.</p>
+    <div class="doc-highlight-green">✓ Доставка бесплатна при любой сумме заказа по всей территории Узбекистана</div>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">4</span>Оплата товара</div>
+    <p class="doc-text">Мы работаем исключительно по системе оплаты при получении. Это значит:</p>
+    <ul class="doc-list">
+      <li>Никакой предоплаты — деньги только из рук в руки</li>
+      <li>Сначала получаете товар, потом платите</li>
+      <li>Можете осмотреть упаковку перед оплатой</li>
+      <li>Оплата наличными курьеру</li>
+    </ul>
+    <div class="doc-highlight">Мы никогда не просим перевести деньги заранее. Если вас просят об этом — это мошенники.</div>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">5</span>Упаковка и состояние товара</div>
+    <p class="doc-text">Каждый заказ тщательно упаковывается перед отправкой:</p>
+    <ul class="doc-list">
+      <li>Товар помещается в защитную коробку</li>
+      <li>Внутри — пузырчатая плёнка для защиты от повреждений</li>
+      <li>Вложен чек и инструкция по применению</li>
+      <li>Оригинальная заводская упаковка сохраняется</li>
+    </ul>
+    <p class="doc-text" style="margin-top:12px;">При получении посылки рекомендуем осмотреть упаковку на наличие повреждений в присутствии курьера. При обнаружении дефектов — не принимайте посылку и сообщите нам.</p>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">6</span>Если вас не было дома</div>
+    <p class="doc-text">Если в момент доставки вас не оказалось дома:</p>
+    <ul class="doc-list">
+      <li>Курьер позвонит на указанный номер телефона</li>
+      <li>Согласуем удобное время для повторной доставки</li>
+      <li>Повторная доставка осуществляется бесплатно</li>
+      <li>Заказ хранится на складе 3 рабочих дня</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <div class="doc-section-title"><span class="ds-num">7</span>Отслеживание заказа</div>
+    <p class="doc-text">После подтверждения заказа оператор сообщит вам ориентировочное время доставки. В день доставки курьер свяжется с вами за 30–60 минут до приезда.</p>
+    <p class="doc-text">Если у вас есть вопросы по статусу вашего заказа — свяжитесь с нами в любое время.</p>
+    <div class="doc-highlight">Среднее время ожидания от оформления до получения — 24 часа.</div>
+  </div>
+
+  <!-- Контакти -->
+  <div class="doc-contact">
+    <div class="dc-icon">📞</div>
+    <div>
+      <div class="dc-title">Вопросы по доставке?</div>
+      <div class="dc-sub">Звоните — поможем разобраться<br>Работаем ежедневно с 9:00 до 20:00</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ФУТЕР -->
+<footer class="doc-footer">
+  <p class="doc-footer-text">© 2025 · Лифтинг-маска для шеи<br>Официальный дистрибьютор в Узбекистане<br>Все права защищены</p>
+</footer>
+
+</body>
+</html>
