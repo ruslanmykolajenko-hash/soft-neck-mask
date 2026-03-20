@@ -66,24 +66,40 @@ body {
 
 .b1-h1 {
   font-family: 'Fraunces', serif;
-  font-size: 36px;
-  line-height: 1.1;
+  font-size: 38px;
+  line-height: 1.05;
   color: var(--text);
   font-weight: 900;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   position: relative;
+  /* розтягуємо по ширині */
+  letter-spacing: -0.5px;
 }
 
 .b1-h1 .accent { color: var(--rose); font-style: italic; }
 
+/* Горизонтальний рядок для заголовка */
+.b1-h1-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.b1-h1-line {
+  height: 3px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--rose));
+  border-radius: 2px;
+  min-width: 20px;
+}
+.b1-h1-line-r {
+  background: linear-gradient(90deg, var(--rose), transparent);
+}
+
 .b1-sub {
-  font-size: 16px;
-  color: var(--muted);
-  text-align: center;
-  line-height: 1.55;
-  font-weight: 500;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   position: relative;
 }
 
@@ -1119,6 +1135,59 @@ footer { background:var(--text); padding:36px 20px; }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
 .form-stock strong { color: var(--red); }
 
+/* ── B1 HOOK + EFFECT PILLS ── */
+.b1-hook {
+  margin-bottom: 16px;
+}
+
+.b1-hook-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: .2px;
+}
+
+.b1-effects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: center;
+}
+
+.eff {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: 30px;
+  letter-spacing: .2px;
+}
+
+.eff-1 { background: #FFF3E0; color: #E65100; }
+.eff-2 { background: #E3F2FD; color: #1565C0; }
+.eff-3 { background: #F3E5F5; color: #6A1B9A; }
+.eff-4 { background: #FFF8E1; color: #F57F17; }
+.eff-5 { background: #E8F5E9; color: #2E7D32; }
+
+/* trust row 3 items */
+.b1-trust {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.b1-trust span {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+}
+
 /* ── ФОРМА B1 — оригінальна ── */
 .b1-form {
   position: relative;
@@ -1138,10 +1207,11 @@ footer { background:var(--text); padding:36px 20px; }
 .b1-input-orig {
   width: 100%;
   background: var(--white);
-  border: 1.5px solid rgba(212,137,106,.3);
+  border: 2px solid rgba(212,137,106,.35);
   border-radius: 14px;
-  padding: 16px 18px;
+  padding: 17px 18px;
   font-size: 16px;
+  font-weight: 500;
   color: var(--text);
   font-family: 'Inter', sans-serif;
   outline: none;
@@ -1149,11 +1219,12 @@ footer { background:var(--text); padding:36px 20px; }
   transition: border-color .2s, box-shadow .2s;
   -webkit-appearance: none;
   display: block;
+  box-shadow: 0 2px 8px rgba(212,137,106,.1);
 }
-.b1-input-orig::placeholder { color: rgba(42,33,24,.3); }
+.b1-input-orig::placeholder { color: rgba(42,33,24,.35); }
 .b1-input-orig:focus {
   border-color: var(--rose);
-  box-shadow: 0 0 0 3px rgba(212,137,106,.12);
+  box-shadow: 0 0 0 4px rgba(212,137,106,.15), 0 2px 8px rgba(212,137,106,.1);
 }
 
 /* мала плашка знижки поверх фото */
@@ -1446,15 +1517,24 @@ footer { background:var(--text); padding:36px 20px; }
 ══════════════════════════════════════════ -->
 <div class="b1">
 
-  <h1 class="b1-h1 fi">
-    Верни шее<br>
-    <span class="accent">молодость</span><br>
-    прямо сейчас
-  </h1>
+  <!-- Заголовок — горизонтальний, займає весь рядок -->
+  <div class="b1-h1-row fi">
+    <div class="b1-h1-line"></div>
+    <h1 class="b1-h1" style="margin:0; white-space:nowrap;">Верни шее <span class="accent">молодость</span></h1>
+    <div class="b1-h1-line b1-h1-line-r"></div>
+  </div>
 
-  <p class="b1-sub fi">
-    Пока другие думают — ты уже выглядишь на 10 лет моложе. Каждый день без маски — это упущенный результат.
-  </p>
+  <!-- Хук + кольорові плашки ефектів -->
+  <div class="b1-hook fi">
+    <div class="b1-hook-title">Маска №1 по эффективности и отзывам</div>
+    <div class="b1-effects">
+      <span class="eff eff-1">✨ Омоложение</span>
+      <span class="eff eff-2">💧 Увлажнение</span>
+      <span class="eff eff-3">⬆️ Лифтинг</span>
+      <span class="eff eff-4">🎯 Подтяжка</span>
+      <span class="eff eff-5">🌿 Питание</span>
+    </div>
+  </div>
 
   <!-- ФОТО ПРОДУКТУ -->
   <div class="b1-photo fi">
@@ -1469,15 +1549,15 @@ footer { background:var(--text); padding:36px 20px; }
 
   <!-- ФОРМА -->
   <div class="b1-form fi">
-    <span class="b1-form-label">Оставьте заявку — перезвоним за 5 минут</span>
-    <input class="b1-input-orig" type="text"  id="b1-name"  placeholder="Ваше имя"      autocomplete="name">
-    <input class="b1-input-orig" type="tel"   id="b1-phone" placeholder="Номер телефона" autocomplete="tel">
+    <input class="b1-input-orig" type="text"  id="b1-name"  placeholder="👤  Ваше имя"      autocomplete="name">
+    <input class="b1-input-orig" type="tel"   id="b1-phone" placeholder="📞  Номер телефона" autocomplete="tel">
     <button class="btn-main" onclick="submitB1()">
-      Получить маску со скидкой 50% →
+      ЗАКАЗАТЬ СО СКИДКОЙ 50%
     </button>
     <div class="b1-trust">
-      <span>💳 Оплата при получении</span>
-      <span>📦 Доставка 1–2 дня</span>
+      <span>💳 При получении</span>
+      <span>📦 1–2 дня</span>
+      <span>↩️ 30 дней</span>
     </div>
   </div>
 
@@ -1503,7 +1583,7 @@ footer { background:var(--text); padding:36px 20px; }
     </div>
 
     <div class="ba-card ba-after">
-      <img src="img/after.png" alt="После" class="ba-img"
+      <img src="img/after.jpg" alt="После" class="ba-img"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
       <div class="ba-fallback" style="display:none">😊</div>
       <div class="ba-lbl ba-lbl-rose">ПОСЛЕ</div>
