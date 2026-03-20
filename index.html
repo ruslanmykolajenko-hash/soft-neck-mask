@@ -830,7 +830,7 @@ footer { background:var(--text); padding:36px 20px; }
   color:rgba(242,213,200,.55); font-weight:700; margin-bottom:8px; text-align:center;
 }
 .ss-title {
-  font-family:'Fraunces',serif; font-size:26px; line-height:1.2;
+  font-family:'Fraunces',serif; font-size:20px; line-height:1.25;
   color:var(--white); font-weight:700; text-align:center; margin-bottom:6px;
 }
 .ss-sub {
@@ -1473,87 +1473,111 @@ footer { background:var(--text); padding:36px 20px; }
 
 /* ── FORM CLEAN ── */
 .form-clean {
-  background: var(--white);
+  background: var(--text);          /* єдиний темний фон */
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 28px rgba(42,33,24,.12);
-  border: 1.5px solid rgba(212,137,106,.2);
+  box-shadow: 0 6px 32px rgba(42,33,24,.22);
 }
 
 /* ціновий блок */
 .fc-head {
-  background: var(--text);
-  padding: 20px 20px 18px;
+  padding: 22px 20px 16px;
   text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
-.fc-old {
-  display: block;
-  font-size: 22px;
-  font-weight: 700;
-  color: rgba(255,255,255,.45);
-  text-decoration: line-through;
-  margin-bottom: 4px;
-}
-
-.fc-new {
-  display: block;
-  font-family: 'Fraunces', serif;
-  font-size: 42px;
-  font-weight: 900;
-  color: #FFD166;
-  line-height: 1;
-  margin-bottom: 10px;
-}
-
-.fc-row {
+/* стара ціна — ВЕЛИКА і закреслена */
+.fc-old-row {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  margin-bottom: 6px;
 }
-
+.fc-old {
+  font-family: 'Fraunces', serif;
+  font-size: 38px;
+  font-weight: 900;
+  color: rgba(255,255,255,.45);
+  text-decoration: line-through;
+  line-height: 1;
+}
 .fc-disc {
-  background: var(--red);
-  color: white;
-  font-size: 13px;
-  font-weight: 800;
-  padding: 5px 14px;
-  border-radius: 20px;
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--red);
+  line-height: 1;
 }
 
+/* нова ціна — менша, акуратна */
+.fc-new {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFD166;
+  margin-bottom: 12px;
+  letter-spacing: .3px;
+}
+
+/* таймер */
+.fc-timer-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,.08);
+  border-radius: 30px;
+  padding: 6px 14px;
+}
+.fc-timer-lbl {
+  font-size: 11px;
+  color: rgba(255,255,255,.45);
+  font-weight: 500;
+}
 .fc-timer-val {
   font-size: 15px;
-  font-weight: 700;
-  color: rgba(255,255,255,.6);
-  letter-spacing: 1px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 1.5px;
+  font-family: 'Fraunces', serif;
 }
 
 /* залишки */
 .fc-stock {
-  background: rgba(224,48,48,.07);
-  border-top: 1px solid rgba(212,137,106,.12);
-  border-bottom: 1px solid rgba(212,137,106,.12);
   padding: 10px 20px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--red);
+  color: rgba(255, 120, 120, 1);
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
 }
-
 .fc-dot {
   width: 8px; height: 8px; border-radius: 50%;
   background: var(--red); flex-shrink: 0;
   animation: blink2 1.4s infinite;
 }
+.fc-stock strong { color: white; font-weight: 800; }
 
 /* поля */
 .fc-fields {
   padding: 16px 16px 0;
+}
+
+/* інпути на темному фоні */
+.fc-fields .b1-input-orig {
+  background: rgba(255,255,255,.1);
+  border: 1.5px solid rgba(255,255,255,.2);
+  color: white;
+}
+.fc-fields .b1-input-orig::placeholder { color: rgba(255,255,255,.4); }
+.fc-fields .b1-input-orig:focus {
+  border-color: var(--rose);
+  background: rgba(255,255,255,.14);
+  box-shadow: none;
 }
 
 .fc-btn {
@@ -1566,7 +1590,7 @@ footer { background:var(--text); padding:36px 20px; }
 /* гарантії */
 .fc-guarantees {
   font-size: 12px;
-  color: var(--muted);
+  color: rgba(255,255,255,.35);
   font-weight: 500;
   text-align: center;
   padding: 12px 16px 16px;
@@ -1624,11 +1648,14 @@ footer { background:var(--text); padding:36px 20px; }
 
       <!-- Ціна (стара велика закреслена → нова менша) -->
       <div class="fc-head">
-        <span class="fc-old">299 000 сум</span>
-        <span class="fc-new">149 000 сум</span>
-        <div class="fc-row">
-          <span class="fc-disc">−50% скидка</span>
-          <span class="fc-timer-val">⏱ <span id="fth2">05</span>:<span id="ftm2">37</span>:<span id="fts2">22</span></span>
+        <div class="fc-old-row">
+          <span class="fc-old">299 000 сум</span>
+          <span class="fc-disc">−50%</span>
+        </div>
+        <span class="fc-new">149 000 сум — ваша цена</span>
+        <div class="fc-timer-row">
+          <span class="fc-timer-lbl">До конца акции:</span>
+          <span class="fc-timer-val"><span id="fth2">05</span>:<span id="ftm2">37</span>:<span id="fts2">22</span></span>
         </div>
       </div>
 
@@ -1666,7 +1693,7 @@ footer { background:var(--text); padding:36px 20px; }
 ══════════════════════════════════════════ -->
 <div class="b2">
 
-  <h2 class="b2-title fi">Шея может быть<br>молодой снова —<br><span style="color:var(--rose);">убедись сама</span></h2>
+  <h2 class="b2-title fi">Результат, который<br>ждёт вас через<br><span style="color:var(--rose);">7 дней</span></h2>
 
   <!-- ДО / ПІСЛЯ -->
   <div class="ba-wrap fi">
@@ -1808,7 +1835,7 @@ footer { background:var(--text); padding:36px 20px; }
 
   <!-- FINAL SPLIT (показується після останнього слайду) -->
   <div class="ss-final-wrap" id="ss-final">
-    <div class="ss-final-title">До маски vs <strong>7 дней</strong> с маской</div>
+    <div class="ss-final-title">Результат после <strong>7 дней</strong> использования</div>
     <div class="ss-final-row">
       <div class="ss-final-side before-side">
         <img src="img/slide1.jpg" alt="До" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
